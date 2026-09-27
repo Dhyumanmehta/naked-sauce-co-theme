@@ -16,13 +16,12 @@
           "type": "slide",
           "settings": {
             "animation": "animation-top-to-bottom",
-            "image": "",
             "video_url": "",
             "preheading": "",
             "heading": "BOLD FLAVOUR.",
             "heading_2": "NOTHING TO HIDE.",
-            "heading_size": "h0",
-            "subheading": "<p>Naturally allergen-free. Made without ultra-processed ingredients. Built to be the hero of the dish.</p>",
+            "heading_size": "h2",
+            "subheading": "<p>Naturally allergen-free. Made without ultra-processed ingredients. Built to be the hero of any dish.</p>",
             "button_label": "Explore The Range",
             "button_link": "shopify://pages/the-range",
             "button_style": "primary",
@@ -35,8 +34,7 @@
             "color_background_gradient": "",
             "use_overlay": true,
             "colors_overlay": "#000000",
-            "overlay_opacity": 0.25,
-            "image_mobile": "",
+            "overlay_opacity": 0.3,
             "video_mobile_url": "",
             "text_box_position_mobile": "flex-middle-center",
             "text_alignment_mobile": "text-center"
@@ -70,6 +68,20 @@
     "ticker": {
       "type": "marque",
       "blocks": {
+        "marque_2": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>Allergen-Free & UPF-Free.</p>",
+            "link": ""
+          }
+        },
+        "marque_1": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>14 SKUs & growing.</p>",
+            "link": ""
+          }
+        },
         "marque_0": {
           "type": "marque",
           "settings": {
@@ -77,24 +89,10 @@
             "link": ""
           }
         },
-        "marque_1": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>14 SKUs & growing</p>",
-            "link": ""
-          }
-        },
-        "marque_2": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>Allergen-Free AND UPF-Free</p>",
-            "link": ""
-          }
-        },
         "marque_3": {
           "type": "marque",
           "settings": {
-            "content": "<p>Retail, foodservice & bulk</p>",
+            "content": "<p>Options for retail, foodservice & bulk.</p>",
             "link": ""
           }
         },
@@ -107,9 +105,9 @@
         }
       },
       "block_order": [
-        "marque_0",
-        "marque_1",
         "marque_2",
+        "marque_1",
+        "marque_0",
         "marque_3",
         "marque_4"
       ],
@@ -120,8 +118,8 @@
         "label_font_size": "h5",
         "height_image": "icon-h-large",
         "use_custom_colors": true,
-        "color_text": "#1B1310",
-        "color_background": "#DA6634",
+        "color_text": "#1b1310",
+        "color_background": "#da6634",
         "color_background_gradient": "",
         "margin_top": 0,
         "margin_bottom": 0,
@@ -141,7 +139,7 @@
             "enable_svg": false,
             "svg": "",
             "heading": "Allergen-Free",
-            "subheading": "<p>Every recipe checked against the 14 major allergens before it ships.</p>",
+            "subheading": "<p>Every recipe is naturally free from any of the 14 major allergens.</p>",
             "button_link": ""
           }
         },
@@ -162,8 +160,19 @@
             "icon": "",
             "enable_svg": false,
             "svg": "",
-            "heading": "2M+",
-            "subheading": "<p>People in the UK living with a diagnosed food allergy. Source: Food Standards Agency, 2020/2024.</p>",
+            "heading": "Versatile Range",
+            "subheading": "<p>A variety of traditional and modern sauces cooking sauces and glazes.</p>",
+            "button_link": ""
+          }
+        },
+        "card_icon_qd9ftB": {
+          "type": "card-icon",
+          "settings": {
+            "icon": "",
+            "enable_svg": false,
+            "svg": "",
+            "heading": "Flexible Packaging Options",
+            "subheading": "<p>Available in squeezy bottles, tubs or sachets. Foodservice and retail friendly.</p>",
             "button_link": ""
           }
         }
@@ -171,7 +180,8 @@
       "block_order": [
         "card_icon_0",
         "card_icon_1",
-        "card_icon_2"
+        "card_icon_2",
+        "card_icon_qd9ftB"
       ],
       "settings": {
         "layout": "container page-width",
@@ -204,8 +214,8 @@
     "wave_1": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#FBF3E4",
-        "bg_color_below": "#FCEFDD",
+        "bg_color_above": "#fbf3e4",
+        "bg_color_below": "#fcefdd",
         "flip": false
       }
     },
@@ -278,14 +288,14 @@
         "heading_tag": "h2",
         "bad_label": "Typical Bottle",
         "good_label": "Naked Sauce Co",
-        "bg_color": "#FCEFDD"
+        "bg_color": "#fcefdd"
       }
     },
     "wave_2": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#FCEFDD",
-        "bg_color_below": "#E7E9D6",
+        "bg_color_above": "#fcefdd",
+        "bg_color_below": "#e7e9d6",
         "flip": false
       }
     },
@@ -293,19 +303,25 @@
       "type": "image-with-text",
       "settings": {
         "style_layout": "style-1",
-        "image": "",
         "layout": "container page-width",
         "image_second": false,
         "image_width": "50",
+        "image_height": "adapt",
+        "image_position": "object_position_middle_center",
+        "text_box_position": "flex-middle-center",
         "text_alignment": "text-start",
+        "enable_controls": false,
         "use_custom_colors": true,
         "color_text": "#000000",
-        "color_background": "#E7E9D6",
+        "color_background": "#e7e9d6",
         "color_background_gradient": "",
+        "color_background_block": "#ffffff",
+        "color_background_gradient_block": "",
         "margin_top": 0,
         "margin_bottom": 0,
         "padding_top": 60,
         "padding_bottom": 60,
+        "text_alignment_mobile": "text-start",
         "custom_id": "",
         "custom_class": ""
       }
@@ -313,64 +329,127 @@
     "wave_3": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#E7E9D6",
-        "bg_color_below": "#231F1A",
+        "bg_color_above": "#e7e9d6",
+        "bg_color_below": "#231f1a",
         "flip": false
       }
     },
     "range_teaser": {
       "type": "flavour-switcher",
       "blocks": {
+        "flavour_EkJjxj": {
+          "type": "flavour",
+          "settings": {
+            "name": "Roasted Red Pepper & Tomato Sauce",
+            "description": "Stirred through pasta or spooned over grilled chicken.",
+            "color": "#c13b2a"
+          }
+        },
+        "flavour_JYimEM": {
+          "type": "flavour",
+          "settings": {
+            "name": "Ginger & Orange Glaze",
+            "description": "Brushed over roast duck or salmon in the last few minutes of cooking. Glossy, sticky and restaurant ready!",
+            "color": "#c13b2a"
+          }
+        },
+        "flavour_TYcgHa": {
+          "type": "flavour",
+          "settings": {
+            "name": "Coconut & Lentil Dahl",
+            "description": "A warming bowl on its own, or alongside grilled flatbread.",
+            "color": "#c13b2a"
+          }
+        },
+        "flavour_HPzBmx": {
+          "type": "flavour",
+          "settings": {
+            "name": "Spiced Moroccan Tagine",
+            "description": "Simmered with chicken thighs, apricots and a scattering of coriander.",
+            "color": "#c13b2a"
+          }
+        },
+        "flavour_rbyhTe": {
+          "type": "flavour",
+          "settings": {
+            "name": "Chinese Five Spice Base Mix",
+            "description": "Tossed through stir-fried noodles or brushed over pork belly.",
+            "color": "#c13b2a"
+          }
+        },
+        "flavour_pkzWhG": {
+          "type": "flavour",
+          "settings": {
+            "name": "Tomato Sauce Base Mix",
+            "description": "The starting point for a rich bolognese or a proper Sunday ragu.",
+            "color": "#c13b2a"
+          }
+        },
+        "flavour_cjPVn8": {
+          "type": "flavour",
+          "settings": {
+            "name": "Indian Curry Base Mix",
+            "description": "Built into a fakeaway curry night with chicken, veg or paneer.",
+            "color": "#c13b2a"
+          }
+        },
         "flavour_0": {
           "type": "flavour",
           "settings": {
-            "name": "Vine Ripened Tomato",
+            "name": "Vine Ripened Tomato Sauce",
             "description": "Golden chips and a bacon roll deserve better than the bottle from the cupboard.",
-            "color": "#C13B2A"
+            "color": "#c13b2a"
           }
         },
         "flavour_1": {
           "type": "flavour",
           "settings": {
             "name": "Rich Brown Sauce",
-            "description": "A full English essential — bacon, sausage, fried egg, and a doorstep of toast.",
-            "color": "#5B3A29"
+            "description": "A full English essential — elevate that bacon, sausage, fried egg, and doorstep of toast.",
+            "color": "#5b3a29"
           }
         },
         "flavour_2": {
           "type": "flavour",
           "settings": {
-            "name": "Smoky Texan BBQ",
+            "name": "Smoky Texan BBQ Sauce",
             "description": "Brushed over ribs or pulled pork as it comes off the grill.",
-            "color": "#8A2E1D"
+            "color": "#8a2e1d"
           }
         },
         "flavour_3": {
           "type": "flavour",
           "settings": {
-            "name": "BBQ Gochujang",
+            "name": "BBQ Gochujang Sauce",
             "description": "Glazed onto wings or short ribs for a sticky, smoky-sweet finish.",
-            "color": "#A32C2C"
+            "color": "#a32c2c"
           }
         },
         "flavour_4": {
           "type": "flavour",
           "settings": {
-            "name": "Sweet Chilli & Ginger",
+            "name": "Sweet Chilli & Ginger Sauce",
             "description": "Drizzled over halloumi fritters or spring rolls for dipping.",
-            "color": "#D97A22"
+            "color": "#d97a22"
           }
         },
         "flavour_5": {
           "type": "flavour",
           "settings": {
-            "name": "Hot Honey Glaze",
-            "description": "Sweet heat on fried chicken.",
-            "color": "#B9791E"
+            "name": "Chilli-Infused Hot Honey Glaze",
+            "description": "Add some sweet heat on fried chicken.",
+            "color": "#b9791e"
           }
         }
       },
       "block_order": [
+        "flavour_EkJjxj",
+        "flavour_JYimEM",
+        "flavour_TYcgHa",
+        "flavour_HPzBmx",
+        "flavour_rbyhTe",
+        "flavour_pkzWhG",
+        "flavour_cjPVn8",
         "flavour_0",
         "flavour_1",
         "flavour_2",
@@ -380,20 +459,22 @@
       ],
       "settings": {
         "preheading": "The Range",
-        "heading": "14 sauces. One standard. Click through the range.",
-        "subheading": "",
+        "heading": "14 sauces. One standard.",
+        "subheading": "<p>View the range with some tasty serving suggestions</p>",
         "heading_tag": "h2",
         "heading_size": "h2",
-        "accent_color": "#5F6B3E",
-        "panel_bg": "#2A2620",
-        "bg_color": "#231F1A"
+        "accent_color": "#5f6b3e",
+        "panel_bg": "#2a2620",
+        "bg_color": "#231f1a",
+        "text_color": "#fbf3e4",
+        "muted_text_color": "#d6cdbf"
       }
     },
     "wave_4": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#231F1A",
-        "bg_color_below": "#FBF3E4",
+        "bg_color_above": "#231f1a",
+        "bg_color_below": "#fbf3e4",
         "flip": false
       }
     },
@@ -402,16 +483,16 @@
       "settings": {
         "preheading": "Every Format",
         "heading": "One range, every format you sell in.",
-        "subheading": "<p>Retail and foodservice share the same recipes and label artwork across shared formats.</p>",
+        "subheading": "<p>Retail and foodservice share the same recipes and label artwork across shared formats. One supplier, every channel.</p>",
         "heading_tag": "h2",
-        "bg_color": "#FBF3E4"
+        "bg_color": "#fbf3e4"
       }
     },
     "wave_5": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#FBF3E4",
-        "bg_color_below": "#5F6B3E",
+        "bg_color_above": "#fbf3e4",
+        "bg_color_below": "#5f6b3e",
         "flip": false
       }
     },
@@ -425,15 +506,15 @@
         "heading": "<p>Ready to bring bold, global flavour to your menu?</p>",
         "heading_tag": "h2",
         "heading_size": "h1",
-        "subheading": "<p>Allergen-free. UPF-free. Built to be the hero of the dish &mdash; not a compromise on it. Sales@thenakedsauceco.com</p>",
-        "button_label": "Talk To Our Trade Team",
+        "subheading": "",
+        "button_label": "Talk To The Team",
         "button_link": "shopify://pages/contact",
         "button_style": "primary",
         "text_alignment": "text-md-center text-lg-center",
         "text_alignment_mobile": "text-center",
         "use_custom_colors": true,
         "color_text": "#ffffff",
-        "color_background": "#5F6B3E",
+        "color_background": "#5f6b3e",
         "color_background_gradient": "",
         "enable_parallax": false,
         "type": "scroll",
@@ -449,55 +530,9 @@
     "wave_6": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#5F6B3E",
-        "bg_color_below": "#231F1A",
+        "bg_color_above": "#5f6b3e",
+        "bg_color_below": "#231f1a",
         "flip": false
-      }
-    },
-    "waitlist": {
-      "type": "newsletter",
-      "blocks": {
-        "heading_1": {
-          "type": "heading",
-          "settings": {
-            "heading": "The Clean Sauce Shop is coming.",
-            "heading_size": "h2"
-          }
-        },
-        "paragraph_1": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Be first to know when you can order online. No spam &mdash; just an email when we launch.</p>"
-          }
-        },
-        "email_form_1": {
-          "type": "email_form",
-          "settings": {
-            "button_style": "dark"
-          }
-        }
-      },
-      "block_order": [
-        "heading_1",
-        "paragraph_1",
-        "email_form_1"
-      ],
-      "settings": {
-        "use_custom_colors": true,
-        "color_text": "#ffffff",
-        "color_background": "#231F1A",
-        "color_background_gradient": "",
-        "enable_parallax": false,
-        "background_image": "",
-        "border_radius": 0,
-        "type": "scroll-opacity",
-        "speed": 0.5,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "custom_id": "",
-        "custom_class": ""
       }
     }
   },
@@ -515,7 +550,6 @@
     "pour_go_teaser",
     "wave_5",
     "trade_cta",
-    "wave_6",
-    "waitlist"
+    "wave_6"
   ]
 }

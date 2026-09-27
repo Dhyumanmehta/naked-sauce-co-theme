@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -10,8 +19,8 @@
           "disabled": true,
           "settings": {
             "text": "",
-            "subtext": "<p>Shop over 180 USD and get a Jump Rope (valued at 29 USD) with your order.<\/p>",
-            "button_link": "shopify:\/\/collections\/newarrivals",
+            "subtext": "<p>Shop over 180 USD and get a Jump Rope (valued at 29 USD) with your order.</p>",
+            "button_link": "shopify://collections/newarrivals",
             "use_custom_colors": true,
             "color_text": "#ffffff",
             "color_background": "#000000",
@@ -68,7 +77,7 @@
               "sweet-honey"
             ],
             "enable_html_code": false,
-            "html_code": "<a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-inline-block w-100 hover-flash\">\n  <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/bg-menu.jpg?v=1737211780\" alt=\"img\" class=\"w-100 img-fluid border\">\n<\/a>"
+            "html_code": "<a href=\"https://lirea-theme.myshopify.com/collections/all\" class=\"d-inline-block w-100 hover-flash\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0677/4512/0427/files/bg-menu.jpg?v=1737211780\" alt=\"img\" class=\"w-100 img-fluid border\">\n</a>"
           }
         },
         "mega_menu_j7tMyE": {
@@ -88,7 +97,7 @@
             "enable_collection_list": false,
             "collection_list": [],
             "enable_html_code": false,
-            "html_code": "<div class=\"site-nav__item\">\n                <div class=\"item-link\">\n                    <a href=\"\/collections\/all\" class=\"site-nav__link_mega site-nav__link site-nav__child-link site-nav__child-link--parent px-3 px-lg-0\">\n                        <span class=\"site-nav__label\">SHOP BY BRANDS<\/span>\n                    <\/a>\n                <\/div>\n              <div class=\"px-3 px-lg-0\">\n                <div class=\"row row-cols-4 gx-2\">\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-5.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-4.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-9.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-3.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-2.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-1.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-12.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-6.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                <\/div>\n              <\/div>\n            <\/div>"
+            "html_code": "<div class=\"site-nav__item\">\n                <div class=\"item-link\">\n                    <a href=\"/collections/all\" class=\"site-nav__link_mega site-nav__link site-nav__child-link site-nav__child-link--parent px-3 px-lg-0\">\n                        <span class=\"site-nav__label\">SHOP BY BRANDS</span>\n                    </a>\n                </div>\n              <div class=\"px-3 px-lg-0\">\n                <div class=\"row row-cols-4 gx-2\">\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https://lirea-theme.myshopify.com/collections/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https://cdn.shopify.com/s/files/1/0677/4512/0427/files/brand-5.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    </a>\n                  </div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https://lirea-theme.myshopify.com/collections/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https://cdn.shopify.com/s/files/1/0677/4512/0427/files/brand-4.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    </a>\n                  </div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https://lirea-theme.myshopify.com/collections/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https://cdn.shopify.com/s/files/1/0677/4512/0427/files/brand-9.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    </a>\n                  </div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https://lirea-theme.myshopify.com/collections/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https://cdn.shopify.com/s/files/1/0677/4512/0427/files/brand-3.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    </a>\n                  </div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https://lirea-theme.myshopify.com/collections/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https://cdn.shopify.com/s/files/1/0677/4512/0427/files/brand-2.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    </a>\n                  </div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https://lirea-theme.myshopify.com/collections/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https://cdn.shopify.com/s/files/1/0677/4512/0427/files/brand-1.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    </a>\n                  </div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https://lirea-theme.myshopify.com/collections/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https://cdn.shopify.com/s/files/1/0677/4512/0427/files/brand-12.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    </a>\n                  </div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https://lirea-theme.myshopify.com/collections/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https://cdn.shopify.com/s/files/1/0677/4512/0427/files/brand-6.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    </a>\n                  </div>\n                </div>\n              </div>\n            </div>"
           }
         }
       },
@@ -99,13 +108,13 @@
       "settings": {
         "main_linklist": "main-menu",
         "enable_search": true,
-        "enable_account": true,
-        "enable_wishlist": true,
+        "enable_account": false,
+        "enable_wishlist": false,
         "enable_cart": true,
         "logo_position": "middle-center",
         "use_custom_colors": true,
         "color_text": "#ffffff",
-        "color_background": "#ec1d1d",
+        "color_background": "#FFFFFF",
         "color_background_gradient": "",
         "padding_top": 3,
         "padding_bottom": 3
