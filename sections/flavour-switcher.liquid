@@ -1,0 +1,121 @@
+{% style %}
+  .flavour-switcher-{{ section.id }} { --fs-accent: {{ section.settings.accent_color }}; }
+  .flavour-switcher-{{ section.id }} .fs-shell {
+    display: grid; grid-template-columns: 280px 1fr; border: 1px solid rgba(0,0,0,.12);
+    border-radius: 6px; overflow: hidden; background: {{ section.settings.panel_bg }};
+  }
+  @media (max-width: 760px) { .flavour-switcher-{{ section.id }} .fs-shell { grid-template-columns: 1fr; } }
+  .flavour-switcher-{{ section.id }} .fs-tabs { display: flex; flex-direction: column; background: rgba(0,0,0,.03); }
+  .flavour-switcher-{{ section.id }} .fs-tab {
+    text-align: left; background: none; border: none; cursor: pointer; padding: 16px 20px;
+    font-size: 14.5px; color: inherit; opacity: .65; border-left: 3px solid transparent;
+    transition: background .15s ease, opacity .15s ease, border-color .15s ease;
+  }
+  .flavour-switcher-{{ section.id }} .fs-tab:hover { background: rgba(0,0,0,.04); }
+  .flavour-switcher-{{ section.id }} .fs-tab.active { opacity: 1; font-weight: 600; border-left-color: var(--fs-accent); background: rgba(0,0,0,.05); }
+  .flavour-switcher-{{ section.id }} .fs-panel { padding: 48px; min-height: 240px; display: flex; flex-direction: column; justify-content: center; }
+  .flavour-switcher-{{ section.id }} .fs-swatch { width: 52px; height: 52px; border-radius: 50%; margin-bottom: 20px; transition: background .25s ease; }
+  .flavour-switcher-{{ section.id }} .fs-name { font-size: 26px; margin: 0 0 12px; transition: opacity .2s ease; }
+  .flavour-switcher-{{ section.id }} .fs-desc { font-size: 16px; opacity: .75; max-width: 48ch; margin: 0; transition: opacity .2s ease; }
+{% endstyle %}
+
+<div class="flavour-switcher-{{ section.id }} section-{{ section.id }}-padding container page-width" style="background:{{ section.settings.bg_color | default: 'transparent' }};">
+  <div class="cs-section-header text-start" style="margin-bottom: 32px;">
+    {% render 'heading',
+      heading: section.settings.heading,
+      heading_tag: section.settings.heading_tag,
+      heading_size: section.settings.heading_size,
+      preheading: section.settings.preheading,
+      subheading: section.settings.subheading
+    %}
+  </div>
+
+  <div class="fs-shell">
+    <div class="fs-tabs" role="tablist">
+      {% for block in section.blocks %}
+        <button class="fs-tab{% if forloop.first %} active{% endif %}" data-i="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          {{ block.settings.name }}
+        </button>
+      {% endfor %}
+    </div>
+    <div class="fs-panel">
+      <div class="fs-swatch"></div>
+      <h3 class="fs-name"></h3>
+      <p class="fs-desc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling;
+    var data = [
+      {% for block in section.blocks %}
+        { name: {{ block.settings.name | json }}, desc: {{ block.settings.description | json }}, color: {{ block.settings.color | json }} }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+    var tabs = root.querySelectorAll('.fs-tab');
+    var swatch = root.querySelector('.fs-swatch');
+    var nameEl = root.querySelector('.fs-name');
+    var descEl = root.querySelector('.fs-desc');
+    function setFlavour(i) {
+      var f = data[i];
+      nameEl.style.opacity = 0; descEl.style.opacity = 0;
+      setTimeout(function () {
+        nameEl.textContent = f.name;
+        descEl.textContent = f.desc;
+        swatch.style.background = f.color;
+        nameEl.style.opacity = 1; descEl.style.opacity = 1;
+      }, 120);
+    }
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        setFlavour(parseInt(tab.dataset.i, 10));
+      });
+    });
+    if (data.length) setFlavour(0);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Flavour switcher",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "preheading", "label": "Preheading", "default": "The Range" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "14 sauces. One standard. Click through the range." },
+    { "type": "richtext", "id": "subheading", "label": "Subheading" },
+    { "type": "select", "id": "heading_tag", "options": [
+        { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
+      ], "default": "h2", "label": "Heading tag" },
+    { "type": "select", "id": "heading_size", "options": [
+        { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
+      ], "default": "h2", "label": "Heading size" },
+    { "type": "color", "id": "accent_color", "label": "Accent color (active tab + swatch default)", "default": "#DA6634" },
+    { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#FBF8F1" },
+    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" }
+  ],
+  "blocks": [
+    {
+      "type": "flavour",
+      "name": "Flavour",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Sauce name", "default": "Sauce name" },
+        { "type": "textarea", "id": "description", "label": "Serving suggestion", "default": "Serving suggestion goes here." },
+        { "type": "color", "id": "color", "label": "Swatch color", "default": "#C13B2A" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Flavour switcher",
+      "blocks": [
+        { "type": "flavour" }, { "type": "flavour" }, { "type": "flavour" },
+        { "type": "flavour" }, { "type": "flavour" }, { "type": "flavour" }, { "type": "flavour" }
+      ]
+    }
+  ]
+}
+{% endschema %}

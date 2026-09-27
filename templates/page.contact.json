@@ -1,0 +1,80 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "color_text": "#0b0b0b",
+        "layout": "container page-width"
+      }
+    },
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "layout": "container page-width",
+        "full_width": false,
+        "style": "style-1",
+        "preheading": "",
+        "heading": "<p>Get in touch</p>",
+        "heading_tag": "h2",
+        "heading_size": "h1",
+        "subheading": "<p>Whether you&rsquo;re stocking us, sourcing a bespoke base, or just want to ask a question &mdash; we&rsquo;d love to hear from you.</p>",
+        "button_label": "",
+        "button_link": "shopify://collections/all",
+        "button_style": "primary",
+        "text_alignment": "text-md-center text-lg-center",
+        "text_alignment_mobile": "text-center",
+        "use_custom_colors": true,
+        "color_text": "#0b0b0b",
+        "color_background": "#FBF3E4",
+        "color_background_gradient": "",
+        "enable_parallax": false,
+        "type": "scroll",
+        "speed": 0.5,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "blocks": {
+        "info_1": {
+          "type": "info",
+          "settings": {
+            "heading": "Trade Enquiries",
+            "subheading": "",
+            "content": "<h6><strong>EMAIL</strong></h6><p>For stocking, samples and general enquiries, email us at</p><p><a href=\"mailto:Sales@thenakedsauceco.com\" title=\"Sales@thenakedsauceco.com\">Sales@thenakedsauceco.com</a></p>"
+          }
+        },
+        "form_1": {
+          "type": "form",
+          "settings": {
+            "heading": "Send Us A Message",
+            "subheading": "",
+            "use_custom_colors": true,
+            "color_text": "#000000",
+            "color_background": "#f6f6f6",
+            "color_background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "info_1",
+        "form_1"
+      ],
+      "settings": {
+        "button_style": "dark",
+        "heading_size": "h4",
+        "gutter": 3
+      }
+    }
+  },
+  "order": [
+    "main",
+    "intro",
+    "form"
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "color_text": "#0b0b0b",
+        "layout": "container page-width"
+      }
+    },
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "layout": "container page-width",
+        "full_width": false,
+        "style": "style-2",
+        "preheading": "The Range",
+        "heading": "<p>14 sauces. All allergen-free. No ultra-processed ingredients.</p>",
+        "heading_tag": "h2",
+        "heading_size": "h1",
+        "subheading": "<p>Every SKU shares the same standard: natural ingredients, free from the 14 major allergens, made without ultra-processed shortcuts. One standard. Every bottle. No exceptions.</p>",
+        "button_label": "",
+        "button_link": "shopify://collections/all",
+        "button_style": "primary",
+        "text_alignment": "text-md-center text-lg-center",
+        "text_alignment_mobile": "text-center",
+        "use_custom_colors": true,
+        "color_text": "#0b0b0b",
+        "color_background": "#FBF3E4",
+        "color_background_gradient": "",
+        "enable_parallax": false,
+        "type": "scroll",
+        "speed": 0.5,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "wave_1": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#FBF3E4",
+        "bg_color_below": "#231F1A",
+        "flip": false
+      }
+    },
+    "flavour_switcher": {
+      "type": "flavour-switcher",
+      "blocks": {
+        "flavour_0": {
+          "type": "flavour",
+          "settings": {
+            "name": "Vine Ripened Tomato",
+            "description": "Golden chips and a bacon roll deserve better than the bottle from the cupboard.",
+            "color": "#C13B2A"
+          }
+        },
+        "flavour_1": {
+          "type": "flavour",
+          "settings": {
+            "name": "Rich Brown Sauce",
+            "description": "A full English essential — bacon, sausage, fried egg, and a doorstep of toast.",
+            "color": "#5B3A29"
+          }
+        },
+        "flavour_2": {
+          "type": "flavour",
+          "settings": {
+            "name": "Smoky Texan BBQ",
+            "description": "Brushed over ribs or pulled pork as it comes off the grill.",
+            "color": "#8A2E1D"
+          }
+        },
+        "flavour_3": {
+          "type": "flavour",
+          "settings": {
+            "name": "BBQ Gochujang",
+            "description": "Glazed onto wings or short ribs for a sticky, smoky-sweet finish.",
+            "color": "#A32C2C"
+          }
+        },
+        "flavour_4": {
+          "type": "flavour",
+          "settings": {
+            "name": "Sweet Chilli & Ginger",
+            "description": "Drizzled over halloumi fritters or spring rolls for dipping.",
+            "color": "#D97A22"
+          }
+        },
+        "flavour_5": {
+          "type": "flavour",
+          "settings": {
+            "name": "Smoky Chipotle Ketchup",
+            "description": "Loaded onto fries or a burger that needs a bit more attitude.",
+            "color": "#9C3A1E"
+          }
+        },
+        "flavour_6": {
+          "type": "flavour",
+          "settings": {
+            "name": "Chilli-Infused Hot Honey",
+            "description": "Drizzled over fried chicken or roasted carrots for sweet heat.",
+            "color": "#DA9A2C"
+          }
+        }
+      },
+      "block_order": [
+        "flavour_0",
+        "flavour_1",
+        "flavour_2",
+        "flavour_3",
+        "flavour_4",
+        "flavour_5",
+        "flavour_6"
+      ],
+      "settings": {
+        "preheading": "The Range",
+        "heading": "14 sauces. One standard. Click through the range.",
+        "subheading": "",
+        "heading_tag": "h2",
+        "heading_size": "h2",
+        "accent_color": "#5F6B3E",
+        "panel_bg": "#2A2620",
+        "bg_color": "#231F1A"
+      }
+    },
+    "wave_2": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#231F1A",
+        "bg_color_below": "#FBF3E4",
+        "flip": false
+      }
+    },
+    "sauces_traditional": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_0": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Vine Ripened Tomato Sauce",
+            "row_content": "<p>Golden chips and a bacon roll deserve better than the bottle from the cupboard.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_1": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Rich Brown Sauce",
+            "row_content": "<p>A full English essential &mdash; bacon, sausage, fried egg, and a doorstep of toast.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_2": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Smoky Texan BBQ Sauce &#9733; Featured",
+            "row_content": "<p>Brushed over ribs or pulled pork as it comes off the grill.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_3": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "BBQ Gochujang Sauce",
+            "row_content": "<p>Glazed onto wings or short ribs for a sticky, smoky-sweet finish.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_4": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Sweet Chilli & Ginger Sauce",
+            "row_content": "<p>Drizzled over halloumi fritters or spring rolls for dipping.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_5": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Smoky Chipotle Ketchup",
+            "row_content": "<p>Loaded onto fries or a burger that needs a bit more attitude.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Chilli-Infused Hot Honey Glaze",
+            "row_content": "<p>Drizzled over fried chicken or roasted carrots for sweet heat.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_0",
+        "collapsible_row_1",
+        "collapsible_row_2",
+        "collapsible_row_3",
+        "collapsible_row_4",
+        "collapsible_row_5",
+        "collapsible_row_6"
+      ],
+      "settings": {
+        "layout": "container container-inner",
+        "style": "style-1",
+        "preheading": "",
+        "heading": "",
+        "subheading": "<h6>Sauces &mdash; Traditional & Modern (full list)</h6>",
+        "heading_size": "h2",
+        "heading_tag": "h2",
+        "heading_alignment": "text-start",
+        "image_second": false,
+        "image_height": "adapt",
+        "use_custom_colors": true,
+        "color_text": "#000000",
+        "color_background": "#FBF3E4",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "sauces_cooking": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_0": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Roasted Red Pepper & Tomato Sauce",
+            "row_content": "<p>Stirred through pasta or spooned over grilled chicken.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_1": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Ginger & Orange Glaze &#9733; Featured",
+            "row_content": "<p>Brushed over roast duck or salmon in the last few minutes of cooking.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_2": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Coconut & Lentil Dahl",
+            "row_content": "<p>A warming bowl on its own, or alongside grilled flatbread.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_3": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Spiced Moroccan Tagine",
+            "row_content": "<p>Simmered with chicken thighs, apricots and a scattering of coriander.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_4": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Chinese Five Spice Base Mix",
+            "row_content": "<p>Tossed through stir-fried noodles or brushed over pork belly.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_5": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Tomato Sauce Base Mix",
+            "row_content": "<p>The starting point for a rich bolognese or a proper Sunday ragu.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Indian Curry Base Mix",
+            "row_content": "<p>Built into a fakeaway curry night with chicken, veg or paneer.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_0",
+        "collapsible_row_1",
+        "collapsible_row_2",
+        "collapsible_row_3",
+        "collapsible_row_4",
+        "collapsible_row_5",
+        "collapsible_row_6"
+      ],
+      "settings": {
+        "layout": "container container-inner",
+        "style": "style-3",
+        "preheading": "",
+        "heading": "",
+        "subheading": "<h6>Cooking Sauces & Glazes</h6>",
+        "heading_size": "h2",
+        "heading_tag": "h2",
+        "heading_alignment": "text-start",
+        "image_second": false,
+        "image_height": "adapt",
+        "use_custom_colors": true,
+        "color_text": "#000000",
+        "color_background": "#FBF3E4",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "intro",
+    "wave_1",
+    "flavour_switcher",
+    "wave_2",
+    "sauces_traditional",
+    "sauces_cooking"
+  ]
+}

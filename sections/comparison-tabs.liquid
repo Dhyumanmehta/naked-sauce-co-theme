@@ -1,0 +1,77 @@
+<div class="nsc-cmp container page-width section-{{ section.id }}-padding" style="background:{{ section.settings.bg_color }};">
+  {% render 'heading',
+    heading: section.settings.heading,
+    heading_tag: section.settings.heading_tag,
+    heading_size: 'h2',
+    preheading: section.settings.preheading,
+    subheading: section.settings.subheading
+  %}
+
+  <div class="nsc-cmp-tabs">
+    <button class="nsc-cmp-tab bad-tab active" id="cmpBad-{{ section.id }}" onclick="nscShowCmp('{{ section.id }}','bad')">{{ section.settings.bad_label }}</button>
+    <button class="nsc-cmp-tab good-tab" id="cmpGood-{{ section.id }}" onclick="nscShowCmp('{{ section.id }}','good')">{{ section.settings.good_label }}</button>
+  </div>
+
+  <div class="nsc-cmp-shell">
+    <div class="nsc-cmp-panel bad showing" id="panelBad-{{ section.id }}">
+      <h3>{{ section.settings.bad_label }}</h3>
+      <ul>
+        {% for block in section.blocks %}
+          {% if block.type == 'bad_point' %}<li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>{% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="nsc-cmp-panel good" id="panelGood-{{ section.id }}">
+      <h3>{{ section.settings.good_label }}</h3>
+      <ul>
+        {% for block in section.blocks %}
+          {% if block.type == 'good_point' %}<li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>{% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  function nscShowCmp(id, which) {
+    document.getElementById('panelBad-' + id).classList.toggle('showing', which === 'bad');
+    document.getElementById('panelGood-' + id).classList.toggle('showing', which === 'good');
+    document.getElementById('cmpBad-' + id).classList.toggle('active', which === 'bad');
+    document.getElementById('cmpGood-' + id).classList.toggle('active', which === 'good');
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Comparison tabs (USP)",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "preheading", "label": "Preheading", "default": "The Difference" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Most brands make you pick a lane. We didn't." },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Allergen-free usually means processed substitutes. Clean-label usually skips allergen testing. Ours does both.</p>" },
+    { "type": "select", "id": "heading_tag", "options": [{ "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }], "default": "h2", "label": "Heading tag" },
+    { "type": "text", "id": "bad_label", "label": "Left tab label", "default": "Typical Bottle" },
+    { "type": "text", "id": "good_label", "label": "Right tab label", "default": "Naked Sauce Co" },
+    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#FCEFDD" }
+  ],
+  "blocks": [
+    { "type": "bad_point", "name": "Typical-bottle point", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Contains 3+ of the 14 major allergens" }] },
+    { "type": "good_point", "name": "Naked Sauce Co point", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Free from all 14 major allergens" }] }
+  ],
+  "presets": [
+    {
+      "name": "Comparison tabs (USP)",
+      "blocks": [
+        { "type": "bad_point", "settings": { "text": "Contains 3+ of the 14 major allergens" } },
+        { "type": "bad_point", "settings": { "text": "Stabilisers & thickeners (E-numbers)" } },
+        { "type": "bad_point", "settings": { "text": "Ultra-processed fillers" } },
+        { "type": "bad_point", "settings": { "text": "Pick allergen-safe OR clean-label \u2014 not both" } },
+        { "type": "good_point", "settings": { "text": "Free from all 14 major allergens" } },
+        { "type": "good_point", "settings": { "text": "Zero ultra-processed ingredients" } },
+        { "type": "good_point", "settings": { "text": "Real, natural ingredients only" } },
+        { "type": "good_point", "settings": { "text": "Allergen-safe AND clean-label. Always." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

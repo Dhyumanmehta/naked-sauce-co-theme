@@ -1,0 +1,119 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_nR34Tq": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "",
+            "subtext": "<p>Shop over 180 USD and get a Jump Rope (valued at 29 USD) with your order.<\/p>",
+            "button_link": "shopify:\/\/collections\/newarrivals",
+            "use_custom_colors": true,
+            "color_text": "#ffffff",
+            "color_background": "#000000",
+            "color_background_gradient": ""
+          }
+        },
+        "code_g8RXdn": {
+          "type": "code",
+          "settings": {
+            "text": "Up to 20% OFF. Use Coupon",
+            "code": "SALE20",
+            "code_button": "COPY",
+            "code_active": "COPIED",
+            "time": "2026-01-01",
+            "use_custom_colors": true,
+            "color_text": "#ffffff",
+            "color_background": "#0b0b0b",
+            "color_background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_nR34Tq",
+        "code_g8RXdn"
+      ],
+      "settings": {
+        "show": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "5af78f81-e8b6-4f4c-b2c0-d47333a026c6": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_block_title": "Shop",
+            "mm_dropdown_w": "6",
+            "mm_dropdown_prow": 3,
+            "mm_extra_w": "6",
+            "mm_extra_item_prow": 4,
+            "enable_product_list": false,
+            "product_list": [
+              "lemon-herb-sauce",
+              "garlic-herb-infusion",
+              "roasted-garlic-passion"
+            ],
+            "enable_collection_list": true,
+            "collection_list": [
+              "original",
+              "newarrivals",
+              "hot-spicy",
+              "miso-gluten-free",
+              "herbaceou",
+              "sweet-honey"
+            ],
+            "enable_html_code": false,
+            "html_code": "<a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-inline-block w-100 hover-flash\">\n  <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/bg-menu.jpg?v=1737211780\" alt=\"img\" class=\"w-100 img-fluid border\">\n<\/a>"
+          }
+        },
+        "mega_menu_j7tMyE": {
+          "type": "mega_menu",
+          "settings": {
+            "mega_menu_block_title": "Product",
+            "mm_dropdown_w": "7",
+            "mm_dropdown_prow": 4,
+            "mm_extra_w": "5",
+            "mm_extra_item_prow": 3,
+            "enable_product_list": true,
+            "product_list": [
+              "rich-tomato-burst",
+              "sassy-honey-glaze",
+              "savory-soy-blend"
+            ],
+            "enable_collection_list": false,
+            "collection_list": [],
+            "enable_html_code": false,
+            "html_code": "<div class=\"site-nav__item\">\n                <div class=\"item-link\">\n                    <a href=\"\/collections\/all\" class=\"site-nav__link_mega site-nav__link site-nav__child-link site-nav__child-link--parent px-3 px-lg-0\">\n                        <span class=\"site-nav__label\">SHOP BY BRANDS<\/span>\n                    <\/a>\n                <\/div>\n              <div class=\"px-3 px-lg-0\">\n                <div class=\"row row-cols-4 gx-2\">\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-5.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-4.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-9.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-3.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-2.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-1.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-12.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                  <div class=\"col mb-2 mt-0\">\n                    <a href=\"https:\/\/lirea-theme.myshopify.com\/collections\/all\" class=\"d-block w-100 hover-scale-image m-0 p-0\">\n                      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0677\/4512\/0427\/files\/brand-6.jpg?v=1737382823\" alt=\"img\" class=\"w-100 img-fluid border\">\n                    <\/a>\n                  <\/div>\n                <\/div>\n              <\/div>\n            <\/div>"
+          }
+        }
+      },
+      "block_order": [
+        "5af78f81-e8b6-4f4c-b2c0-d47333a026c6",
+        "mega_menu_j7tMyE"
+      ],
+      "settings": {
+        "main_linklist": "main-menu",
+        "enable_search": true,
+        "enable_account": true,
+        "enable_wishlist": true,
+        "enable_cart": true,
+        "logo_position": "middle-center",
+        "use_custom_colors": true,
+        "color_text": "#ffffff",
+        "color_background": "#ec1d1d",
+        "color_background_gradient": "",
+        "padding_top": 3,
+        "padding_bottom": 3
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

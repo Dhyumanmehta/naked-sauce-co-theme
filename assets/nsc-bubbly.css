@@ -1,0 +1,104 @@
+/* ==========================================================================
+   The Naked Sauce Co — Bubbly-inspired theme skin
+   Loaded after the theme's own CSS so these rules win on tie-specificity.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --nsc-orange: #DA6634;
+  --nsc-charcoal: #231F1A;
+  --nsc-cream: #FBF3E4;
+  --nsc-olive: #5F6B3E;
+  --nsc-olive-tint: #E7E9D6;
+}
+
+body, p, li, a, input, textarea, button {
+  font-family: 'Nunito', Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Baloo 2', Helvetica, Arial, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+/* chunky pill buttons with a bold drop-shadow "pop" */
+.button, button[type="submit"], .shopify-payment-button__button--unbranded {
+  border-radius: 999px !important;
+  font-family: 'Baloo 2', sans-serif !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 0 rgba(0,0,0,.18) !important;
+  transition: transform .12s ease, box-shadow .12s ease !important;
+  border-width: 0 !important;
+}
+.button:hover, button[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 rgba(0,0,0,.18) !important;
+}
+.button:active, button[type="submit"]:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0,0,0,.18) !important;
+}
+
+/* ---- sticker-style badges: add class "sticker-badges" via a section's
+       Custom CSS class field (icon-with-text already exposes custom_class) ---- */
+.sticker-badges .icon-with-text-item,
+.sticker-badges [class*="card-icon"] {
+  background: #fff !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 0 rgba(35,31,26,.08) !important;
+  padding: 16px 20px !important;
+}
+.sticker-badges .icon-with-text-item:nth-child(1),
+.sticker-badges [class*="card-icon"]:nth-child(1) { transform: rotate(-4deg); }
+.sticker-badges .icon-with-text-item:nth-child(2),
+.sticker-badges [class*="card-icon"]:nth-child(2) { transform: rotate(3deg); }
+.sticker-badges .icon-with-text-item:nth-child(3),
+.sticker-badges [class*="card-icon"]:nth-child(3) { transform: rotate(-2deg); }
+
+/* ---- wave divider (see sections/wave-divider.liquid) ---- */
+.nsc-wave-divider { display:block; width:100%; line-height:0; }
+.nsc-wave-divider svg { display:block; width:100%; height:70px; }
+
+/* ---- ticker / marque polish ---- */
+.marque-section { position: relative; }
+.marque-section::before, .marque-section::after {
+  content:""; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+}
+.marque-section::before { left:0; background:linear-gradient(90deg, var(--nsc-charcoal), transparent); }
+.marque-section::after  { right:0; background:linear-gradient(270deg, var(--nsc-charcoal), transparent); }
+
+/* ---- scroll bottle meter (see snippets/scroll-bottle-meter.liquid) ---- */
+.nsc-scroll-rail { position:fixed; right:22px; top:50%; transform:translateY(-50%); z-index:1040; display:flex; flex-direction:column; align-items:center; gap:8px; }
+.nsc-scroll-rail .pct { font-family:'Baloo 2',sans-serif; font-weight:700; font-size:12px; color:var(--nsc-charcoal); background:#fff; border-radius:999px; padding:4px 9px; box-shadow:0 4px 0 rgba(0,0,0,.08); }
+.nsc-bottle-wrap { position:relative; width:70px; height:166px; filter:drop-shadow(0 6px 6px rgba(0,0,0,.18)); }
+.nsc-bottle-wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.nsc-bottle-empty { filter:grayscale(1) brightness(1.35); opacity:.55; }
+.nsc-bottle-full { transition: clip-path .12s linear; }
+@media (max-width: 820px) { .nsc-scroll-rail { display:none; } }
+
+/* ---- packaging grid (see sections/packaging-grid.liquid) ---- */
+.nsc-pkg-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
+@media (max-width:900px) { .nsc-pkg-grid { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:560px) { .nsc-pkg-grid { grid-template-columns:repeat(2,1fr); } }
+.nsc-pkg-card { border-radius:20px; padding:18px 14px 20px; text-align:center; box-shadow:0 6px 0 rgba(0,0,0,.06); }
+.nsc-pkg-card img { width:100%; height:110px; object-fit:contain; margin-bottom:12px; }
+.nsc-pkg-card h4 { font-size:14px; margin:0 0 8px; color:var(--nsc-charcoal); }
+.nsc-pkg-pill { display:inline-block; font-family:'Baloo 2',sans-serif; font-weight:700; font-size:11px; background:rgba(35,31,26,.08); border-radius:999px; padding:4px 10px; }
+
+/* ---- comparison tabs (see sections/comparison-tabs.liquid) ---- */
+.nsc-cmp { text-align:center; }
+.nsc-cmp-tabs { display:inline-flex; background:#fff; border-radius:999px; padding:6px; margin-bottom:28px; box-shadow:0 6px 0 rgba(0,0,0,.06); }
+.nsc-cmp-tab { font-family:'Baloo 2',sans-serif; font-weight:700; font-size:14.5px; padding:12px 26px; border-radius:999px; border:none; background:none; cursor:pointer; color:#8A8270; transition:background .2s ease, color .2s ease; }
+.nsc-cmp-tab.active.bad-tab { background:#E7E2D6; color:#4A463C; }
+.nsc-cmp-tab.active.good-tab { background:var(--nsc-orange); color:#fff; }
+.nsc-cmp-shell { position:relative; max-width:640px; margin:0 auto; border-radius:24px; overflow:hidden; box-shadow:0 16px 0 rgba(0,0,0,.08); min-height:280px; }
+.nsc-cmp-panel { padding:40px 44px; text-align:left; display:none; }
+.nsc-cmp-panel.showing { display:block; animation:nsc-cmp-in .35s ease; }
+@keyframes nsc-cmp-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+.nsc-cmp-panel.bad { background:#E7E2D6; color:#4A463C; }
+.nsc-cmp-panel.good { background:var(--nsc-orange); color:#fff; }
+.nsc-cmp-panel h3 { font-size:20px; margin-bottom:16px; }
+.nsc-cmp-panel ul { list-style:none; margin:0; padding:0; font-size:15.5px; line-height:2; }
+.nsc-cmp-panel.bad li::before { content:"\2715  "; color:#B5503A; font-weight:700; }
+.nsc-cmp-panel.good li::before { content:"\2713  "; font-weight:700; }

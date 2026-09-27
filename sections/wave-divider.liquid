@@ -1,0 +1,18 @@
+<div class="nsc-wave-divider" style="background:{{ section.settings.bg_color_above }};">
+  <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"{% if section.settings.flip %} transform="scale(1,-1) translate(0,-100)"{% endif %}>
+    <path d="M0,40 C 240,100 480,-10 720,40 C 960,90 1200,0 1440,40 L1440,100 L0,100 Z" fill="{{ section.settings.bg_color_below }}"></path>
+  </svg>
+</div>
+
+{% schema %}
+{
+  "name": "Wave divider",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "bg_color_above", "label": "Background of the section above", "default": "#FBF3E4" },
+    { "type": "color", "id": "bg_color_below", "label": "Background of the section below (the wave's fill colour)", "default": "#231F1A" },
+    { "type": "checkbox", "id": "flip", "label": "Flip wave direction", "default": false }
+  ],
+  "presets": [{ "name": "Wave divider" }]
+}
+{% endschema %}
