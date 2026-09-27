@@ -1,22 +1,106 @@
 {% style %}
-  .flavour-switcher-{{ section.id }} { --fs-accent: {{ section.settings.accent_color }}; }
+  .flavour-switcher-{{ section.id }} {
+    --fs-accent: {{ section.settings.accent_color | default: '#DA6634' }};
+    --fs-text-main: {{ section.settings.text_color | default: '#FBF3E4' }};
+    --fs-text-muted: {{ section.settings.muted_text_color | default: '#D6CDBF' }};
+  }
+
+  .flavour-switcher-{{ section.id }} .cs-section-header * {
+    color: var(--fs-text-main) !important;
+  }
+
   .flavour-switcher-{{ section.id }} .fs-shell {
-    display: grid; grid-template-columns: 280px 1fr; border: 1px solid rgba(0,0,0,.12);
-    border-radius: 6px; overflow: hidden; background: {{ section.settings.panel_bg }};
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    background: {{ section.settings.panel_bg | default: '#2A2620' }};
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   }
-  @media (max-width: 760px) { .flavour-switcher-{{ section.id }} .fs-shell { grid-template-columns: 1fr; } }
-  .flavour-switcher-{{ section.id }} .fs-tabs { display: flex; flex-direction: column; background: rgba(0,0,0,.03); }
+
+  @media (max-width: 768px) {
+    .flavour-switcher-{{ section.id }} .fs-shell {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .flavour-switcher-{{ section.id }} .fs-tabs {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  @media (max-width: 768px) {
+    .flavour-switcher-{{ section.id }} .fs-tabs {
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  }
+
   .flavour-switcher-{{ section.id }} .fs-tab {
-    text-align: left; background: none; border: none; cursor: pointer; padding: 16px 20px;
-    font-size: 14.5px; color: inherit; opacity: .65; border-left: 3px solid transparent;
-    transition: background .15s ease, opacity .15s ease, border-color .15s ease;
+    text-align: left;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 16px 22px;
+    font-size: 15px;
+    color: var(--fs-text-muted);
+    opacity: 0.75;
+    border-left: 3px solid transparent;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .flavour-switcher-{{ section.id }} .fs-tab:hover { background: rgba(0,0,0,.04); }
-  .flavour-switcher-{{ section.id }} .fs-tab.active { opacity: 1; font-weight: 600; border-left-color: var(--fs-accent); background: rgba(0,0,0,.05); }
-  .flavour-switcher-{{ section.id }} .fs-panel { padding: 48px; min-height: 240px; display: flex; flex-direction: column; justify-content: center; }
-  .flavour-switcher-{{ section.id }} .fs-swatch { width: 52px; height: 52px; border-radius: 50%; margin-bottom: 20px; transition: background .25s ease; }
-  .flavour-switcher-{{ section.id }} .fs-name { font-size: 26px; margin: 0 0 12px; transition: opacity .2s ease; }
-  .flavour-switcher-{{ section.id }} .fs-desc { font-size: 16px; opacity: .75; max-width: 48ch; margin: 0; transition: opacity .2s ease; }
+
+  .flavour-switcher-{{ section.id }} .fs-tab:hover {
+    background: rgba(255, 255, 255, 0.05);
+    opacity: 1;
+    color: var(--fs-text-main);
+  }
+
+  .flavour-switcher-{{ section.id }} .fs-tab.active {
+    opacity: 1;
+    font-weight: 600;
+    color: var(--fs-text-main);
+    border-left-color: var(--fs-accent);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .flavour-switcher-{{ section.id }} .fs-panel {
+    padding: 50px 45px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: {{ section.settings.panel_bg | default: '#2A2620' }};
+  }
+
+  .flavour-switcher-{{ section.id }} .fs-swatch {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .flavour-switcher-{{ section.id }} .fs-name {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 14px;
+    color: var(--fs-text-main) !important;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .flavour-switcher-{{ section.id }} .fs-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--fs-text-muted) !important;
+    max-width: 54ch;
+    margin: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
 {% endstyle %}
 
 <div class="flavour-switcher-{{ section.id }} section-{{ section.id }}-padding container page-width" style="background:{{ section.settings.bg_color | default: 'transparent' }};">
@@ -60,12 +144,15 @@
     var descEl = root.querySelector('.fs-desc');
     function setFlavour(i) {
       var f = data[i];
-      nameEl.style.opacity = 0; descEl.style.opacity = 0;
+      if (!f) return;
+      nameEl.style.opacity = 0;
+      descEl.style.opacity = 0;
       setTimeout(function () {
         nameEl.textContent = f.name;
         descEl.textContent = f.desc;
         swatch.style.background = f.color;
-        nameEl.style.opacity = 1; descEl.style.opacity = 1;
+        nameEl.style.opacity = 1;
+        descEl.style.opacity = 1;
       }, 120);
     }
     tabs.forEach(function (tab) {
@@ -93,9 +180,11 @@
     { "type": "select", "id": "heading_size", "options": [
         { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
       ], "default": "h2", "label": "Heading size" },
-    { "type": "color", "id": "accent_color", "label": "Accent color (active tab + swatch default)", "default": "#DA6634" },
-    { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#FBF8F1" },
-    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" }
+    { "type": "color", "id": "accent_color", "label": "Accent color (active tab indicator)", "default": "#5F6B3E" },
+    { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#2A2620" },
+    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#231F1A" },
+    { "type": "color", "id": "text_color", "label": "Heading & active text color", "default": "#FBF3E4" },
+    { "type": "color", "id": "muted_text_color", "label": "Description & tab text color", "default": "#D6CDBF" }
   ],
   "blocks": [
     {
