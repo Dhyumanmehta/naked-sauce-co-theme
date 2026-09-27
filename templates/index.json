@@ -211,6 +211,66 @@
     },
     "compare": {
       "type": "comparison-tabs",
+      "blocks": {
+        "b0": {
+          "type": "bad_point",
+          "settings": {
+            "text": "Contains 3+ of the 14 major allergens"
+          }
+        },
+        "b1": {
+          "type": "bad_point",
+          "settings": {
+            "text": "Stabilisers & thickeners (E-numbers)"
+          }
+        },
+        "b2": {
+          "type": "bad_point",
+          "settings": {
+            "text": "Ultra-processed fillers"
+          }
+        },
+        "b3": {
+          "type": "bad_point",
+          "settings": {
+            "text": "Pick allergen-safe OR clean-label — not both"
+          }
+        },
+        "g0": {
+          "type": "good_point",
+          "settings": {
+            "text": "Free from all 14 major allergens"
+          }
+        },
+        "g1": {
+          "type": "good_point",
+          "settings": {
+            "text": "Zero ultra-processed ingredients"
+          }
+        },
+        "g2": {
+          "type": "good_point",
+          "settings": {
+            "text": "Real, natural ingredients only"
+          }
+        },
+        "g3": {
+          "type": "good_point",
+          "settings": {
+            "text": "Allergen-safe AND clean-label. Always."
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "g0",
+        "g1",
+        "g2",
+        "g3"
+      ],
       "settings": {
         "preheading": "The Difference",
         "heading": "Most brands make you pick a lane. We didn't.",
@@ -396,6 +456,32 @@
     },
     "waitlist": {
       "type": "newsletter",
+      "blocks": {
+        "heading_1": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Clean Sauce Shop is coming.",
+            "heading_size": "h2"
+          }
+        },
+        "paragraph_1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be first to know when you can order online. No spam &mdash; just an email when we launch.</p>"
+          }
+        },
+        "email_form_1": {
+          "type": "email_form",
+          "settings": {
+            "button_style": "dark"
+          }
+        }
+      },
+      "block_order": [
+        "heading_1",
+        "paragraph_1",
+        "email_form_1"
+      ],
       "settings": {
         "use_custom_colors": true,
         "color_text": "#ffffff",
