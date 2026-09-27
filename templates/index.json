@@ -1,11 +1,437 @@
 {
   "sections": {
-    "banner": {
-      "type": "banner-hero",
-      "settings": {}
+    "hero": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "animation": "animation-top-to-bottom",
+            "image": "",
+            "video_url": "",
+            "preheading": "",
+            "heading": "BOLD FLAVOUR.",
+            "heading_2": "NOTHING TO HIDE.",
+            "heading_size": "h0",
+            "subheading": "Naturally allergen-free. Made without ultra-processed ingredients. Built to be the hero of the dish.",
+            "button_label": "Explore The Range",
+            "button_link": "shopify://pages/the-range",
+            "button_style": "primary",
+            "text_box_position": "flex-lg-middle-center",
+            "text_alignment": "text-md-center text-lg-center",
+            "max_width": 700,
+            "use_custom_colors": true,
+            "color_text": "#ffffff",
+            "color_background": "rgba(0,0,0,0)",
+            "color_background_gradient": "",
+            "use_overlay": true,
+            "colors_overlay": "#000000",
+            "overlay_opacity": 0.25,
+            "image_mobile": "",
+            "video_mobile_url": "",
+            "text_box_position_mobile": "flex-middle-center",
+            "text_alignment_mobile": "text-center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1"
+      ],
+      "settings": {
+        "layout": "full-width",
+        "style_layout": "clip-3",
+        "image_height": "adapt",
+        "style_slider": "slide-light",
+        "enable_navigation": false,
+        "navigation_position": "center",
+        "navigation_icon": "style-1",
+        "enable_pagination": false,
+        "slider_visual": "bullets",
+        "auto_rotate": false,
+        "change_slides_speed": 9,
+        "loop": true,
+        "heading_tag": "h1",
+        "image_height_mobile": "mb-adapt",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "ticker": {
+      "type": "marque",
+      "blocks": {
+        "marque_0": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>Bold flavour. Nothing to hide.</p>",
+            "link": ""
+          }
+        },
+        "marque_1": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>14 SKUs & growing</p>",
+            "link": ""
+          }
+        },
+        "marque_2": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>Allergen-Free AND UPF-Free</p>",
+            "link": ""
+          }
+        },
+        "marque_3": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>Retail, foodservice & bulk</p>",
+            "link": ""
+          }
+        },
+        "marque_4": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>One recipe. Every table.</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "marque_0",
+        "marque_1",
+        "marque_2",
+        "marque_3",
+        "marque_4"
+      ],
+      "settings": {
+        "layout": "full-width",
+        "time": 32,
+        "reverse": false,
+        "label_font_size": "h5",
+        "height_image": "icon-h-large",
+        "use_custom_colors": true,
+        "color_text": "#1B1310",
+        "color_background": "#DA6634",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "trust_strip": {
+      "type": "icon-with-text",
+      "blocks": {
+        "card_icon_0": {
+          "type": "card-icon",
+          "settings": {
+            "icon": "",
+            "enable_svg": false,
+            "svg": "",
+            "heading": "Allergen-Free",
+            "subheading": "<p>Every recipe checked against the 14 major allergens before it ships.</p>",
+            "button_link": ""
+          }
+        },
+        "card_icon_1": {
+          "type": "card-icon",
+          "settings": {
+            "icon": "",
+            "enable_svg": false,
+            "svg": "",
+            "heading": "UPF-Free",
+            "subheading": "<p>No ultra-processed ingredients. Ever.</p>",
+            "button_link": ""
+          }
+        },
+        "card_icon_2": {
+          "type": "card-icon",
+          "settings": {
+            "icon": "",
+            "enable_svg": false,
+            "svg": "",
+            "heading": "2M+",
+            "subheading": "<p>People in the UK living with a diagnosed food allergy. Source: Food Standards Agency, 2020/2024.</p>",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_icon_0",
+        "card_icon_1",
+        "card_icon_2"
+      ],
+      "settings": {
+        "layout": "container page-width",
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "heading_tag": "h3",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "show_read_more": false,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": "1",
+        "gutter": 4,
+        "use_custom_colors": false,
+        "color_text": "#000000",
+        "color_background": "#f5f5f5",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "wave_1": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#FBF3E4",
+        "bg_color_below": "#FCEFDD",
+        "flip": false
+      }
+    },
+    "compare": {
+      "type": "comparison-tabs",
+      "settings": {
+        "preheading": "The Difference",
+        "heading": "Most brands make you pick a lane. We didn't.",
+        "subheading": "<p>Allergen-free usually means processed substitutes. Clean-label usually skips allergen testing. Ours does both.</p>",
+        "heading_tag": "h2",
+        "bad_label": "Typical Bottle",
+        "good_label": "Naked Sauce Co",
+        "bg_color": "#FCEFDD"
+      }
+    },
+    "wave_2": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#FCEFDD",
+        "bg_color_below": "#E7E9D6",
+        "flip": false
+      }
+    },
+    "philosophy_teaser": {
+      "type": "image-with-text",
+      "settings": {
+        "style_layout": "style-1",
+        "image": "",
+        "video": "",
+        "layout": "container page-width",
+        "image_second": false,
+        "image_width": "50",
+        "preheading": "Our Standard",
+        "heading": "<p>Real ingredients. No shortcuts. No compromises.</p>",
+        "heading_tag": "h2",
+        "heading_size": "h2",
+        "subheading": "<p>Every sauce and glaze we make is built from natural ingredients only &mdash; nothing ultra-processed, nothing from the major allergens &mdash; so it can go on any plate, in any kitchen, without a second thought. One recipe. Every table.</p>",
+        "button_label": "Our Philosophy",
+        "button_link": "shopify://pages/our-philosophy",
+        "button_style": "primary",
+        "text_alignment": "text-start",
+        "use_custom_colors": true,
+        "color_text": "#000000",
+        "color_background": "#E7E9D6",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "wave_3": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#E7E9D6",
+        "bg_color_below": "#231F1A",
+        "flip": false
+      }
+    },
+    "range_teaser": {
+      "type": "flavour-switcher",
+      "blocks": {
+        "flavour_0": {
+          "type": "flavour",
+          "settings": {
+            "name": "Vine Ripened Tomato",
+            "description": "Golden chips and a bacon roll deserve better than the bottle from the cupboard.",
+            "color": "#C13B2A"
+          }
+        },
+        "flavour_1": {
+          "type": "flavour",
+          "settings": {
+            "name": "Rich Brown Sauce",
+            "description": "A full English essential — bacon, sausage, fried egg, and a doorstep of toast.",
+            "color": "#5B3A29"
+          }
+        },
+        "flavour_2": {
+          "type": "flavour",
+          "settings": {
+            "name": "Smoky Texan BBQ",
+            "description": "Brushed over ribs or pulled pork as it comes off the grill.",
+            "color": "#8A2E1D"
+          }
+        },
+        "flavour_3": {
+          "type": "flavour",
+          "settings": {
+            "name": "BBQ Gochujang",
+            "description": "Glazed onto wings or short ribs for a sticky, smoky-sweet finish.",
+            "color": "#A32C2C"
+          }
+        },
+        "flavour_4": {
+          "type": "flavour",
+          "settings": {
+            "name": "Sweet Chilli & Ginger",
+            "description": "Drizzled over halloumi fritters or spring rolls for dipping.",
+            "color": "#D97A22"
+          }
+        },
+        "flavour_5": {
+          "type": "flavour",
+          "settings": {
+            "name": "Hot Honey Glaze",
+            "description": "Sweet heat on fried chicken.",
+            "color": "#B9791E"
+          }
+        }
+      },
+      "block_order": [
+        "flavour_0",
+        "flavour_1",
+        "flavour_2",
+        "flavour_3",
+        "flavour_4",
+        "flavour_5"
+      ],
+      "settings": {
+        "preheading": "The Range",
+        "heading": "14 sauces. One standard. Click through the range.",
+        "subheading": "",
+        "heading_tag": "h2",
+        "heading_size": "h2",
+        "accent_color": "#5F6B3E",
+        "panel_bg": "#2A2620",
+        "bg_color": "#231F1A"
+      }
+    },
+    "wave_4": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#231F1A",
+        "bg_color_below": "#FBF3E4",
+        "flip": false
+      }
+    },
+    "pour_go_teaser": {
+      "type": "packaging-grid",
+      "settings": {
+        "preheading": "Every Format",
+        "heading": "One range, every format you sell in.",
+        "subheading": "<p>Retail and foodservice share the same recipes and label artwork across shared formats.</p>",
+        "heading_tag": "h2",
+        "bg_color": "#FBF3E4"
+      }
+    },
+    "wave_5": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#FBF3E4",
+        "bg_color_below": "#5F6B3E",
+        "flip": false
+      }
+    },
+    "trade_cta": {
+      "type": "rich-text",
+      "settings": {
+        "layout": "container page-width",
+        "full_width": false,
+        "style": "style-1",
+        "preheading": "",
+        "heading": "<p>Ready to bring bold, global flavour to your menu?</p>",
+        "heading_tag": "h2",
+        "heading_size": "h1",
+        "subheading": "<p>Allergen-free. UPF-free. Built to be the hero of the dish &mdash; not a compromise on it. Sales@thenakedsauceco.com</p>",
+        "button_label": "Talk To Our Trade Team",
+        "button_link": "shopify://pages/contact",
+        "button_style": "primary",
+        "text_alignment": "text-md-center text-lg-center",
+        "text_alignment_mobile": "text-center",
+        "use_custom_colors": true,
+        "color_text": "#ffffff",
+        "color_background": "#5F6B3E",
+        "color_background_gradient": "",
+        "enable_parallax": false,
+        "type": "scroll",
+        "speed": 0.5,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "wave_6": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#5F6B3E",
+        "bg_color_below": "#231F1A",
+        "flip": false
+      }
+    },
+    "waitlist": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "The Clean Sauce Shop is coming.",
+        "subheading": "<p>Be first to know when you can order online. No spam &mdash; just an email when we launch.</p>",
+        "use_custom_colors": true,
+        "color_text": "#ffffff",
+        "color_background": "#231F1A",
+        "color_background_gradient": "",
+        "enable_parallax": false,
+        "background_image": "",
+        "border_radius": 0,
+        "type": "scroll-opacity",
+        "speed": 0.5,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_id": "",
+        "custom_class": ""
+      }
     }
   },
   "order": [
-    "banner"
+    "hero",
+    "ticker",
+    "trust_strip",
+    "wave_1",
+    "compare",
+    "wave_2",
+    "philosophy_teaser",
+    "wave_3",
+    "range_teaser",
+    "wave_4",
+    "pour_go_teaser",
+    "wave_5",
+    "trade_cta",
+    "wave_6",
+    "waitlist"
   ]
 }
