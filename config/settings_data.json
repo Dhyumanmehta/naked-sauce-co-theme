@@ -212,7 +212,7 @@
       "password-footer": {
         "type": "password-footer",
         "settings": {
-          "show_share_buttons": true
+          "show_share_buttons": false
         }
       }
     },
