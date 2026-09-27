@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -13,7 +22,7 @@
             "heading": "BOLD FLAVOUR.",
             "heading_2": "NOTHING TO HIDE.",
             "heading_size": "h0",
-            "subheading": "Naturally allergen-free. Made without ultra-processed ingredients. Built to be the hero of the dish.",
+            "subheading": "<p>Naturally allergen-free. Made without ultra-processed ingredients. Built to be the hero of the dish.</p>",
             "button_label": "Explore The Range",
             "button_link": "shopify://pages/the-range",
             "button_style": "primary",
@@ -225,18 +234,9 @@
       "settings": {
         "style_layout": "style-1",
         "image": "",
-        "video": "",
         "layout": "container page-width",
         "image_second": false,
         "image_width": "50",
-        "preheading": "Our Standard",
-        "heading": "<p>Real ingredients. No shortcuts. No compromises.</p>",
-        "heading_tag": "h2",
-        "heading_size": "h2",
-        "subheading": "<p>Every sauce and glaze we make is built from natural ingredients only &mdash; nothing ultra-processed, nothing from the major allergens &mdash; so it can go on any plate, in any kitchen, without a second thought. One recipe. Every table.</p>",
-        "button_label": "Our Philosophy",
-        "button_link": "shopify://pages/our-philosophy",
-        "button_style": "primary",
         "text_alignment": "text-start",
         "use_custom_colors": true,
         "color_text": "#000000",
@@ -397,8 +397,6 @@
     "waitlist": {
       "type": "newsletter",
       "settings": {
-        "heading": "The Clean Sauce Shop is coming.",
-        "subheading": "<p>Be first to know when you can order online. No spam &mdash; just an email when we launch.</p>",
         "use_custom_colors": true,
         "color_text": "#ffffff",
         "color_background": "#231F1A",
