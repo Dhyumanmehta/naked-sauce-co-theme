@@ -12,7 +12,7 @@
     "main": {
       "type": "main-collection",
       "settings": {
-        "show_collection_image": true,
+        "show_collection_image": false,
         "show_collection_description": true,
         "style": "style-4",
         "products_per_page": 9,
@@ -25,7 +25,10 @@
         "image_position": "object_position_middle_center",
         "enable_quick_add": true,
         "enable_collection_list": true,
-        "collection_list": [],
+        "collection_list": [
+          "cooking-sauces",
+          "table-sauces"
+        ],
         "enable_sorting": true,
         "enable_filtering": true,
         "filter_type": "vertical",
