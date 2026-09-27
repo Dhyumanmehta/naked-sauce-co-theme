@@ -114,7 +114,7 @@
         "enable_cart": true,
         "logo_position": "middle-center",
         "use_custom_colors": true,
-        "color_text": "#ffffff",
+        "color_text": "#090909",
         "color_background": "#ffffff",
         "color_background_gradient": "",
         "padding_top": 3,
