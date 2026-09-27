@@ -160,19 +160,8 @@
             "icon": "",
             "enable_svg": false,
             "svg": "",
-            "heading": "Versatile Range",
-            "subheading": "<p>A variety of traditional and modern sauces cooking sauces and glazes.</p>",
-            "button_link": ""
-          }
-        },
-        "card_icon_qd9ftB": {
-          "type": "card-icon",
-          "settings": {
-            "icon": "",
-            "enable_svg": false,
-            "svg": "",
-            "heading": "Flexible Packaging Options",
-            "subheading": "<p>Available in squeezy bottles, tubs or sachets. Foodservice and retail friendly.</p>",
+            "heading": "Versatile and Flexible Range",
+            "subheading": "<p>A variety of traditional and modern sauces cooking sauces and glazes. Available in squeezy bottles, tubs or sachets. Foodservice and retail friendly.</p>",
             "button_link": ""
           }
         }
@@ -180,8 +169,7 @@
       "block_order": [
         "card_icon_0",
         "card_icon_1",
-        "card_icon_2",
-        "card_icon_qd9ftB"
+        "card_icon_2"
       ],
       "settings": {
         "layout": "container page-width",
@@ -301,8 +289,31 @@
     },
     "philosophy_teaser": {
       "type": "image-with-text",
+      "blocks": {
+        "text_wU99YB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With approximately 2 million+ people in the UK living with a diagnosed food allergy and the average adult diet being made up of 51% ultra-processed foods, the case for The Naked Sauce Co was simple.</p><p>Create a range of sauces and glazes that can go on ANY plate, in ANY kitchen, without a second thought! Simple create the products using all natural ingredients; nothing<br/>ultra-processed AND nothing from the major allergens.</p>",
+            "margin_top": 3
+          }
+        },
+        "button_rmdPKf": {
+          "type": "button",
+          "settings": {
+            "button_label": "Our Philosophy",
+            "button_link": "shopify://collections/all",
+            "button_style": "primary",
+            "margin_top": 3
+          }
+        }
+      },
+      "block_order": [
+        "text_wU99YB",
+        "button_rmdPKf"
+      ],
       "settings": {
         "style_layout": "style-1",
+        "image": "shopify://shop_images/photo-chef.jpg",
         "layout": "container page-width",
         "image_second": false,
         "image_width": "50",
@@ -322,6 +333,37 @@
         "padding_top": 60,
         "padding_bottom": 60,
         "text_alignment_mobile": "text-start",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "rich_text_Lznjpa": {
+      "type": "rich-text",
+      "settings": {
+        "layout": "container page-width",
+        "full_width": false,
+        "style": "style-1",
+        "preheading": "",
+        "heading": "<p>Ready to bring bold, global flavour to your menu?</p>",
+        "heading_tag": "h2",
+        "heading_size": "h1",
+        "subheading": "",
+        "button_label": "Talk To The Team",
+        "button_link": "shopify://pages/contact",
+        "button_style": "primary",
+        "text_alignment": "text-md-center text-lg-center",
+        "text_alignment_mobile": "text-center",
+        "use_custom_colors": true,
+        "color_text": "#ffffff",
+        "color_background": "#5f6b3e",
+        "color_background_gradient": "",
+        "enable_parallax": false,
+        "type": "scroll",
+        "speed": 0.5,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 80,
+        "padding_bottom": 80,
         "custom_id": "",
         "custom_class": ""
       }
@@ -544,6 +586,7 @@
     "compare",
     "wave_2",
     "philosophy_teaser",
+    "rich_text_Lznjpa",
     "wave_3",
     "range_teaser",
     "wave_4",
