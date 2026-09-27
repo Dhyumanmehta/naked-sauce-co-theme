@@ -29,6 +29,7 @@
         },
         "code_g8RXdn": {
           "type": "code",
+          "disabled": true,
           "settings": {
             "text": "Up to 20% OFF. Use Coupon",
             "code": "SALE20",
@@ -114,7 +115,7 @@
         "logo_position": "middle-center",
         "use_custom_colors": true,
         "color_text": "#ffffff",
-        "color_background": "#FFFFFF",
+        "color_background": "#ffffff",
         "color_background_gradient": "",
         "padding_top": 3,
         "padding_bottom": 3
