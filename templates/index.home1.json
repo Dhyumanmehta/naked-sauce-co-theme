@@ -1,63 +1,33 @@
 {
   "sections": {
-    "slideshow_qcVyxa": {
+    "hero": {
       "type": "slideshow",
       "blocks": {
-        "slide_eT7Qng": {
+        "slide_1": {
           "type": "slide",
           "settings": {
             "animation": "animation-top-to-bottom",
-            "image": "shopify:\/\/shop_images\/Frame_108_2.jpg",
+            "image": "",
             "video_url": "",
             "preheading": "",
-            "heading": "FLAVOR",
-            "heading_2": "EXPLOSION",
+            "heading": "BOLD FLAVOUR.",
+            "heading_2": "NOTHING TO HIDE.",
             "heading_size": "h0",
-            "subheading": "",
-            "button_label": "Explore Now",
-            "button_link": "shopify:\/\/collections\/newarrivals",
+            "subheading": "Naturally allergen-free. Made without ultra-processed ingredients. Built to be the hero of the dish.",
+            "button_label": "Explore The Range",
+            "button_link": "shopify://pages/the-range",
             "button_style": "primary",
-            "text_box_position": "flex-lg-middle-right",
-            "text_alignment": "text-md-end text-lg-end",
-            "max_width": 600,
+            "text_box_position": "flex-lg-middle-center",
+            "text_alignment": "text-md-center text-lg-center",
+            "max_width": 700,
             "use_custom_colors": true,
             "color_text": "#ffffff",
             "color_background": "rgba(0,0,0,0)",
             "color_background_gradient": "",
-            "use_overlay": false,
+            "use_overlay": true,
             "colors_overlay": "#000000",
-            "overlay_opacity": 0.2,
-            "image_mobile": "shopify:\/\/shop_images\/Frame_107_2.jpg",
-            "video_mobile_url": "",
-            "text_box_position_mobile": "flex-middle-center",
-            "text_alignment_mobile": "text-center"
-          }
-        },
-        "slide_Hxqi9i": {
-          "type": "slide",
-          "settings": {
-            "animation": "animation-top-to-bottom",
-            "image": "shopify:\/\/shop_images\/image_32_1.jpg",
-            "video_url": "",
-            "preheading": "",
-            "heading": "THE BEST",
-            "heading_2": "SAUCES",
-            "heading_size": "h0",
-            "subheading": "",
-            "button_label": "Explore Now",
-            "button_link": "shopify:\/\/collections\/newarrivals",
-            "button_style": "primary",
-            "text_box_position": "flex-lg-middle-left",
-            "text_alignment": "text-md-start text-lg-start",
-            "max_width": 600,
-            "use_custom_colors": true,
-            "color_text": "#ffffff",
-            "color_background": "rgba(0,0,0,0)",
-            "color_background_gradient": "",
-            "use_overlay": false,
-            "colors_overlay": "#000000",
-            "overlay_opacity": 0.2,
-            "image_mobile": "shopify:\/\/shop_images\/Frame_108_1.jpg",
+            "overlay_opacity": 0.25,
+            "image_mobile": "",
             "video_mobile_url": "",
             "text_box_position_mobile": "flex-middle-center",
             "text_alignment_mobile": "text-center"
@@ -65,853 +35,487 @@
         }
       },
       "block_order": [
-        "slide_eT7Qng",
-        "slide_Hxqi9i"
+        "slide_1"
       ],
       "settings": {
         "layout": "full-width",
         "style_layout": "clip-3",
         "image_height": "adapt",
         "style_slider": "slide-light",
-        "enable_navigation": true,
+        "enable_navigation": false,
         "navigation_position": "center",
         "navigation_icon": "style-1",
-        "enable_pagination": true,
+        "enable_pagination": false,
         "slider_visual": "bullets",
-        "auto_rotate": true,
+        "auto_rotate": false,
         "change_slides_speed": 9,
         "loop": true,
-        "heading_tag": "h2",
+        "heading_tag": "h1",
         "image_height_mobile": "mb-adapt",
         "margin_top": 0,
-        "margin_bottom": 96,
-        "custom_id": "scroll1",
+        "margin_bottom": 0,
+        "custom_id": "",
         "custom_class": ""
       }
     },
-    "rich_text_ciTEVL": {
+    "ticker": {
+      "type": "marque",
+      "blocks": {
+        "marque_0": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>Bold flavour. Nothing to hide.</p>",
+            "link": ""
+          }
+        },
+        "marque_1": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>14 SKUs & growing</p>",
+            "link": ""
+          }
+        },
+        "marque_2": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>Allergen-Free AND UPF-Free</p>",
+            "link": ""
+          }
+        },
+        "marque_3": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>Retail, foodservice & bulk</p>",
+            "link": ""
+          }
+        },
+        "marque_4": {
+          "type": "marque",
+          "settings": {
+            "content": "<p>One recipe. Every table.</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "marque_0",
+        "marque_1",
+        "marque_2",
+        "marque_3",
+        "marque_4"
+      ],
+      "settings": {
+        "layout": "full-width",
+        "time": 32,
+        "reverse": false,
+        "label_font_size": "h5",
+        "height_image": "icon-h-large",
+        "use_custom_colors": true,
+        "color_text": "#1B1310",
+        "color_background": "#DA6634",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "trust_strip": {
+      "type": "icon-with-text",
+      "blocks": {
+        "card_icon_0": {
+          "type": "card-icon",
+          "settings": {
+            "icon": "",
+            "enable_svg": false,
+            "svg": "",
+            "heading": "Allergen-Free",
+            "subheading": "<p>Every recipe checked against the 14 major allergens before it ships.</p>",
+            "button_link": ""
+          }
+        },
+        "card_icon_1": {
+          "type": "card-icon",
+          "settings": {
+            "icon": "",
+            "enable_svg": false,
+            "svg": "",
+            "heading": "UPF-Free",
+            "subheading": "<p>No ultra-processed ingredients. Ever.</p>",
+            "button_link": ""
+          }
+        },
+        "card_icon_2": {
+          "type": "card-icon",
+          "settings": {
+            "icon": "",
+            "enable_svg": false,
+            "svg": "",
+            "heading": "2M+",
+            "subheading": "<p>People in the UK living with a diagnosed food allergy. Source: Food Standards Agency, 2020/2024.</p>",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_icon_0",
+        "card_icon_1",
+        "card_icon_2"
+      ],
+      "settings": {
+        "layout": "container page-width",
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "heading_tag": "h3",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "show_read_more": false,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": "1",
+        "gutter": 4,
+        "use_custom_colors": false,
+        "color_text": "#000000",
+        "color_background": "#f5f5f5",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "wave_1": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#FBF3E4",
+        "bg_color_below": "#FCEFDD",
+        "flip": false
+      }
+    },
+    "compare": {
+      "type": "comparison-tabs",
+      "blocks": {
+        "b0": {
+          "type": "bad_point",
+          "settings": {
+            "text": "Contains 3+ of the 14 major allergens"
+          }
+        },
+        "b1": {
+          "type": "bad_point",
+          "settings": {
+            "text": "Stabilisers & thickeners (E-numbers)"
+          }
+        },
+        "b2": {
+          "type": "bad_point",
+          "settings": {
+            "text": "Ultra-processed fillers"
+          }
+        },
+        "b3": {
+          "type": "bad_point",
+          "settings": {
+            "text": "Pick allergen-safe OR clean-label — not both"
+          }
+        },
+        "g0": {
+          "type": "good_point",
+          "settings": {
+            "text": "Free from all 14 major allergens"
+          }
+        },
+        "g1": {
+          "type": "good_point",
+          "settings": {
+            "text": "Zero ultra-processed ingredients"
+          }
+        },
+        "g2": {
+          "type": "good_point",
+          "settings": {
+            "text": "Real, natural ingredients only"
+          }
+        },
+        "g3": {
+          "type": "good_point",
+          "settings": {
+            "text": "Allergen-safe AND clean-label. Always."
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "g0",
+        "g1",
+        "g2",
+        "g3"
+      ],
+      "settings": {
+        "preheading": "The Difference",
+        "heading": "Most brands make you pick a lane. We didn't.",
+        "subheading": "<p>Allergen-free usually means processed substitutes. Clean-label usually skips allergen testing. Ours does both.</p>",
+        "heading_tag": "h2",
+        "bad_label": "Typical Bottle",
+        "good_label": "Naked Sauce Co",
+        "bg_color": "#FCEFDD"
+      }
+    },
+    "wave_2": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#FCEFDD",
+        "bg_color_below": "#E7E9D6",
+        "flip": false
+      }
+    },
+    "philosophy_teaser": {
+      "type": "image-with-text",
+      "settings": {
+        "style_layout": "style-1",
+        "image": "hero-chef",
+        "video": "",
+        "layout": "container page-width",
+        "image_second": false,
+        "image_width": "50",
+        "preheading": "Our Standard",
+        "heading": "<p>Real ingredients. No shortcuts. No compromises.</p>",
+        "heading_tag": "h2",
+        "heading_size": "h2",
+        "subheading": "<p>Every sauce and glaze we make is built from natural ingredients only &mdash; nothing ultra-processed, nothing from the major allergens &mdash; so it can go on any plate, in any kitchen, without a second thought. One recipe. Every table.</p>",
+        "button_label": "Our Philosophy",
+        "button_link": "shopify://pages/our-philosophy",
+        "button_style": "primary",
+        "text_alignment": "text-start",
+        "use_custom_colors": true,
+        "color_text": "#000000",
+        "color_background": "#E7E9D6",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "wave_3": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#E7E9D6",
+        "bg_color_below": "#231F1A",
+        "flip": false
+      }
+    },
+    "range_teaser": {
+      "type": "flavour-switcher",
+      "blocks": {
+        "flavour_0": {
+          "type": "flavour",
+          "settings": {
+            "name": "Vine Ripened Tomato",
+            "description": "Golden chips and a bacon roll deserve better than the bottle from the cupboard.",
+            "color": "#C13B2A"
+          }
+        },
+        "flavour_1": {
+          "type": "flavour",
+          "settings": {
+            "name": "Rich Brown Sauce",
+            "description": "A full English essential — bacon, sausage, fried egg, and a doorstep of toast.",
+            "color": "#5B3A29"
+          }
+        },
+        "flavour_2": {
+          "type": "flavour",
+          "settings": {
+            "name": "Smoky Texan BBQ",
+            "description": "Brushed over ribs or pulled pork as it comes off the grill.",
+            "color": "#8A2E1D"
+          }
+        },
+        "flavour_3": {
+          "type": "flavour",
+          "settings": {
+            "name": "BBQ Gochujang",
+            "description": "Glazed onto wings or short ribs for a sticky, smoky-sweet finish.",
+            "color": "#A32C2C"
+          }
+        },
+        "flavour_4": {
+          "type": "flavour",
+          "settings": {
+            "name": "Sweet Chilli & Ginger",
+            "description": "Drizzled over halloumi fritters or spring rolls for dipping.",
+            "color": "#D97A22"
+          }
+        },
+        "flavour_5": {
+          "type": "flavour",
+          "settings": {
+            "name": "Hot Honey Glaze",
+            "description": "Sweet heat on fried chicken.",
+            "color": "#B9791E"
+          }
+        }
+      },
+      "block_order": [
+        "flavour_0",
+        "flavour_1",
+        "flavour_2",
+        "flavour_3",
+        "flavour_4",
+        "flavour_5"
+      ],
+      "settings": {
+        "preheading": "The Range",
+        "heading": "14 sauces. One standard. Click through the range.",
+        "subheading": "",
+        "heading_tag": "h2",
+        "heading_size": "h2",
+        "accent_color": "#5F6B3E",
+        "panel_bg": "#2A2620",
+        "bg_color": "#231F1A"
+      }
+    },
+    "wave_4": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#231F1A",
+        "bg_color_below": "#FBF3E4",
+        "flip": false
+      }
+    },
+    "pour_go_teaser": {
+      "type": "packaging-grid",
+      "settings": {
+        "preheading": "Every Format",
+        "heading": "One range, every format you sell in.",
+        "subheading": "<p>Retail and foodservice share the same recipes and label artwork across shared formats.</p>",
+        "heading_tag": "h2",
+        "bg_color": "#FBF3E4"
+      }
+    },
+    "wave_5": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#FBF3E4",
+        "bg_color_below": "#5F6B3E",
+        "flip": false
+      }
+    },
+    "trade_cta": {
       "type": "rich-text",
       "settings": {
         "layout": "container page-width",
         "full_width": false,
         "style": "style-1",
-        "preheading": "About me",
-        "heading": "<p>Lafonre Sauces<\/p>",
+        "preheading": "",
+        "heading": "<p>Ready to bring bold, global flavour to your menu?</p>",
         "heading_tag": "h2",
-        "heading_size": "h0",
-        "subheading": "<p>Welcome to our website! Since 2003, our goal has been to provide high-quality sauces that enhance your culinary experiences while ensuring sustainability and reliability. Whether you're a home cook or a professional chef, our wide range of premium sauces is crafted to elevate your dishes to the next level. <\/p><p>We pride ourselves on using only the finest ingredients, all while maintaining a commitment to eco-friendly practices. Explore our collection and discover the perfect sauce to bring flavor and excitement to your kitchen.<\/p>",
-        "button_label": "",
-        "button_link": "shopify:\/\/collections\/all",
-        "button_style": "link",
+        "heading_size": "h1",
+        "subheading": "<p>Allergen-free. UPF-free. Built to be the hero of the dish &mdash; not a compromise on it. Sales@thenakedsauceco.com</p>",
+        "button_label": "Talk To Our Trade Team",
+        "button_link": "shopify://pages/contact",
+        "button_style": "primary",
         "text_alignment": "text-md-center text-lg-center",
         "text_alignment_mobile": "text-center",
-        "use_custom_colors": false,
-        "color_text": "#ec1d1d",
-        "color_background": "#ffffff",
+        "use_custom_colors": true,
+        "color_text": "#ffffff",
+        "color_background": "#5F6B3E",
         "color_background_gradient": "",
         "enable_parallax": false,
         "type": "scroll",
         "speed": 0.5,
         "margin_top": 0,
         "margin_bottom": 0,
-        "padding_top": 0,
-        "padding_bottom": 40,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "counter_Bxwxad": {
-      "type": "counter",
-      "blocks": {
-        "item_HRLNPD": {
-          "type": "item",
-          "settings": {
-            "heading": "Happy Customers",
-            "number": "1000",
-            "info_number": "+"
-          }
-        },
-        "item_awM4w9": {
-          "type": "item",
-          "settings": {
-            "heading": "Bottles Sold",
-            "number": "5450",
-            "info_number": "+"
-          }
-        },
-        "item_KbacUr": {
-          "type": "item",
-          "settings": {
-            "heading": "Natural Ingredients",
-            "number": "100",
-            "info_number": "%"
-          }
-        },
-        "item_GVPBYY": {
-          "type": "item",
-          "settings": {
-            "heading": "Experience",
-            "number": "10",
-            "info_number": "Years"
-          }
-        }
-      },
-      "block_order": [
-        "item_HRLNPD",
-        "item_awM4w9",
-        "item_KbacUr",
-        "item_GVPBYY"
-      ],
-      "settings": {
-        "layout": "container container-inner",
-        "preheading": "",
-        "heading": "",
-        "subheading": "",
-        "heading_tag": "h2",
-        "heading_size": "h2",
-        "heading_alignment": "text-start",
-        "columns_desktop": 4,
-        "columns_tablet": 2,
-        "columns_mobile": 2,
-        "gutter": 4,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#ffffff",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 0,
+        "padding_top": 80,
         "padding_bottom": 80,
         "custom_id": "",
         "custom_class": ""
       }
     },
-    "banner_grid_aXYRit": {
-      "type": "banner-grid",
-      "blocks": {
-        "card_banner_8waFAF": {
-          "type": "card-banner",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/banner-4_2.jpg",
-            "heading": "Hot & Spicy",
-            "subheading": "Sale Off 30%",
-            "button_link": "shopify:\/\/collections\/hot-spicy",
-            "use_custom_colors": true,
-            "color_text": "#ffffff",
-            "use_overlay": true,
-            "colors_overlay": "#0b0b0b",
-            "overlay_opacity": 0.3
-          }
-        },
-        "card_banner_R3GBVm": {
-          "type": "card-banner",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/banner-4_1_9a6e09ea-8803-40ac-ac42-1d9ee5391772.jpg",
-            "heading": "Sweet Honey",
-            "subheading": "Sale Off 30%",
-            "button_link": "shopify:\/\/collections\/sweet-honey",
-            "use_custom_colors": true,
-            "color_text": "#ffffff",
-            "use_overlay": true,
-            "colors_overlay": "#0b0b0b",
-            "overlay_opacity": 0.3
-          }
-        },
-        "card_banner_JXRiat": {
-          "type": "card-banner",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/banner-4-1_1.jpg",
-            "heading": "BBQ & Grilling",
-            "subheading": "Sale Off 30%",
-            "button_link": "shopify:\/\/collections\/newarrivals",
-            "use_custom_colors": true,
-            "color_text": "#ffffff",
-            "use_overlay": true,
-            "colors_overlay": "#0b0b0b",
-            "overlay_opacity": 0.3
-          }
-        }
-      },
-      "block_order": [
-        "card_banner_8waFAF",
-        "card_banner_R3GBVm",
-        "card_banner_JXRiat"
-      ],
+    "wave_6": {
+      "type": "wave-divider",
       "settings": {
-        "layout": "full-width",
-        "style": "style-v2",
-        "preheading": "",
-        "heading": "",
-        "subheading": "",
-        "heading_size": "h2",
-        "heading_tag": "h2",
-        "heading_alignment": "text-center",
-        "image_height": "adapt",
-        "heading_size_card": "h4",
-        "heading_tag_card": "h3",
-        "text_box_position": "flex-bottom-left",
-        "text_alignment": "text-md-start text-lg-start",
-        "columns_desktop": 3,
-        "columns_tablet": 2,
-        "columns_mobile": "1",
-        "gutter": 4,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#ffffff",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 0,
-        "padding_bottom": 70,
-        "text_alignment_mobile": "text-start",
-        "custom_id": "",
-        "custom_class": ""
+        "bg_color_above": "#5F6B3E",
+        "bg_color_below": "#231F1A",
+        "flip": false
       }
     },
-    "featured_collection_KeyN9p": {
-      "type": "featured-collection",
-      "settings": {
-        "layout": "container page-width",
-        "style": "style-2",
-        "preheading": "",
-        "heading": "Best Choice",
-        "heading_tag": "h2",
-        "heading_size": "h1",
-        "subheading": "",
-        "collection": "newarrivals",
-        "products_to_show": 5,
-        "columns_desktop": 4,
-        "columns_tablet": 3,
-        "columns_mobile": "2",
-        "gutter": 4,
-        "show_view_all": true,
-        "button_label": "Shop All",
-        "button_link": "shopify:\/\/collections\/newarrivals",
-        "enable_slider": true,
-        "style_slider": "slide-dark",
-        "enable_navigation": true,
-        "navigation_icon": "style-1",
-        "enable_pagination": true,
-        "slider_visual": "bullets",
-        "auto_rotate": true,
-        "change_slides_speed": 5,
-        "loop": true,
-        "image_height": "adapt",
-        "image_position": "object_position_middle_center",
-        "enable_quick_add": true,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#e5ddbc",
-        "color_background_gradient": "",
-        "enable_parallax": false,
-        "type": "scroll",
-        "speed": 0.5,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 0,
-        "padding_bottom": 100,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "banner_parallax_GPyY6j": {
-      "type": "banner-parallax",
-      "settings": {
-        "layout": "container page-width",
-        "image": "shopify:\/\/shop_images\/Frame_110_1.jpg",
-        "border_radius": 4,
-        "type": "scale",
-        "speed": 1,
-        "preheading": "Limited Offer",
-        "heading": "20%OFF",
-        "subheading": "",
-        "time": "2026-01-01",
-        "button_label": "Shop The Deals",
-        "button_link": "shopify:\/\/collections\/newarrivals",
-        "button_style": "light",
-        "enable_scroll": false,
-        "id_scroll": "",
-        "max_width": 1000,
-        "image_height": "h-700",
-        "heading_tag": "h2",
-        "heading_size": "h-custom-v1",
-        "text_box_position": "flex-middle-center",
-        "text_alignment": "text-md-center text-lg-center",
-        "use_custom_colors": true,
-        "color_text": "#ec1d1d",
-        "color_background": "rgba(0,0,0,0)",
-        "color_background_gradient": "",
-        "use_overlay": true,
-        "colors_overlay": "#0b0b0b",
-        "overlay_opacity": 0.3,
-        "margin_top": 0,
-        "margin_bottom": 90,
-        "image_height_mobile": "h-mb-400",
-        "text_alignment_mobile": "text-center",
-        "show_border": false,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "image_with_text_fQAnNi": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_YHdX8L": {
-          "type": "heading",
-          "settings": {
-            "heading": "Why Choose Us",
-            "heading_tag": "h2",
-            "heading_size": "h2",
-            "margin_top": 0
-          }
-        },
-        "text_crhiCU": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>We believe in the power of nature. Our sauces are made from only the finest organic ingredients, grown without synthetic pesticides or fertilizers. Every bottle is packed with the natural goodness your taste buds deserve.<\/p>",
-            "margin_top": 3
-          }
-        },
-        "iconwithtext_CF4Gp4": {
-          "type": "iconwithtext",
-          "settings": {
-            "margin_top": 3,
-            "image1": "shopify:\/\/shop_images\/volunteer_activism_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg",
-            "heading1": "Certified Organic",
-            "subheading1": "<p>Meets strict organic standards and is free from synthetic pesticides<\/p>",
-            "heading2": "",
-            "subheading2": "",
-            "image3": "shopify:\/\/shop_images\/science_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg",
-            "heading3": "Preservative Free",
-            "subheading3": "<p>No artificial preservatives, offering a more natural product<\/p>"
-          }
-        },
-        "button_EPKqwa": {
-          "type": "button",
-          "settings": {
-            "button_label": "All Products",
-            "button_link": "shopify:\/\/collections\/all",
-            "button_style": "outline",
-            "margin_top": 3
-          }
-        }
-      },
-      "block_order": [
-        "heading_YHdX8L",
-        "text_crhiCU",
-        "iconwithtext_CF4Gp4",
-        "button_EPKqwa"
-      ],
-      "disabled": true,
-      "settings": {
-        "style_layout": "style-1",
-        "image": "shopify:\/\/shop_images\/Frame_114_1.jpg",
-        "layout": "full-width",
-        "image_second": false,
-        "image_width": "50",
-        "image_height": "adapt",
-        "image_position": "object_position_middle_center",
-        "text_box_position": "flex-middle-center",
-        "text_alignment": "text-md-start text-lg-start",
-        "enable_controls": false,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#e5ddbc",
-        "color_background_gradient": "",
-        "color_background_block": "#ffffff",
-        "color_background_gradient_block": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 0,
-        "padding_bottom": 54,
-        "text_alignment_mobile": "text-start",
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "image_with_text_HaJHHa": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_iHBabU": {
-          "type": "heading",
-          "settings": {
-            "heading": "Why Choose Us",
-            "heading_tag": "h2",
-            "heading_size": "h2",
-            "margin_top": 0
-          }
-        },
-        "text_7jctwb": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>We believe in the power of nature. Our sauces are made from only the finest organic ingredients, grown without synthetic pesticides or fertilizers. Every bottle is packed with the natural goodness your taste buds deserve.<\/p>",
-            "margin_top": 3
-          }
-        },
-        "iconwithtext_aFXzT6": {
-          "type": "iconwithtext",
-          "settings": {
-            "margin_top": 3,
-            "heading1": "",
-            "subheading1": "",
-            "image2": "shopify:\/\/shop_images\/ac_unit_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg",
-            "heading2": "Cold Filled",
-            "subheading2": "<p>Packaged without heat, preserving nutrients and flavor<\/p>",
-            "image3": "shopify:\/\/shop_images\/science_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg",
-            "heading3": "Preservative Free",
-            "subheading3": "<p>No artificial preservatives, offering a more natural product<\/p>"
-          }
-        },
-        "button_QmpWR8": {
-          "type": "button",
-          "settings": {
-            "button_label": "All Products",
-            "button_link": "shopify:\/\/collections\/all",
-            "button_style": "outline",
-            "margin_top": 3
-          }
-        }
-      },
-      "block_order": [
-        "heading_iHBabU",
-        "text_7jctwb",
-        "iconwithtext_aFXzT6",
-        "button_QmpWR8"
-      ],
-      "disabled": true,
-      "settings": {
-        "style_layout": "style-2",
-        "image": "shopify:\/\/shop_images\/Frame_110_1.jpg",
-        "layout": "full-width",
-        "image_second": true,
-        "image_width": "50",
-        "image_height": "adapt",
-        "image_position": "object_position_middle_center",
-        "text_box_position": "flex-middle-left",
-        "text_alignment": "text-md-end text-lg-end",
-        "enable_controls": false,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#e5ddbc",
-        "color_background_gradient": "",
-        "color_background_block": "#ffffff",
-        "color_background_gradient_block": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 0,
-        "padding_bottom": 50,
-        "text_alignment_mobile": "text-end",
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "marque_UN9zh3": {
-      "type": "marque",
-      "blocks": {
-        "marque_tUCKp8": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Sauce Perfection: Elevate Your Dishes to New Heights\"<\/p>",
-            "link": ""
-          }
-        },
-        "marque_CUrAkg": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Flavors That Wow: Discover the Best Sauces for Every Meal\"<\/p>",
-            "link": ""
-          }
-        },
-        "marque_M38XCR": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Unleash Bold Flavors with Our Premium Sauces\"<\/p>",
-            "link": "shopify:\/\/collections\/newarrivals"
-          }
-        },
-        "marque_LcNUHU": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Crafted for Taste: Sauces That Make Every Bite Better\"<\/p>",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "marque_tUCKp8",
-        "marque_CUrAkg",
-        "marque_M38XCR",
-        "marque_LcNUHU"
-      ],
-      "settings": {
-        "layout": "container page-width",
-        "time": 51,
-        "reverse": false,
-        "label_font_size": "h5",
-        "height_image": "icon-h-large",
-        "use_custom_colors": true,
-        "color_text": "#f5f5f5",
-        "color_background": "#ec1d1d",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 90,
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "featured_collection_t9P7ba": {
-      "type": "featured-collection",
-      "settings": {
-        "layout": "container page-width",
-        "style": "style-2",
-        "preheading": "",
-        "heading": "New Arrivals",
-        "heading_tag": "h2",
-        "heading_size": "h1",
-        "subheading": "",
-        "collection": "newarrivals",
-        "products_to_show": 10,
-        "columns_desktop": 5,
-        "columns_tablet": 3,
-        "columns_mobile": "2",
-        "gutter": 4,
-        "show_view_all": true,
-        "button_label": "Shop All",
-        "button_link": "shopify:\/\/collections\/all",
-        "enable_slider": false,
-        "style_slider": "slide-dark",
-        "enable_navigation": true,
-        "navigation_icon": "style-2",
-        "enable_pagination": true,
-        "slider_visual": "bullets",
-        "auto_rotate": true,
-        "change_slides_speed": 5,
-        "loop": true,
-        "image_height": "adapt",
-        "image_position": "object_position_middle_center",
-        "enable_quick_add": true,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#e5ddbc",
-        "color_background_gradient": "",
-        "enable_parallax": false,
-        "type": "scroll",
-        "speed": 0.5,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "quotes_v1_tKxRgN": {
-      "type": "quotes-v1",
-      "blocks": {
-        "quote_NpiaAm": {
-          "type": "quote",
-          "settings": {
-            "avatar": "shopify:\/\/shop_images\/Frame_125.jpg",
-            "quote": "<h3>\"The design of this product is sleek & modern, and the color options are absolutely stunning. It’s the perfect blend of style & functionality.\"<\/h3>",
-            "author": "Aiden Anderson",
-            "info": "Senior Marketing Manager"
-          }
-        },
-        "quote_JtrRcf": {
-          "type": "quote",
-          "settings": {
-            "avatar": "shopify:\/\/shop_images\/Frame_127.jpg",
-            "quote": "<h3>\"I love how lightweight and comfortable this product is! It’s perfect for everyday use, and I can use it for hours without any discomfort.\"<\/h3>",
-            "author": "James Carter",
-            "info": "Senior Marketing Manager"
-          }
-        },
-        "quote_UGP8EA": {
-          "type": "quote",
-          "settings": {
-            "avatar": "shopify:\/\/shop_images\/Frame_126.jpg",
-            "quote": "<h3>\"This product exceeded my expectations in terms of durability. It’s built to last and feels sturdy while maintaining a sleek, premium look.\"<\/h3>",
-            "author": "Emily Johnson",
-            "info": "Senior Marketing Manager"
-          }
-        },
-        "quote_mLCUYV": {
-          "type": "quote",
-          "settings": {
-            "avatar": "shopify:\/\/shop_images\/Frame_128.jpg",
-            "quote": "<h3>\"The color of this product is absolutely gorgeous! It adds a vibrant touch to my space and really stands out. Highly recommend it!\"<\/h3>",
-            "author": "Liam Taylor",
-            "info": "Senior Marketing Manager"
-          }
-        }
-      },
-      "block_order": [
-        "quote_NpiaAm",
-        "quote_JtrRcf",
-        "quote_UGP8EA",
-        "quote_mLCUYV"
-      ],
-      "settings": {
-        "layout": "container container-inner",
-        "preheading": "",
-        "heading": "",
-        "subheading": "",
-        "heading_tag": "h2",
-        "heading_size": "h2",
-        "heading_alignment": "text-center",
-        "enable_container": false,
-        "enable_slider": true,
-        "style_slider": "slide-dark",
-        "enable_navigation": true,
-        "navigation_icon": "style-1",
-        "enable_pagination": true,
-        "slider_visual": "",
-        "auto_rotate": true,
-        "change_slides_speed": 5,
-        "loop": true,
-        "columns_desktop": 1,
-        "columns_tablet": 1,
-        "columns_mobile": 1,
-        "gutter": 4,
-        "text_alignment": "text-center",
-        "use_custom_colors": false,
-        "color_text": "#0b0b0b",
-        "color_background": "#f5f5f5",
-        "color_background_gradient": "",
-        "enable_parallax": false,
-        "type": "scroll",
-        "speed": 0.5,
-        "margin_top": 0,
-        "margin_bottom": 90,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "marque_LCXYfB": {
-      "type": "marque",
-      "blocks": {
-        "marque_Xb6ga9": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Sauce Perfection: Elevate Your Dishes to New Heights\"<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_33.png",
-            "link": "shopify:\/\/collections"
-          }
-        },
-        "marque_mcJFPh": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Flavors That Wow: Discover the Best Sauces for Every Meal\"<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_28.png",
-            "link": "shopify:\/\/collections\/herbaceou"
-          }
-        },
-        "marque_RVwjHy": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Unleash Bold Flavors with Our Premium Sauces\"<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_27.png",
-            "link": "shopify:\/\/collections\/miso-gluten-free"
-          }
-        },
-        "marque_gwH3k7": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Sauce Perfection: Elevate Your Dishes to New Heights\"<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_33.png",
-            "link": "shopify:\/\/collections"
-          }
-        },
-        "marque_MEXkUD": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Crafted for Taste: Sauces That Make Every Bite Better\"<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_29.png",
-            "link": "shopify:\/\/collections\/miso-gluten-free"
-          }
-        },
-        "marque_zjdhDB": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>Offer valid until stocks last.<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_31.png",
-            "link": "shopify:\/\/collections\/hot-spicy"
-          }
-        },
-        "marque_dHGj4C": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>Offer valid until stocks last.<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_32.png",
-            "link": "shopify:\/\/collections\/original"
-          }
-        },
-        "marque_jYKbdy": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>\"Flavors That Wow: Discover the Best Sauces for Every Meal\"<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_28.png",
-            "link": "shopify:\/\/collections\/herbaceou"
-          }
-        },
-        "marque_KpRDCm": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>Offer valid until stocks last.<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_32.png",
-            "link": "shopify:\/\/collections\/original"
-          }
-        },
-        "marque_qdQtGc": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>Offer valid until stocks last.<\/p>",
-            "image": "shopify:\/\/shop_images\/Group_30.png",
-            "link": "shopify:\/\/collections\/sweet-honey"
-          }
-        }
-      },
-      "block_order": [
-        "marque_Xb6ga9",
-        "marque_mcJFPh",
-        "marque_RVwjHy",
-        "marque_gwH3k7",
-        "marque_MEXkUD",
-        "marque_zjdhDB",
-        "marque_dHGj4C",
-        "marque_jYKbdy",
-        "marque_KpRDCm",
-        "marque_qdQtGc"
-      ],
-      "settings": {
-        "layout": "container page-width",
-        "time": 51,
-        "reverse": true,
-        "label_font_size": "h1",
-        "height_image": "icon-h-medium",
-        "use_custom_colors": true,
-        "color_text": "#f5f5f5",
-        "color_background": "#ec1d1d",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 90,
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "featured_blog_iCRywa": {
-      "type": "featured-blog",
-      "settings": {
-        "blog": "news",
-        "preheading": "",
-        "heading": "Blog post",
-        "subheading": "",
-        "heading_size": "h1",
-        "heading_tag": "h2",
-        "heading_alignment": "text-center",
-        "image_height": "adapt",
-        "image_position": "object_position_middle_center",
-        "post_limit": 3,
-        "blog_show_date": true,
-        "blog_show_excerpt": true,
-        "blog_show_comment": false,
-        "blog_show_read_more": true,
-        "show_view_all": false,
-        "button_style": "primary",
-        "enable_slider": false,
-        "style_slider": "slide-dark",
-        "enable_navigation": true,
-        "enable_pagination": true,
-        "slider_visual": "bullets",
-        "auto_rotate": true,
-        "change_slides_speed": 5,
-        "loop": true,
-        "columns_desktop": 3,
-        "columns_tablet": 2,
-        "columns_mobile": "1",
-        "gutter": 4,
-        "border_radius": 3,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#ffffff",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 80,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "newsletter_aKwrQr": {
+    "waitlist": {
       "type": "newsletter",
       "blocks": {
-        "heading_MptK3F": {
+        "heading_1": {
           "type": "heading",
           "settings": {
-            "heading": "Get 10% off your first purchase*",
-            "heading_size": "h1"
+            "heading": "The Clean Sauce Shop is coming.",
+            "heading_size": "h2"
           }
         },
-        "paragraph_GXdVp9": {
+        "paragraph_1": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>*The coupon code will be sent via email and can be used for a maximum discount of $100.<\/p>"
+            "text": "<p>Be first to know when you can order online. No spam &mdash; just an email when we launch.</p>"
           }
         },
-        "email_form_tMA74C": {
+        "email_form_1": {
           "type": "email_form",
           "settings": {
-            "button_style": "primary"
+            "button_style": "dark"
           }
         }
       },
       "block_order": [
-        "heading_MptK3F",
-        "paragraph_GXdVp9",
-        "email_form_tMA74C"
+        "heading_1",
+        "paragraph_1",
+        "email_form_1"
       ],
       "settings": {
         "use_custom_colors": true,
-        "color_text": "#ffffff",
-        "color_background": "#000000",
+        "color_text": "#000000",
+        "color_background": "#231F1A",
         "color_background_gradient": "",
-        "enable_parallax": true,
-        "background_image": "shopify:\/\/shop_images\/Frame_125.jpg",
-        "border_radius": 3,
-        "type": "scroll",
-        "speed": 1.1,
+        "enable_parallax": false,
+        "background_image": "",
+        "border_radius": 0,
+        "type": "scroll-opacity",
+        "speed": 0.5,
         "margin_top": 0,
         "margin_bottom": 0,
-        "padding_top": 100,
-        "padding_bottom": 150,
+        "padding_top": 80,
+        "padding_bottom": 80,
         "custom_id": "",
         "custom_class": ""
       }
     }
   },
   "order": [
-    "slideshow_qcVyxa",
-    "rich_text_ciTEVL",
-    "counter_Bxwxad",
-    "banner_grid_aXYRit",
-    "featured_collection_KeyN9p",
-    "banner_parallax_GPyY6j",
-    "image_with_text_fQAnNi",
-    "image_with_text_HaJHHa",
-    "marque_UN9zh3",
-    "featured_collection_t9P7ba",
-    "quotes_v1_tKxRgN",
-    "marque_LCXYfB",
-    "featured_blog_iCRywa",
-    "newsletter_aKwrQr"
+    "hero",
+    "ticker",
+    "trust_strip",
+    "wave_1",
+    "compare",
+    "wave_2",
+    "philosophy_teaser",
+    "wave_3",
+    "range_teaser",
+    "wave_4",
+    "pour_go_teaser",
+    "wave_5",
+    "trade_cta",
+    "wave_6",
+    "waitlist"
   ]
 }
