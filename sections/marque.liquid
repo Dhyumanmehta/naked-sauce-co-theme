@@ -1,19 +1,102 @@
 {% style %}
   .section-extras-spacing-{{ section.id }} {
-  --section-padding-top: {{ section.settings.padding_top }}px;
-  --section-padding-bottom: {{ section.settings.padding_bottom }}px;
-  --section-margin-top: {{ section.settings.margin_top }}px;
-  --section-margin-bottom: {{ section.settings.margin_bottom }}px;
-
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-margin-top: {{ section.settings.margin_top }}px;
+    --section-margin-bottom: {{ section.settings.margin_bottom }}px;
   }
 
   {% if section.settings.use_custom_colors %}
     .section-extras-color-{{ section.id }} {
-    --gradient-background: {% if section.settings.color_background_gradient != blank %}{{ section.settings.color_background_gradient }}{% else %}{{ section.settings.color_background }}{% endif %};
-    --color-background: {{ section.settings.color_background.red }}, {{ section.settings.color_background.green }}, {{ section.settings.color_background.blue }};
-    --color-foreground: {{ section.settings.color_text.red }}, {{ section.settings.color_text.green }}, {{ section.settings.color_text.blue }};
+      --gradient-background: {% if section.settings.color_background_gradient != blank %}{{ section.settings.color_background_gradient }}{% else %}{{ section.settings.color_background }}{% endif %};
+      --color-background: {{ section.settings.color_background }};
+      --color-foreground: {{ section.settings.color_text }};
     }
   {% endif %}
+
+  .marque-wrap.section-extras-color-{{ section.id }} {
+    background: var(--gradient-background, {{ section.settings.color_background }});
+    color: var(--color-foreground, {{ section.settings.color_text }});
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    /* Smooth edge fade mask */
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+
+  .marque-wrap .marque-container {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 0;
+  }
+
+  .marque-wrap .marque-track {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 100%;
+    animation: nsc-ticker-glide {{ section.settings.time }}s linear infinite;
+  }
+
+  .marque-container:hover .marque-track {
+    animation-play-state: paused;
+  }
+
+  {% if section.settings.reverse %}
+    .marque-wrap .marque-track {
+      animation-direction: reverse;
+    }
+  {% endif %}
+
+  @keyframes nsc-ticker-glide {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+  }
+
+  .nsc-ticker-item {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    padding: 0 24px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .nsc-ticker-item p {
+    margin: 0;
+    display: inline;
+    font-weight: 800;
+  }
+
+  /* Star & Spark Separator */
+  .nsc-ticker-divider {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 28px;
+    font-size: 13px;
+    opacity: 0.65;
+    color: currentColor;
+    transform: translateY(-1px);
+  }
+
+  /* Optional Pill Style for Alternating Items */
+  .nsc-ticker-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1.5px solid currentColor;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
 {% endstyle %}
 
 <div
@@ -28,18 +111,16 @@
   {% endif %}
 >
   <div class="clearfix {{ section.settings.layout }} position-relative">
-    <div class="marque-container{% if section.settings.reverse %} marque-reverse{% endif %} py-1">
-      <div
-        class="lh-1 marque font-body mb-0 {{ section.settings.label_font_size }}"
-        style="animation: kf-marque {{ section.settings.time }}s linear infinite;"
-      >
+    <div class="marque-container py-2">
+      
+      <!-- Track Loop 1 -->
+      <div class="marque-track {{ section.settings.label_font_size }}">
         {% for block in section.blocks %}
-          <div class="marque-item d-flex align-items-center position-relative">
+          <div class="nsc-ticker-item" {{ block.shopify_attributes }}>
             {% if block.settings.link %}
-              <a class="full-width-link" href="{{ block.settings.link }}">
-                <span class="d-none">{{ block.settings.content }}</span>
-              </a>
+              <a href="{{ block.settings.link }}" style="color: inherit; text-decoration: none;">
             {% endif %}
+
             {% if block.settings.image %}
               {% render 'image',
                 lazyload: true,
@@ -48,22 +129,27 @@
                 class: section.settings.height_image
               %}
             {% else %}
-              {{ block.settings.content }}
+              <span class="{% cycle 'nsc-ticker-pill', 'nsc-ticker-raw' %}">
+                {{ block.settings.content }}
+              </span>
             {% endif %}
+
+            {% if block.settings.link %}
+              </a>
+            {% endif %}
+            <span class="nsc-ticker-divider">✦</span>
           </div>
         {% endfor %}
       </div>
-      <div
-        class="lh-1 marque font-body mb-0 {{ section.settings.label_font_size }}"
-        style="animation: kf-marque {{ section.settings.time }}s linear infinite;"
-      >
+
+      <!-- Track Loop 2 (Seamless clone for 60fps infinite scroll) -->
+      <div class="marque-track {{ section.settings.label_font_size }}" aria-hidden="true">
         {% for block in section.blocks %}
-          <div class="marque-item d-flex align-items-center position-relative">
+          <div class="nsc-ticker-item">
             {% if block.settings.link %}
-              <a class="full-width-link" href="{{ block.settings.link }}">
-                <span class="d-none">{{ block.settings.content }}</span>
-              </a>
+              <a href="{{ block.settings.link }}" style="color: inherit; text-decoration: none;">
             {% endif %}
+
             {% if block.settings.image %}
               {% render 'image',
                 lazyload: true,
@@ -72,11 +158,19 @@
                 class: section.settings.height_image
               %}
             {% else %}
-              {{ block.settings.content }}
+              <span class="{% cycle 'nsc-ticker-pill', 'nsc-ticker-raw' %}">
+                {{ block.settings.content }}
+              </span>
             {% endif %}
+
+            {% if block.settings.link %}
+              </a>
+            {% endif %}
+            <span class="nsc-ticker-divider">✦</span>
           </div>
         {% endfor %}
       </div>
+
     </div>
   </div>
 </div>
@@ -91,236 +185,168 @@
       "type": "select",
       "id": "layout",
       "options": [
-        {
-          "value": "container page-width",
-          "label": "t:sections.all.layout.options__1.label"
-        },
-        {
-          "value": "container container-inner",
-          "label": "t:sections.all.layout.options__2.label"
-        },
-        {
-          "value": "container-fluid",
-          "label": "t:sections.all.layout.options__3.label"
-        },
-        {
-          "value": "full-width",
-          "label": "t:sections.all.layout.options__4.label"
-        }
+        { "value": "container page-width", "label": "Container" },
+        { "value": "container-fluid", "label": "Fluid Container" },
+        { "value": "full-width", "label": "Full Width" }
       ],
-      "default": "container page-width",
-      "label": "t:sections.all.layout.header"
+      "default": "full-width",
+      "label": "Layout"
     },
     {
       "type": "range",
       "id": "time",
-      "min": 1,
-      "max": 100,
-      "step": 1,
+      "min": 10,
+      "max": 80,
+      "step": 2,
       "unit": "s",
-      "default": 30,
-      "label": "t:sections.all.marque.settings.time"
+      "default": 32,
+      "label": "Glide Speed (Seconds)"
     },
     {
       "type": "checkbox",
       "id": "reverse",
       "default": false,
-      "label": "t:sections.all.marque.settings.reverse"
+      "label": "Reverse Glide Direction"
     },
     {
       "type": "select",
       "id": "label_font_size",
       "options": [
-         {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-           "value": "h2",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-           "value": "h3",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-           "value": "h4",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-           "value": "h5",
-          "label": "t:sections.all.heading_size.options__5.label"
-        },
-        {
-          "value": "h6",
-          "label": "t:sections.all.heading_size.options__6.label"
-        },
-        {
-          "value": "",
-          "label": "t:sections.all.heading_size.options__7.label"
-        }
+        { "value": "h4", "label": "Large (H4)" },
+        { "value": "h5", "label": "Medium (H5)" },
+        { "value": "h6", "label": "Compact (H6)" }
       ],
       "default": "h6",
-      "label": "t:sections.all.heading_size.label_font_size"
+      "label": "Font Scale"
     },
     {
       "type": "select",
       "id": "height_image",
       "options": [
-        {
-          "value": "icon-h-small",
-          "label": "t:sections.all.marque.settings.height_image.options__1.label"
-        },
-        {
-          "value": "icon-h-medium",
-          "label": "t:sections.all.marque.settings.height_image.options__2.label"
-        },
-        {
-          "value": "icon-h-large",
-          "label": "t:sections.all.marque.settings.height_image.options__3.label"
-        }
+        { "value": "icon-h-small", "label": "Small" },
+        { "value": "icon-h-medium", "label": "Medium" },
+        { "value": "icon-h-large", "label": "Large" }
       ],
       "default": "icon-h-medium",
-      "label": "t:sections.all.marque.settings.height_image.label",
-      "info": "t:sections.all.marque.settings.height_image.info"
+      "label": "Image/Icon Scale"
     },
     {
       "type": "header",
-      "content": "t:sections.all.color_options.header"
+      "content": "Color Scheme"
     },
     {
       "type": "checkbox",
       "id": "use_custom_colors",
       "default": true,
-      "label": "t:sections.all.color_options.use_custom_colors"
+      "label": "Apply Custom Palette"
     },
     {
       "type": "color",
       "id": "color_text",
-      "label": "t:sections.all.color_options.color_text",
-      "default": "#ffffff"
+      "label": "Text & Pill Border Color",
+      "default": "#1B1310"
     },
     {
       "type": "color",
       "id": "color_background",
-      "label": "t:sections.all.color_options.color_background",
-      "default": "#751F19"
+      "label": "Banner Background Color",
+      "default": "#DA6634"
     },
     {
       "type": "color_background",
       "id": "color_background_gradient",
-      "label": "t:sections.all.color_options.color_background_gradient"
+      "label": "Gradient Background (Optional)"
     },
     {
       "type": "header",
-      "content": "t:sections.all.margin.section_margin_heading"
+      "content": "Section Spacing"
     },
     {
       "type": "range",
       "id": "margin_top",
       "min": 0,
-      "max": 100,
+      "max": 60,
       "step": 2,
       "unit": "px",
-      "label": "t:sections.all.margin.margin_top",
+      "label": "Margin Top",
       "default": 0
     },
     {
       "type": "range",
       "id": "margin_bottom",
       "min": 0,
-      "max": 100,
+      "max": 60,
       "step": 2,
       "unit": "px",
-      "label": "t:sections.all.margin.margin_bottom",
-      "default": 100
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "label": "Margin Bottom",
+      "default": 0
     },
     {
       "type": "range",
       "id": "padding_top",
-      "min": 0,
-      "max": 100,
+      "min": 8,
+      "max": 40,
       "step": 2,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 20
+      "label": "Padding Top",
+      "default": 14
     },
     {
       "type": "range",
       "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
+      "min": 8,
+      "max": 40,
       "step": 2,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 20
+      "label": "Padding Bottom",
+      "default": 14
     },
-
     {
       "type": "header",
-      "content": "t:sections.all.custom.header"
+      "content": "Developer"
     },
     {
       "type": "text",
       "id": "custom_id",
-      "label": "t:sections.all.custom.custom_id"
+      "label": "Custom ID"
     },
     {
       "type": "text",
       "id": "custom_class",
-      "label": "t:sections.all.custom.custom_class"
+      "label": "Custom Class"
     }
   ],
   "blocks": [
     {
       "type": "marque",
-      "name": "t:sections.all.marque.name",
+      "name": "Marquee Item",
       "settings": [
         {
           "type": "richtext",
           "id": "content",
-          "default": "<p>Offer valid until stocks last.</p>",
-          "label": "t:sections.all.content.name"
+          "default": "<p>Bold flavour. Nothing to hide.</p>",
+          "label": "Ticker Statement"
         },
         {
           "type": "image_picker",
           "id": "image",
-          "label": "t:sections.all.image.label"
+          "label": "Optional Icon/Badge Image"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "t:sections.all.link.label"
+          "label": "Link (Optional)"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "t:sections.marque.presets.name",
+      "name": "Marquee",
       "blocks": [
-        {
-          "type": "marque"
-        },
-        {
-          "type": "marque"
-        },
-        {
-          "type": "marque"
-        },
-        {
-          "type": "marque"
-        },
-        {
-          "type": "marque"
-        },
-        {
-          "type": "marque"
-        }
+        { "type": "marque" },
+        { "type": "marque" },
+        { "type": "marque" }
       ]
     }
   ]
