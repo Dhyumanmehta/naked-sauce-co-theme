@@ -1,9 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "favicon": "shopify://shop_images/favicon.png",
-    "logo": "shopify://shop_images/Group_26.png",
+    "logo": "shopify://shop_images/naked-sauce-logo-white-transparent.png",
     "logo_white": "shopify://shop_images/logo-white.png",
-    "logo_width": 180,
+    "logo_width": 100,
     "currency_code_enabled": false,
     "type_base_font": "helvetica_n4",
     "type_base_size": 16,
@@ -156,8 +165,7 @@
             "settings": {
               "title": "Buffalo",
               "background": "",
-              "background_gradient": "",
-              "background_image": "shopify://shop_images/Frame_119_8bc70c9c-dfd2-4e86-b7fe-db8a8db96741.png"
+              "background_gradient": ""
             }
           },
           "color_item_jxfbQd": {
@@ -165,8 +173,7 @@
             "settings": {
               "title": "Hot",
               "background": "#ec1d1d",
-              "background_gradient": "",
-              "background_image": "shopify://shop_images/Frame_117_918dae09-07bf-4e0e-be3e-20e8e8a6ab10.png"
+              "background_gradient": ""
             }
           },
           "color_item_H8Ad8T": {
@@ -174,8 +181,7 @@
             "settings": {
               "title": "Mustard",
               "background": "#17a659",
-              "background_gradient": "",
-              "background_image": "shopify://shop_images/Frame_122_44e2bf82-f239-46cb-91f0-3fa5a9d714c6.png"
+              "background_gradient": ""
             }
           },
           "color_item_PRWnQi": {
@@ -183,8 +189,7 @@
             "settings": {
               "title": "Tartar",
               "background": "#d6c10d",
-              "background_gradient": "",
-              "background_image": "shopify://shop_images/Frame_118_d6a76b99-cfa0-48b5-a4ba-e3f00f6f9cce.png"
+              "background_gradient": ""
             }
           }
         },
@@ -212,13 +217,6 @@
         }
       }
     },
-    "content_for_index": [],
-    "blocks": {
-      "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
-      }
-    }
+    "content_for_index": []
   }
 }

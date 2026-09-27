@@ -112,10 +112,10 @@
         "enable_account": false,
         "enable_wishlist": false,
         "enable_cart": true,
-        "logo_position": "middle-center",
+        "logo_position": "middle-left",
         "use_custom_colors": true,
-        "color_text": "#090909",
-        "color_background": "#ffffff",
+        "color_text": "#DA6634",
+        "color_background": "#231F1A",
         "color_background_gradient": "",
         "padding_top": 3,
         "padding_bottom": 3

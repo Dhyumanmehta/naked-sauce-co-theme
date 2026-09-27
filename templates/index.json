@@ -16,6 +16,7 @@
           "type": "slide",
           "settings": {
             "animation": "animation-top-to-bottom",
+            "image": "shopify://shop_images/hero-ribs.jpg",
             "video_url": "",
             "preheading": "",
             "heading": "BOLD FLAVOUR.",
@@ -47,7 +48,7 @@
       "settings": {
         "layout": "full-width",
         "style_layout": "clip-3",
-        "image_height": "adapt",
+        "image_height": "h-550",
         "style_slider": "slide-light",
         "enable_navigation": false,
         "navigation_position": "center",
@@ -58,7 +59,7 @@
         "change_slides_speed": 9,
         "loop": true,
         "heading_tag": "h1",
-        "image_height_mobile": "mb-adapt",
+        "image_height_mobile": "h-mb-450",
         "margin_top": 0,
         "margin_bottom": 0,
         "custom_id": "",
