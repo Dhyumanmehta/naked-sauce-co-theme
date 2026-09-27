@@ -138,6 +138,7 @@
             "icon": "",
             "enable_svg": false,
             "svg": "",
+            "image": "shopify://shop_images/Allergen_Free_Logo_-_Circle.png",
             "heading": "Allergen-Free",
             "subheading": "<p>Every recipe is naturally free from any of the 14 major allergens.</p>",
             "button_link": ""
@@ -149,6 +150,7 @@
             "icon": "",
             "enable_svg": false,
             "svg": "",
+            "image": "shopify://shop_images/Ultra_Processed_Free_Logo_-_Circle.png",
             "heading": "UPF-Free",
             "subheading": "<p>No ultra-processed ingredients. Ever.</p>",
             "button_link": ""
@@ -160,6 +162,7 @@
             "icon": "",
             "enable_svg": false,
             "svg": "",
+            "image": "shopify://shop_images/10-product-500ml-tub-smoky-texan.jpg",
             "heading": "Versatile and Flexible Range",
             "subheading": "<p>A variety of traditional and modern sauces cooking sauces and glazes. Available in squeezy bottles, tubs or sachets. Foodservice and retail friendly.</p>",
             "button_link": ""
