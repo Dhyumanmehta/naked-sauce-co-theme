@@ -220,7 +220,7 @@
     "blocks": {
       "2780066564730972057": {
         "type": "shopify://apps/sp-hide-price-access/blocks/mp-access-control-embed/19eec9a7-4327-421e-96f6-ed656b5258cc",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     }
