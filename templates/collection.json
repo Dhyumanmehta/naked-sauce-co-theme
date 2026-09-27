@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -16,14 +25,7 @@
         "image_position": "object_position_middle_center",
         "enable_quick_add": true,
         "enable_collection_list": true,
-        "collection_list": [
-          "newarrivals",
-          "herbaceou",
-          "miso-gluten-free",
-          "hot-spicy",
-          "original",
-          "sweet-honey"
-        ],
+        "collection_list": [],
         "enable_sorting": true,
         "enable_filtering": true,
         "filter_type": "vertical",
