@@ -1,262 +1,371 @@
 {% style %}
-  .flavour-switcher-{{ section.id }} {
-    --fs-accent: {{ section.settings.accent_color | default: '#DA6634' }};
-    --fs-text-main: {{ section.settings.text_color | default: '#FBF3E4' }};
-    --fs-text-muted: {{ section.settings.muted_text_color | default: '#D6CDBF' }};
-    --fs-panel-bg: {{ section.settings.panel_bg | default: '#2A2620' }};
+  .dial-showcase-{{ section.id }} {
+    --ds-accent: {{ section.settings.accent_color | default: '#DA6634' }};
+    --ds-bg: {{ section.settings.bg_color | default: '#231F1A' }};
+    --ds-card-bg: {{ section.settings.panel_bg | default: '#2A2620' }};
+    --ds-text: {{ section.settings.text_color | default: '#FBF3E4' }};
+    --ds-muted: {{ section.settings.muted_text_color | default: '#D6CDBF' }};
+    background-color: var(--ds-bg);
+    color: var(--ds-text);
+    position: relative;
+    overflow: hidden;
+    padding-top: 70px;
+    padding-bottom: 80px;
   }
 
-  .flavour-switcher-{{ section.id }} .cs-section-header * {
-    color: var(--fs-text-main) !important;
+  /* Liquid Ambient Glow Effect */
+  .dial-showcase-{{ section.id }} .ds-ambient-glow {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 650px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--ds-accent) 0%, transparent 68%);
+    opacity: 0.18;
+    filter: blur(80px);
+    pointer-events: none;
+    transition: background 0.6s ease, transform 0.6s ease;
+    z-index: 1;
   }
 
-  /* Range Filter Bar */
-  .flavour-switcher-{{ section.id }} .fs-range-nav {
+  .dial-showcase-{{ section.id }} .ds-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Range Switcher Filter Pills */
+  .dial-showcase-{{ section.id }} .ds-nav {
     display: flex;
+    justify-content: center;
+    gap: 12px;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 34px;
   }
 
-  .flavour-switcher-{{ section.id }} .fs-range-btn {
+  .dial-showcase-{{ section.id }} .ds-filter-pill {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    color: var(--fs-text-muted);
+    color: var(--ds-muted);
     border-radius: 50px;
-    padding: 7px 16px;
-    font-size: 12.5px;
+    padding: 10px 22px;
+    font-size: 13.5px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .flavour-switcher-{{ section.id }} .fs-range-btn:hover {
-    color: var(--fs-text-main);
+  .dial-showcase-{{ section.id }} .ds-filter-pill:hover {
+    color: var(--ds-text);
     border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
   }
 
-  .flavour-switcher-{{ section.id }} .fs-range-btn.active {
-    background: var(--fs-accent);
+  .dial-showcase-{{ section.id }} .ds-filter-pill.active {
+    background: var(--ds-accent);
     color: #ffffff;
-    border-color: var(--fs-accent);
-    box-shadow: 0 4px 12px rgba(218, 102, 52, 0.3);
+    border-color: var(--ds-accent);
+    box-shadow: 0 6px 20px rgba(218, 102, 52, 0.4);
+    transform: translateY(-2px);
   }
 
-  /* Main Shell */
-  .flavour-switcher-{{ section.id }} .fs-shell {
+  /* Interactive Wheel / Swatch Carousel */
+  .dial-showcase-{{ section.id }} .ds-dial-carousel {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 12px 10px 28px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .dial-showcase-{{ section.id }} .ds-dial-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-swatch-node {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 14px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.6;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-swatch-node:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-swatch-node.active {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.08);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-node-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-swatch-node.active .ds-node-circle {
+    box-shadow: 0 0 0 3px #ffffff, 0 8px 24px rgba(0,0,0,0.6);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-node-label {
+    font-size: 11px;
+    font-weight: 700;
+    max-width: 90px;
+    text-align: center;
+    color: var(--ds-text);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Interactive Main Display Stage */
+  .dial-showcase-{{ section.id }} .ds-stage {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 32px;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 40px;
+    background: var(--ds-card-bg);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    padding: 32px;
-    background: var(--fs-panel-bg);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
     align-items: center;
   }
 
-  @media (max-width: 991px) {
-    .flavour-switcher-{{ section.id }} .fs-shell {
+  @media (max-width: 900px) {
+    .dial-showcase-{{ section.id }} .ds-stage {
       grid-template-columns: 1fr;
-      padding: 24px;
-      gap: 28px;
+      padding: 30px 24px;
+      gap: 32px;
+      text-align: center;
     }
   }
 
-  /* Tag/Chip Cloud (No scrollbar, wrapping chips) */
-  .flavour-switcher-{{ section.id }} .fs-chip-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-content: flex-start;
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--fs-text-muted);
-    border-radius: 50px;
-    padding: 8px 14px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    user-select: none;
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-chip:hover {
-    background: rgba(255, 255, 255, 0.09);
-    color: var(--fs-text-main);
-    border-color: rgba(255, 255, 255, 0.22);
-    transform: translateY(-1px);
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-chip.active {
-    background: rgba(255, 255, 255, 0.14);
-    color: #ffffff;
-    font-weight: 700;
-    border-color: var(--fs-accent);
-    box-shadow: 0 0 0 1px var(--fs-accent);
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-chip-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
-  }
-
-  /* Featured Showcase Card (Right) */
-  .flavour-switcher-{{ section.id }} .fs-card {
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 36px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  /* Left Showcase Art & Dynamic Droplet */
+  .dial-showcase-{{ section.id }} .ds-stage-visual {
     position: relative;
-    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 280px;
   }
 
-  .flavour-switcher-{{ section.id }} .fs-card-range-tag {
+  .dial-showcase-{{ section.id }} .ds-orb {
+    width: 220px;
+    height: 220px;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: ds-morph 8s ease-in-out infinite alternate;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5), 0 12px 40px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s ease;
+  }
+
+  @keyframes ds-morph {
+    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; }
+    100% { border-radius: 50% 60% 40% 60% / 40% 30% 70% 50%; }
+  }
+
+  .dial-showcase-{{ section.id }} .ds-orb-badge {
+    background: rgba(35, 31, 26, 0.9);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 50px;
+    padding: 8px 18px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FBF3E4;
+  }
+
+  /* Right Specs & Pairing Content */
+  .dial-showcase-{{ section.id }} .ds-range-tag {
     display: inline-block;
-    align-self: flex-start;
-    padding: 4px 12px;
+    padding: 4px 14px;
     border-radius: 50px;
     background: rgba(218, 102, 52, 0.15);
-    border: 1px solid rgba(218, 102, 52, 0.35);
+    border: 1px solid rgba(218, 102, 52, 0.4);
+    color: var(--ds-accent);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--fs-accent);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
-  .flavour-switcher-{{ section.id }} .fs-card-header {
+  .dial-showcase-{{ section.id }} .ds-title {
+    font-size: clamp(26px, 3.2vw, 38px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    color: #ffffff;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-desc {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ds-muted);
+    margin: 0 0 24px;
+    transition: opacity 0.2s ease;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-formats-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 900px) {
+    .dial-showcase-{{ section.id }} .ds-formats-row {
+      justify-content: center;
+    }
+  }
+
+  .dial-showcase-{{ section.id }} .ds-format-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11.5px;
+    color: #FBF3E4;
+    font-weight: 600;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-actions {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-swatch-big {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 255, 255, 0.25);
-    transition: background 0.25s ease;
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-name {
-    font-size: clamp(22px, 2.6vw, 30px);
-    font-weight: 800;
-    line-height: 1.15;
-    margin: 0;
-    color: var(--fs-text-main) !important;
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-desc {
-    font-size: 15.5px;
-    line-height: 1.6;
-    color: var(--fs-text-muted) !important;
-    margin: 0 0 24px;
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-actions {
-    display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .flavour-switcher-{{ section.id }} .fs-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    background: var(--fs-accent);
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 10px 22px;
-    border-radius: 50px;
-    transition: opacity 0.2s ease, transform 0.15s ease;
+  @media (max-width: 900px) {
+    .dial-showcase-{{ section.id }} .ds-actions {
+      justify-content: center;
+    }
   }
 
-  .flavour-switcher-{{ section.id }} .fs-cta-btn:hover {
-    opacity: 0.9;
+  .dial-showcase-{{ section.id }} .ds-btn {
+    background: var(--ds-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 28px;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+    box-shadow: 0 6px 18px rgba(218, 102, 52, 0.35);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-btn:hover {
+    background: #E87442;
     transform: scale(0.98);
   }
 
-  .flavour-switcher-{{ section.id }} .fs-card-badges {
-    font-size: 11.5px;
-    color: var(--fs-text-muted);
-    opacity: 0.75;
+  .dial-showcase-{{ section.id }} .ds-safe-stamp {
+    font-size: 12px;
+    color: var(--ds-muted);
+    opacity: 0.8;
   }
 {% endstyle %}
 
-<div class="flavour-switcher-{{ section.id }} section-{{ section.id }}-padding container page-width" style="background:{{ section.settings.bg_color | default: 'transparent' }};">
-  <div class="cs-section-header text-start" style="margin-bottom: 24px;">
-    {% render 'heading',
-      heading: section.settings.heading,
-      heading_tag: section.settings.heading_tag,
-      heading_size: section.settings.heading_size,
-      preheading: section.settings.preheading,
-      subheading: section.settings.subheading
-    %}
-  </div>
+<div class="dial-showcase-{{ section.id }}">
+  <div class="ds-ambient-glow" id="dsAmbientGlow"></div>
 
-  <!-- Category Nav -->
-  <div class="fs-range-nav" role="tablist">
-    <button type="button" class="fs-range-btn active" data-filter="all">All 15 Sauces</button>
-    <button type="button" class="fs-range-btn" data-filter="Table Sauces">Table Sauces (6)</button>
-    <button type="button" class="fs-range-btn" data-filter="Cooking Sauces">Cooking Sauces (6)</button>
-    <button type="button" class="fs-range-btn" data-filter="Base Sauces">Kitchen Bases (3)</button>
-  </div>
+  <div class="ds-inner container page-width">
+    <!-- Header -->
+    <div class="cs-section-header text-center mb-4">
+      {% render 'heading',
+        heading: section.settings.heading,
+        heading_tag: section.settings.heading_tag,
+        heading_size: section.settings.heading_size,
+        preheading: section.settings.preheading,
+        subheading: section.settings.subheading
+      %}
+    </div>
 
-  <div class="fs-shell">
-    <!-- Left: Compact Chip/Pill Cloud -->
-    <div class="fs-chip-grid" role="tablist">
+    <!-- Range Filter Tabs -->
+    <div class="ds-nav" role="tablist">
+      <button type="button" class="ds-filter-pill active" data-filter="all">All 15 Sauces</button>
+      <button type="button" class="ds-filter-pill" data-filter="Table Sauces">Table Sauces (6)</button>
+      <button type="button" class="ds-filter-pill" data-filter="Cooking Sauces">Cooking Sauces (6)</button>
+      <button type="button" class="ds-filter-pill" data-filter="Base Sauces">Kitchen Bases (3)</button>
+    </div>
+
+    <!-- Interactive Horizontal Dial Swatches -->
+    <div class="ds-dial-carousel" id="dsCarousel">
       {% for block in section.blocks %}
         <button
           type="button"
-          class="fs-chip{% if forloop.first %} active{% endif %}"
+          class="ds-swatch-node{% if forloop.first %} active{% endif %}"
           data-i="{{ forloop.index0 }}"
           data-range="{{ block.settings.range_category | default: 'Table Sauces' }}"
           {{ block.shopify_attributes }}
         >
-          <span class="fs-chip-dot" style="background-color: {{ block.settings.color }};"></span>
-          <span>{{ block.settings.name }}</span>
+          <div class="ds-node-circle" style="background-color: {{ block.settings.color }};"></div>
+          <span class="ds-node-label">{{ block.settings.name }}</span>
         </button>
       {% endfor %}
     </div>
 
-    <!-- Right: High-Impact Showcase Card -->
-    <div class="fs-card">
-      <span class="fs-card-range-tag">Table Sauces</span>
-      <div class="fs-card-header">
-        <div class="fs-swatch-big"></div>
-        <h3 class="fs-name"></h3>
+    <!-- Active Spotlight Stage Card -->
+    <div class="ds-stage">
+      <!-- Animated Morphing Liquid Droplet -->
+      <div class="ds-stage-visual">
+        <div class="ds-orb" id="dsOrb">
+          <div class="ds-orb-badge">100% UPF-FREE</div>
+        </div>
       </div>
-      <p class="fs-desc"></p>
 
-      <div class="fs-actions">
-        <a href="/pages/contact?subject=Trade%20Enquiry%20-%20The%20Range" class="fs-cta-btn">
-          Request Specs / Quote
-        </a>
-        <span class="fs-card-badges">14 Allergens Free • 100% UPF-Free</span>
+      <!-- Content -->
+      <div class="ds-stage-info">
+        <span class="ds-range-tag" id="dsRangeTag">Table Sauces</span>
+        <h3 class="ds-title" id="dsTitle"></h3>
+        <p class="ds-desc" id="dsDesc"></p>
+
+        <div class="ds-formats-row">
+          <span class="small opacity-75 pe-1" style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em;">Formats:</span>
+          <span class="ds-format-chip">Sachets</span>
+          <span class="ds-format-chip">Table Bottles</span>
+          <span class="ds-format-chip">Tubs / Pails</span>
+          <span class="ds-format-chip">Bag-in-Box</span>
+        </div>
+
+        <div class="ds-actions">
+          <a href="/pages/contact?subject=Sample%20Request%20-%20The%20Range" class="ds-btn" id="dsQuoteBtn">
+            Request Spec & Quote
+          </a>
+          <span class="ds-safe-stamp">
+            ✓ 14 Major Allergens Free & NOVA UPF-Free
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -264,7 +373,7 @@
 
 <script>
   (function () {
-    var root = document.currentScript.previousElementSibling;
+    var root = document.querySelector('.dial-showcase-{{ section.id }}');
     var data = [
       {% for block in section.blocks %}
         {
@@ -276,35 +385,42 @@
       {% endfor %}
     ];
 
-    var chips = root.querySelectorAll('.fs-chip');
-    var filterBtns = root.querySelectorAll('.fs-range-btn');
-    var swatch = root.querySelector('.fs-swatch-big');
-    var nameEl = root.querySelector('.fs-name');
-    var descEl = root.querySelector('.fs-desc');
-    var tagEl = root.querySelector('.fs-card-range-tag');
+    var nodes = root.querySelectorAll('.ds-swatch-node');
+    var filterBtns = root.querySelectorAll('.ds-filter-pill');
+    var orb = root.querySelector('#dsOrb');
+    var glow = root.querySelector('#dsAmbientGlow');
+    var titleEl = root.querySelector('#dsTitle');
+    var descEl = root.querySelector('#dsDesc');
+    var rangeTagEl = root.querySelector('#dsRangeTag');
+    var quoteBtn = root.querySelector('#dsQuoteBtn');
 
-    function selectSauce(i) {
+    function setActiveSauce(i) {
       var item = data[i];
       if (!item) return;
 
-      nameEl.style.opacity = '0';
+      titleEl.style.opacity = '0';
+      titleEl.style.transform = 'translateY(6px)';
       descEl.style.opacity = '0';
 
       setTimeout(function () {
-        nameEl.textContent = item.name;
+        titleEl.textContent = item.name;
         descEl.textContent = item.desc;
-        tagEl.textContent = item.range;
-        swatch.style.background = item.color;
-        nameEl.style.opacity = '1';
+        rangeTagEl.textContent = item.range;
+        orb.style.backgroundColor = item.color;
+        glow.style.background = 'radial-gradient(circle, ' + item.color + ' 0%, transparent 68%)';
+        quoteBtn.href = '/pages/contact?subject=Quote%20Request%20-%20' + encodeURIComponent(item.name);
+
+        titleEl.style.opacity = '1';
+        titleEl.style.transform = 'translateY(0)';
         descEl.style.opacity = '1';
-      }, 90);
+      }, 140);
     }
 
-    chips.forEach(function (chip) {
-      chip.addEventListener('click', function () {
-        chips.forEach(function (c) { c.classList.remove('active'); });
-        chip.classList.add('active');
-        selectSauce(parseInt(chip.dataset.i, 10));
+    nodes.forEach(function (node) {
+      node.addEventListener('click', function () {
+        nodes.forEach(function (n) { n.classList.remove('active'); });
+        node.classList.add('active');
+        setActiveSauce(parseInt(node.dataset.i, 10));
       });
     });
 
@@ -314,41 +430,41 @@
         btn.classList.add('active');
 
         var filter = btn.dataset.filter;
-        var firstVisibleIndex = null;
+        var firstMatch = null;
 
-        chips.forEach(function (chip) {
-          var itemRange = chip.dataset.range;
-          if (filter === 'all' || itemRange === filter) {
-            chip.style.display = 'inline-flex';
-            if (firstVisibleIndex === null) {
-              firstVisibleIndex = parseInt(chip.dataset.i, 10);
+        nodes.forEach(function (node) {
+          var range = node.dataset.range;
+          if (filter === 'all' || range === filter) {
+            node.style.display = 'flex';
+            if (firstMatch === null) {
+              firstMatch = parseInt(node.dataset.i, 10);
             }
           } else {
-            chip.style.display = 'none';
+            node.style.display = 'none';
           }
         });
 
-        if (firstVisibleIndex !== null) {
-          chips.forEach(function (c) { c.classList.remove('active'); });
-          var activeChip = root.querySelector('.fs-chip[data-i="' + firstVisibleIndex + '"]');
-          if (activeChip) activeChip.classList.add('active');
-          selectSauce(firstVisibleIndex);
+        if (firstMatch !== null) {
+          nodes.forEach(function (n) { n.classList.remove('active'); });
+          var activeNode = root.querySelector('.ds-swatch-node[data-i="' + firstMatch + '"]');
+          if (activeNode) activeNode.classList.add('active');
+          setActiveSauce(firstMatch);
         }
       });
     });
 
-    if (data.length) selectSauce(0);
+    if (data.length) setActiveSauce(0);
   })();
 </script>
 
 {% schema %}
 {
-  "name": "Flavour switcher",
+  "name": "Flavour Dial Showcase",
   "tag": "section",
   "settings": [
-    { "type": "text", "id": "preheading", "label": "Preheading", "default": "The Range" },
+    { "type": "text", "id": "preheading", "label": "Preheading", "default": "Explore The Range" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "15 sauces. Three ranges. One standard." },
-    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Naturally allergen-free. Formulated without ultra-processed ingredients.</p>" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Naturally allergen-free. Made without ultra-processed ingredients. Click any sauce to reveal flavour pairings and menu applications.</p>" },
     { "type": "select", "id": "heading_tag", "options": [
         { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
       ], "default": "h2", "label": "Heading tag" },
@@ -356,10 +472,10 @@
         { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
       ], "default": "h2", "label": "Heading size" },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#DA6634" },
-    { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#2A2620" },
-    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#231F1A" },
-    { "type": "color", "id": "text_color", "label": "Heading & active text color", "default": "#FBF3E4" },
-    { "type": "color", "id": "muted_text_color", "label": "Description & tag text color", "default": "#D6CDBF" }
+    { "type": "color", "id": "panel_bg", "label": "Stage Card Background", "default": "#2A2620" },
+    { "type": "color", "id": "bg_color", "label": "Section Background", "default": "#231F1A" },
+    { "type": "color", "id": "text_color", "label": "Heading Text Color", "default": "#FBF3E4" },
+    { "type": "color", "id": "muted_text_color", "label": "Description Text Color", "default": "#D6CDBF" }
   ],
   "blocks": [
     {
