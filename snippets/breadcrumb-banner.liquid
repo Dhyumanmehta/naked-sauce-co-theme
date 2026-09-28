@@ -1,62 +1,130 @@
 {%- style -%}
-  .breadcrumb-banner-wrap,
-  .breadcrumb-banner,
-  .section-breadcrumb-banner {
-    background-color: #DA6634 !important;
-    background-image: none !important;
-    background: #DA6634 !important;
-    --color-background: 218, 102, 52 !important;
-    --gradient-background: #DA6634 !important;
-    padding-top: 36px !important;
-    padding-bottom: 36px !important;
-    margin: 0 !important;
+  .breadcrumb-banner-wrap {
+    background-color: #231F1A !important;
     position: relative;
-    z-index: 2;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .breadcrumb-banner {
+    position: relative;
+    background: radial-gradient(120% 120% at 50% 10%, #E87442 0%, #DA6634 55%, #B84D20 100%) !important;
+    padding: 85px 20px 80px !important;
+    text-align: center;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .breadcrumb-banner {
+      padding: 60px 16px 55px !important;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+  }
+
+  /* Ambient Flare Glow Behind Text */
+  .breadcrumb-banner::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.22) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
   }
 
   .breadcrumb-banner .container,
-  .breadcrumb-banner .page-width,
-  .breadcrumb-banner-wrap .container {
+  .breadcrumb-banner .page-width {
+    position: relative;
+    z-index: 2;
     background: transparent !important;
   }
 
+  /* Category Eyebrow Pill */
+  .nsc-header-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(35, 31, 26, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FBF3E4;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    backdrop-filter: blur(8px);
+  }
+
+  /* High-Impact Main Title */
   .breadcrumb-banner .title,
   .breadcrumb-banner h1,
-  .breadcrumb-banner h2,
-  .breadcrumb-banner .h1,
-  .breadcrumb-banner .h2 {
+  .breadcrumb-banner h2 {
     color: #FFFFFF !important;
-    font-size: clamp(32px, 4vw, 44px) !important;
+    font-size: clamp(48px, 6.8vw, 76px) !important;
     font-weight: 900 !important;
-    text-transform: capitalize !important;
-    margin-bottom: 8px !important;
-    line-height: 1.1 !important;
+    text-transform: uppercase !important;
+    letter-spacing: -0.02em !important;
+    line-height: 0.98 !important;
+    margin: 0 0 16px !important;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   }
 
-  .breadcrumb-banner .breadcrumb,
-  .breadcrumb-banner .breadcrumb *,
-  .breadcrumb-banner a,
-  .breadcrumb-banner span {
-    color: rgba(255, 255, 255, 0.85) !important;
-    font-size: 13px !important;
+  /* Sleek Breadcrumb Pill */
+  .breadcrumb-banner .breadcrumb-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.16);
+    padding: 6px 18px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .breadcrumb-banner .breadcrumb-nav,
+  .breadcrumb-banner .breadcrumb-nav *,
+  .breadcrumb-banner .breadcrumb-nav a,
+  .breadcrumb-banner .breadcrumb-nav span {
+    color: #FBF3E4 !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
     text-decoration: none !important;
+    letter-spacing: 0.04em;
   }
 
-  .breadcrumb-banner a:hover {
-    color: #FFFFFF !important;
+  .breadcrumb-banner .breadcrumb-nav a {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .breadcrumb-banner .breadcrumb-nav a:hover {
+    opacity: 1;
     text-decoration: underline !important;
   }
 
-  .breadcrumb-banner svg,
-  .breadcrumb-banner svg path {
-    fill: rgba(255, 255, 255, 0.85) !important;
+  .breadcrumb-banner .breadcrumb-nav .separator {
+    opacity: 0.45;
+    font-size: 10px;
   }
 {%- endstyle -%}
 
 <div class="breadcrumb-banner-wrap">
-  <div class="breadcrumb-banner text-center">
+  <div class="breadcrumb-banner">
     <div class="container page-width">
-      <h1 class="title mb-2">
+
+      <span class="nsc-header-eyebrow">
+        The Naked Sauce Co.
+      </span>
+
+      <h1 class="title">
         {%- if template contains 'page' -%}
           {{ page.title }}
         {%- elsif template contains 'product' -%}
@@ -76,11 +144,11 @@
         {%- endif -%}
       </h1>
 
-      <nav class="breadcrumb justify-content-center d-flex align-items-center gap-2" role="navigation" aria-label="breadcrumbs">
+      <nav class="breadcrumb-nav" role="navigation" aria-label="breadcrumbs">
         <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home' | t }}">
-          {{ 'general.breadcrumbs.home' | t }}
+          Home
         </a>
-        <span class="breadcrumb-separator" aria-hidden="true">&rsaquo;</span>
+        <span class="separator" aria-hidden="true">/</span>
         <span>
           {%- if template contains 'page' -%}
             {{ page.title }}
@@ -93,6 +161,7 @@
           {%- endif -%}
         </span>
       </nav>
+
     </div>
   </div>
 </div>
