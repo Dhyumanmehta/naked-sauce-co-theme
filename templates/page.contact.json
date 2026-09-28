@@ -12,7 +12,7 @@
     "main": {
       "type": "main-page",
       "settings": {
-        "color_text": "#0b0b0b",
+        "color_text": "#231F1A",
         "layout": "container page-width"
       }
     },
