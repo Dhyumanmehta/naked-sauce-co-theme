@@ -26,8 +26,8 @@
         "text_alignment": "text-center",
         "text_alignment_mobile": "text-center",
         "use_custom_colors": true,
-        "color_text": "#FBF3E4",
-        "color_background": "#231F1A",
+        "color_text": "#fbf3e4",
+        "color_background": "#231f1a",
         "color_background_gradient": "",
         "enable_parallax": false,
         "type": "scroll",
@@ -43,8 +43,8 @@
     "wave_1": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#231F1A",
-        "bg_color_below": "#FBF3E4",
+        "bg_color_above": "#231f1a",
+        "bg_color_below": "#fbf3e4",
         "flip": false
       }
     },
@@ -54,7 +54,7 @@
         "text_block": {
           "type": "text",
           "settings": {
-            "text": "<h3>01. The Allergen Reality</h3><p>Food allergies are not a lifestyle preference. In the UK alone, over <strong>2.4 million adults</strong> live with confirmed food allergies, and hospital admissions for severe anaphylaxis have surged by <strong>154%</strong> over the past two decades.</p><p>Yet in both retail aisles and commercial hospitality kitchens, allergen-safe alternatives are routinely treated as compromised compromises: packed with unpronounceable chemical binders, devoid of authentic flavour, or confined to a tiny 'free-from' quarantine shelf.</p><p>We formulate every single recipe <strong>completely free from all 14 major regulated allergens</strong> from day one. No peanuts, tree nuts, gluten, dairy, eggs, soy, sesame, mustard, celery, lupin, fish, crustaceans, molluscs, or sulphites. One sauce, universally safe.</p>",
+            "text": "<h3>The Allergen Reality</h3><p>Food allergies are not a lifestyle preference. In the UK alone, research shows that over <strong>2.4 million adults</strong> live with confirmed food allergies, and hospital admissions for severe anaphylaxis have surged by <strong>154%</strong> over the past two decades.</p><p>Yet in both retail aisles and commercial hospitality kitchens, allergen-safe alternatives are routinely treated as compromised compromises: packed with unpronounceable chemical binders, devoid of authentic flavour, or confined to a tiny 'free-from' quarantine shelf.</p><p>We formulate every single recipe <strong>completely free from all 14 major regulated allergens</strong> from day one. No peanuts, tree nuts, gluten, dairy, eggs, soy, sesame, mustard, celery, lupin, fish, crustaceans, molluscs, or sulphites. One sauce, universally safe.</p>",
             "margin_top": 2
           }
         }
@@ -74,10 +74,10 @@
         "text_alignment": "text-start",
         "enable_controls": false,
         "use_custom_colors": true,
-        "color_text": "#231F1A",
-        "color_background": "#FBF3E4",
+        "color_text": "#231f1a",
+        "color_background": "#fbf3e4",
         "color_background_gradient": "",
-        "color_background_block": "#FFFFFF",
+        "color_background_block": "#ffffff",
         "color_background_gradient_block": "",
         "margin_top": 0,
         "margin_bottom": 0,
@@ -91,8 +91,8 @@
     "wave_2": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#FBF3E4",
-        "bg_color_below": "#FCEFDD",
+        "bg_color_above": "#fbf3e4",
+        "bg_color_below": "#fcefdd",
         "flip": false
       }
     },
@@ -102,7 +102,7 @@
         "text_block": {
           "type": "text",
           "settings": {
-            "text": "<h3>02. The Ultra-Processed Trap</h3><p>When mass-market manufacturers remove gluten, eggs, or dairy, they typically substitute them with ultra-processed fillers: modified starches, maltodextrins, xanthan gum, synthetic emulsifiers, and artificial preservatives.</p><p>Today, over <strong>54% of daily calorie intake in the UK</strong> comes from ultra-processed food (UPF). The global 2024 British Medical Journal review of almost 10 million participants linked high UPF consumption directly to 32 damaging health outcomes.</p><p>We adhere rigorously to the <strong>NOVA Category 1–3 framework</strong>. Our sauces contain real vine tomatoes, whole cider vinegar, raw honey, fermented chillies, garlic, ginger, and freshly ground spices. No industrial texturisers. No chemical stabilizers. Real food, period.</p>",
+            "text": "<h3>The Ultra-Processed Trap</h3><p>When mass-market manufacturers remove gluten, eggs, or dairy, they typically substitute them with ultra-processed fillers: modified starches, maltodextrins, xanthan gum, synthetic emulsifiers, and artificial preservatives.</p><p>Today, over <strong>54% of daily calorie intake in the UK</strong> comes from ultra-processed food (UPF). The global 2024 British Medical Journal review of almost 10 million participants linked high UPF consumption directly to 32 damaging health outcomes.</p><p>We adhere rigorously to the <strong>NOVA Category 1–3 framework</strong>. Our sauces contain real vine tomatoes, whole cider vinegar, raw honey, fermented chillies, garlic, ginger, and freshly ground spices. No industrial texturisers. No chemical stabilizers. Real food, period.</p>",
             "margin_top": 2
           }
         }
@@ -122,10 +122,10 @@
         "text_alignment": "text-start",
         "enable_controls": false,
         "use_custom_colors": true,
-        "color_text": "#231F1A",
-        "color_background": "#FCEFDD",
+        "color_text": "#231f1a",
+        "color_background": "#fcefdd",
         "color_background_gradient": "",
-        "color_background_block": "#FFFFFF",
+        "color_background_block": "#ffffff",
         "color_background_gradient_block": "",
         "margin_top": 0,
         "margin_bottom": 0,
@@ -139,8 +139,8 @@
     "wave_3": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#FCEFDD",
-        "bg_color_below": "#2A2620",
+        "bg_color_above": "#fcefdd",
+        "bg_color_below": "#2a2620",
         "flip": false
       }
     },
@@ -149,15 +149,36 @@
       "blocks": {
         "col_1": {
           "type": "column",
-          "settings": {}
+          "settings": {
+            "preheading": "",
+            "heading": "Image with text",
+            "subheading": "Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.",
+            "button_label": "Buy it now",
+            "button_link": "shopify://collections/all",
+            "button_style": "primary"
+          }
         },
         "col_2": {
           "type": "column",
-          "settings": {}
+          "settings": {
+            "preheading": "",
+            "heading": "Image with text",
+            "subheading": "Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.",
+            "button_label": "Buy it now",
+            "button_link": "shopify://collections/all",
+            "button_style": "primary"
+          }
         },
         "col_3": {
           "type": "column",
-          "settings": {}
+          "settings": {
+            "preheading": "",
+            "heading": "Image with text",
+            "subheading": "Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.",
+            "button_label": "Buy it now",
+            "button_link": "shopify://collections/all",
+            "button_style": "primary"
+          }
         }
       },
       "block_order": [
@@ -166,14 +187,26 @@
         "col_3"
       ],
       "settings": {
+        "layout": "container page-width",
+        "style": "style-1",
+        "preheading": "",
         "heading": "Why Single-Recipe Inclusivity Works",
+        "subheading": "",
         "heading_tag": "h2",
         "heading_size": "h2",
         "heading_alignment": "text-center",
+        "image_width": "100",
+        "image_height": "adapt",
+        "text_alignment": "text-start",
+        "heading_size_card": "h5",
+        "heading_tag_card": "h2",
+        "border_radius": 0,
         "columns_desktop": 3,
+        "columns_tablet": 2,
+        "gutter": 4,
         "use_custom_colors": true,
-        "color_text": "#FBF3E4",
-        "color_background": "#2A2620",
+        "color_text": "#fbf3e4",
+        "color_background": "#2a2620",
         "color_background_gradient": "",
         "margin_top": 0,
         "margin_bottom": 0,
@@ -186,8 +219,8 @@
     "wave_4": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#2A2620",
-        "bg_color_below": "#5F6B3E",
+        "bg_color_above": "#2a2620",
+        "bg_color_below": "#5f6b3e",
         "flip": false
       }
     },
@@ -201,15 +234,15 @@
         "heading": "<p>Ready to upgrade your pantry or kitchen pass?</p>",
         "heading_tag": "h2",
         "heading_size": "h2",
-        "subheading": "<p>Explore our 15 chef-developed sauces across table condiments, cooking glazes, and foundation bases.</p>",
-        "button_label": "Explore The 15 Sauces",
-        "button_link": "shopify://pages/the-range",
+        "subheading": "<p>Explore our 14 chef-developed sauces across table condiments, cooking glazes, and foundation bases.</p>",
+        "button_label": "Explore The Sauces",
+        "button_link": "shopify://collections",
         "button_style": "primary",
         "text_alignment": "text-center",
         "text_alignment_mobile": "text-center",
         "use_custom_colors": true,
-        "color_text": "#FFFFFF",
-        "color_background": "#5F6B3E",
+        "color_text": "#ffffff",
+        "color_background": "#5f6b3e",
         "color_background_gradient": "",
         "enable_parallax": false,
         "type": "scroll",
