@@ -10,138 +10,128 @@
     color: var(--fs-text-main) !important;
   }
 
-  /* Range Category Filter Pills */
-  .flavour-switcher-{{ section.id }} .fs-filter-nav {
+  /* Range Filter Bar */
+  .flavour-switcher-{{ section.id }} .fs-range-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 24px;
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
-  .flavour-switcher-{{ section.id }} .fs-filter-btn {
+  .flavour-switcher-{{ section.id }} .fs-range-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: var(--fs-text-muted);
     border-radius: 50px;
-    padding: 8px 18px;
-    font-size: 13px;
-    font-weight: 600;
+    padding: 7px 16px;
+    font-size: 12.5px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
-  .flavour-switcher-{{ section.id }} .fs-filter-btn:hover {
+  .flavour-switcher-{{ section.id }} .fs-range-btn:hover {
     color: var(--fs-text-main);
-    border-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 
-  .flavour-switcher-{{ section.id }} .fs-filter-btn.active {
+  .flavour-switcher-{{ section.id }} .fs-range-btn.active {
     background: var(--fs-accent);
     color: #ffffff;
     border-color: var(--fs-accent);
+    box-shadow: 0 4px 12px rgba(218, 102, 52, 0.3);
   }
 
-  /* Main Interactive Grid */
+  /* Main Shell */
   .flavour-switcher-{{ section.id }} .fs-shell {
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 32px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 16px;
-    overflow: hidden;
+    padding: 32px;
     background: var(--fs-panel-bg);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    align-items: center;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 991px) {
     .flavour-switcher-{{ section.id }} .fs-shell {
       grid-template-columns: 1fr;
+      padding: 24px;
+      gap: 28px;
     }
   }
 
-  /* Left Menu Tabs */
-  .flavour-switcher-{{ section.id }} .fs-tabs {
+  /* Tag/Chip Cloud (No scrollbar, wrapping chips) */
+  .flavour-switcher-{{ section.id }} .fs-chip-grid {
     display: flex;
-    flex-direction: column;
-    max-height: 480px;
-    overflow-y: auto;
-    background: rgba(0, 0, 0, 0.2);
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
   }
 
-  .flavour-switcher-{{ section.id }} .fs-tab {
-    display: flex;
+  .flavour-switcher-{{ section.id }} .fs-chip {
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    text-align: left;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    border-left: 3px solid transparent;
-    cursor: pointer;
-    padding: 14px 20px;
-    font-size: 14px;
-    color: var(--fs-text-muted);
-    transition: all 0.15s ease;
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-tab:hover {
+    gap: 8px;
     background: rgba(255, 255, 255, 0.04);
-    color: var(--fs-text-main);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--fs-text-muted);
+    border-radius: 50px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
   }
 
-  .flavour-switcher-{{ section.id }} .fs-tab.active {
-    background: rgba(255, 255, 255, 0.08);
+  .flavour-switcher-{{ section.id }} .fs-chip:hover {
+    background: rgba(255, 255, 255, 0.09);
     color: var(--fs-text-main);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+  }
+
+  .flavour-switcher-{{ section.id }} .fs-chip.active {
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
     font-weight: 700;
-    border-left-color: var(--fs-accent);
+    border-color: var(--fs-accent);
+    box-shadow: 0 0 0 1px var(--fs-accent);
   }
 
-  .flavour-switcher-{{ section.id }} .fs-tab-dot {
-    width: 12px;
-    height: 12px;
+  .flavour-switcher-{{ section.id }} .fs-chip-dot {
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     flex-shrink: 0;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
   }
 
-  .flavour-switcher-{{ section.id }} .fs-tab-text {
-    flex-grow: 1;
-    line-height: 1.3;
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-tab-range {
-    font-size: 10.5px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    opacity: 0.55;
-    display: block;
-    margin-top: 2px;
-  }
-
-  /* Right Showcase Panel */
-  .flavour-switcher-{{ section.id }} .fs-panel {
-    padding: 48px 40px;
+  /* Featured Showcase Card (Right) */
+  .flavour-switcher-{{ section.id }} .fs-card {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 36px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: var(--fs-panel-bg);
+    position: relative;
+    min-height: 300px;
   }
 
-  @media (max-width: 600px) {
-    .flavour-switcher-{{ section.id }} .fs-panel {
-      padding: 32px 24px;
-    }
-  }
-
-  .flavour-switcher-{{ section.id }} .fs-panel-range-badge {
+  .flavour-switcher-{{ section.id }} .fs-card-range-tag {
     display: inline-block;
     align-self: flex-start;
     padding: 4px 12px;
     border-radius: 50px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(218, 102, 52, 0.15);
+    border: 1px solid rgba(218, 102, 52, 0.35);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -150,16 +140,16 @@
     margin-bottom: 16px;
   }
 
-  .flavour-switcher-{{ section.id }} .fs-header-row {
+  .flavour-switcher-{{ section.id }} .fs-card-header {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 16px;
     margin-bottom: 16px;
   }
 
-  .flavour-switcher-{{ section.id }} .fs-swatch {
-    width: 48px;
-    height: 48px;
+  .flavour-switcher-{{ section.id }} .fs-swatch-big {
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     flex-shrink: 0;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 255, 255, 0.25);
@@ -167,7 +157,7 @@
   }
 
   .flavour-switcher-{{ section.id }} .fs-name {
-    font-size: clamp(24px, 3.2vw, 36px);
+    font-size: clamp(22px, 2.6vw, 30px);
     font-weight: 800;
     line-height: 1.15;
     margin: 0;
@@ -175,11 +165,10 @@
   }
 
   .flavour-switcher-{{ section.id }} .fs-desc {
-    font-size: 16.5px;
+    font-size: 15.5px;
     line-height: 1.6;
     color: var(--fs-text-muted) !important;
-    max-width: 55ch;
-    margin: 0 0 28px;
+    margin: 0 0 24px;
   }
 
   .flavour-switcher-{{ section.id }} .fs-actions {
@@ -197,7 +186,7 @@
     background: var(--fs-accent);
     color: #ffffff;
     text-decoration: none;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -211,15 +200,15 @@
     transform: scale(0.98);
   }
 
-  .flavour-switcher-{{ section.id }} .fs-badge-tag {
-    font-size: 12px;
+  .flavour-switcher-{{ section.id }} .fs-card-badges {
+    font-size: 11.5px;
     color: var(--fs-text-muted);
     opacity: 0.75;
   }
 {% endstyle %}
 
 <div class="flavour-switcher-{{ section.id }} section-{{ section.id }}-padding container page-width" style="background:{{ section.settings.bg_color | default: 'transparent' }};">
-  <div class="cs-section-header text-start" style="margin-bottom: 28px;">
+  <div class="cs-section-header text-start" style="margin-bottom: 24px;">
     {% render 'heading',
       heading: section.settings.heading,
       heading_tag: section.settings.heading_tag,
@@ -229,39 +218,36 @@
     %}
   </div>
 
-  <!-- Category Filter Pills -->
-  <div class="fs-filter-nav" role="tablist">
-    <button type="button" class="fs-filter-btn active" data-filter="all">All 15 Sauces</button>
-    <button type="button" class="fs-filter-btn" data-filter="Table Sauces">Table Sauces</button>
-    <button type="button" class="fs-filter-btn" data-filter="Cooking Sauces">Cooking Sauces</button>
-    <button type="button" class="fs-filter-btn" data-filter="Base Sauces">Kitchen Bases</button>
+  <!-- Category Nav -->
+  <div class="fs-range-nav" role="tablist">
+    <button type="button" class="fs-range-btn active" data-filter="all">All 15 Sauces</button>
+    <button type="button" class="fs-range-btn" data-filter="Table Sauces">Table Sauces (6)</button>
+    <button type="button" class="fs-range-btn" data-filter="Cooking Sauces">Cooking Sauces (6)</button>
+    <button type="button" class="fs-range-btn" data-filter="Base Sauces">Kitchen Bases (3)</button>
   </div>
 
   <div class="fs-shell">
-    <!-- Left SKU Selection List -->
-    <div class="fs-tabs" role="tablist">
+    <!-- Left: Compact Chip/Pill Cloud -->
+    <div class="fs-chip-grid" role="tablist">
       {% for block in section.blocks %}
         <button
           type="button"
-          class="fs-tab{% if forloop.first %} active{% endif %}"
+          class="fs-chip{% if forloop.first %} active{% endif %}"
           data-i="{{ forloop.index0 }}"
           data-range="{{ block.settings.range_category | default: 'Table Sauces' }}"
           {{ block.shopify_attributes }}
         >
-          <span class="fs-tab-dot" style="background-color: {{ block.settings.color }};"></span>
-          <span class="fs-tab-text">
-            {{ block.settings.name }}
-            <span class="fs-tab-range">{{ block.settings.range_category | default: 'Sauce' }}</span>
-          </span>
+          <span class="fs-chip-dot" style="background-color: {{ block.settings.color }};"></span>
+          <span>{{ block.settings.name }}</span>
         </button>
       {% endfor %}
     </div>
 
-    <!-- Right Featured Panel -->
-    <div class="fs-panel">
-      <span class="fs-panel-range-badge">Table Sauces</span>
-      <div class="fs-header-row">
-        <div class="fs-swatch"></div>
+    <!-- Right: High-Impact Showcase Card -->
+    <div class="fs-card">
+      <span class="fs-card-range-tag">Table Sauces</span>
+      <div class="fs-card-header">
+        <div class="fs-swatch-big"></div>
         <h3 class="fs-name"></h3>
       </div>
       <p class="fs-desc"></p>
@@ -270,7 +256,7 @@
         <a href="/pages/contact?subject=Trade%20Enquiry%20-%20The%20Range" class="fs-cta-btn">
           Request Specs / Quote
         </a>
-        <span class="fs-badge-tag">Free from 14 major allergens • UPF-free</span>
+        <span class="fs-card-badges">14 Allergens Free • 100% UPF-Free</span>
       </div>
     </div>
   </div>
@@ -290,14 +276,14 @@
       {% endfor %}
     ];
 
-    var tabs = root.querySelectorAll('.fs-tab');
-    var filterBtns = root.querySelectorAll('.fs-filter-btn');
-    var swatch = root.querySelector('.fs-swatch');
+    var chips = root.querySelectorAll('.fs-chip');
+    var filterBtns = root.querySelectorAll('.fs-range-btn');
+    var swatch = root.querySelector('.fs-swatch-big');
     var nameEl = root.querySelector('.fs-name');
     var descEl = root.querySelector('.fs-desc');
-    var badgeEl = root.querySelector('.fs-panel-range-badge');
+    var tagEl = root.querySelector('.fs-card-range-tag');
 
-    function setFlavour(i) {
+    function selectSauce(i) {
       var item = data[i];
       if (!item) return;
 
@@ -307,22 +293,21 @@
       setTimeout(function () {
         nameEl.textContent = item.name;
         descEl.textContent = item.desc;
-        badgeEl.textContent = item.range;
+        tagEl.textContent = item.range;
         swatch.style.background = item.color;
         nameEl.style.opacity = '1';
         descEl.style.opacity = '1';
-      }, 100);
+      }, 90);
     }
 
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        tabs.forEach(function (t) { t.classList.remove('active'); });
-        tab.classList.add('active');
-        setFlavour(parseInt(tab.dataset.i, 10));
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        chips.forEach(function (c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+        selectSauce(parseInt(chip.dataset.i, 10));
       });
     });
 
-    // Category Filtering Functionality
     filterBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         filterBtns.forEach(function (b) { b.classList.remove('active'); });
@@ -331,28 +316,28 @@
         var filter = btn.dataset.filter;
         var firstVisibleIndex = null;
 
-        tabs.forEach(function (tab) {
-          var itemRange = tab.dataset.range;
+        chips.forEach(function (chip) {
+          var itemRange = chip.dataset.range;
           if (filter === 'all' || itemRange === filter) {
-            tab.style.display = 'flex';
+            chip.style.display = 'inline-flex';
             if (firstVisibleIndex === null) {
-              firstVisibleIndex = parseInt(tab.dataset.i, 10);
+              firstVisibleIndex = parseInt(chip.dataset.i, 10);
             }
           } else {
-            tab.style.display = 'none';
+            chip.style.display = 'none';
           }
         });
 
         if (firstVisibleIndex !== null) {
-          tabs.forEach(function (t) { t.classList.remove('active'); });
-          var activeTab = root.querySelector('.fs-tab[data-i="' + firstVisibleIndex + '"]');
-          if (activeTab) activeTab.classList.add('active');
-          setFlavour(firstVisibleIndex);
+          chips.forEach(function (c) { c.classList.remove('active'); });
+          var activeChip = root.querySelector('.fs-chip[data-i="' + firstVisibleIndex + '"]');
+          if (activeChip) activeChip.classList.add('active');
+          selectSauce(firstVisibleIndex);
         }
       });
     });
 
-    if (data.length) setFlavour(0);
+    if (data.length) selectSauce(0);
   })();
 </script>
 
@@ -362,8 +347,8 @@
   "tag": "section",
   "settings": [
     { "type": "text", "id": "preheading", "label": "Preheading", "default": "The Range" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "15 sauces. Three ranges. One allergen-free standard." },
-    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Select any range or sauce to explore flavour profiles, allergen credentials, and foodservice serving suggestions.</p>" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "15 sauces. Three ranges. One standard." },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Naturally allergen-free. Formulated without ultra-processed ingredients.</p>" },
     { "type": "select", "id": "heading_tag", "options": [
         { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
       ], "default": "h2", "label": "Heading tag" },
@@ -374,7 +359,7 @@
     { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#2A2620" },
     { "type": "color", "id": "bg_color", "label": "Section background", "default": "#231F1A" },
     { "type": "color", "id": "text_color", "label": "Heading & active text color", "default": "#FBF3E4" },
-    { "type": "color", "id": "muted_text_color", "label": "Description & tab text color", "default": "#D6CDBF" }
+    { "type": "color", "id": "muted_text_color", "label": "Description & tag text color", "default": "#D6CDBF" }
   ],
   "blocks": [
     {
