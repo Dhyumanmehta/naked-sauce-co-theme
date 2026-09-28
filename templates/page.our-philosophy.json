@@ -1,31 +1,222 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero_banner": {
+      "type": "rich-text",
       "settings": {
-        "color_text": "#0b0b0b",
-        "layout": "container page-width"
+        "layout": "full-width",
+        "full_width": true,
+        "style": "style-1",
+        "preheading": "OUR PHILOSOPHY",
+        "heading": "<p>One Recipe. Every Table. No Disclaimers.</p>",
+        "heading_tag": "h1",
+        "heading_size": "h1",
+        "subheading": "<p>We founded The Naked Sauce Co. on a non-negotiable belief: dinner shouldn't come with an apology, an asterisk, or a separate prep station.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "text_alignment": "text-center",
+        "text_alignment_mobile": "text-center",
+        "use_custom_colors": true,
+        "color_text": "#FBF3E4",
+        "color_background": "#231F1A",
+        "color_background_gradient": "",
+        "enable_parallax": false,
+        "type": "scroll",
+        "speed": 0.5,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 90,
+        "padding_bottom": 80,
+        "custom_id": "",
+        "custom_class": ""
       }
     },
-    "intro": {
+    "wave_1": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#231F1A",
+        "bg_color_below": "#FBF3E4",
+        "flip": false
+      }
+    },
+    "pillar_1_allergen": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_block": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>01. The Allergen Reality</h3><p>Food allergies are not a lifestyle preference. In the UK alone, over <strong>2.4 million adults</strong> live with confirmed food allergies, and hospital admissions for severe anaphylaxis have surged by <strong>154%</strong> over the past two decades.</p><p>Yet in both retail aisles and commercial hospitality kitchens, allergen-safe alternatives are routinely treated as compromised compromises: packed with unpronounceable chemical binders, devoid of authentic flavour, or confined to a tiny 'free-from' quarantine shelf.</p><p>We formulate every single recipe <strong>completely free from all 14 major regulated allergens</strong> from day one. No peanuts, tree nuts, gluten, dairy, eggs, soy, sesame, mustard, celery, lupin, fish, crustaceans, molluscs, or sulphites. One sauce, universally safe.</p>",
+            "margin_top": 2
+          }
+        }
+      },
+      "block_order": [
+        "text_block"
+      ],
+      "settings": {
+        "style_layout": "style-1",
+        "image": "shopify:\/\/shop_images\/photo-chef.jpg",
+        "layout": "container page-width",
+        "image_second": false,
+        "image_width": "50",
+        "image_height": "adapt",
+        "image_position": "object_position_middle_center",
+        "text_box_position": "flex-middle-center",
+        "text_alignment": "text-start",
+        "enable_controls": false,
+        "use_custom_colors": true,
+        "color_text": "#231F1A",
+        "color_background": "#FBF3E4",
+        "color_background_gradient": "",
+        "color_background_block": "#FFFFFF",
+        "color_background_gradient_block": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "text_alignment_mobile": "text-start",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "wave_2": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#FBF3E4",
+        "bg_color_below": "#FCEFDD",
+        "flip": false
+      }
+    },
+    "pillar_2_upf": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_block": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>02. The Ultra-Processed Trap</h3><p>When mass-market manufacturers remove gluten, eggs, or dairy, they typically substitute them with ultra-processed fillers: modified starches, maltodextrins, xanthan gum, synthetic emulsifiers, and artificial preservatives.</p><p>Today, over <strong>54% of daily calorie intake in the UK</strong> comes from ultra-processed food (UPF). The global 2024 British Medical Journal review of almost 10 million participants linked high UPF consumption directly to 32 damaging health outcomes.</p><p>We adhere rigorously to the <strong>NOVA Category 1–3 framework</strong>. Our sauces contain real vine tomatoes, whole cider vinegar, raw honey, fermented chillies, garlic, ginger, and freshly ground spices. No industrial texturisers. No chemical stabilizers. Real food, period.</p>",
+            "margin_top": 2
+          }
+        }
+      },
+      "block_order": [
+        "text_block"
+      ],
+      "settings": {
+        "style_layout": "style-1",
+        "image": "shopify:\/\/shop_images\/hero-ribs.jpg",
+        "layout": "container page-width",
+        "image_second": true,
+        "image_width": "50",
+        "image_height": "adapt",
+        "image_position": "object_position_middle_center",
+        "text_box_position": "flex-middle-center",
+        "text_alignment": "text-start",
+        "enable_controls": false,
+        "use_custom_colors": true,
+        "color_text": "#231F1A",
+        "color_background": "#FCEFDD",
+        "color_background_gradient": "",
+        "color_background_block": "#FFFFFF",
+        "color_background_gradient_block": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "text_alignment_mobile": "text-start",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "wave_3": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#FCEFDD",
+        "bg_color_below": "#2A2620",
+        "flip": false
+      }
+    },
+    "standards_grid": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_1": {
+          "type": "column",
+          "settings": {
+            "title": "Kitchen Efficiency",
+            "text": "<p>Eliminate dual-batching and separate cookware prep lines. Chefs can use one pan of sauce for every customer at the table, slashing cross-contact risk and speeding up service.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_2": {
+          "type": "column",
+          "settings": {
+            "title": "No Sensory Compromise",
+            "text": "<p>Allergen-free should never taste sterile. Our recipes are designed to match and exceed premium chef-standard condiments in viscosity, gloss, stickiness, and punch.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_3": {
+          "type": "column",
+          "settings": {
+            "title": "Universal Inclusivity",
+            "text": "<p>Families and dinner parties shouldn't have to navigate 4 different bottles for one meal. When one sauce is safe for everyone, hospitality becomes effortless.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "col_1",
+        "col_2",
+        "col_3"
+      ],
+      "settings": {
+        "heading": "Why Single-Recipe Inclusivity Works",
+        "heading_tag": "h2",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "use_custom_colors": true,
+        "color_text": "#FBF3E4",
+        "color_background": "#2A2620",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 70,
+        "padding_bottom": 70,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "wave_4": {
+      "type": "wave-divider",
+      "settings": {
+        "bg_color_above": "#2A2620",
+        "bg_color_below": "#5F6B3E",
+        "flip": false
+      }
+    },
+    "cta_banner": {
       "type": "rich-text",
       "settings": {
         "layout": "container page-width",
         "full_width": false,
-        "style": "style-2",
-        "preheading": "Our Standard",
-        "heading": "<p>One recipe. Every table.</p>",
+        "style": "style-1",
+        "preheading": "TASTE THE DIFFERENCE",
+        "heading": "<p>Ready to upgrade your pantry or kitchen pass?</p>",
         "heading_tag": "h2",
-        "heading_size": "h1",
-        "subheading": "<p>Every sauce and glaze we make is built from natural ingredients only &mdash; nothing ultra-processed, nothing from the major allergens &mdash; so it can go on any plate, in any kitchen, without a second thought.</p>",
-        "button_label": "",
-        "button_link": "shopify://collections/all",
+        "heading_size": "h2",
+        "subheading": "<p>Explore our 15 chef-developed sauces across table condiments, cooking glazes, and foundation bases.</p>",
+        "button_label": "Explore The 15 Sauces",
+        "button_link": "shopify:\/\/pages\/the-range",
         "button_style": "primary",
-        "text_alignment": "text-md-center text-lg-center",
+        "text_alignment": "text-center",
         "text_alignment_mobile": "text-center",
         "use_custom_colors": true,
-        "color_text": "#0b0b0b",
-        "color_background": "#FBF3E4",
+        "color_text": "#FFFFFF",
+        "color_background": "#5F6B3E",
         "color_background_gradient": "",
         "enable_parallax": false,
         "type": "scroll",
@@ -37,455 +228,17 @@
         "custom_id": "",
         "custom_class": ""
       }
-    },
-    "category_stats": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_0": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "preheading": "The Category",
-            "heading": "5&ndash;7%",
-            "subheading": "<p>Forecast annual growth for UK BBQ & hot sauce. Source: Mordor Intelligence; Market.us</p>",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        },
-        "column_1": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "preheading": "The Category",
-            "heading": "+10.3%",
-            "subheading": "<p>Growth in South Asian flavours on UK menus. Source: Tastewise UK Trends, 2026</p>",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        },
-        "column_2": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "preheading": "The Category",
-            "heading": "Fastest-Rising",
-            "subheading": "<p>Hot honey & Korean-inspired flavours right now. Source: SPAR; Datassential; Foodhub/Bidfood</p>",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        }
-      },
-      "block_order": [
-        "column_0",
-        "column_1",
-        "column_2"
-      ],
-      "settings": {
-        "layout": "container page-width",
-        "style": "style-1",
-        "preheading": "",
-        "heading": "Why Now",
-        "subheading": "<p>UK food trends favour natural, allergen-safe ingredients and bigger flavour &mdash; the numbers back it up.</p>",
-        "heading_tag": "h2",
-        "heading_size": "h2",
-        "heading_alignment": "text-center",
-        "image_width": "100",
-        "image_height": "adapt",
-        "text_alignment": "text-center",
-        "heading_size_card": "h5",
-        "heading_tag_card": "h3",
-        "border_radius": 0,
-        "columns_desktop": 3,
-        "columns_tablet": 2,
-        "gutter": 4,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#ffffff",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 40,
-        "padding_bottom": 60,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "wave_1": {
-      "type": "wave-divider",
-      "settings": {
-        "bg_color_above": "#FBF3E4",
-        "bg_color_below": "#231F1A",
-        "flip": false
-      }
-    },
-    "proof_stats": {
-      "type": "counter",
-      "blocks": {
-        "item_0": {
-          "type": "item",
-          "settings": {
-            "heading": "People in the UK with a diagnosed food allergy",
-            "number": "2",
-            "info_number": "M+"
-          }
-        },
-        "item_1": {
-          "type": "item",
-          "settings": {
-            "heading": "Of the average UK adult diet is ultra-processed",
-            "number": "51",
-            "info_number": "%"
-          }
-        },
-        "item_2": {
-          "type": "item",
-          "settings": {
-            "heading": "Of shoppers trying to eat less UPF",
-            "number": "81",
-            "info_number": "%"
-          }
-        }
-      },
-      "block_order": [
-        "item_0",
-        "item_1",
-        "item_2"
-      ],
-      "settings": {
-        "layout": "container container-inner",
-        "preheading": "",
-        "heading": "The Proof",
-        "subheading": "",
-        "heading_tag": "h2",
-        "heading_size": "h2",
-        "heading_alignment": "text-center",
-        "columns_desktop": 3,
-        "columns_tablet": 2,
-        "columns_mobile": 2,
-        "gutter": 4,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#ffffff",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 40,
-        "padding_bottom": 80,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "wave_2": {
-      "type": "wave-divider",
-      "settings": {
-        "bg_color_above": "#231F1A",
-        "bg_color_below": "#FBF3E4",
-        "flip": false
-      }
-    },
-    "process": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_0": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "preheading": "1",
-            "heading": "Sourced",
-            "subheading": "<p>Natural ingredients only. Nothing ultra-processed, nothing hidden.</p>",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        },
-        "column_1": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "preheading": "2",
-            "heading": "Batch-Made",
-            "subheading": "<p>Crafted in small batches for real flavour, not mass-produced fillers.</p>",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        },
-        "column_2": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "preheading": "3",
-            "heading": "Allergen-Free",
-            "subheading": "<p>Every recipe checked against the 14 major allergens before it ships.</p>",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        },
-        "column_3": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "preheading": "4",
-            "heading": "Ready To Trade",
-            "subheading": "<p>Delivered format-ready for retail, foodservice or bulk supply.</p>",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        }
-      },
-      "block_order": [
-        "column_0",
-        "column_1",
-        "column_2",
-        "column_3"
-      ],
-      "settings": {
-        "layout": "container page-width",
-        "style": "style-1",
-        "preheading": "",
-        "heading": "Our Process",
-        "subheading": "<p>One standard. Every bottle. No exceptions.</p>",
-        "heading_tag": "h2",
-        "heading_size": "h2",
-        "heading_alignment": "text-center",
-        "image_width": "100",
-        "image_height": "adapt",
-        "text_alignment": "text-center",
-        "heading_size_card": "h5",
-        "heading_tag_card": "h3",
-        "border_radius": 0,
-        "columns_desktop": 4,
-        "columns_tablet": 2,
-        "gutter": 4,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#ffffff",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 40,
-        "padding_bottom": 60,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "facility_badges": {
-      "type": "icon-with-text",
-      "blocks": {
-        "card_icon_0": {
-          "type": "card-icon",
-          "settings": {
-            "icon": "",
-            "enable_svg": false,
-            "svg": "",
-            "heading": "BRC Grade AA",
-            "subheading": "<p></p>",
-            "button_link": ""
-          }
-        },
-        "card_icon_1": {
-          "type": "card-icon",
-          "settings": {
-            "icon": "",
-            "enable_svg": false,
-            "svg": "",
-            "heading": "Purpose Built",
-            "subheading": "<p></p>",
-            "button_link": ""
-          }
-        },
-        "card_icon_2": {
-          "type": "card-icon",
-          "settings": {
-            "icon": "",
-            "enable_svg": false,
-            "svg": "",
-            "heading": "Nut-Free Site",
-            "subheading": "<p></p>",
-            "button_link": ""
-          }
-        },
-        "card_icon_3": {
-          "type": "card-icon",
-          "settings": {
-            "icon": "",
-            "enable_svg": false,
-            "svg": "",
-            "heading": "Glass-Free Site",
-            "subheading": "<p></p>",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "card_icon_0",
-        "card_icon_1",
-        "card_icon_2",
-        "card_icon_3"
-      ],
-      "settings": {
-        "layout": "container page-width",
-        "preheading": "",
-        "heading": "Made to a standard buyers can rely on.",
-        "subheading": "",
-        "heading_tag": "h3",
-        "heading_size": "h2",
-        "heading_alignment": "text-center",
-        "show_read_more": false,
-        "button_label": "",
-        "button_link": "",
-        "button_style": "primary",
-        "columns_desktop": 4,
-        "columns_tablet": 2,
-        "columns_mobile": "1",
-        "gutter": 4,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#f5f5f5",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "custom_id": "",
-        "custom_class": "sticker-badges"
-      }
-    },
-    "facility_stats": {
-      "type": "counter",
-      "blocks": {
-        "item_0": {
-          "type": "item",
-          "settings": {
-            "heading": "Sachets produced every week, hot-filled and clean-declared",
-            "number": "2",
-            "info_number": "M"
-          }
-        },
-        "item_1": {
-          "type": "item",
-          "settings": {
-            "heading": "Of wet sauce produced weekly on scrape-surface steam-jacketed blenders",
-            "number": "100",
-            "info_number": "t"
-          }
-        },
-        "item_2": {
-          "type": "item",
-          "settings": {
-            "heading": "Ambient shelf life as standard, without relying on preservatives",
-            "number": "12",
-            "info_number": "mo"
-          }
-        }
-      },
-      "block_order": [
-        "item_0",
-        "item_1",
-        "item_2"
-      ],
-      "settings": {
-        "layout": "container container-inner",
-        "preheading": "",
-        "heading": "",
-        "subheading": "",
-        "heading_tag": "h2",
-        "heading_size": "h2",
-        "heading_alignment": "text-center",
-        "columns_desktop": 3,
-        "columns_tablet": 2,
-        "columns_mobile": 2,
-        "gutter": 4,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#ffffff",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 40,
-        "padding_bottom": 80,
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
-    "sustainability_innovation": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_0": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "preheading": "Sustainability",
-            "heading": "Lower Impact, By Design",
-            "subheading": "<p>We have an active commitment to recyclable packaging and to lowering carbon footprint across the supply chain, measured in line with ISO 14083:2023.</p>",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        },
-        "column_1": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "preheading": "Innovation",
-            "heading": "20+ Years Behind Every Recipe",
-            "subheading": "<p>Our product development team &mdash; including two Michelin-starred trained chefs, Campden-trained in food safety and thermal processing &mdash; builds clean-label recipes designed to be robust, consistent and preservative-free.</p>",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        }
-      },
-      "block_order": [
-        "column_0",
-        "column_1"
-      ],
-      "settings": {
-        "layout": "container page-width",
-        "style": "style-1",
-        "preheading": "",
-        "heading": "",
-        "subheading": "",
-        "heading_tag": "h2",
-        "heading_size": "h2",
-        "heading_alignment": "text-center",
-        "image_width": "100",
-        "image_height": "adapt",
-        "text_alignment": "text-center",
-        "heading_size_card": "h5",
-        "heading_tag_card": "h3",
-        "border_radius": 0,
-        "columns_desktop": 2,
-        "columns_tablet": 2,
-        "gutter": 4,
-        "use_custom_colors": false,
-        "color_text": "#000000",
-        "color_background": "#ffffff",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 40,
-        "padding_bottom": 60,
-        "custom_id": "",
-        "custom_class": ""
-      }
     }
   },
   "order": [
-    "main",
-    "intro",
-    "category_stats",
+    "hero_banner",
     "wave_1",
-    "proof_stats",
+    "pillar_1_allergen",
     "wave_2",
-    "process",
-    "facility_badges",
-    "facility_stats",
-    "sustainability_innovation"
+    "pillar_2_upf",
+    "wave_3",
+    "standards_grid",
+    "wave_4",
+    "cta_banner"
   ]
 }
