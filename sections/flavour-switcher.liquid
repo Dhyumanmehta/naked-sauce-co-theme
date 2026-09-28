@@ -1,192 +1,337 @@
-<script>
-  (function () {
-    function initDialShowcase() {
-      var root = document.querySelector('#dialShowcase-{{ section.id }}');
-      if (!root) return;
+{% style %}
+  .dial-showcase-{{ section.id }} {
+    --ds-accent: {{ section.settings.accent_color | default: '#DA6634' }};
+    --ds-bg: {{ section.settings.bg_color | default: '#231F1A' }};
+    --ds-card-bg: {{ section.settings.panel_bg | default: '#2A2620' }};
+    --ds-text: {{ section.settings.text_color | default: '#FBF3E4' }};
+    --ds-muted: {{ section.settings.muted_text_color | default: '#D6CDBF' }};
+    background-color: var(--ds-bg);
+    color: var(--ds-text);
+    position: relative;
+    overflow: hidden;
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
 
-      var data = [
-        {% for block in section.blocks %}
-          {
-            name: {{ block.settings.name | json }},
-            desc: {{ block.settings.description | json }},
-            color: {{ block.settings.color | json }},
-            range: {{ block.settings.range_category | default: 'Table Sauces' | json }},
-            image: {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 600 | json }}{% else %}""{% endif %}
-          }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ];
+  /* Force header visibility & high contrast over dark background */
+  .dial-showcase-{{ section.id }} .cs-section-header,
+  .dial-showcase-{{ section.id }} .cs-section-header * {
+    color: var(--ds-text) !important;
+  }
 
-      var nodes = root.querySelectorAll('.ds-swatch-node');
-      var filterBtns = root.querySelectorAll('.ds-filter-pill');
-      var carousel = root.querySelector('#dsCarousel');
-      var orb = root.querySelector('#dsOrb');
-      var bottleImg = root.querySelector('#dsBottleImg');
-      var orbBadge = root.querySelector('#dsOrbBadge');
-      var glow = root.querySelector('#dsAmbientGlow');
-      var titleEl = root.querySelector('#dsTitle');
-      var descEl = root.querySelector('#dsDesc');
-      var rangeTagEl = root.querySelector('#dsRangeTag');
-      var quoteBtn = root.querySelector('#dsQuoteBtn');
+  .dial-showcase-{{ section.id }} .cs-section-header .preheading,
+  .dial-showcase-{{ section.id }} .cs-section-header .sub-title {
+    color: var(--ds-accent) !important;
+    letter-spacing: 0.15em;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
 
-      var currentIndex = 0;
-      var autoPlayTimer = null;
-      var isPaused = false;
+  .dial-showcase-{{ section.id }} .cs-section-header p,
+  .dial-showcase-{{ section.id }} .cs-section-header .subheading {
+    color: var(--ds-muted) !important;
+  }
 
-      function scrollNodeIntoView(node) {
-        if (!carousel || !node) return;
-        var carouselRect = carousel.getBoundingClientRect();
-        var nodeRect = node.getBoundingClientRect();
-        var scrollOffset = (nodeRect.left - carouselRect.left) - (carouselRect.width / 2) + (nodeRect.width / 2);
-        carousel.scrollBy({ left: scrollOffset, behavior: 'smooth' });
-      }
+  /* Liquid Ambient Glow Effect */
+  .dial-showcase-{{ section.id }} .ds-ambient-glow {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 650px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--ds-accent) 0%, transparent 68%);
+    opacity: 0.2;
+    filter: blur(80px);
+    pointer-events: none;
+    transition: background 0.6s ease, transform 0.6s ease;
+    z-index: 1;
+  }
 
-      function setActiveSauce(i) {
-        var item = data[i];
-        if (!item) return;
+  .dial-showcase-{{ section.id }} .ds-inner {
+    position: relative;
+    z-index: 2;
+  }
 
-        currentIndex = i;
+  /* Range Switcher Filter Pills */
+  .dial-showcase-{{ section.id }} .ds-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
 
-        if (titleEl) {
-          titleEl.style.opacity = '0';
-          titleEl.style.transform = 'translateY(6px)';
-        }
-        if (descEl) descEl.style.opacity = '0';
-        if (bottleImg) bottleImg.style.opacity = '0';
+  .dial-showcase-{{ section.id }} .ds-filter-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--ds-muted);
+    border-radius: 50px;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
-        setTimeout(function () {
-          if (titleEl) {
-            titleEl.textContent = item.name;
-            titleEl.style.opacity = '1';
-            titleEl.style.transform = 'translateY(0)';
-          }
-          if (descEl) {
-            descEl.textContent = item.desc;
-            descEl.style.opacity = '1';
-          }
-          if (rangeTagEl) rangeTagEl.textContent = item.range;
-          if (orb) orb.style.backgroundColor = item.color;
-          if (glow) glow.style.background = 'radial-gradient(circle, ' + item.color + ' 0%, transparent 68%)';
-          if (quoteBtn) quoteBtn.href = '/pages/contact?subject=Quote%20Request%20-%20' + encodeURIComponent(item.name);
+  .dial-showcase-{{ section.id }} .ds-filter-pill:hover {
+    color: var(--ds-text);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
 
-          if (bottleImg && orbBadge) {
-            if (item.image && item.image !== '') {
-              bottleImg.src = item.image;
-              bottleImg.style.display = 'block';
-              bottleImg.style.opacity = '1';
-              orbBadge.style.display = 'none';
-            } else {
-              bottleImg.style.display = 'none';
-              orbBadge.style.display = 'block';
-            }
-          }
-        }, 120);
+  .dial-showcase-{{ section.id }} .ds-filter-pill.active {
+    background: var(--ds-accent);
+    color: #ffffff;
+    border-color: var(--ds-accent);
+    box-shadow: 0 6px 20px rgba(218, 102, 52, 0.4);
+    transform: translateY(-2px);
+  }
 
-        nodes.forEach(function (n) { n.classList.remove('active'); });
-        var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
-        if (activeNode) {
-          activeNode.classList.add('active');
-          scrollNodeIntoView(activeNode);
-        }
-      }
+  /* Swatch Carousel */
+  .dial-showcase-{{ section.id }} .ds-dial-carousel {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 12px 16px 28px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
 
-      function getVisibleIndices() {
-        var visible = [];
-        nodes.forEach(function (node) {
-          if (window.getComputedStyle(node).display !== 'none') {
-            visible.push(parseInt(node.dataset.i, 10));
-          }
-        });
-        return visible;
-      }
+  .dial-showcase-{{ section.id }} .ds-dial-carousel::-webkit-scrollbar {
+    display: none;
+  }
 
-      function nextSauce() {
-        if (isPaused) return;
-        var visible = getVisibleIndices();
-        if (!visible.length) return;
+  .dial-showcase-{{ section.id }} .ds-swatch-node {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 14px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    opacity: 0.55;
+  }
 
-        var currentPos = visible.indexOf(currentIndex);
-        var nextPos = (currentPos + 1) % visible.length;
-        setActiveSauce(visible[nextPos]);
-      }
+  .dial-showcase-{{ section.id }} .ds-swatch-node:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+  }
 
-      function startAutoPlay() {
-        stopAutoPlay();
-        autoPlayTimer = setInterval(nextSauce, 3500);
-      }
+  .dial-showcase-{{ section.id }} .ds-swatch-node.active {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.08);
+  }
 
-      function stopAutoPlay() {
-        if (autoPlayTimer) {
-          clearInterval(autoPlayTimer);
-          autoPlayTimer = null;
-        }
-      }
+  .dial-showcase-{{ section.id }} .ds-node-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
 
-      // Manual clicks on swatches
-      nodes.forEach(function (node) {
-        node.addEventListener('click', function () {
-          var idx = parseInt(node.dataset.i, 10);
-          setActiveSauce(idx);
-          startAutoPlay();
-        });
-      });
+  .dial-showcase-{{ section.id }} .ds-swatch-node.active .ds-node-circle {
+    box-shadow: 0 0 0 3px #ffffff, 0 8px 24px rgba(0,0,0,0.6);
+  }
 
-      // Filter tabs click
-      filterBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          filterBtns.forEach(function (b) { b.classList.remove('active'); });
-          btn.classList.add('active');
+  .dial-showcase-{{ section.id }} .ds-node-label {
+    font-size: 11px;
+    font-weight: 700;
+    max-width: 95px;
+    text-align: center;
+    color: var(--ds-text);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-          var filter = btn.dataset.filter;
-          var firstMatch = null;
+  /* Main Display Stage */
+  .dial-showcase-{{ section.id }} .ds-stage {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 40px;
+    background: var(--ds-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    align-items: center;
+  }
 
-          nodes.forEach(function (node) {
-            var range = node.dataset.range;
-            if (filter === 'all' || range === filter) {
-              node.style.display = 'flex';
-              if (firstMatch === null) {
-                firstMatch = parseInt(node.dataset.i, 10);
-              }
-            } else {
-              node.style.display = 'none';
-            }
-          });
-
-          if (firstMatch !== null) {
-            setActiveSauce(firstMatch);
-          }
-          startAutoPlay();
-        });
-      });
-
-      // Pause only while user holds mouse over carousel, resume immediately on exit
-      carousel.addEventListener('mouseenter', function () { isPaused = true; });
-      carousel.addEventListener('mouseleave', function () { isPaused = false; });
-      carousel.addEventListener('touchstart', function () { isPaused = true; }, { passive: true });
-      carousel.addEventListener('touchend', function () {
-        setTimeout(function () { isPaused = false; }, 2000);
-      });
-
-      // Initialize
-      if (data.length) {
-        setActiveSauce(0);
-        startAutoPlay();
-      }
+  @media (max-width: 900px) {
+    .dial-showcase-{{ section.id }} .ds-stage {
+      grid-template-columns: 1fr;
+      padding: 30px 24px;
+      gap: 32px;
+      text-align: center;
     }
+  }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initDialShowcase);
-    } else {
-      initDialShowcase();
+  /* Left Showcase Art / Image Holder */
+  .dial-showcase-{{ section.id }} .ds-stage-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 320px;
+  }
+
+  /* Morphing Liquid Drop Backdrop */
+  .dial-showcase-{{ section.id }} .ds-orb {
+    width: 250px;
+    height: 250px;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: ds-morph 8s ease-in-out infinite alternate;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.45), 0 12px 40px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.4s ease;
+    position: absolute;
+    z-index: 1;
+  }
+
+  @keyframes ds-morph {
+    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; }
+    100% { border-radius: 50% 60% 40% 60% / 40% 30% 70% 50%; }
+  }
+
+  /* Bottle stands proudly in front */
+  .dial-showcase-{{ section.id }} .ds-bottle-img {
+    height: 300px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.6));
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-orb-badge {
+    position: relative;
+    z-index: 2;
+    background: rgba(35, 31, 26, 0.92);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 50px;
+    padding: 8px 18px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FBF3E4;
+  }
+
+  /* Right Information */
+  .dial-showcase-{{ section.id }} .ds-range-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 50px;
+    background: rgba(218, 102, 52, 0.15);
+    border: 1px solid rgba(218, 102, 52, 0.4);
+    color: var(--ds-accent);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-title {
+    font-size: clamp(26px, 3.2vw, 38px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    color: #ffffff !important;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-desc {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ds-muted) !important;
+    margin: 0 0 24px;
+    transition: opacity 0.2s ease;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-formats-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 900px) {
+    .dial-showcase-{{ section.id }} .ds-formats-row {
+      justify-content: center;
     }
+  }
 
-    // Shopify theme customizer live reload handler
-    document.addEventListener('shopify:section:load', function (e) {
-      if (e.target && e.target.querySelector('#dialShowcase-{{ section.id }}')) {
-        initDialShowcase();
-      }
-    });
-  })();
-</script>
+  .dial-showcase-{{ section.id }} .ds-format-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11.5px;
+    color: #FBF3E4;
+    font-weight: 600;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  @media (max-width: 900px) {
+    .dial-showcase-{{ section.id }} .ds-actions {
+      justify-content: center;
+    }
+  }
+
+  .dial-showcase-{{ section.id }} .ds-btn {
+    background: var(--ds-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 28px;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+    box-shadow: 0 6px 18px rgba(218, 102, 52, 0.35);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-btn:hover {
+    background: #E87442;
+    transform: scale(0.98);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-safe-stamp {
+    font-size: 12px;
+    color: var(--ds-muted);
+    opacity: 0.8;
+  }
+{% endstyle %}
 
 <div class="dial-showcase-{{ section.id }}" id="dialShowcase-{{ section.id }}">
   <div class="ds-ambient-glow" id="dsAmbientGlow"></div>
