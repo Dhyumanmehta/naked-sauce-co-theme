@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_banner": {
@@ -55,7 +64,7 @@
       ],
       "settings": {
         "style_layout": "style-1",
-        "image": "shopify:\/\/shop_images\/photo-chef.jpg",
+        "image": "shopify://shop_images/photo-chef.jpg",
         "layout": "container page-width",
         "image_second": false,
         "image_width": "50",
@@ -103,7 +112,7 @@
       ],
       "settings": {
         "style_layout": "style-1",
-        "image": "shopify:\/\/shop_images\/hero-ribs.jpg",
+        "image": "shopify://shop_images/hero-ribs.jpg",
         "layout": "container page-width",
         "image_second": true,
         "image_width": "50",
@@ -140,30 +149,15 @@
       "blocks": {
         "col_1": {
           "type": "column",
-          "settings": {
-            "title": "Kitchen Efficiency",
-            "text": "<p>Eliminate dual-batching and separate cookware prep lines. Chefs can use one pan of sauce for every customer at the table, slashing cross-contact risk and speeding up service.</p>",
-            "link_label": "",
-            "link": ""
-          }
+          "settings": {}
         },
         "col_2": {
           "type": "column",
-          "settings": {
-            "title": "No Sensory Compromise",
-            "text": "<p>Allergen-free should never taste sterile. Our recipes are designed to match and exceed premium chef-standard condiments in viscosity, gloss, stickiness, and punch.</p>",
-            "link_label": "",
-            "link": ""
-          }
+          "settings": {}
         },
         "col_3": {
           "type": "column",
-          "settings": {
-            "title": "Universal Inclusivity",
-            "text": "<p>Families and dinner parties shouldn't have to navigate 4 different bottles for one meal. When one sauce is safe for everyone, hospitality becomes effortless.</p>",
-            "link_label": "",
-            "link": ""
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -177,7 +171,6 @@
         "heading_size": "h2",
         "heading_alignment": "text-center",
         "columns_desktop": 3,
-        "columns_mobile": "1",
         "use_custom_colors": true,
         "color_text": "#FBF3E4",
         "color_background": "#2A2620",
@@ -210,7 +203,7 @@
         "heading_size": "h2",
         "subheading": "<p>Explore our 15 chef-developed sauces across table condiments, cooking glazes, and foundation bases.</p>",
         "button_label": "Explore The 15 Sauces",
-        "button_link": "shopify:\/\/pages\/the-range",
+        "button_link": "shopify://pages/the-range",
         "button_style": "primary",
         "text_alignment": "text-center",
         "text_alignment_mobile": "text-center",
