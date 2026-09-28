@@ -1,5 +1,5 @@
 {%- style -%}
-  .breadcrumb-banner-wrap {
+  .nsc-hero-banner-wrap {
     background-color: #231F1A !important;
     position: relative;
     overflow: hidden;
@@ -7,161 +7,197 @@
     padding: 0 !important;
   }
 
-  .breadcrumb-banner {
+  .nsc-hero-banner {
     position: relative;
-    background: radial-gradient(120% 120% at 50% 10%, #E87442 0%, #DA6634 55%, #B84D20 100%) !important;
-    padding: 85px 20px 80px !important;
+    background: radial-gradient(130% 120% at 50% 0%, #E87442 0%, #DA6634 50%, #BD4B1C 100%) !important;
+    padding: 95px 24px 60px !important;
     text-align: center;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    color: #FBF3E4 !important;
   }
 
-  @media (max-width: 768px) {
-    .breadcrumb-banner {
-      padding: 60px 16px 55px !important;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
-    }
-  }
-
-  /* Ambient Flare Glow Behind Text */
-  .breadcrumb-banner::before {
-    content: "";
+  /* Decorative Ambient Watermark Text */
+  .nsc-hero-banner .nsc-watermark {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 300px;
-    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.22) 0%, transparent 70%);
+    transform: translate(-50%, -55%);
+    font-size: clamp(90px, 16vw, 190px);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.07);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    user-select: none;
     pointer-events: none;
+    line-height: 1;
+    white-space: nowrap;
     z-index: 1;
   }
 
-  .breadcrumb-banner .container,
-  .breadcrumb-banner .page-width {
+  .nsc-hero-content {
     position: relative;
     z-index: 2;
-    background: transparent !important;
+    max-width: 820px;
+    margin: 0 auto;
   }
 
-  /* Category Eyebrow Pill */
-  .nsc-header-eyebrow {
+  /* Top Badges Row */
+  .nsc-pill-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+
+  .nsc-micro-pill {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(35, 31, 26, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    gap: 6px;
+    background: rgba(35, 31, 26, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.22);
     color: #FBF3E4;
     padding: 6px 16px;
     border-radius: 50px;
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.14em;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    letter-spacing: 0.12em;
     backdrop-filter: blur(8px);
   }
 
-  /* High-Impact Main Title */
-  .breadcrumb-banner .title,
-  .breadcrumb-banner h1,
-  .breadcrumb-banner h2 {
-    color: #FFFFFF !important;
-    font-size: clamp(48px, 6.8vw, 76px) !important;
-    font-weight: 900 !important;
-    text-transform: uppercase !important;
-    letter-spacing: -0.02em !important;
-    line-height: 0.98 !important;
-    margin: 0 0 16px !important;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  .nsc-micro-pill-green {
+    background: rgba(95, 107, 62, 0.35);
+    border-color: rgba(164, 178, 124, 0.4);
+    color: #E8F0D3;
   }
 
-  /* Sleek Breadcrumb Pill */
-  .breadcrumb-banner .breadcrumb-nav {
+  /* High-Impact Punch Headline */
+  .nsc-hero-banner .nsc-hero-title {
+    color: #FFFFFF !important;
+    font-size: clamp(48px, 6.5vw, 76px) !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: -0.03em !important;
+    line-height: 0.95 !important;
+    margin: 0 0 16px !important;
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .nsc-hero-subtitle {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: rgba(251, 243, 228, 0.92);
+    max-width: 580px;
+    margin: 0 auto 24px;
+    font-weight: 400;
+  }
+
+  /* Breadcrumb Pill */
+  .nsc-crumb-pill {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(0, 0, 0, 0.16);
-    padding: 6px 18px;
+    background: rgba(0, 0, 0, 0.22);
+    padding: 7px 20px;
     border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
   }
 
-  .breadcrumb-banner .breadcrumb-nav,
-  .breadcrumb-banner .breadcrumb-nav *,
-  .breadcrumb-banner .breadcrumb-nav a,
-  .breadcrumb-banner .breadcrumb-nav span {
-    color: #FBF3E4 !important;
-    font-size: 12.5px !important;
-    font-weight: 600 !important;
+  .nsc-crumb-pill a {
+    color: rgba(251, 243, 228, 0.8) !important;
     text-decoration: none !important;
-    letter-spacing: 0.04em;
   }
 
-  .breadcrumb-banner .breadcrumb-nav a {
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-  }
-
-  .breadcrumb-banner .breadcrumb-nav a:hover {
-    opacity: 1;
+  .nsc-crumb-pill a:hover {
+    color: #FFFFFF !important;
     text-decoration: underline !important;
   }
 
-  .breadcrumb-banner .breadcrumb-nav .separator {
-    opacity: 0.45;
-    font-size: 10px;
+  .nsc-crumb-pill span {
+    color: #FFFFFF !important;
+  }
+
+  /* Fluid SVG Transition Wave */
+  .nsc-wave-cut {
+    display: block;
+    width: 100%;
+    height: 52px;
+    margin-bottom: -1px;
+    color: #231F1A;
+    fill: currentColor;
+    transform: rotate(180deg);
+  }
+
+  @media (max-width: 768px) {
+    .nsc-hero-banner {
+      padding: 70px 16px 40px !important;
+    }
+    .nsc-wave-cut {
+      height: 32px;
+    }
   }
 {%- endstyle -%}
 
-<div class="breadcrumb-banner-wrap">
-  <div class="breadcrumb-banner">
-    <div class="container page-width">
+<div class="nsc-hero-banner-wrap">
+  <div class="nsc-hero-banner">
+    <!-- Subtle Graphic Watermark Behind Text -->
+    <div class="nsc-watermark" aria-hidden="true">
+      {%- if template contains 'page' -%}
+        {{ page.title }}
+      {%- else -%}
+        CONTACT
+      {%- endif -%}
+    </div>
 
-      <span class="nsc-header-eyebrow">
-        The Naked Sauce Co.
-      </span>
+    <div class="nsc-hero-content container page-width">
+      <!-- Badge Row -->
+      <div class="nsc-pill-row">
+        <span class="nsc-micro-pill">
+          THE NAKED SAUCE CO.
+        </span>
+        <span class="nsc-micro-pill nsc-micro-pill-green">
+          ⏱ 24–48H RESPONSE SLA
+        </span>
+      </div>
 
-      <h1 class="title">
+      <!-- Main Headline -->
+      <h1 class="nsc-hero-title">
         {%- if template contains 'page' -%}
           {{ page.title }}
         {%- elsif template contains 'product' -%}
           {{ product.title }}
         {%- elsif template contains 'collection' and collection.handle -%}
           {{ collection.title }}
-        {%- elsif template == 'blog' -%}
-          {{ blog.title }}
-        {%- elsif template == 'article' -%}
-          {{ article.title }}
-        {%- elsif template contains 'cart' -%}
-          {{ 'templates.cart.cart' | t }}
-        {%- elsif template contains 'search' -%}
-          {{ 'templates.search.title' | t }}
         {%- else -%}
           {{ page_title }}
         {%- endif -%}
       </h1>
 
-      <nav class="breadcrumb-nav" role="navigation" aria-label="breadcrumbs">
-        <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home' | t }}">
-          Home
-        </a>
-        <span class="separator" aria-hidden="true">/</span>
+      <p class="nsc-hero-subtitle">
+        Direct from our commercial kitchen. Reach out for hospitality sample requests, custom menu quotes, or direct pantry inquiries.
+      </p>
+
+      <!-- Clean Breadcrumb -->
+      <nav class="nsc-crumb-pill" role="navigation" aria-label="breadcrumbs">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span style="opacity: 0.4;">/</span>
         <span>
           {%- if template contains 'page' -%}
             {{ page.title }}
-          {%- elsif template contains 'product' -%}
-            {{ product.title }}
-          {%- elsif template contains 'collection' and collection.handle -%}
-            {{ collection.title }}
           {%- else -%}
             {{ page_title }}
           {%- endif -%}
         </span>
       </nav>
-
     </div>
   </div>
+
+  <!-- Organic Wave Divider melding smoothly into the form below -->
+  <svg class="nsc-wave-cut" viewBox="0 0 1440 90" preserveAspectRatio="none">
+    <path d="M0,45 C320,95 480,10 720,45 C960,80 1120,15 1440,45 L1440,90 L0,90 Z"></path>
+  </svg>
 </div>
