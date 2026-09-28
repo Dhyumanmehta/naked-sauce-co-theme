@@ -54,6 +54,7 @@
         },
         "payment_9RYf8K": {
           "type": "payment",
+          "disabled": true,
           "settings": {
             "heading": "Guarantee safe checkout",
             "margin_top": 4,
@@ -91,6 +92,7 @@
         },
         "ae827487-cc77-47f2-8f0e-a1198900e605": {
           "type": "collapsible-row",
+          "disabled": true,
           "settings": {
             "style": "style-1",
             "heading1": "",
