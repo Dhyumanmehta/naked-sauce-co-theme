@@ -16,7 +16,7 @@
   /* Liquid Ambient Glow Effect */
   .dial-showcase-{{ section.id }} .ds-ambient-glow {
     position: absolute;
-    top: 30%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 650px;
@@ -41,7 +41,7 @@
     justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
-    margin-bottom: 34px;
+    margin-bottom: 30px;
   }
 
   .dial-showcase-{{ section.id }} .ds-filter-pill {
@@ -72,13 +72,13 @@
     transform: translateY(-2px);
   }
 
-  /* Interactive Wheel / Swatch Carousel */
+  /* Interactive Horizontal Swatch Carousel (Smooth scrolling) */
   .dial-showcase-{{ section.id }} .ds-dial-carousel {
     display: flex;
-    justify-content: center;
     gap: 14px;
     overflow-x: auto;
-    padding: 12px 10px 28px;
+    padding: 12px 16px 28px;
+    scroll-behavior: smooth;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
@@ -97,8 +97,8 @@
     cursor: pointer;
     padding: 8px 12px;
     border-radius: 14px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    opacity: 0.6;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    opacity: 0.55;
   }
 
   .dial-showcase-{{ section.id }} .ds-swatch-node:hover {
@@ -127,7 +127,7 @@
   .dial-showcase-{{ section.id }} .ds-node-label {
     font-size: 11px;
     font-weight: 700;
-    max-width: 90px;
+    max-width: 95px;
     text-align: center;
     color: var(--ds-text);
     line-height: 1.2;
@@ -136,7 +136,7 @@
     text-overflow: ellipsis;
   }
 
-  /* Interactive Main Display Stage */
+  /* Main Display Stage */
   .dial-showcase-{{ section.id }} .ds-stage {
     display: grid;
     grid-template-columns: 1fr 1.15fr;
@@ -158,7 +158,7 @@
     }
   }
 
-  /* Left Showcase Art & Dynamic Droplet */
+  /* Left Showcase Art / Image Holder */
   .dial-showcase-{{ section.id }} .ds-stage-visual {
     position: relative;
     display: flex;
@@ -168,15 +168,17 @@
   }
 
   .dial-showcase-{{ section.id }} .ds-orb {
-    width: 220px;
-    height: 220px;
+    width: 250px;
+    height: 250px;
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
     animation: ds-morph 8s ease-in-out infinite alternate;
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.5), 0 12px 40px rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.45), 0 12px 40px rgba(0,0,0,0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.4s ease;
+    transition: background-color 0.4s ease;
+    overflow: hidden;
+    position: relative;
   }
 
   @keyframes ds-morph {
@@ -185,20 +187,30 @@
     100% { border-radius: 50% 60% 40% 60% / 40% 30% 70% 50%; }
   }
 
+  .dial-showcase-{{ section.id }} .ds-bottle-img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
   .dial-showcase-{{ section.id }} .ds-orb-badge {
-    background: rgba(35, 31, 26, 0.9);
+    position: absolute;
+    bottom: 20px;
+    background: rgba(35, 31, 26, 0.92);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.18);
     border-radius: 50px;
-    padding: 8px 18px;
-    font-size: 11px;
+    padding: 6px 16px;
+    font-size: 10.5px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #FBF3E4;
   }
 
-  /* Right Specs & Pairing Content */
+  /* Right Information */
   .dial-showcase-{{ section.id }} .ds-range-tag {
     display: inline-block;
     padding: 4px 14px;
@@ -296,7 +308,7 @@
   }
 {% endstyle %}
 
-<div class="dial-showcase-{{ section.id }}">
+<div class="dial-showcase-{{ section.id }}" id="dialShowcase-{{ section.id }}">
   <div class="ds-ambient-glow" id="dsAmbientGlow"></div>
 
   <div class="ds-inner container page-width">
@@ -311,7 +323,7 @@
       %}
     </div>
 
-    <!-- Range Filter Tabs -->
+    <!-- Category Pills -->
     <div class="ds-nav" role="tablist">
       <button type="button" class="ds-filter-pill active" data-filter="all">All 15 Sauces</button>
       <button type="button" class="ds-filter-pill" data-filter="Table Sauces">Table Sauces (6)</button>
@@ -319,7 +331,7 @@
       <button type="button" class="ds-filter-pill" data-filter="Base Sauces">Kitchen Bases (3)</button>
     </div>
 
-    <!-- Interactive Horizontal Dial Swatches -->
+    <!-- Swatch Nodes Ribbon -->
     <div class="ds-dial-carousel" id="dsCarousel">
       {% for block in section.blocks %}
         <button
@@ -335,16 +347,15 @@
       {% endfor %}
     </div>
 
-    <!-- Active Spotlight Stage Card -->
+    <!-- Spotlight Stage Card -->
     <div class="ds-stage">
-      <!-- Animated Morphing Liquid Droplet -->
       <div class="ds-stage-visual">
         <div class="ds-orb" id="dsOrb">
-          <div class="ds-orb-badge">100% UPF-FREE</div>
+          <img id="dsBottleImg" class="ds-bottle-img" src="" alt="Sauce bottle" style="display: none;">
+          <div class="ds-orb-badge" id="dsOrbBadge">100% UPF-FREE</div>
         </div>
       </div>
 
-      <!-- Content -->
       <div class="ds-stage-info">
         <span class="ds-range-tag" id="dsRangeTag">Table Sauces</span>
         <h3 class="ds-title" id="dsTitle"></h3>
@@ -373,34 +384,55 @@
 
 <script>
   (function () {
-    var root = document.querySelector('.dial-showcase-{{ section.id }}');
+    var root = document.querySelector('#dialShowcase-{{ section.id }}');
+    if (!root) return;
+
     var data = [
       {% for block in section.blocks %}
         {
           name: {{ block.settings.name | json }},
           desc: {{ block.settings.description | json }},
           color: {{ block.settings.color | json }},
-          range: {{ block.settings.range_category | default: 'Table Sauces' | json }}
+          range: {{ block.settings.range_category | default: 'Table Sauces' | json }},
+          image: {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 600 | json }}{% else %}""{% endif %}
         }{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ];
 
     var nodes = root.querySelectorAll('.ds-swatch-node');
     var filterBtns = root.querySelectorAll('.ds-filter-pill');
+    var carousel = root.querySelector('#dsCarousel');
     var orb = root.querySelector('#dsOrb');
+    var bottleImg = root.querySelector('#dsBottleImg');
+    var orbBadge = root.querySelector('#dsOrbBadge');
     var glow = root.querySelector('#dsAmbientGlow');
     var titleEl = root.querySelector('#dsTitle');
     var descEl = root.querySelector('#dsDesc');
     var rangeTagEl = root.querySelector('#dsRangeTag');
     var quoteBtn = root.querySelector('#dsQuoteBtn');
 
+    var currentIndex = 0;
+    var autoPlayTimer = null;
+    var isHovered = false;
+
+    function scrollNodeIntoView(node) {
+      if (!carousel || !node) return;
+      var carouselRect = carousel.getBoundingClientRect();
+      var nodeRect = node.getBoundingClientRect();
+      var scrollOffset = (nodeRect.left - carouselRect.left) - (carouselRect.width / 2) + (nodeRect.width / 2);
+      carousel.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+    }
+
     function setActiveSauce(i) {
       var item = data[i];
       if (!item) return;
 
+      currentIndex = i;
+
       titleEl.style.opacity = '0';
       titleEl.style.transform = 'translateY(6px)';
       descEl.style.opacity = '0';
+      if (bottleImg) bottleImg.style.opacity = '0';
 
       setTimeout(function () {
         titleEl.textContent = item.name;
@@ -410,20 +442,68 @@
         glow.style.background = 'radial-gradient(circle, ' + item.color + ' 0%, transparent 68%)';
         quoteBtn.href = '/pages/contact?subject=Quote%20Request%20-%20' + encodeURIComponent(item.name);
 
+        if (item.image && item.image !== "") {
+          bottleImg.src = item.image;
+          bottleImg.style.display = 'block';
+          bottleImg.style.opacity = '1';
+          orbBadge.style.display = 'none';
+        } else {
+          bottleImg.style.display = 'none';
+          orbBadge.style.display = 'block';
+        }
+
         titleEl.style.opacity = '1';
         titleEl.style.transform = 'translateY(0)';
         descEl.style.opacity = '1';
-      }, 140);
+      }, 120);
+
+      nodes.forEach(function (n) { n.classList.remove('active'); });
+      var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
+      if (activeNode) {
+        activeNode.classList.add('active');
+        scrollNodeIntoView(activeNode);
+      }
     }
 
+    function getVisibleIndices() {
+      var visible = [];
+      nodes.forEach(function (node) {
+        if (node.style.display !== 'none') {
+          visible.push(parseInt(node.dataset.i, 10));
+        }
+      });
+      return visible;
+    }
+
+    function nextSauce() {
+      if (isHovered) return;
+      var visible = getVisibleIndices();
+      if (!visible.length) return;
+
+      var currentPos = visible.indexOf(currentIndex);
+      var nextPos = (currentPos + 1) % visible.length;
+      setActiveSauce(visible[nextPos]);
+    }
+
+    function startAutoScroll() {
+      stopAutoScroll();
+      autoPlayTimer = setInterval(nextSauce, 4000);
+    }
+
+    function stopAutoScroll() {
+      if (autoPlayTimer) clearInterval(autoPlayTimer);
+    }
+
+    // Manual Node Click
     nodes.forEach(function (node) {
       node.addEventListener('click', function () {
-        nodes.forEach(function (n) { n.classList.remove('active'); });
-        node.classList.add('active');
-        setActiveSauce(parseInt(node.dataset.i, 10));
+        var idx = parseInt(node.dataset.i, 10);
+        setActiveSauce(idx);
+        startAutoScroll();
       });
     });
 
+    // Filter Buttons Click
     filterBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         filterBtns.forEach(function (b) { b.classList.remove('active'); });
@@ -445,15 +525,22 @@
         });
 
         if (firstMatch !== null) {
-          nodes.forEach(function (n) { n.classList.remove('active'); });
-          var activeNode = root.querySelector('.ds-swatch-node[data-i="' + firstMatch + '"]');
-          if (activeNode) activeNode.classList.add('active');
           setActiveSauce(firstMatch);
         }
+        startAutoScroll();
       });
     });
 
-    if (data.length) setActiveSauce(0);
+    // Pause on Hover
+    root.addEventListener('mouseenter', function () { isHovered = true; });
+    root.addEventListener('mouseleave', function () { isHovered = false; });
+    root.addEventListener('touchstart', function () { isHovered = true; }, { passive: true });
+
+    // Initialize
+    if (data.length) {
+      setActiveSauce(0);
+      startAutoScroll();
+    }
   })();
 </script>
 
@@ -495,7 +582,8 @@
           "default": "Table Sauces"
         },
         { "type": "textarea", "id": "description", "label": "Serving suggestion & Menu use", "default": "Serving suggestion goes here." },
-        { "type": "color", "id": "color", "label": "Swatch accent color", "default": "#C13B2A" }
+        { "type": "color", "id": "color", "label": "Swatch accent color", "default": "#C13B2A" },
+        { "type": "image_picker", "id": "image", "label": "Sauce Bottle / Dish Photography" }
       ]
     }
   ]
