@@ -275,7 +275,7 @@
       ],
       "settings": {
         "preheading": "The Difference",
-        "heading": "Most brands make you pick a lane. We didn't.",
+        "heading": "Most brands make you pick a lane. We don't.",
         "subheading": "<p>Allergen-free usually means processed substitutes. Clean-label usually skips allergen testing. Ours does both.</p>",
         "heading_tag": "h2",
         "bad_label": "Typical Bottle",
@@ -478,7 +478,7 @@
         "subheading": "<p>View the range with some tasty serving suggestions</p>",
         "heading_tag": "h2",
         "heading_size": "h2",
-        "accent_color": "#D96634",
+        "accent_color": "#d96634",
         "panel_bg": "#2a2620",
         "bg_color": "#231f1a",
         "text_color": "#fbf3e4",
