@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -16,15 +7,15 @@
           "type": "slide",
           "settings": {
             "animation": "animation-top-to-bottom",
-            "image": "shopify://shop_images/hero-ribs.jpg",
+            "image": "shopify:\/\/shop_images\/hero-ribs.jpg",
             "video_url": "",
             "preheading": "",
             "heading": "BOLD FLAVOUR.",
             "heading_2": "NOTHING TO HIDE.",
             "heading_size": "h2",
-            "subheading": "<p>Naturally allergen-free. Made without ultra-processed ingredients. Built to be the hero of any dish.</p>",
+            "subheading": "<p>Naturally allergen-free. Made without ultra-processed ingredients. Built to be the hero of any dish.<\/p>",
             "button_label": "Explore The Range",
-            "button_link": "shopify://pages/the-range",
+            "button_link": "shopify:\/\/pages\/the-range",
             "button_style": "primary",
             "text_box_position": "flex-lg-middle-center",
             "text_alignment": "text-md-center text-lg-center",
@@ -72,35 +63,35 @@
         "marque_2": {
           "type": "marque",
           "settings": {
-            "content": "<p>Allergen-Free & UPF-Free.</p>",
+            "content": "<p>Allergen-Free & UPF-Free.<\/p>",
             "link": ""
           }
         },
         "marque_1": {
           "type": "marque",
           "settings": {
-            "content": "<p>14 SKUs & growing.</p>",
+            "content": "<p>15 SKUs & growing.<\/p>",
             "link": ""
           }
         },
         "marque_0": {
           "type": "marque",
           "settings": {
-            "content": "<p>Bold flavour. Nothing to hide.</p>",
+            "content": "<p>Bold flavour. Nothing to hide.<\/p>",
             "link": ""
           }
         },
         "marque_3": {
           "type": "marque",
           "settings": {
-            "content": "<p>Options for retail, foodservice & bulk.</p>",
+            "content": "<p>Options for retail, foodservice & bulk.<\/p>",
             "link": ""
           }
         },
         "marque_4": {
           "type": "marque",
           "settings": {
-            "content": "<p>One recipe. Every table.</p>",
+            "content": "<p>One recipe. Every table.<\/p>",
             "link": ""
           }
         }
@@ -120,7 +111,7 @@
         "height_image": "icon-h-large",
         "use_custom_colors": true,
         "color_text": "#1b1310",
-        "color_background": "#d96634",
+        "color_background": "#da6634",
         "color_background_gradient": "",
         "margin_top": 0,
         "margin_bottom": 0,
@@ -139,9 +130,9 @@
             "icon": "",
             "enable_svg": false,
             "svg": "",
-            "image": "shopify://shop_images/Allergen_Free_Logo_-_Circle.png",
+            "image": "shopify:\/\/shop_images\/Allergen_Free_Logo_-_Circle.png",
             "heading": "Allergen-Free",
-            "subheading": "<p>Every recipe is naturally free from any of the 14 major allergens.</p>",
+            "subheading": "<p>Every recipe is naturally free from any of the 14 major allergens.<\/p>",
             "button_link": ""
           }
         },
@@ -151,9 +142,9 @@
             "icon": "",
             "enable_svg": false,
             "svg": "",
-            "image": "shopify://shop_images/Ultra_Processed_Free_Logo_-_Circle.png",
+            "image": "shopify:\/\/shop_images\/Ultra_Processed_Free_Logo_-_Circle.png",
             "heading": "UPF-Free",
-            "subheading": "<p>No ultra-processed ingredients. Ever.</p>",
+            "subheading": "<p>No ultra-processed ingredients. Real pantry staples only.<\/p>",
             "button_link": ""
           }
         },
@@ -163,9 +154,9 @@
             "icon": "",
             "enable_svg": false,
             "svg": "",
-            "image": "shopify://shop_images/10-product-500ml-tub-smoky-texan.jpg",
-            "heading": "Versatile and Flexible Range",
-            "subheading": "<p>A variety of traditional and modern sauces cooking sauces and glazes. Available in squeezy bottles, tubs or sachets. Foodservice and retail friendly.</p>",
+            "image": "shopify:\/\/shop_images\/10-product-500ml-tub-smoky-texan.jpg",
+            "heading": "Versatile Formats",
+            "subheading": "<p>Available in sachets, table bottles, tubs, and bag-in-box for foodservice & retail.<\/p>",
             "button_link": ""
           }
         }
@@ -229,7 +220,7 @@
         "b2": {
           "type": "bad_point",
           "settings": {
-            "text": "Ultra-processed fillers"
+            "text": "Ultra-processed industrial fillers"
           }
         },
         "b3": {
@@ -247,7 +238,7 @@
         "g1": {
           "type": "good_point",
           "settings": {
-            "text": "Zero ultra-processed ingredients"
+            "text": "Zero ultra-processed ingredients (NOVA)"
           }
         },
         "g2": {
@@ -276,7 +267,7 @@
       "settings": {
         "preheading": "The Difference",
         "heading": "Most brands make you pick a lane. We don't.",
-        "subheading": "<p>Allergen-free usually means processed substitutes. Clean-label usually skips allergen testing. Ours does both.</p>",
+        "subheading": "<p>Allergen-free usually means processed substitutes. Clean-label usually skips allergen testing. Ours does both.<\/p>",
         "heading_tag": "h2",
         "bad_label": "Typical Bottle",
         "good_label": "Naked Sauce Co",
@@ -297,7 +288,7 @@
         "text_wU99YB": {
           "type": "text",
           "settings": {
-            "text": "<p>With approximately 2 million+ people in the UK living with a diagnosed food allergy and the average adult diet being made up of 51% ultra-processed foods, the case for The Naked Sauce Co was simple.</p><p>Create a range of sauces and glazes that can go on ANY plate, in ANY kitchen, without a second thought! Simple create the products using all natural ingredients; nothing<br/>ultra-processed AND nothing from the major allergens.</p>",
+            "text": "<p>With approximately 2.4 million UK adults living with a confirmed food allergy and over half of daily adult calories coming from ultra-processed food, our starting point was simple: dinner shouldn't come with a disclaimer.<\/p><p>We formulate every sauce free from all 14 major allergens and completely free from NOVA-classified ultra-processed additives. One range that works for every guest on every menu.<\/p>",
             "margin_top": 3
           }
         },
@@ -305,7 +296,7 @@
           "type": "button",
           "settings": {
             "button_label": "Our Philosophy",
-            "button_link": "shopify://collections/all",
+            "button_link": "shopify:\/\/pages\/our-philosophy",
             "button_style": "primary",
             "margin_top": 3
           }
@@ -317,7 +308,7 @@
       ],
       "settings": {
         "style_layout": "style-1",
-        "image": "shopify://shop_images/photo-chef.jpg",
+        "image": "shopify:\/\/shop_images\/photo-chef.jpg",
         "layout": "container page-width",
         "image_second": false,
         "image_width": "50",
@@ -352,133 +343,166 @@
     "range_teaser": {
       "type": "flavour-switcher",
       "blocks": {
-        "flavour_EkJjxj": {
+        "sku_1": {
           "type": "flavour",
           "settings": {
-            "name": "Roasted Red Pepper & Tomato Sauce",
-            "description": "Stirred through pasta or spooned over grilled chicken.",
-            "color": "#c13b2a"
+            "name": "Vine-Ripened Tomato Ketchup",
+            "range_category": "Table Sauces",
+            "description": "Sun-ripened tomatoes, cider vinegar, and a touch of cane sugar. The UK's #1 condiment, made naturally allergen-free.",
+            "color": "#C13B2A"
           }
         },
-        "flavour_JYimEM": {
-          "type": "flavour",
-          "settings": {
-            "name": "Ginger & Orange Glaze",
-            "description": "Brushed over roast duck or salmon in the last few minutes of cooking. Glossy, sticky and restaurant ready!",
-            "color": "#c13b2a"
-          }
-        },
-        "flavour_TYcgHa": {
-          "type": "flavour",
-          "settings": {
-            "name": "Coconut & Lentil Dahl",
-            "description": "A warming bowl on its own, or alongside grilled flatbread.",
-            "color": "#c13b2a"
-          }
-        },
-        "flavour_HPzBmx": {
-          "type": "flavour",
-          "settings": {
-            "name": "Spiced Moroccan Tagine",
-            "description": "Simmered with chicken thighs, apricots and a scattering of coriander.",
-            "color": "#c13b2a"
-          }
-        },
-        "flavour_rbyhTe": {
-          "type": "flavour",
-          "settings": {
-            "name": "Chinese Five Spice Base Mix",
-            "description": "Tossed through stir-fried noodles or brushed over pork belly.",
-            "color": "#c13b2a"
-          }
-        },
-        "flavour_pkzWhG": {
-          "type": "flavour",
-          "settings": {
-            "name": "Tomato Sauce Base Mix",
-            "description": "The starting point for a rich bolognese or a proper Sunday ragu.",
-            "color": "#c13b2a"
-          }
-        },
-        "flavour_cjPVn8": {
-          "type": "flavour",
-          "settings": {
-            "name": "Indian Curry Base Mix",
-            "description": "Built into a fakeaway curry night with chicken, veg or paneer.",
-            "color": "#c13b2a"
-          }
-        },
-        "flavour_0": {
-          "type": "flavour",
-          "settings": {
-            "name": "Vine Ripened Tomato Sauce",
-            "description": "Golden chips and a bacon roll deserve better than the bottle from the cupboard.",
-            "color": "#c13b2a"
-          }
-        },
-        "flavour_1": {
+        "sku_2": {
           "type": "flavour",
           "settings": {
             "name": "Rich Brown Sauce",
-            "description": "A full English essential — elevate that bacon, sausage, fried egg, and doorstep of toast.",
-            "color": "#5b3a29"
+            "range_category": "Table Sauces",
+            "description": "Tamarind, dates, and cider vinegar spiced with clove and ginger. A British classic made without gluten-heavy thickeners.",
+            "color": "#5B3A29"
           }
         },
-        "flavour_2": {
+        "sku_3": {
           "type": "flavour",
           "settings": {
-            "name": "Smoky Texan BBQ Sauce",
-            "description": "Brushed over ribs or pulled pork as it comes off the grill.",
-            "color": "#8a2e1d"
+            "name": "Smoky Texan BBQ",
+            "range_category": "Table Sauces",
+            "description": "Slow-cooked tomatoes, molasses, and smoked paprika. A bold, smoky anchor for any grill, burger, or wing menu.",
+            "color": "#8A2E1D"
           }
         },
-        "flavour_3": {
+        "sku_4": {
           "type": "flavour",
           "settings": {
-            "name": "BBQ Gochujang Sauce",
-            "description": "Glazed onto wings or short ribs for a sticky, smoky-sweet finish.",
-            "color": "#a32c2c"
+            "name": "Gochujang Korean BBQ",
+            "range_category": "Table Sauces",
+            "description": "Fermented gochujang chilli paste, garlic, and rice vinegar. The UK's fastest-growing BBQ trend with a sticky, smoky-sweet kick.",
+            "color": "#A32C2C"
           }
         },
-        "flavour_4": {
+        "sku_5": {
           "type": "flavour",
           "settings": {
-            "name": "Sweet Chilli & Ginger Sauce",
-            "description": "Drizzled over halloumi fritters or spring rolls for dipping.",
-            "color": "#d97a22"
+            "name": "Thai-Style Sweet Chilli",
+            "range_category": "Table Sauces",
+            "description": "Red chillies, garlic, and rice vinegar balanced with natural sweetness. An essential dipping partner for halloumi, spring rolls, and chicken.",
+            "color": "#D97A22"
           }
         },
-        "flavour_5": {
+        "sku_6": {
+          "type": "flavour",
+          "settings": {
+            "name": "Smoky Chipotle Ketchup",
+            "range_category": "Table Sauces",
+            "description": "Slow-ripened tomatoes lifted with smoked chipotle chilli. Delivering trending regional heat to everyday plates.",
+            "color": "#A83824"
+          }
+        },
+        "sku_7": {
+          "type": "flavour",
+          "settings": {
+            "name": "Ginger & Orange Glaze",
+            "range_category": "Cooking Sauces",
+            "description": "Fresh root ginger, orange zest, and rice vinegar. A glossy, restaurant-grade glaze for duck, salmon, or crispy tofu.",
+            "color": "#E67425"
+          }
+        },
+        "sku_8": {
+          "type": "flavour",
+          "settings": {
+            "name": "Coconut & Lentil Dahl",
+            "range_category": "Cooking Sauces",
+            "description": "Red lentils, coconut milk, turmeric, and cumin. Creamy, comforting, and tailored for plant-based main courses.",
+            "color": "#D4982A"
+          }
+        },
+        "sku_9": {
+          "type": "flavour",
+          "settings": {
+            "name": "Roasted Red Pepper & Tomato",
+            "range_category": "Cooking Sauces",
+            "description": "Fire-roasted peppers and vine tomatoes slow-simmered with garlic and basil. A reliable workhorse for bakes, pasta, and stews.",
+            "color": "#B83A26"
+          }
+        },
+        "sku_10": {
+          "type": "flavour",
+          "settings": {
+            "name": "Moroccan Spiced Tagine",
+            "range_category": "Cooking Sauces",
+            "description": "Apricots, chickpeas, ras el hanout, and preserved lemon. Authentic North African warmth ready to simmer with poultry or vegetables.",
+            "color": "#C45B28"
+          }
+        },
+        "sku_11": {
+          "type": "flavour",
+          "settings": {
+            "name": "Rustic Tomato & Basil",
+            "range_category": "Cooking Sauces",
+            "description": "Slow-cooked Italian tomatoes, fresh basil, and extra virgin olive oil. The reliable Italian anchor every allergen list needs to say yes to.",
+            "color": "#AD2E1F"
+          }
+        },
+        "sku_12": {
           "type": "flavour",
           "settings": {
             "name": "Chilli-Infused Hot Honey Glaze",
-            "description": "Add some sweet heat on fried chicken.",
-            "color": "#b9791e"
+            "range_category": "Cooking Sauces",
+            "description": "Raw honey infused with red chilli and cider vinegar. Sweet heat with a slow burn, perfect for fried chicken and pizza crusts.",
+            "color": "#B9791E"
+          }
+        },
+        "sku_13": {
+          "type": "flavour",
+          "settings": {
+            "name": "Golden Curry Base",
+            "range_category": "Base Sauces",
+            "description": "Onion, garlic, ginger, and warming curry spices. One foundation base letting a kitchen craft dahl, korma, and tikka masala safely.",
+            "color": "#CCA22E"
+          }
+        },
+        "sku_14": {
+          "type": "flavour",
+          "settings": {
+            "name": "Rich Tomato Base",
+            "range_category": "Base Sauces",
+            "description": "Slow-simmered tomatoes, onion, and garlic. The universal clean base underpinning dozens of commercial kitchen recipes.",
+            "color": "#9E291C"
+          }
+        },
+        "sku_15": {
+          "type": "flavour",
+          "settings": {
+            "name": "Chinese Five-Spice Base",
+            "range_category": "Base Sauces",
+            "description": "Ginger, garlic, five-spice, and rice wine. Keeps stir-fries, noodle dishes, and glaze preps safe and consistent.",
+            "color": "#633B26"
           }
         }
       },
       "block_order": [
-        "flavour_EkJjxj",
-        "flavour_JYimEM",
-        "flavour_TYcgHa",
-        "flavour_HPzBmx",
-        "flavour_rbyhTe",
-        "flavour_pkzWhG",
-        "flavour_cjPVn8",
-        "flavour_0",
-        "flavour_1",
-        "flavour_2",
-        "flavour_3",
-        "flavour_4",
-        "flavour_5"
+        "sku_1",
+        "sku_2",
+        "sku_3",
+        "sku_4",
+        "sku_5",
+        "sku_6",
+        "sku_7",
+        "sku_8",
+        "sku_9",
+        "sku_10",
+        "sku_11",
+        "sku_12",
+        "sku_13",
+        "sku_14",
+        "sku_15"
       ],
       "settings": {
         "preheading": "The Range",
-        "heading": "14 sauces. One standard.",
-        "subheading": "<p>View the range with some tasty serving suggestions</p>",
+        "heading": "15 sauces. Three ranges. One standard.",
+        "subheading": "<p>Naturally allergen-free. Formulated without ultra-processed additives. Click through the categories to explore the range.<\/p>",
         "heading_tag": "h2",
         "heading_size": "h2",
-        "accent_color": "#d96634",
+        "accent_color": "#da6634",
         "panel_bg": "#2a2620",
         "bg_color": "#231f1a",
         "text_color": "#fbf3e4",
@@ -498,7 +522,7 @@
       "settings": {
         "preheading": "Every Format",
         "heading": "One range, every format you sell in.",
-        "subheading": "<p>Retail and foodservice share the same recipes and label artwork across shared formats. One supplier, every channel.</p>",
+        "subheading": "<p>Retail and foodservice share the same recipes and label artwork across shared formats. One supplier, every channel.<\/p>",
         "heading_tag": "h2",
         "bg_color": "#fbf3e4"
       }
@@ -518,12 +542,12 @@
         "full_width": false,
         "style": "style-1",
         "preheading": "",
-        "heading": "<p>Ready to bring bold, global flavour to your menu?</p>",
+        "heading": "<p>Ready to bring bold, global flavour to your menu?<\/p>",
         "heading_tag": "h2",
         "heading_size": "h1",
         "subheading": "",
         "button_label": "Talk To The Team",
-        "button_link": "shopify://pages/contact",
+        "button_link": "shopify:\/\/pages\/contact",
         "button_style": "primary",
         "text_alignment": "text-md-center text-lg-center",
         "text_alignment_mobile": "text-center",
