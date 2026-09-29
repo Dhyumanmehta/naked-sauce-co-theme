@@ -208,7 +208,7 @@
     100% { border-radius: 50% 60% 40% 60% / 40% 30% 70% 50%; }
   }
 
-  /* Bottle stands proudly in front */
+  /* Bottle stands in front */
   .dial-showcase-{{ section.id }} .ds-bottle-img {
     height: 300px;
     width: auto;
@@ -294,7 +294,7 @@
   .dial-showcase-{{ section.id }} .ds-actions {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -319,6 +319,8 @@
     text-decoration: none;
     transition: transform 0.2s ease, background 0.2s ease;
     box-shadow: 0 6px 18px rgba(218, 102, 52, 0.35);
+    display: inline-flex;
+    align-items: center;
   }
 
   .dial-showcase-{{ section.id }} .ds-btn:hover {
@@ -326,10 +328,42 @@
     transform: scale(0.98);
   }
 
+  .dial-showcase-{{ section.id }} .ds-btn-outline {
+    background: transparent;
+    color: var(--ds-text);
+    border: 1px solid rgba(251, 243, 228, 0.3);
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: scale(0.98);
+  }
+
   .dial-showcase-{{ section.id }} .ds-safe-stamp {
     font-size: 12px;
     color: var(--ds-muted);
     opacity: 0.8;
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  @media (min-width: 901px) {
+    .dial-showcase-{{ section.id }} .ds-safe-stamp {
+      width: auto;
+      margin-top: 0;
+    }
   }
 {% endstyle %}
 
@@ -385,6 +419,7 @@
         <h3 class="ds-title" id="dsTitle"></h3>
         <p class="ds-desc" id="dsDesc"></p>
 
+        <!-- Formats Row: "Tubs" only -->
         <div class="ds-formats-row">
           <span class="small opacity-75 pe-1" style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em;">Formats:</span>
           <span class="ds-format-chip">Sachets</span>
@@ -393,12 +428,16 @@
           <span class="ds-format-chip">Bag-in-Box</span>
         </div>
 
+        <!-- Action Buttons -->
         <div class="ds-actions">
           <a href="/pages/contact?subject=Sample%20Request%20-%20The%20Range" class="ds-btn" id="dsQuoteBtn">
             Request Spec & Quote
           </a>
+          <a href="/collections/all" class="ds-btn-outline" id="dsCatalogBtn">
+            View In Catalog &rarr;
+          </a>
           <span class="ds-safe-stamp">
-            ✓ 14 Major Allergens Free
+            ✓ 14 Major Allergens Free & NOVA UPF-Free
           </span>
         </div>
       </div>
@@ -408,159 +447,189 @@
 
 <script>
   (function () {
-    var root = document.querySelector('#dialShowcase-{{ section.id }}');
-    if (!root) return;
+    function initDialShowcase() {
+      var root = document.querySelector('#dialShowcase-{{ section.id }}');
+      if (!root) return;
 
-    var data = [
-      {% for block in section.blocks %}
-        {
-          name: {{ block.settings.name | json }},
-          desc: {{ block.settings.description | json }},
-          color: {{ block.settings.color | json }},
-          range: {{ block.settings.range_category | default: 'Table Sauces' | json }},
-          image: {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 600 | json }}{% else %}""{% endif %}
-        }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ];
+      var data = [
+        {% for block in section.blocks %}
+          {
+            name: {{ block.settings.name | json }},
+            desc: {{ block.settings.description | json }},
+            color: {{ block.settings.color | json }},
+            range: {{ block.settings.range_category | default: 'Table Sauces' | json }},
+            product_url: {{ block.settings.product_url | default: '/collections/all' | json }},
+            image: {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 600 | json }}{% else %}""{% endif %}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ];
 
-    var nodes = root.querySelectorAll('.ds-swatch-node');
-    var filterBtns = root.querySelectorAll('.ds-filter-pill');
-    var carousel = root.querySelector('#dsCarousel');
-    var orb = root.querySelector('#dsOrb');
-    var bottleImg = root.querySelector('#dsBottleImg');
-    var orbBadge = root.querySelector('#dsOrbBadge');
-    var glow = root.querySelector('#dsAmbientGlow');
-    var titleEl = root.querySelector('#dsTitle');
-    var descEl = root.querySelector('#dsDesc');
-    var rangeTagEl = root.querySelector('#dsRangeTag');
-    var quoteBtn = root.querySelector('#dsQuoteBtn');
+      var nodes = root.querySelectorAll('.ds-swatch-node');
+      var filterBtns = root.querySelectorAll('.ds-filter-pill');
+      var carousel = root.querySelector('#dsCarousel');
+      var orb = root.querySelector('#dsOrb');
+      var bottleImg = root.querySelector('#dsBottleImg');
+      var orbBadge = root.querySelector('#dsOrbBadge');
+      var glow = root.querySelector('#dsAmbientGlow');
+      var titleEl = root.querySelector('#dsTitle');
+      var descEl = root.querySelector('#dsDesc');
+      var rangeTagEl = root.querySelector('#dsRangeTag');
+      var quoteBtn = root.querySelector('#dsQuoteBtn');
+      var catalogBtn = root.querySelector('#dsCatalogBtn');
 
-    var currentIndex = 0;
-    var autoPlayTimer = null;
-    var isHovered = false;
+      var currentIndex = 0;
+      var autoPlayTimer = null;
+      var isPaused = false;
 
-    function scrollNodeIntoView(node) {
-      if (!carousel || !node) return;
-      var carouselRect = carousel.getBoundingClientRect();
-      var nodeRect = node.getBoundingClientRect();
-      var scrollOffset = (nodeRect.left - carouselRect.left) - (carouselRect.width / 2) + (nodeRect.width / 2);
-      carousel.scrollBy({ left: scrollOffset, behavior: 'smooth' });
-    }
+      function scrollNodeIntoView(node) {
+        if (!carousel || !node) return;
+        var carouselRect = carousel.getBoundingClientRect();
+        var nodeRect = node.getBoundingClientRect();
+        var scrollOffset = (nodeRect.left - carouselRect.left) - (carouselRect.width / 2) + (nodeRect.width / 2);
+        carousel.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+      }
 
-    function setActiveSauce(i) {
-      var item = data[i];
-      if (!item) return;
+      function setActiveSauce(i) {
+        var item = data[i];
+        if (!item) return;
 
-      currentIndex = i;
+        currentIndex = i;
 
-      titleEl.style.opacity = '0';
-      titleEl.style.transform = 'translateY(6px)';
-      descEl.style.opacity = '0';
-      if (bottleImg) bottleImg.style.opacity = '0';
-
-      setTimeout(function () {
-        titleEl.textContent = item.name;
-        descEl.textContent = item.desc;
-        rangeTagEl.textContent = item.range;
-        orb.style.backgroundColor = item.color;
-        glow.style.background = 'radial-gradient(circle, ' + item.color + ' 0%, transparent 68%)';
-        quoteBtn.href = '/pages/contact?subject=Quote%20Request%20-%20' + encodeURIComponent(item.name);
-
-        if (item.image && item.image !== "") {
-          bottleImg.src = item.image;
-          bottleImg.style.display = 'block';
-          bottleImg.style.opacity = '1';
-          orbBadge.style.display = 'none';
-        } else {
-          bottleImg.style.display = 'none';
-          orbBadge.style.display = 'block';
+        if (titleEl) {
+          titleEl.style.opacity = '0';
+          titleEl.style.transform = 'translateY(6px)';
         }
+        if (descEl) descEl.style.opacity = '0';
+        if (bottleImg) bottleImg.style.opacity = '0';
 
-        titleEl.style.opacity = '1';
-        titleEl.style.transform = 'translateY(0)';
-        descEl.style.opacity = '1';
-      }, 120);
+        setTimeout(function () {
+          if (titleEl) {
+            titleEl.textContent = item.name;
+            titleEl.style.opacity = '1';
+            titleEl.style.transform = 'translateY(0)';
+          }
+          if (descEl) {
+            descEl.textContent = item.desc;
+            descEl.style.opacity = '1';
+          }
+          if (rangeTagEl) rangeTagEl.textContent = item.range;
+          if (orb) orb.style.backgroundColor = item.color;
+          if (glow) glow.style.background = 'radial-gradient(circle, ' + item.color + ' 0%, transparent 68%)';
+          if (quoteBtn) quoteBtn.href = '/pages/contact?subject=Quote%20Request%20-%20' + encodeURIComponent(item.name);
+          if (catalogBtn) catalogBtn.href = item.product_url || '/collections/all';
 
-      nodes.forEach(function (n) { n.classList.remove('active'); });
-      var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
-      if (activeNode) {
-        activeNode.classList.add('active');
-        scrollNodeIntoView(activeNode);
+          if (bottleImg && orbBadge) {
+            if (item.image && item.image !== '') {
+              bottleImg.src = item.image;
+              bottleImg.style.display = 'block';
+              bottleImg.style.opacity = '1';
+              orbBadge.style.display = 'none';
+            } else {
+              bottleImg.style.display = 'none';
+              orbBadge.style.display = 'block';
+            }
+          }
+        }, 120);
+
+        nodes.forEach(function (n) { n.classList.remove('active'); });
+        var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
+        if (activeNode) {
+          activeNode.classList.add('active');
+          scrollNodeIntoView(activeNode);
+        }
+      }
+
+      function getVisibleIndices() {
+        var visible = [];
+        nodes.forEach(function (node) {
+          if (window.getComputedStyle(node).display !== 'none') {
+            visible.push(parseInt(node.dataset.i, 10));
+          }
+        });
+        return visible;
+      }
+
+      function nextSauce() {
+        if (isPaused) return;
+        var visible = getVisibleIndices();
+        if (!visible.length) return;
+
+        var currentPos = visible.indexOf(currentIndex);
+        var nextPos = (currentPos + 1) % visible.length;
+        setActiveSauce(visible[nextPos]);
+      }
+
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayTimer = setInterval(nextSauce, 3500);
+      }
+
+      function stopAutoPlay() {
+        if (autoPlayTimer) {
+          clearInterval(autoPlayTimer);
+          autoPlayTimer = null;
+        }
+      }
+
+      nodes.forEach(function (node) {
+        node.addEventListener('click', function () {
+          var idx = parseInt(node.dataset.i, 10);
+          setActiveSauce(idx);
+          startAutoPlay();
+        });
+      });
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+
+          var filter = btn.dataset.filter;
+          var firstMatch = null;
+
+          nodes.forEach(function (node) {
+            var range = node.dataset.range;
+            if (filter === 'all' || range === filter) {
+              node.style.display = 'flex';
+              if (firstMatch === null) {
+                firstMatch = parseInt(node.dataset.i, 10);
+              }
+            } else {
+              node.style.display = 'none';
+            }
+          });
+
+          if (firstMatch !== null) {
+            setActiveSauce(firstMatch);
+          }
+          startAutoPlay();
+        });
+      });
+
+      carousel.addEventListener('mouseenter', function () { isPaused = true; });
+      carousel.addEventListener('mouseleave', function () { isPaused = false; });
+      carousel.addEventListener('touchstart', function () { isPaused = true; }, { passive: true });
+      carousel.addEventListener('touchend', function () {
+        setTimeout(function () { isPaused = false; }, 2000);
+      });
+
+      if (data.length) {
+        setActiveSauce(0);
+        startAutoPlay();
       }
     }
 
-    function getVisibleIndices() {
-      var visible = [];
-      nodes.forEach(function (node) {
-        if (node.style.display !== 'none') {
-          visible.push(parseInt(node.dataset.i, 10));
-        }
-      });
-      return visible;
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDialShowcase);
+    } else {
+      initDialShowcase();
     }
 
-    function nextSauce() {
-      if (isHovered) return;
-      var visible = getVisibleIndices();
-      if (!visible.length) return;
-
-      var currentPos = visible.indexOf(currentIndex);
-      var nextPos = (currentPos + 1) % visible.length;
-      setActiveSauce(visible[nextPos]);
-    }
-
-    function startAutoScroll() {
-      stopAutoScroll();
-      autoPlayTimer = setInterval(nextSauce, 4000);
-    }
-
-    function stopAutoScroll() {
-      if (autoPlayTimer) clearInterval(autoPlayTimer);
-    }
-
-    nodes.forEach(function (node) {
-      node.addEventListener('click', function () {
-        var idx = parseInt(node.dataset.i, 10);
-        setActiveSauce(idx);
-        startAutoScroll();
-      });
+    document.addEventListener('shopify:section:load', function (e) {
+      if (e.target && e.target.querySelector('#dialShowcase-{{ section.id }}')) {
+        initDialShowcase();
+      }
     });
-
-    filterBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        filterBtns.forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-
-        var filter = btn.dataset.filter;
-        var firstMatch = null;
-
-        nodes.forEach(function (node) {
-          var range = node.dataset.range;
-          if (filter === 'all' || range === filter) {
-            node.style.display = 'flex';
-            if (firstMatch === null) {
-              firstMatch = parseInt(node.dataset.i, 10);
-            }
-          } else {
-            node.style.display = 'none';
-          }
-        });
-
-        if (firstMatch !== null) {
-          setActiveSauce(firstMatch);
-        }
-        startAutoScroll();
-      });
-    });
-
-    root.addEventListener('mouseenter', function () { isHovered = true; });
-    root.addEventListener('mouseleave', function () { isHovered = false; });
-    root.addEventListener('touchstart', function () { isHovered = true; }, { passive: true });
-
-    if (data.length) {
-      setActiveSauce(0);
-      startAutoScroll();
-    }
   })();
 </script>
 
@@ -603,7 +672,8 @@
         },
         { "type": "textarea", "id": "description", "label": "Serving suggestion & Menu use", "default": "Serving suggestion goes here." },
         { "type": "color", "id": "color", "label": "Swatch accent color", "default": "#C13B2A" },
-        { "type": "image_picker", "id": "image", "label": "Sauce Bottle / Dish Photography" }
+        { "type": "image_picker", "id": "image", "label": "Sauce Bottle / Dish Photography" },
+        { "type": "url", "id": "product_url", "label": "Product / Catalog Link" }
       ]
     }
   ]
