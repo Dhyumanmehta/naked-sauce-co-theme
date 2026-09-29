@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero_banner": {
@@ -54,7 +45,7 @@
         "text_block": {
           "type": "text",
           "settings": {
-            "text": "<h3>The Allergen Reality</h3><p>Food allergies are not a lifestyle preference. In the UK alone, research shows that over <strong>2.4 million adults</strong> live with confirmed food allergies, and hospital admissions for severe anaphylaxis have surged by <strong>154%</strong> over the past two decades.</p><p>Yet in both retail aisles and commercial hospitality kitchens, allergen-safe alternatives are routinely treated as compromised compromises: packed with unpronounceable chemical binders, devoid of authentic flavour, or confined to a tiny 'free-from' quarantine shelf.</p><p>We formulate every single recipe <strong>completely free from all 14 major regulated allergens</strong> from day one. No peanuts, tree nuts, gluten, dairy, eggs, soy, sesame, mustard, celery, lupin, fish, crustaceans, molluscs, or sulphites. One sauce, universally safe.</p>",
+            "text": "<h3>The Allergen Reality</h3><p>Food allergies are not a lifestyle preference. In the UK alone, clinical data confirms that over <strong>2.4 million adults</strong> live with diagnosed food allergies<sup>[1]</sup>, while hospital admissions for severe anaphylaxis have surged by <strong>154%</strong> over the past two decades<sup>[2]</sup>.</p><p>Yet in retail aisles and commercial hospitality kitchens alike, allergen-safe alternatives are treated as compromised afterthought products: packed with chemical binders, devoid of punchy flavour, or quarantined to an isolated 'free-from' shelf.</p><p>We formulate every single recipe <strong>completely free from all 14 major regulated allergens</strong> from day one. No peanuts, tree nuts, gluten, dairy, eggs, soy, sesame, mustard, celery, lupin, fish, crustaceans, molluscs, or sulphites. One sauce, universally safe.</p><p style=\"font-size: 11.5px; opacity: 0.75; margin-top: 18px; border-top: 1px solid rgba(35,31,26,0.15); padding-top: 10px;\"><em><strong>Data Sources:</strong> <sup>[1]</sup> Food Standards Agency (FSA) Adult Food Allergy Prevalence Report; <sup>[2]</sup> NHS Digital / MHRA 20-Year Hospital Episode Statistics (HES).</em></p>",
             "margin_top": 2
           }
         }
@@ -102,7 +93,7 @@
         "text_block": {
           "type": "text",
           "settings": {
-            "text": "<h3>The Ultra-Processed Trap</h3><p>When mass-market manufacturers remove gluten, eggs, or dairy, they typically substitute them with ultra-processed fillers: modified starches, maltodextrins, xanthan gum, synthetic emulsifiers, and artificial preservatives.</p><p>Today, over <strong>54% of daily calorie intake in the UK</strong> comes from ultra-processed food (UPF). The global 2024 British Medical Journal review of almost 10 million participants linked high UPF consumption directly to 32 damaging health outcomes.</p><p>We adhere rigorously to the <strong>NOVA Category 1–3 framework</strong>. Our sauces contain real vine tomatoes, whole cider vinegar, raw honey, fermented chillies, garlic, ginger, and freshly ground spices. No industrial texturisers. No chemical stabilizers. Real food, period.</p>",
+            "text": "<h3>The Ultra-Processed Trap</h3><p>When mass-market condiment brands strip out gluten, eggs, or dairy, they routinely substitute them with ultra-processed fillers: modified starches, maltodextrins, xanthan gum, synthetic emulsifiers, and artificial preservatives.</p><p>Today, over <strong>54% of total daily calorie intake in the UK</strong> comes from ultra-processed foods (UPF)<sup>[3]</sup>. The milestone 2024 British Medical Journal (BMJ) umbrella review examining nearly 10 million individuals linked high UPF consumption directly to 32 adverse health outcomes, spanning metabolic, cardiovascular, and gastrointestinal conditions.</p><p>We formulate strictly under the <strong>NOVA Category 1–3 framework</strong>. Our recipes use vine-ripened tomatoes, raw cider vinegar, honey, fermented chillies, garlic, and fresh spices. Zero industrial texturisers. Zero chemical stabilisers. Real food, period.</p><p style=\"font-size: 11.5px; opacity: 0.75; margin-top: 18px; border-top: 1px solid rgba(35,31,26,0.15); padding-top: 10px;\"><em><strong>Data Sources:</strong> <sup>[3]</sup> British Medical Journal (BMJ 2024;384:e077310) Umbrella Review on Ultra-Processed Dietary Exposure; National Diet and Nutrition Survey (NDNS).</em></p>",
             "margin_top": 2
           }
         }
@@ -144,73 +135,65 @@
         "flip": false
       }
     },
-    "standards_grid": {
-      "type": "multicolumn",
-      "blocks": {
-        "col_1": {
-          "type": "column",
-          "settings": {
-            "preheading": "",
-            "heading": "Image with text",
-            "subheading": "Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.",
-            "button_label": "Buy it now",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        },
-        "col_2": {
-          "type": "column",
-          "settings": {
-            "preheading": "",
-            "heading": "Image with text",
-            "subheading": "Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.",
-            "button_label": "Buy it now",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        },
-        "col_3": {
-          "type": "column",
-          "settings": {
-            "preheading": "",
-            "heading": "Image with text",
-            "subheading": "Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.",
-            "button_label": "Buy it now",
-            "button_link": "shopify://collections/all",
-            "button_style": "primary"
-          }
-        }
-      },
-      "block_order": [
-        "col_1",
-        "col_2",
-        "col_3"
-      ],
+    "facility_standards": {
+      "type": "rich-text",
       "settings": {
         "layout": "container page-width",
+        "full_width": false,
         "style": "style-1",
-        "preheading": "",
-        "heading": "Why Single-Recipe Inclusivity Works",
-        "subheading": "",
+        "preheading": "MANUFACTURING RIGOUR",
+        "heading": "<p>Purpose-Built. Nut-Free. Glass-Free. BRC Grade AA.</p>",
         "heading_tag": "h2",
         "heading_size": "h2",
-        "heading_alignment": "text-center",
-        "image_width": "100",
-        "image_height": "adapt",
-        "text_alignment": "text-start",
-        "heading_size_card": "h5",
-        "heading_tag_card": "h2",
-        "border_radius": 0,
-        "columns_desktop": 3,
-        "columns_tablet": 2,
-        "gutter": 4,
+        "subheading": "<p>Allergen safety is only as good as the facility producing it. Our sauces are crafted in a <strong>purpose-built, dedicated nut-free and glass-free manufacturing environment</strong> operating at the highest global benchmark: <strong>BRCGS Grade AA certification</strong>.</p><p>With zero glass on site, zero airborne nut contamination, and batch-by-batch validated swab testing, we offer commercial foodservice passes and domestic tables unmatched operational peace of mind.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "text_alignment": "text-center",
+        "text_alignment_mobile": "text-center",
         "use_custom_colors": true,
         "color_text": "#fbf3e4",
         "color_background": "#2a2620",
         "color_background_gradient": "",
+        "enable_parallax": false,
+        "type": "scroll",
+        "speed": 0.5,
         "margin_top": 0,
         "margin_bottom": 0,
         "padding_top": 70,
+        "padding_bottom": 60,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "founder_quote": {
+      "type": "quotes-v1",
+      "blocks": {
+        "quote_1": {
+          "type": "quote",
+          "settings": {
+            "title": "THE NAKED SAUCE CO. MISSION",
+            "content": "<p>“The Naked Sauce Co. was built to bring positive change to the UK. It is a growing market actively looking for niches that are genuinely UPF- and allergen-free, and sauces was a field that remained largely unexplored. That is where we come in.”</p>",
+            "author": "The Naked Sauce Co. Kitchen Team",
+            "sub_author": "Founding Principle"
+          }
+        }
+      },
+      "block_order": [
+        "quote_1"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_tag": "h2",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "use_custom_colors": true,
+        "color_text": "#fbf3e4",
+        "color_background": "#231f1a",
+        "color_background_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 60,
         "padding_bottom": 70,
         "custom_id": "",
         "custom_class": ""
@@ -219,7 +202,7 @@
     "wave_4": {
       "type": "wave-divider",
       "settings": {
-        "bg_color_above": "#2a2620",
+        "bg_color_above": "#231f1a",
         "bg_color_below": "#5f6b3e",
         "flip": false
       }
@@ -234,9 +217,9 @@
         "heading": "<p>Ready to upgrade your pantry or kitchen pass?</p>",
         "heading_tag": "h2",
         "heading_size": "h2",
-        "subheading": "<p>Explore our 14 chef-developed sauces across table condiments, cooking glazes, and foundation bases.</p>",
-        "button_label": "Explore The Sauces",
-        "button_link": "shopify://collections",
+        "subheading": "<p>Explore our 15 chef-developed sauces across table condiments, cooking glazes, and foundation bases.</p>",
+        "button_label": "Explore The 15 Sauces",
+        "button_link": "shopify://pages/the-range",
         "button_style": "primary",
         "text_alignment": "text-center",
         "text_alignment_mobile": "text-center",
@@ -263,7 +246,8 @@
     "wave_2",
     "pillar_2_upf",
     "wave_3",
-    "standards_grid",
+    "facility_standards",
+    "founder_quote",
     "wave_4",
     "cta_banner"
   ]
