@@ -52,6 +52,33 @@
     {% render 'css-variables' %}
     {{ 'dev.css' | asset_url | stylesheet_tag }}
     {{ 'nsc-bubbly.css' | asset_url | stylesheet_tag }}
+
+    <!-- Custom Sauce Bottle Cursor & Click Splash -->
+    <style>
+      @media (pointer: fine) {
+        html, body, *, select, option {
+          cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(-32 16 16)'%3E%3Cpath d='M14 2h4v3h-4z' fill='%23B84D20'/%3E%3Cpath d='M13 5h6v3h-6z' fill='%23FBF3E4' stroke='%23231F1A' stroke-width='0.8'/%3E%3Crect x='11' y='8' width='10' height='21' rx='4.5' fill='%23DA6634' stroke='%23231F1A' stroke-width='0.8'/%3E%3Crect x='11.5' y='14' width='9' height='8' rx='1' fill='%23231F1A'/%3E%3Ccircle cx='16' cy='18' r='2' fill='%23FBF3E4'/%3E%3C/g%3E%3C/svg%3E") 2 2, auto !important;
+        }
+
+        a, button, input[type='submit'], input[type='button'], .btn, [role='button'], .ds-swatch-node, .ds-filter-pill, .ds-btn, .ds-btn-outline, .nsc-tab-btn, .nsc-submit {
+          cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(-46 16 16)'%3E%3Cpath d='M14 1h4v3h-4z' fill='%23DA6634'/%3E%3Cpath d='M13 4h6v3h-6z' fill='%23FFFFFF' stroke='%23231F1A' stroke-width='0.8'/%3E%3Crect x='11' y='7' width='10' height='22' rx='4.5' fill='%23C13B2A' stroke='%23231F1A' stroke-width='0.8'/%3E%3Crect x='11.5' y='13' width='9' height='9' rx='1' fill='%23FBF3E4'/%3E%3Ccircle cx='16' cy='17.5' r='2.2' fill='%23DA6634'/%3E%3C/g%3E%3C/svg%3E") 1 1, pointer !important;
+        }
+
+        .nsc-sauce-splash {
+          position: fixed;
+          pointer-events: none;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: #DA6634;
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.9;
+          transition: transform 0.38s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.38s ease;
+          z-index: 9999999;
+        }
+      }
+    </style>
+
     <script>
         window.performance.mark('slate:theme_stylesheet_loaded.start');
 
@@ -67,19 +94,18 @@
     </script>
 
     <script>
-
         {%- if settings.currency_code_enabled -%}
         const moneyFormat = {{ shop.money_with_currency_format | json }}
         {%- else -%}
         const moneyFormat = {{ shop.money_format | json }}
-                {%- endif -%}
+        {%- endif -%}
 
-            window.variantStrings = {
-                addToCart: `{{ 'products.product.add_to_cart' | t }}`,
-                soldOut: `{{ 'products.product.sold_out' | t }}`,
-                unavailable: `{{ 'products.product.unavailable' | t }}`,
-                unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
-            };
+        window.variantStrings = {
+            addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+            soldOut: `{{ 'products.product.sold_out' | t }}`,
+            unavailable: `{{ 'products.product.unavailable' | t }}`,
+            unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+        };
 
         var theme = {
             breakpoints: {
@@ -207,5 +233,29 @@
 {%- endif -%}
 {% render 'scroll-bottle-meter' %}
 <script src="{{ 'nsc-bubbly.js' | asset_url }}" defer></script>
+
+<!-- Interactive Bottle Click Effect Script -->
+<script>
+  (function() {
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.addEventListener('mousedown', function(e) {
+        var splash = document.createElement('div');
+        splash.className = 'nsc-sauce-splash';
+        splash.style.left = e.clientX + 'px';
+        splash.style.top = e.clientY + 'px';
+        document.body.appendChild(splash);
+
+        requestAnimationFrame(function() {
+          splash.style.transform = 'translate(-50%, -50%) scale(2.4)';
+          splash.style.opacity = '0';
+        });
+
+        setTimeout(function() {
+          if (splash.parentNode) splash.parentNode.removeChild(splash);
+        }, 400);
+      });
+    }
+  })();
+</script>
 </body>
 </html>
