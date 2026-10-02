@@ -1,3 +1,9 @@
+{%- liquid
+  assign collection_table = section.settings.collection_table | default: collections['table-sauces']
+  assign collection_cooking = section.settings.collection_cooking | default: collections['cooking-sauces']
+  assign collection_base = section.settings.collection_base | default: collections['kitchen-bases']
+-%}
+
 {% style %}
   .dial-showcase-{{ section.id }} {
     --ds-accent: {{ section.settings.accent_color | default: '#DA6634' }};
@@ -346,7 +352,7 @@
   <div class="ds-ambient-glow" id="dsAmbientGlow"></div>
 
   <div class="ds-inner container page-width">
-    <!-- Section Header -->
+    <!-- Header -->
     <div class="cs-section-header text-center mb-4">
       {% render 'heading',
         heading: section.settings.heading,
@@ -357,39 +363,105 @@
       %}
     </div>
 
-    <!-- Category Tabs -->
+    <!-- Category Filter Tabs (Dynamic Counts) -->
     <div class="ds-nav" role="tablist">
       <button type="button" class="ds-filter-pill active" data-filter="all">All Sauces</button>
-      <button type="button" class="ds-filter-pill" data-filter="table">Table Sauces</button>
-      <button type="button" class="ds-filter-pill" data-filter="cooking">Cooking Sauces</button>
-      <button type="button" class="ds-filter-pill" data-filter="base">Kitchen Bases</button>
+      {% if collection_table != blank and collection_table.products_count > 0 %}
+        <button type="button" class="ds-filter-pill" data-filter="table">{{ collection_table.title }} ({{ collection_table.products_count }})</button>
+      {% endif %}
+      {% if collection_cooking != blank and collection_cooking.products_count > 0 %}
+        <button type="button" class="ds-filter-pill" data-filter="cooking">{{ collection_cooking.title }} ({{ collection_cooking.products_count }})</button>
+      {% endif %}
+      {% if collection_base != blank and collection_base.products_count > 0 %}
+        <button type="button" class="ds-filter-pill" data-filter="base">{{ collection_base.title }} ({{ collection_base.products_count }})</button>
+      {% endif %}
     </div>
 
-    <!-- Swatch Ribbon -->
+    <!-- Swatch Ribbon: Automatically built from collections -->
     <div class="ds-dial-carousel" id="dsCarousel">
-      {% for block in section.blocks %}
-        {%- liquid
-          # Strictly map the block dropdown setting chosen in the admin
-          assign raw_cat = block.settings.range_category | downcase
-          if raw_cat contains 'cooking'
-            assign block_slug = 'cooking'
-          elsif raw_cat contains 'base'
-            assign block_slug = 'base'
-          else
-            assign block_slug = 'table'
-          endif
-        -%}
-        <button
-          type="button"
-          class="ds-swatch-node{% if forloop.first %} active{% endif %}"
-          data-i="{{ forloop.index0 }}"
-          data-range="{{ block_slug }}"
-          {{ block.shopify_attributes }}
-        >
-          <div class="ds-node-circle" style="background-color: {{ block.settings.color }};"></div>
-          <span class="ds-node-label">{{ block.settings.name }}</span>
-        </button>
-      {% endfor %}
+      {% assign global_idx = 0 %}
+
+      {% comment %} 1. Table Sauces Collection {% endcomment %}
+      {% if collection_table != blank %}
+        {% for product in collection_table.products %}
+          {%- liquid
+            assign p_title = product.title | downcase
+            if p_title contains 'tomato' or p_title contains 'ketchup'
+              assign node_color = '#C13B2A'
+            elsif p_title contains 'brown'
+              assign node_color = '#5C3826'
+            elsif p_title contains 'bbq' or p_title contains 'texan'
+              assign node_color = '#7A2E1E'
+            elsif p_title contains 'gochujang'
+              assign node_color = '#A3281B'
+            elsif p_title contains 'chilli' or p_title contains 'honey'
+              assign node_color = '#D95328'
+            else
+              assign node_color = '#DA6634'
+            endif
+          -%}
+          <button
+            type="button"
+            class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}"
+            data-i="{{ global_idx }}"
+            data-range="table"
+          >
+            <div class="ds-node-circle" style="background-color: {{ node_color }};"></div>
+            <span class="ds-node-label">{{ product.title }}</span>
+          </button>
+          {% assign global_idx = global_idx | plus: 1 %}
+        {% endfor %}
+      {% endif %}
+
+      {% comment %} 2. Cooking Sauces Collection {% endcomment %}
+      {% if collection_cooking != blank %}
+        {% for product in collection_cooking.products %}
+          {%- liquid
+            assign p_title = product.title | downcase
+            if p_title contains 'pepper'
+              assign node_color = '#B83D26'
+            elsif p_title contains 'orange' or p_title contains 'ginger'
+              assign node_color = '#D45D28'
+            elsif p_title contains 'dahl' or p_title contains 'lentil'
+              assign node_color = '#C97A2B'
+            elsif p_title contains 'tagine' or p_title contains 'moroccan'
+              assign node_color = '#964323'
+            elsif p_title contains 'five spice'
+              assign node_color = '#5A2A22'
+            elsif p_title contains 'curry'
+              assign node_color = '#B35E1B'
+            else
+              assign node_color = '#8A3B22'
+            endif
+          -%}
+          <button
+            type="button"
+            class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}"
+            data-i="{{ global_idx }}"
+            data-range="cooking"
+          >
+            <div class="ds-node-circle" style="background-color: {{ node_color }};"></div>
+            <span class="ds-node-label">{{ product.title }}</span>
+          </button>
+          {% assign global_idx = global_idx | plus: 1 %}
+        {% endfor %}
+      {% endif %}
+
+      {% comment %} 3. Kitchen Bases Collection (if present) {% endcomment %}
+      {% if collection_base != blank %}
+        {% for product in collection_base.products %}
+          <button
+            type="button"
+            class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}"
+            data-i="{{ global_idx }}"
+            data-range="base"
+          >
+            <div class="ds-node-circle" style="background-color: #7B3F28;"></div>
+            <span class="ds-node-label">{{ product.title }}</span>
+          </button>
+          {% assign global_idx = global_idx | plus: 1 %}
+        {% endfor %}
+      {% endif %}
     </div>
 
     <!-- Spotlight Stage Card -->
@@ -437,30 +509,105 @@
       if (!root) return;
 
       var rawData = [
-        {% for block in section.blocks %}
-          {%- liquid
-            assign raw_cat = block.settings.range_category | downcase
-            if raw_cat contains 'cooking'
-              assign b_slug = 'cooking'
-              assign b_label = 'Cooking Sauces'
-            elsif raw_cat contains 'base'
-              assign b_slug = 'base'
-              assign b_label = 'Kitchen Bases'
-            else
-              assign b_slug = 'table'
-              assign b_label = 'Table Sauces'
-            endif
-          -%}
-          {
-            name: {{ block.settings.name | json }},
-            desc: {{ block.settings.description | json }},
-            color: {{ block.settings.color | json }},
-            range_slug: {{ b_slug | json }},
-            range_label: {{ b_label | json }},
-            product_url: {{ block.settings.product_url | default: '/pages/the-range' | json }},
-            image: {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 600 | json }}{% else %}""{% endif %}
-          }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
+        {% assign is_first_item = true %}
+
+        {% if collection_table != blank %}
+          {% for product in collection_table.products %}
+            {%- liquid
+              assign p_title = product.title | downcase
+              if p_title contains 'tomato' or p_title contains 'ketchup'
+                assign node_color = '#C13B2A'
+              elsif p_title contains 'brown'
+                assign node_color = '#5C3826'
+              elsif p_title contains 'bbq' or p_title contains 'texan'
+                assign node_color = '#7A2E1E'
+              elsif p_title contains 'gochujang'
+                assign node_color = '#A3281B'
+              elsif p_title contains 'chilli' or p_title contains 'honey'
+                assign node_color = '#D95328'
+              else
+                assign node_color = '#DA6634'
+              endif
+
+              assign serving_desc = product.description | strip_html | truncatewords: 24
+              if serving_desc == blank
+                assign serving_desc = "Bold flavour, nothing to hide. Universally safe for every table."
+              endif
+            -%}
+            {% unless is_first_item %},{% endunless %}
+            {
+              name: {{ product.title | json }},
+              desc: {{ serving_desc | json }},
+              color: {{ node_color | json }},
+              range_slug: "table",
+              range_label: {{ collection_table.title | json }},
+              product_url: {{ product.url | json }},
+              image: {% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %}
+            }
+            {% assign is_first_item = false %}
+          {% endfor %}
+        {% endif %}
+
+        {% if collection_cooking != blank %}
+          {% for product in collection_cooking.products %}
+            {%- liquid
+              assign p_title = product.title | downcase
+              if p_title contains 'pepper'
+                assign node_color = '#B83D26'
+              elsif p_title contains 'orange' or p_title contains 'ginger'
+                assign node_color = '#D45D28'
+              elsif p_title contains 'dahl' or p_title contains 'lentil'
+                assign node_color = '#C97A2B'
+              elsif p_title contains 'tagine' or p_title contains 'moroccan'
+                assign node_color = '#964323'
+              elsif p_title contains 'five spice'
+                assign node_color = '#5A2A22'
+              elsif p_title contains 'curry'
+                assign node_color = '#B35E1B'
+              else
+                assign node_color = '#8A3B22'
+              endif
+
+              assign serving_desc = product.description | strip_html | truncatewords: 24
+              if serving_desc == blank
+                assign serving_desc = "Chef-developed cooking sauce and glaze designed for maximum menu versatility."
+              endif
+            -%}
+            {% unless is_first_item %},{% endunless %}
+            {
+              name: {{ product.title | json }},
+              desc: {{ serving_desc | json }},
+              color: {{ node_color | json }},
+              range_slug: "cooking",
+              range_label: {{ collection_cooking.title | json }},
+              product_url: {{ product.url | json }},
+              image: {% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %}
+            }
+            {% assign is_first_item = false %}
+          {% endfor %}
+        {% endif %}
+
+        {% if collection_base != blank %}
+          {% for product in collection_base.products %}
+            {%- liquid
+              assign serving_desc = product.description | strip_html | truncatewords: 24
+              if serving_desc == blank
+                assign serving_desc = "Foundational kitchen base crafted for chefs to build full dishes and curries from scratch."
+              endif
+            -%}
+            {% unless is_first_item %},{% endunless %}
+            {
+              name: {{ product.title | json }},
+              desc: {{ serving_desc | json }},
+              color: "#7B3F28",
+              range_slug: "base",
+              range_label: {{ collection_base.title | json }},
+              product_url: {{ product.url | json }},
+              image: {% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %}
+            }
+            {% assign is_first_item = false %}
+          {% endfor %}
+        {% endif %}
       ];
 
       var nodes = root.querySelectorAll('.ds-swatch-node');
@@ -636,43 +783,29 @@
   "name": "Flavour Dial Showcase",
   "tag": "section",
   "settings": [
-    { "type": "text", "id": "preheading", "label": "Preheading", "default": "Explore The Range" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "14 sauces. Three ranges. One standard." },
-    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Naturally allergen-free. Made without ultra-processed ingredients. Click any sauce to reveal flavour pairings and menu applications.</p>" },
+    { "type": "text", "id": "preheading", "label": "Preheading", "default": "The Range" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "14 sauces. One standard." },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>View the range with some tasty serving suggestions</p>" },
     { "type": "select", "id": "heading_tag", "options": [
         { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
       ], "default": "h2", "label": "Heading tag" },
     { "type": "select", "id": "heading_size", "options": [
         { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
       ], "default": "h2", "label": "Heading size" },
+    { "type": "header", "content": "Collections Setup" },
+    { "type": "collection", "id": "collection_table", "label": "Table Sauces Collection" },
+    { "type": "collection", "id": "collection_cooking", "label": "Cooking Sauces Collection" },
+    { "type": "collection", "id": "collection_base", "label": "Kitchen Bases Collection (Optional)" },
+    { "type": "header", "content": "Colors" },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#DA6634" },
     { "type": "color", "id": "panel_bg", "label": "Stage Card Background", "default": "#2A2620" },
     { "type": "color", "id": "bg_color", "label": "Section Background", "default": "#231F1A" },
     { "type": "color", "id": "text_color", "label": "Heading Text Color", "default": "#FBF3E4" },
     { "type": "color", "id": "muted_text_color", "label": "Description Text Color", "default": "#D6CDBF" }
   ],
-  "blocks": [
+  "presets": [
     {
-      "type": "flavour",
-      "name": "Flavour SKU",
-      "settings": [
-        { "type": "text", "id": "name", "label": "Sauce name", "default": "Sauce Name" },
-        {
-          "type": "select",
-          "id": "range_category",
-          "label": "Range Category",
-          "options": [
-            { "value": "Table Sauces", "label": "Table Sauces" },
-            { "value": "Cooking Sauces", "label": "Cooking Sauces" },
-            { "value": "Base Sauces", "label": "Kitchen Base Sauces" }
-          ],
-          "default": "Table Sauces"
-        },
-        { "type": "textarea", "id": "description", "label": "Serving suggestion & Menu use", "default": "Serving suggestion goes here." },
-        { "type": "color", "id": "color", "label": "Swatch accent color", "default": "#C13B2A" },
-        { "type": "image_picker", "id": "image", "label": "Sauce Bottle / Dish Photography" },
-        { "type": "url", "id": "product_url", "label": "Product / Catalog Link" }
-      ]
+      "name": "Flavour Dial Showcase"
     }
   ]
 }
