@@ -18,15 +18,13 @@
     color: var(--ds-text) !important;
   }
 
-  .dial-showcase-{{ section.id }} .cs-section-header .preheading,
-  .dial-showcase-{{ section.id }} .cs-section-header .sub-title {
+  .dial-showcase-{{ section.id }} .cs-section-header .preheading {
     color: var(--ds-accent) !important;
     letter-spacing: 0.15em;
     font-weight: 800;
     text-transform: uppercase;
   }
 
-  .dial-showcase-{{ section.id }} .cs-section-header p,
   .dial-showcase-{{ section.id }} .cs-section-header .subheading {
     color: var(--ds-muted) !important;
   }
@@ -43,7 +41,7 @@
     opacity: 0.2;
     filter: blur(80px);
     pointer-events: none;
-    transition: background 0.6s ease, transform 0.6s ease;
+    transition: background 0.6s ease;
     z-index: 1;
   }
 
@@ -210,35 +208,20 @@
     filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.6));
     position: relative;
     z-index: 2;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-
-  .dial-showcase-{{ section.id }} .ds-orb-badge {
-    position: relative;
-    z-index: 2;
-    background: rgba(35, 31, 26, 0.92);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 50px;
-    padding: 8px 18px;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #FBF3E4;
+    transition: opacity 0.25s ease;
   }
 
   .dial-showcase-{{ section.id }} .ds-range-tag {
     display: inline-block;
-    padding: 4px 14px;
+    padding: 5px 16px;
     border-radius: 50px;
     background: rgba(218, 102, 52, 0.15);
     border: 1px solid rgba(218, 102, 52, 0.4);
     color: var(--ds-accent);
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     margin-bottom: 14px;
   }
 
@@ -359,17 +342,6 @@
   }
 {% endstyle %}
 
-{%- liquid
-  # Determine data source: Collection vs Manual Blocks
-  assign use_collection = false
-  if section.settings.collection != blank and section.settings.collection.products_count > 0
-    assign use_collection = true
-    assign source_items = section.settings.collection.products
-  else
-    assign source_items = section.blocks
-  endif
--%}
-
 <div class="dial-showcase-{{ section.id }}" id="dialShowcase-{{ section.id }}">
   <div class="ds-ambient-glow" id="dsAmbientGlow"></div>
 
@@ -385,7 +357,7 @@
       %}
     </div>
 
-    <!-- Category Pills -->
+    <!-- Category Tabs -->
     <div class="ds-nav" role="tablist">
       <button type="button" class="ds-filter-pill active" data-filter="all">All Sauces</button>
       <button type="button" class="ds-filter-pill" data-filter="table">Table Sauces</button>
@@ -393,70 +365,31 @@
       <button type="button" class="ds-filter-pill" data-filter="base">Kitchen Bases</button>
     </div>
 
-    <!-- Horizontal Swatch Nodes Ribbon -->
+    <!-- Swatch Ribbon -->
     <div class="ds-dial-carousel" id="dsCarousel">
-      {% if use_collection %}
-        {% for prod in source_items %}
-          {%- liquid
-            # Extract category from tags or product_type
-            assign prod_cat = 'table'
-            assign prod_cat_label = 'Table Sauces'
-            for tag in prod.tags
-              assign tag_down = tag | downcase
-              if tag_down contains 'cooking'
-                assign prod_cat = 'cooking'
-                assign prod_cat_label = 'Cooking Sauces'
-              elsif tag_down contains 'base'
-                assign prod_cat = 'base'
-                assign prod_cat_label = 'Kitchen Base'
-              elsif tag_down contains 'table'
-                assign prod_cat = 'table'
-                assign prod_cat_label = 'Table Sauces'
-              endif
-            endfor
-
-            # Extract color from tag (e.g., "color:#C13B2A") or default palette
-            assign swatch_color = '#DA6634'
-            for tag in prod.tags
-              if tag contains 'color:'
-                assign swatch_color = tag | split: 'color:' | last | strip
-              endif
-            endfor
-          -%}
-          <button
-            type="button"
-            class="ds-swatch-node{% if forloop.first %} active{% endif %}"
-            data-i="{{ forloop.index0 }}"
-            data-range="{{ prod_cat }}"
-          >
-            <div class="ds-node-circle" style="background-color: {{ swatch_color }};"></div>
-            <span class="ds-node-label">{{ prod.title }}</span>
-          </button>
-        {% endfor %}
-      {% else %}
-        {% for block in section.blocks %}
-          {%- liquid
-            assign raw_cat = block.settings.range_category | downcase
-            if raw_cat contains 'cooking'
-              assign cat_slug = 'cooking'
-            elsif raw_cat contains 'base'
-              assign cat_slug = 'base'
-            else
-              assign cat_slug = 'table'
-            endif
-          -%}
-          <button
-            type="button"
-            class="ds-swatch-node{% if forloop.first %} active{% endif %}"
-            data-i="{{ forloop.index0 }}"
-            data-range="{{ cat_slug }}"
-            {{ block.shopify_attributes }}
-          >
-            <div class="ds-node-circle" style="background-color: {{ block.settings.color }};"></div>
-            <span class="ds-node-label">{{ block.settings.name }}</span>
-          </button>
-        {% endfor %}
-      {% endif %}
+      {% for block in section.blocks %}
+        {%- liquid
+          # Strictly map the block dropdown setting chosen in the admin
+          assign raw_cat = block.settings.range_category | downcase
+          if raw_cat contains 'cooking'
+            assign block_slug = 'cooking'
+          elsif raw_cat contains 'base'
+            assign block_slug = 'base'
+          else
+            assign block_slug = 'table'
+          endif
+        -%}
+        <button
+          type="button"
+          class="ds-swatch-node{% if forloop.first %} active{% endif %}"
+          data-i="{{ forloop.index0 }}"
+          data-range="{{ block_slug }}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="ds-node-circle" style="background-color: {{ block.settings.color }};"></div>
+          <span class="ds-node-label">{{ block.settings.name }}</span>
+        </button>
+      {% endfor %}
     </div>
 
     <!-- Spotlight Stage Card -->
@@ -485,11 +418,11 @@
           <a href="/pages/contact?subject=Sample%20Request%20-%20The%20Range" class="ds-btn" id="dsQuoteBtn">
             Request Spec & Quote
           </a>
-          <a href="/collections/all" class="ds-btn-outline" id="dsCatalogBtn">
+          <a href="/pages/the-range" class="ds-btn-outline" id="dsCatalogBtn">
             View In Catalog &rarr;
           </a>
           <span class="ds-safe-stamp">
-            ✓ 14 Major Allergens Free
+            ✓ 14 Major Allergens Free & NOVA UPF-Free
           </span>
         </div>
       </div>
@@ -503,69 +436,31 @@
       var root = document.querySelector('#dialShowcase-{{ section.id }}');
       if (!root) return;
 
-      var data = [
-        {% if use_collection %}
-          {% for prod in source_items %}
-            {%- liquid
-              assign prod_cat = 'table'
-              assign prod_cat_label = 'Table Sauces'
-              for tag in prod.tags
-                assign tag_down = tag | downcase
-                if tag_down contains 'cooking'
-                  assign prod_cat = 'cooking'
-                  assign prod_cat_label = 'Cooking Sauces'
-                elsif tag_down contains 'base'
-                  assign prod_cat = 'base'
-                  assign prod_cat_label = 'Kitchen Base'
-                elsif tag_down contains 'table'
-                  assign prod_cat = 'table'
-                  assign prod_cat_label = 'Table Sauces'
-                endif
-              endfor
-
-              assign swatch_color = '#DA6634'
-              for tag in prod.tags
-                if tag contains 'color:'
-                  assign swatch_color = tag | split: 'color:' | last | strip
-                endif
-              endfor
-            -%}
-            {
-              name: {{ prod.title | json }},
-              desc: {{ prod.description | strip_html | truncatewords: 24 | json }},
-              color: {{ swatch_color | json }},
-              range_slug: {{ prod_cat | json }},
-              range_label: {{ prod_cat_label | json }},
-              product_url: {{ prod.url | json }},
-              image: {% if prod.featured_image != blank %}{{ prod.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %}
-            }{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-        {% else %}
-          {% for block in section.blocks %}
-            {%- liquid
-              assign raw_cat = block.settings.range_category | downcase
-              if raw_cat contains 'cooking'
-                assign cat_slug = 'cooking'
-                assign cat_label = 'Cooking Sauces'
-              elsif raw_cat contains 'base'
-                assign cat_slug = 'base'
-                assign cat_label = 'Kitchen Base'
-              else
-                assign cat_slug = 'table'
-                assign cat_label = 'Table Sauces'
-              endif
-            -%}
-            {
-              name: {{ block.settings.name | json }},
-              desc: {{ block.settings.description | json }},
-              color: {{ block.settings.color | json }},
-              range_slug: {{ cat_slug | json }},
-              range_label: {{ cat_label | json }},
-              product_url: {{ block.settings.product_url | default: '/collections/all' | json }},
-              image: {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 600 | json }}{% else %}""{% endif %}
-            }{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-        {% endif %}
+      var rawData = [
+        {% for block in section.blocks %}
+          {%- liquid
+            assign raw_cat = block.settings.range_category | downcase
+            if raw_cat contains 'cooking'
+              assign b_slug = 'cooking'
+              assign b_label = 'Cooking Sauces'
+            elsif raw_cat contains 'base'
+              assign b_slug = 'base'
+              assign b_label = 'Kitchen Bases'
+            else
+              assign b_slug = 'table'
+              assign b_label = 'Table Sauces'
+            endif
+          -%}
+          {
+            name: {{ block.settings.name | json }},
+            desc: {{ block.settings.description | json }},
+            color: {{ block.settings.color | json }},
+            range_slug: {{ b_slug | json }},
+            range_label: {{ b_label | json }},
+            product_url: {{ block.settings.product_url | default: '/pages/the-range' | json }},
+            image: {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 600 | json }}{% else %}""{% endif %}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
       ];
 
       var nodes = root.querySelectorAll('.ds-swatch-node');
@@ -573,7 +468,6 @@
       var carousel = root.querySelector('#dsCarousel');
       var orb = root.querySelector('#dsOrb');
       var bottleImg = root.querySelector('#dsBottleImg');
-      var orbBadge = root.querySelector('#dsOrbBadge');
       var glow = root.querySelector('#dsAmbientGlow');
       var titleEl = root.querySelector('#dsTitle');
       var descEl = root.querySelector('#dsDesc');
@@ -594,7 +488,7 @@
       }
 
       function setActiveSauce(i) {
-        var item = data[i];
+        var item = rawData[i];
         if (!item) return;
 
         currentIndex = i;
@@ -620,17 +514,15 @@
           if (orb) orb.style.backgroundColor = item.color;
           if (glow) glow.style.background = 'radial-gradient(circle, ' + item.color + ' 0%, transparent 68%)';
           if (quoteBtn) quoteBtn.href = '/pages/contact?subject=Quote%20Request%20-%20' + encodeURIComponent(item.name);
-          if (catalogBtn) catalogBtn.href = item.product_url || '/collections/all';
+          if (catalogBtn) catalogBtn.href = item.product_url || '/pages/the-range';
 
-          if (bottleImg && orbBadge) {
+          if (bottleImg) {
             if (item.image && item.image !== '') {
               bottleImg.src = item.image;
               bottleImg.style.display = 'block';
               bottleImg.style.opacity = '1';
-              orbBadge.style.display = 'none';
             } else {
               bottleImg.style.display = 'none';
-              orbBadge.style.display = 'block';
             }
           }
         }, 120);
@@ -646,7 +538,7 @@
       function getVisibleIndices() {
         var visible = [];
         nodes.forEach(function (node) {
-          if (window.getComputedStyle(node).display !== 'none') {
+          if (node.style.display !== 'none') {
             visible.push(parseInt(node.dataset.i, 10));
           }
         });
@@ -719,7 +611,7 @@
         setTimeout(function () { isPaused = false; }, 2000);
       });
 
-      if (data.length) {
+      if (rawData.length) {
         setActiveSauce(0);
         startAutoPlay();
       }
@@ -744,7 +636,6 @@
   "name": "Flavour Dial Showcase",
   "tag": "section",
   "settings": [
-    { "type": "collection", "id": "collection", "label": "Pick Live Collection (Optional)", "info": "If selected, pulls live products, tags, and photos automatically instead of manual blocks." },
     { "type": "text", "id": "preheading", "label": "Preheading", "default": "Explore The Range" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "14 sauces. Three ranges. One standard." },
     { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Naturally allergen-free. Made without ultra-processed ingredients. Click any sauce to reveal flavour pairings and menu applications.</p>" },
@@ -771,11 +662,11 @@
           "id": "range_category",
           "label": "Range Category",
           "options": [
-            { "value": "table", "label": "Table Sauces" },
-            { "value": "cooking", "label": "Cooking Sauces" },
-            { "value": "base", "label": "Kitchen Base Sauces" }
+            { "value": "Table Sauces", "label": "Table Sauces" },
+            { "value": "Cooking Sauces", "label": "Cooking Sauces" },
+            { "value": "Base Sauces", "label": "Kitchen Base Sauces" }
           ],
-          "default": "table"
+          "default": "Table Sauces"
         },
         { "type": "textarea", "id": "description", "label": "Serving suggestion & Menu use", "default": "Serving suggestion goes here." },
         { "type": "color", "id": "color", "label": "Swatch accent color", "default": "#C13B2A" },
