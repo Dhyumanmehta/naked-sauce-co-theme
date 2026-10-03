@@ -7,10 +7,10 @@
 {% style %}
   .dial-showcase-{{ section.id }} {
     --ds-accent: {{ section.settings.accent_color | default: '#DA6634' }};
-    --ds-bg: {{ section.settings.bg_color | default: '#231F1A' }};
-    --ds-card-bg: {{ section.settings.panel_bg | default: '#2A2620' }};
-    --ds-text: {{ section.settings.text_color | default: '#FBF3E4' }};
-    --ds-muted: {{ section.settings.muted_text_color | default: '#D6CDBF' }};
+    --ds-bg: #1e1e1e;
+    --ds-card-bg: #DA6634;
+    --ds-text: #ffffff;
+    --ds-muted: rgba(255, 255, 255, 0.75);
     background-color: var(--ds-bg);
     color: var(--ds-text);
     position: relative;
@@ -19,85 +19,89 @@
     padding-bottom: 80px;
   }
 
-  .dial-showcase-{{ section.id }} .cs-section-header,
-  .dial-showcase-{{ section.id }} .cs-section-header * {
-    color: var(--ds-text) !important;
-  }
-
-  .dial-showcase-{{ section.id }} .cs-section-header .preheading {
-    color: var(--ds-accent) !important;
-    letter-spacing: 0.15em;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
-
-  .dial-showcase-{{ section.id }} .cs-section-header .subheading {
-    color: var(--ds-muted) !important;
-  }
-
-  .dial-showcase-{{ section.id }} .ds-ambient-glow {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 650px;
-    height: 650px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--ds-accent) 0%, transparent 68%);
-    opacity: 0.2;
-    filter: blur(80px);
-    pointer-events: none;
-    transition: background 0.6s ease;
-    z-index: 1;
-  }
-
   .dial-showcase-{{ section.id }} .ds-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
     position: relative;
     z-index: 2;
   }
 
+  /* Mockup Header: H1 on left, Subtitle on right */
+  .dial-showcase-{{ section.id }} .ds-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-header-title {
+    font-size: clamp(38px, 4.5vw, 56px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-header-sub {
+    font-size: clamp(15px, 1.2vw, 18px);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 480px;
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .dial-showcase-{{ section.id }} .ds-header-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .dial-showcase-{{ section.id }} .ds-header-sub {
+      text-align: left;
+    }
+  }
+
+  /* Clean Category Tabs */
   .dial-showcase-{{ section.id }} .ds-nav {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
   }
 
   .dial-showcase-{{ section.id }} .ds-filter-pill {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: var(--ds-muted);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.85);
     border-radius: 50px;
-    padding: 10px 22px;
+    padding: 8px 20px;
     font-size: 13px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.2s ease;
   }
 
   .dial-showcase-{{ section.id }} .ds-filter-pill:hover {
-    color: var(--ds-text);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
+    border-color: #ffffff;
+    color: #ffffff;
   }
 
   .dial-showcase-{{ section.id }} .ds-filter-pill.active {
-    background: var(--ds-accent);
+    background: #DA6634;
+    border-color: #DA6634;
     color: #ffffff;
-    border-color: var(--ds-accent);
-    box-shadow: 0 6px 20px rgba(218, 102, 52, 0.4);
-    transform: translateY(-2px);
   }
 
   .dial-showcase-{{ section.id }} .ds-dial-carousel {
     display: flex;
     gap: 14px;
     overflow-x: auto;
-    padding: 12px 16px 28px;
-    scroll-behavior: smooth;
+    padding: 8px 0 24px;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
@@ -115,66 +119,56 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 14px;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    padding: 6px 10px;
     opacity: 0.55;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
-  .dial-showcase-{{ section.id }} .ds-swatch-node:hover {
-    opacity: 0.9;
-    transform: translateY(-3px);
-  }
-
+  .dial-showcase-{{ section.id }} .ds-swatch-node:hover,
   .dial-showcase-{{ section.id }} .ds-swatch-node.active {
     opacity: 1;
-    transform: translateY(-6px) scale(1.08);
+    transform: translateY(-4px);
   }
 
   .dial-showcase-{{ section.id }} .ds-node-circle {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    position: relative;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
-    border: 2px solid rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.2);
   }
 
   .dial-showcase-{{ section.id }} .ds-swatch-node.active .ds-node-circle {
-    box-shadow: 0 0 0 3px #ffffff, 0 8px 24px rgba(0,0,0,0.6);
+    border-color: #ffffff;
+    box-shadow: 0 0 0 2px #DA6634;
   }
 
   .dial-showcase-{{ section.id }} .ds-node-label {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
     max-width: 95px;
     text-align: center;
-    color: var(--ds-text);
-    line-height: 1.2;
+    color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
+  /* Orange Spotlight Stage Box */
   .dial-showcase-{{ section.id }} .ds-stage {
     display: grid;
     grid-template-columns: 1fr 1.15fr;
     gap: 40px;
-    background: var(--ds-card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 20px;
+    background: #DA6634;
+    border-radius: 16px;
     padding: 48px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
     align-items: center;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
   }
 
   @media (max-width: 900px) {
     .dial-showcase-{{ section.id }} .ds-stage {
       grid-template-columns: 1fr;
-      padding: 30px 24px;
-      gap: 32px;
-      text-align: center;
+      padding: 30px 20px;
     }
   }
 
@@ -183,69 +177,53 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 320px;
+    min-height: 280px;
   }
 
   .dial-showcase-{{ section.id }} .ds-orb {
-    width: 250px;
-    height: 250px;
-    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-    animation: ds-morph 8s ease-in-out infinite alternate;
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.45), 0 12px 40px rgba(0,0,0,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.4s ease;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.15);
     position: absolute;
     z-index: 1;
   }
 
-  @keyframes ds-morph {
-    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-    50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; }
-    100% { border-radius: 50% 60% 40% 60% / 40% 30% 70% 50%; }
-  }
-
   .dial-showcase-{{ section.id }} .ds-bottle-img {
-    height: 300px;
+    height: 280px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.6));
     position: relative;
     z-index: 2;
-    transition: opacity 0.25s ease;
   }
 
   .dial-showcase-{{ section.id }} .ds-range-tag {
     display: inline-block;
-    padding: 5px 16px;
+    padding: 4px 14px;
     border-radius: 50px;
-    background: rgba(218, 102, 52, 0.15);
-    border: 1px solid rgba(218, 102, 52, 0.4);
-    color: var(--ds-accent);
+    background: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     margin-bottom: 14px;
   }
 
   .dial-showcase-{{ section.id }} .ds-title {
-    font-size: clamp(26px, 3.2vw, 38px);
+    font-size: clamp(28px, 3.2vw, 42px);
     font-weight: 900;
-    line-height: 1.15;
-    margin: 0 0 16px;
+    line-height: 1.1;
+    margin: 0 0 14px;
     color: #ffffff !important;
-    transition: opacity 0.2s ease, transform 0.2s ease;
   }
 
   .dial-showcase-{{ section.id }} .ds-desc {
-    font-size: 17px;
-    line-height: 1.65;
-    color: var(--ds-muted) !important;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9) !important;
     margin: 0 0 24px;
-    transition: opacity 0.2s ease;
   }
 
   .dial-showcase-{{ section.id }} .ds-formats-row {
@@ -253,210 +231,71 @@
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 30px;
-  }
-
-  @media (max-width: 900px) {
-    .dial-showcase-{{ section.id }} .ds-formats-row {
-      justify-content: center;
-    }
+    margin-bottom: 24px;
   }
 
   .dial-showcase-{{ section.id }} .ds-format-chip {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 11.5px;
-    color: #FBF3E4;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: #ffffff;
     font-weight: 600;
   }
 
-  .dial-showcase-{{ section.id }} .ds-actions {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  @media (max-width: 900px) {
-    .dial-showcase-{{ section.id }} .ds-actions {
-      justify-content: center;
-    }
-  }
-
   .dial-showcase-{{ section.id }} .ds-btn {
-    background: var(--ds-accent);
-    color: #ffffff;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 28px;
-    font-size: 12.5px;
+    background: #ffffff;
+    color: #231F1A !important;
+    border-radius: 4px;
+    padding: 12px 26px;
+    font-size: 13px;
     font-weight: 800;
-    letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
-    transition: transform 0.2s ease, background 0.2s ease;
-    box-shadow: 0 6px 18px rgba(218, 102, 52, 0.35);
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .dial-showcase-{{ section.id }} .ds-btn:hover {
-    background: #E87442;
-    transform: scale(0.98);
-  }
-
-  .dial-showcase-{{ section.id }} .ds-btn-outline {
-    background: transparent;
-    color: var(--ds-text);
-    border: 1px solid rgba(251, 243, 228, 0.3);
-    border-radius: 50px;
-    padding: 12px 24px;
-    font-size: 12.5px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .dial-showcase-{{ section.id }} .ds-btn-outline:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    border-color: #ffffff;
-    transform: scale(0.98);
-  }
-
-  .dial-showcase-{{ section.id }} .ds-safe-stamp {
-    font-size: 12px;
-    color: var(--ds-muted);
-    opacity: 0.8;
-    width: 100%;
-    margin-top: 6px;
-  }
-
-  @media (min-width: 901px) {
-    .dial-showcase-{{ section.id }} .ds-safe-stamp {
-      width: auto;
-      margin-top: 0;
-    }
+    display: inline-block;
   }
 {% endstyle %}
 
-<div class="dial-showcase-{{ section.id }}" id="dialShowcase-{{ section.id }}">
-  <div class="ds-ambient-glow" id="dsAmbientGlow"></div>
-
-  <div class="ds-inner container page-width">
-    <!-- Header -->
-    <div class="cs-section-header text-center mb-4">
-      {% render 'heading',
-        heading: section.settings.heading,
-        heading_tag: section.settings.heading_tag,
-        heading_size: section.settings.heading_size,
-        preheading: section.settings.preheading,
-        subheading: section.settings.subheading
-      %}
+<div class="dial-showcase-{{ section.id }}" id="our-sauces">
+  <div class="ds-inner">
+    <!-- Mockup Header: H1 on left, Subtitle on right -->
+    <div class="ds-header-row">
+      <h2 class="ds-header-title">Our sauces</h2>
+      <p class="ds-header-sub">A complete range of table and cooking sauces. One standard.</p>
     </div>
 
-    <!-- Category Filter Tabs (Dynamic Counts) -->
+    <!-- Category Tabs without the blank button -->
     <div class="ds-nav" role="tablist">
-      <button type="button" class="ds-filter-pill active" data-filter="all">All Sauces</button>
       {% if collection_table != blank and collection_table.products_count > 0 %}
-        <button type="button" class="ds-filter-pill" data-filter="table">{{ collection_table.title }} ({{ collection_table.products_count }})</button>
+        <button type="button" class="ds-filter-pill active" data-filter="table">{{ collection_table.title }} ({{ collection_table.products_count }})</button>
+      {% else %}
+        <button type="button" class="ds-filter-pill active" data-filter="table">Table Sauces (7)</button>
       {% endif %}
+      
       {% if collection_cooking != blank and collection_cooking.products_count > 0 %}
         <button type="button" class="ds-filter-pill" data-filter="cooking">{{ collection_cooking.title }} ({{ collection_cooking.products_count }})</button>
-      {% endif %}
-      {% if collection_base != blank and collection_base.products_count > 0 %}
-        <button type="button" class="ds-filter-pill" data-filter="base">{{ collection_base.title }} ({{ collection_base.products_count }})</button>
+      {% else %}
+        <button type="button" class="ds-filter-pill" data-filter="cooking">Cooking Sauces (6)</button>
       {% endif %}
     </div>
 
-    <!-- Swatch Ribbon: Automatically built from collections -->
+    <!-- Swatch Carousel -->
     <div class="ds-dial-carousel" id="dsCarousel">
       {% assign global_idx = 0 %}
-
-      {% comment %} 1. Table Sauces Collection {% endcomment %}
       {% if collection_table != blank %}
         {% for product in collection_table.products %}
-          {%- liquid
-            assign p_title = product.title | downcase
-            if p_title contains 'tomato' or p_title contains 'ketchup'
-              assign node_color = '#C13B2A'
-            elsif p_title contains 'brown'
-              assign node_color = '#5C3826'
-            elsif p_title contains 'bbq' or p_title contains 'texan'
-              assign node_color = '#7A2E1E'
-            elsif p_title contains 'gochujang'
-              assign node_color = '#A3281B'
-            elsif p_title contains 'chilli' or p_title contains 'honey'
-              assign node_color = '#D95328'
-            else
-              assign node_color = '#DA6634'
-            endif
-          -%}
-          <button
-            type="button"
-            class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}"
-            data-i="{{ global_idx }}"
-            data-range="table"
-          >
-            <div class="ds-node-circle" style="background-color: {{ node_color }};"></div>
+          <button type="button" class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}" data-i="{{ global_idx }}" data-range="table">
+            <div class="ds-node-circle" style="background-color: #DA6634;"></div>
             <span class="ds-node-label">{{ product.title }}</span>
           </button>
           {% assign global_idx = global_idx | plus: 1 %}
         {% endfor %}
       {% endif %}
 
-      {% comment %} 2. Cooking Sauces Collection {% endcomment %}
       {% if collection_cooking != blank %}
         {% for product in collection_cooking.products %}
-          {%- liquid
-            assign p_title = product.title | downcase
-            if p_title contains 'pepper'
-              assign node_color = '#B83D26'
-            elsif p_title contains 'orange' or p_title contains 'ginger'
-              assign node_color = '#D45D28'
-            elsif p_title contains 'dahl' or p_title contains 'lentil'
-              assign node_color = '#C97A2B'
-            elsif p_title contains 'tagine' or p_title contains 'moroccan'
-              assign node_color = '#964323'
-            elsif p_title contains 'five spice'
-              assign node_color = '#5A2A22'
-            elsif p_title contains 'curry'
-              assign node_color = '#B35E1B'
-            else
-              assign node_color = '#8A3B22'
-            endif
-          -%}
-          <button
-            type="button"
-            class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}"
-            data-i="{{ global_idx }}"
-            data-range="cooking"
-          >
-            <div class="ds-node-circle" style="background-color: {{ node_color }};"></div>
-            <span class="ds-node-label">{{ product.title }}</span>
-          </button>
-          {% assign global_idx = global_idx | plus: 1 %}
-        {% endfor %}
-      {% endif %}
-
-      {% comment %} 3. Kitchen Bases Collection (if present) {% endcomment %}
-      {% if collection_base != blank %}
-        {% for product in collection_base.products %}
-          <button
-            type="button"
-            class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}"
-            data-i="{{ global_idx }}"
-            data-range="base"
-          >
-            <div class="ds-node-circle" style="background-color: #7B3F28;"></div>
+          <button type="button" class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}" data-i="{{ global_idx }}" data-range="cooking">
+            <div class="ds-node-circle" style="background-color: #A3281B;"></div>
             <span class="ds-node-label">{{ product.title }}</span>
           </button>
           {% assign global_idx = global_idx | plus: 1 %}
@@ -467,7 +306,7 @@
     <!-- Spotlight Stage Card -->
     <div class="ds-stage">
       <div class="ds-stage-visual">
-        <div class="ds-orb" id="dsOrb"></div>
+        <div class="ds-orb"></div>
         <img id="dsBottleImg" class="ds-bottle-img" src="" alt="Sauce bottle" style="display: none;">
       </div>
 
@@ -476,15 +315,18 @@
         <h3 class="ds-title" id="dsTitle"></h3>
         <p class="ds-desc" id="dsDesc"></p>
 
-        <!-- Formats Row -->
         <div class="ds-formats-row">
-          <span class="small opacity-75 pe-1" style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em;">Available in:</span>
+          <span style="font-size:12px; font-weight:700; color:#fff; margin-right:4px;">Available in:</span>
           <span class="ds-format-chip">Sachets</span>
-          <span class="ds-format-chip">Table Bottles</span>
+          <span class="ds-format-chip">Table bottles</span>
           <span class="ds-format-chip">Tubs</span>
-          <span class="ds-format-chip">Bag-in-Box</span>
         </div>
-        </div>
+
+        <p style="font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 20px;">
+          Every sauce comes in the formats that suit your kitchen or shelf.
+        </p>
+
+        <a href="#contact" class="ds-btn" id="dsQuoteBtn">Talk to the team</a>
       </div>
     </div>
   </div>
@@ -493,263 +335,98 @@
 <script>
   (function () {
     function initDialShowcase() {
-      var root = document.querySelector('#dialShowcase-{{ section.id }}');
+      var root = document.querySelector('#our-sauces');
       if (!root) return;
 
       var rawData = [
-        {% assign is_first_item = true %}
-
+        {% assign is_first = true %}
         {% if collection_table != blank %}
           {% for product in collection_table.products %}
-            {%- liquid
-              assign p_title = product.title | downcase
-              if p_title contains 'tomato' or p_title contains 'ketchup'
-                assign node_color = '#C13B2A'
-              elsif p_title contains 'brown'
-                assign node_color = '#5C3826'
-              elsif p_title contains 'bbq' or p_title contains 'texan'
-                assign node_color = '#7A2E1E'
-              elsif p_title contains 'gochujang'
-                assign node_color = '#A3281B'
-              elsif p_title contains 'chilli' or p_title contains 'honey'
-                assign node_color = '#D95328'
-              else
-                assign node_color = '#DA6634'
-              endif
-
-              assign serving_desc = product.description | strip_html | truncatewords: 24
-              if serving_desc == blank
-                assign serving_desc = "Bold flavour, nothing to hide. Universally safe for every table."
-              endif
-            -%}
-            {% unless is_first_item %},{% endunless %}
+            {% unless is_first %},{% endunless %}
             {
               name: {{ product.title | json }},
-              desc: {{ serving_desc | json }},
-              color: {{ node_color | json }},
+              desc: {{ product.description | strip_html | truncatewords: 24 | default: 'Bold flavour, nothing to hide. Universally safe for every table.' | json }},
               range_slug: "table",
-              range_label: {{ collection_table.title | json }},
-              product_url: {{ product.url | json }},
+              range_label: "Table Sauces",
               image: {% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %}
             }
-            {% assign is_first_item = false %}
+            {% assign is_first = false %}
           {% endfor %}
         {% endif %}
-
         {% if collection_cooking != blank %}
           {% for product in collection_cooking.products %}
-            {%- liquid
-              assign p_title = product.title | downcase
-              if p_title contains 'pepper'
-                assign node_color = '#B83D26'
-              elsif p_title contains 'orange' or p_title contains 'ginger'
-                assign node_color = '#D45D28'
-              elsif p_title contains 'dahl' or p_title contains 'lentil'
-                assign node_color = '#C97A2B'
-              elsif p_title contains 'tagine' or p_title contains 'moroccan'
-                assign node_color = '#964323'
-              elsif p_title contains 'five spice'
-                assign node_color = '#5A2A22'
-              elsif p_title contains 'curry'
-                assign node_color = '#B35E1B'
-              else
-                assign node_color = '#8A3B22'
-              endif
-
-              assign serving_desc = product.description | strip_html | truncatewords: 24
-              if serving_desc == blank
-                assign serving_desc = "Chef-developed cooking sauce and glaze designed for maximum menu versatility."
-              endif
-            -%}
-            {% unless is_first_item %},{% endunless %}
+            {% unless is_first %},{% endunless %}
             {
               name: {{ product.title | json }},
-              desc: {{ serving_desc | json }},
-              color: {{ node_color | json }},
+              desc: {{ product.description | strip_html | truncatewords: 24 | default: 'Chef-developed cooking sauce and glaze designed for maximum menu versatility.' | json }},
               range_slug: "cooking",
-              range_label: {{ collection_cooking.title | json }},
-              product_url: {{ product.url | json }},
+              range_label: "Cooking Sauces",
               image: {% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %}
             }
-            {% assign is_first_item = false %}
-          {% endfor %}
-        {% endif %}
-
-        {% if collection_base != blank %}
-          {% for product in collection_base.products %}
-            {%- liquid
-              assign serving_desc = product.description | strip_html | truncatewords: 24
-              if serving_desc == blank
-                assign serving_desc = "Foundational kitchen base crafted for chefs to build full dishes and curries from scratch."
-              endif
-            -%}
-            {% unless is_first_item %},{% endunless %}
-            {
-              name: {{ product.title | json }},
-              desc: {{ serving_desc | json }},
-              color: "#7B3F28",
-              range_slug: "base",
-              range_label: {{ collection_base.title | json }},
-              product_url: {{ product.url | json }},
-              image: {% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %}
-            }
-            {% assign is_first_item = false %}
+            {% assign is_first = false %}
           {% endfor %}
         {% endif %}
       ];
 
       var nodes = root.querySelectorAll('.ds-swatch-node');
       var filterBtns = root.querySelectorAll('.ds-filter-pill');
-      var carousel = root.querySelector('#dsCarousel');
-      var orb = root.querySelector('#dsOrb');
       var bottleImg = root.querySelector('#dsBottleImg');
-      var glow = root.querySelector('#dsAmbientGlow');
       var titleEl = root.querySelector('#dsTitle');
       var descEl = root.querySelector('#dsDesc');
       var rangeTagEl = root.querySelector('#dsRangeTag');
-      var quoteBtn = root.querySelector('#dsQuoteBtn');
-      var catalogBtn = root.querySelector('#dsCatalogBtn');
-
-      var currentIndex = 0;
-      var autoPlayTimer = null;
-      var isPaused = false;
-
-      function scrollNodeIntoView(node) {
-        if (!carousel || !node) return;
-        var carouselRect = carousel.getBoundingClientRect();
-        var nodeRect = node.getBoundingClientRect();
-        var scrollOffset = (nodeRect.left - carouselRect.left) - (carouselRect.width / 2) + (nodeRect.width / 2);
-        carousel.scrollBy({ left: scrollOffset, behavior: 'smooth' });
-      }
 
       function setActiveSauce(i) {
         var item = rawData[i];
         if (!item) return;
 
-        currentIndex = i;
+        if (titleEl) titleEl.textContent = item.name;
+        if (descEl) descEl.textContent = item.desc;
+        if (rangeTagEl) rangeTagEl.textContent = item.range_label;
 
-        if (titleEl) {
-          titleEl.style.opacity = '0';
-          titleEl.style.transform = 'translateY(6px)';
+        if (bottleImg) {
+          if (item.image && item.image !== '') {
+            bottleImg.src = item.image;
+            bottleImg.style.display = 'block';
+          } else {
+            bottleImg.style.display = 'none';
+          }
         }
-        if (descEl) descEl.style.opacity = '0';
-        if (bottleImg) bottleImg.style.opacity = '0';
-
-        setTimeout(function () {
-          if (titleEl) {
-            titleEl.textContent = item.name;
-            titleEl.style.opacity = '1';
-            titleEl.style.transform = 'translateY(0)';
-          }
-          if (descEl) {
-            descEl.textContent = item.desc;
-            descEl.style.opacity = '1';
-          }
-          if (rangeTagEl) rangeTagEl.textContent = item.range_label;
-          if (orb) orb.style.backgroundColor = item.color;
-          if (glow) glow.style.background = 'radial-gradient(circle, ' + item.color + ' 0%, transparent 68%)';
-          if (quoteBtn) quoteBtn.href = '/pages/contact?subject=Quote%20Request%20-%20' + encodeURIComponent(item.name);
-          if (catalogBtn) catalogBtn.href = item.product_url || '/pages/the-range';
-
-          if (bottleImg) {
-            if (item.image && item.image !== '') {
-              bottleImg.src = item.image;
-              bottleImg.style.display = 'block';
-              bottleImg.style.opacity = '1';
-            } else {
-              bottleImg.style.display = 'none';
-            }
-          }
-        }, 120);
 
         nodes.forEach(function (n) { n.classList.remove('active'); });
         var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
-        if (activeNode) {
-          activeNode.classList.add('active');
-          scrollNodeIntoView(activeNode);
-        }
+        if (activeNode) activeNode.classList.add('active');
       }
 
-      function getVisibleIndices() {
-        var visible = [];
-        nodes.forEach(function (node) {
-          if (node.style.display !== 'none') {
-            visible.push(parseInt(node.dataset.i, 10));
-          }
-        });
-        return visible;
-      }
-
-      function nextSauce() {
-        if (isPaused) return;
-        var visible = getVisibleIndices();
-        if (!visible.length) return;
-
-        var currentPos = visible.indexOf(currentIndex);
-        var nextPos = (currentPos + 1) % visible.length;
-        setActiveSauce(visible[nextPos]);
-      }
-
-      function startAutoPlay() {
-        stopAutoPlay();
-        autoPlayTimer = setInterval(nextSauce, 3500);
-      }
-
-      function stopAutoPlay() {
-        if (autoPlayTimer) {
-          clearInterval(autoPlayTimer);
-          autoPlayTimer = null;
-        }
-      }
-
-      // Swatch Click
       nodes.forEach(function (node) {
         node.addEventListener('click', function () {
-          var idx = parseInt(node.dataset.i, 10);
-          setActiveSauce(idx);
-          startAutoPlay();
+          setActiveSauce(parseInt(node.dataset.i, 10));
         });
       });
 
-      // Filter Tabs Click
       filterBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
-
           var filter = btn.dataset.filter;
           var firstMatch = null;
 
           nodes.forEach(function (node) {
-            var range = node.dataset.range;
-            if (filter === 'all' || range === filter) {
+            if (node.dataset.range === filter) {
               node.style.display = 'flex';
-              if (firstMatch === null) {
-                firstMatch = parseInt(node.dataset.i, 10);
-              }
+              if (firstMatch === null) firstMatch = parseInt(node.dataset.i, 10);
             } else {
               node.style.display = 'none';
             }
           });
 
-          if (firstMatch !== null) {
-            setActiveSauce(firstMatch);
-          }
-          startAutoPlay();
+          if (firstMatch !== null) setActiveSauce(firstMatch);
         });
       });
 
-      carousel.addEventListener('mouseenter', function () { isPaused = true; });
-      carousel.addEventListener('mouseleave', function () { isPaused = false; });
-      carousel.addEventListener('touchstart', function () { isPaused = true; }, { passive: true });
-      carousel.addEventListener('touchend', function () {
-        setTimeout(function () { isPaused = false; }, 2000);
-      });
-
-      if (rawData.length) {
-        setActiveSauce(0);
-        startAutoPlay();
-      }
+      // Filter to table sauces on init
+      var initialBtn = root.querySelector('.ds-filter-pill.active');
+      if (initialBtn) initialBtn.click();
+      else if (rawData.length) setActiveSauce(0);
     }
 
     if (document.readyState === 'loading') {
@@ -757,12 +434,6 @@
     } else {
       initDialShowcase();
     }
-
-    document.addEventListener('shopify:section:load', function (e) {
-      if (e.target && e.target.querySelector('#dialShowcase-{{ section.id }}')) {
-        initDialShowcase();
-      }
-    });
   })();
 </script>
 
@@ -771,30 +442,11 @@
   "name": "Flavour Dial Showcase",
   "tag": "section",
   "settings": [
-    { "type": "text", "id": "preheading", "label": "Preheading", "default": "The Range" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "14 sauces. One standard." },
-    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>View the range with some tasty serving suggestions</p>" },
-    { "type": "select", "id": "heading_tag", "options": [
-        { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
-      ], "default": "h2", "label": "Heading tag" },
-    { "type": "select", "id": "heading_size", "options": [
-        { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
-      ], "default": "h2", "label": "Heading size" },
-    { "type": "header", "content": "Collections Setup" },
     { "type": "collection", "id": "collection_table", "label": "Table Sauces Collection" },
-    { "type": "collection", "id": "collection_cooking", "label": "Cooking Sauces Collection" },
-    { "type": "collection", "id": "collection_base", "label": "Kitchen Bases Collection (Optional)" },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#DA6634" },
-    { "type": "color", "id": "panel_bg", "label": "Stage Card Background", "default": "#2A2620" },
-    { "type": "color", "id": "bg_color", "label": "Section Background", "default": "#231F1A" },
-    { "type": "color", "id": "text_color", "label": "Heading Text Color", "default": "#FBF3E4" },
-    { "type": "color", "id": "muted_text_color", "label": "Description Text Color", "default": "#D6CDBF" }
+    { "type": "collection", "id": "collection_cooking", "label": "Cooking Sauces Collection" }
   ],
   "presets": [
-    {
-      "name": "Flavour Dial Showcase"
-    }
+    { "name": "Flavour Dial Showcase" }
   ]
 }
 {% endschema %}
