@@ -1,0 +1,128 @@
+{% style %}
+  .nsc-stand-section-{{ section.id }} {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 90px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nsc-stand-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .nsc-stand-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+  }
+
+  .nsc-stand-title {
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: #ffffff;
+  }
+
+  .nsc-stand-sub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .nsc-stand-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 991px) {
+    .nsc-stand-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .nsc-stand-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  .nsc-stand-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 36px 28px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .nsc-stand-card:hover {
+    transform: translateY(-4px);
+    border-color: #DA6634;
+  }
+
+  .nsc-stand-card-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0 0 14px;
+  }
+
+  .nsc-stand-card-desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+  }
+{% endstyle %}
+
+<div class="nsc-stand-section-{{ section.id }}">
+  <div class="nsc-stand-container">
+    <div class="nsc-stand-header">
+      <h2 class="nsc-stand-title">What we stand for</h2>
+      <p class="nsc-stand-sub">Sauce with nothing to hide. Four promises behind every recipe</p>
+    </div>
+
+    <div class="nsc-stand-grid">
+      <div class="nsc-stand-card">
+        <h3 class="nsc-stand-card-title">Free from the major allergens</h3>
+        <p class="nsc-stand-card-desc">Safe to serve to more of your customers, without a separate recipe.</p>
+      </div>
+
+      <div class="nsc-stand-card">
+        <h3 class="nsc-stand-card-title">Zero ultra-processed ingredients</h3>
+        <p class="nsc-stand-card-desc">Nothing artificial, nothing you'd need to look up.</p>
+      </div>
+
+      <div class="nsc-stand-card">
+        <h3 class="nsc-stand-card-title">Real, natural ingredients</h3>
+        <p class="nsc-stand-card-desc">Proper ingredients, cooked for big honest flavour.</p>
+      </div>
+
+      <div class="nsc-stand-card">
+        <h3 class="nsc-stand-card-title">Clean label, always</h3>
+        <p class="nsc-stand-card-desc">A label you can read out loud at the pass or on the shelf.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "What We Stand For",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "What We Stand For"
+    }
+  ]
+}
+{% endschema %}
