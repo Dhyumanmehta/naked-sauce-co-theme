@@ -69,17 +69,17 @@
       "settings": {
         "preheading": "",
         "heading": "Our sauces",
-        "subheading": "",
+        "subheading": "<p>A complete range of table and cooking sauces. One standard.</p>",
         "heading_tag": "h2",
         "heading_size": "h2",
         "collection_table": "",
         "collection_cooking": "",
         "collection_base": "",
-        "accent_color": "#d96634",
-        "panel_bg": "#2a2620",
+        "accent_color": "#FFFFFF",
+        "panel_bg": "#D96634",
         "bg_color": "#FFFFFF",
-        "text_color": "#FFFFFF",
-        "muted_text_color": "#FFFFFF"
+        "text_color": "#090909",
+        "muted_text_color": "#090909"
       }
     },
     "what_we_stand_for_PtDJDK": {
@@ -157,7 +157,7 @@
         "text_alignment_mobile": "text-center",
         "use_custom_colors": true,
         "color_text": "#ffffff",
-        "color_background": "#D96634",
+        "color_background": "#d96634",
         "color_background_gradient": "",
         "enable_parallax": false,
         "type": "scroll",
