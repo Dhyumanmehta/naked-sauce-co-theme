@@ -1,0 +1,210 @@
+{% style %}
+  .nsc-fit-section-{{ section.id }} {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 90px 0 100px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nsc-fit-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .nsc-fit-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+  }
+
+  .nsc-fit-title {
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: #ffffff;
+  }
+
+  .nsc-fit-sub {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .nsc-fit-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+  }
+
+  @media (max-width: 1100px) {
+    .nsc-fit-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .nsc-fit-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .nsc-fit-section-{{ section.id }} {
+      padding: 60px 0;
+    }
+  }
+
+  .nsc-fit-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .nsc-fit-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(218, 102, 52, 0.5);
+  }
+
+  .nsc-fit-media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nsc-fit-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .nsc-fit-media-placeholder {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .nsc-fit-body {
+    padding: 22px 18px;
+    flex-grow: 1;
+  }
+
+  .nsc-fit-name {
+    font-size: 19px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 10px;
+    line-height: 1.2;
+  }
+
+  .nsc-fit-desc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+  }
+{% endstyle %}
+
+<div class="nsc-fit-section-{{ section.id }}" id="where-we-fit">
+  <div class="nsc-fit-container">
+    <div class="nsc-fit-header">
+      <h2 class="nsc-fit-title">{{ section.settings.title | default: 'Wherever food is served' }}</h2>
+      <p class="nsc-fit-sub">{{ section.settings.subtitle | default: 'One range, built to work across every channel' }}</p>
+    </div>
+
+    <div class="nsc-fit-grid">
+      {% for block in section.blocks %}
+        <div class="nsc-fit-card" {{ block.shopify_attributes }}>
+          <div class="nsc-fit-media">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.title }}" loading="lazy">
+            {% else %}
+              <span class="nsc-fit-media-placeholder">{{ block.settings.title }} Photo</span>
+            {% endif %}
+          </div>
+          <div class="nsc-fit-body">
+            <h3 class="nsc-fit-name">{{ block.settings.title }}</h3>
+            <p class="nsc-fit-desc">{{ block.settings.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Where We Fit Channels",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Wherever food is served" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "One range, built to work across every channel" }
+  ],
+  "blocks": [
+    {
+      "type": "channel",
+      "name": "Channel Card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Channel Title", "default": "Channel" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Channel description goes here." },
+        { "type": "image_picker", "id": "image", "label": "Channel Photo" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Where We Fit Channels",
+      "blocks": [
+        {
+          "type": "channel",
+          "settings": {
+            "title": "Retail",
+            "description": "On the shelf and ready for the table at home."
+          }
+        },
+        {
+          "type": "channel",
+          "settings": {
+            "title": "Foodservice",
+            "description": "Contract catering, education and workplace."
+          }
+        },
+        {
+          "type": "channel",
+          "settings": {
+            "title": "Pubs & restaurants",
+            "description": "On the table and on the plate."
+          }
+        },
+        {
+          "type": "channel",
+          "settings": {
+            "title": "Out of home",
+            "description": "Behind the counter and back of house."
+          }
+        },
+        {
+          "type": "channel",
+          "settings": {
+            "title": "Industrial",
+            "description": "An ingredient for food manufacturers."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
