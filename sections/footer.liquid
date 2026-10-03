@@ -222,83 +222,16 @@
 
     <!-- Main Columns -->
     <div class="row gx-lg-5 gy-5">
-      <!-- Col 1: Brand & Philosophy Summary -->
-      <div class="col-12 col-lg-4">
-        <h2 class="nsc-footer-col-title">{{ section.settings.heading | default: 'The Naked Sauce Co.' }}</h2>
-        <p class="nsc-footer-desc">
-          Dinner shouldn't come with a disclaimer. We craft bold, clean-label sauces formulated safe from the outset—no substitution, no special asks, and no ultra-processed additives.
-        </p>
-
-        <div class="mt-4">
-          <div class="small text-uppercase fw-bold text-muted mb-2" style="font-size:11px; letter-spacing:0.1em; color:#A39B8F !important;">
-            Available Packaging
-          </div>
-          <div class="nsc-footer-formats">
-            <span class="nsc-format-tag">Sachets</span>
-            <span class="nsc-format-tag">Table Bottles</span>
-            <span class="nsc-format-tag">Tubs</span>
-            <span class="nsc-format-tag">Bag-in-Box</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Col 2: The Ranges (From Launch Document) -->
-      <div class="col-6 col-lg-2">
-        <h3 class="nsc-footer-col-title">The Range</h3>
-        <ul class="nsc-footer-links">
-          <li><a href="/collections/all">All 14 Sauces</a></li>
-          <li><a href="/collections/table-sauces">Table Sauces </a></li>
-          <li><a href="/collections/cooking-sauces">Cooking Sauces </a></li>
-          <li><a href="/collections/all">Formats & Packaging</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3: Company & Foodservice -->
-      <div class="col-6 col-lg-2">
-        <h3 class="nsc-footer-col-title">Trade & Trust</h3>
-        <ul class="nsc-footer-links">
-          <li><a href="/pages/our-philosophy">Our Philosophy</a></li>
-          <li><a href="/pages/our-philosophy">Allergen Standard</a></li>
-          <li><a href="/pages/our-philosophy">The UPF Science</a></li>
-          <li><a href="/pages/contact">Contact Us</a></li>
           <li><a href="mailto:sales@thenakedsauceco.com">sales@thenakedsauceco.com</a></li>
         </ul>
       </div>
 
-      <!-- Col 4: Waitlist / Newsletter -->
-      <div class="col-12 col-lg-4">
-        <div class="nsc-footer-newsletter">
-          <h3 class="nsc-footer-col-title mb-2">The Naked Sauce Co</h3>
-          <p class="small mb-0" style="color:#D6CDBF;">
-            Join our launch list for first access to retail bottles and foodservice packs.
-          </p>
 
-          {% form 'customer', id: 'FooterNewsletter', novalidate: 'novalidate' %}
-            {% if form.posted_successfully? %}
-              <p class="text-success small mt-2 mb-0">Thank you for joining our launch list!</p>
-            {% endif %}
-            <input type="hidden" name="contact[tags]" value="newsletter">
-            <div class="nsc-footer-input-group">
-              <input
-                type="email"
-                name="contact[email]"
-                class="nsc-footer-input"
-                placeholder="Enter your email"
-                required
-              >
-              <button type="submit" class="nsc-footer-btn">
-                <span>Join</span>
-              </button>
-            </div>
-          {% endform %}
-        </div>
-      </div>
-    </div>
 
     <!-- Bottom Utility Bar -->
     <div class="nsc-footer-bottom">
       <div>
-        <span>&copy; {{ 'now' | date: '%Y' }} The Naked Sauce Co. Bold flavour. Nothing to hide.</span>
+        <span>&copy; {{ 'now' | date: '%Y' }} The Naked Sauce Co. Ltd </span>
       </div>
 
       {% if section.settings.show_policy %}
