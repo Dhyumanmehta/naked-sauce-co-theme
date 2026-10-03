@@ -351,160 +351,15 @@
     },
     "range_teaser": {
       "type": "flavour-switcher",
-      "blocks": {
-        "flavour_EkJjxj": {
-          "type": "flavour",
-          "settings": {
-            "name": "Roasted Red Pepper & Tomato Sauce",
-            "range_category": "table",
-            "description": "Stirred through pasta or spooned over grilled chicken.",
-            "color": "#c13b2a",
-            "product_url": ""
-          }
-        },
-        "flavour_JYimEM": {
-          "type": "flavour",
-          "settings": {
-            "name": "Ginger & Orange Glaze",
-            "range_category": "table",
-            "description": "Brushed over roast duck or salmon in the last few minutes of cooking. Glossy, sticky and restaurant ready!",
-            "color": "#c13b2a",
-            "product_url": ""
-          }
-        },
-        "flavour_TYcgHa": {
-          "type": "flavour",
-          "settings": {
-            "name": "Coconut & Lentil Dahl",
-            "range_category": "table",
-            "description": "A warming bowl on its own, or alongside grilled flatbread.",
-            "color": "#c13b2a",
-            "product_url": ""
-          }
-        },
-        "flavour_HPzBmx": {
-          "type": "flavour",
-          "settings": {
-            "name": "Spiced Moroccan Tagine",
-            "range_category": "table",
-            "description": "Simmered with chicken thighs, apricots and a scattering of coriander.",
-            "color": "#c13b2a",
-            "product_url": ""
-          }
-        },
-        "flavour_rbyhTe": {
-          "type": "flavour",
-          "settings": {
-            "name": "Chinese Five Spice Base Mix",
-            "range_category": "table",
-            "description": "Tossed through stir-fried noodles or brushed over pork belly.",
-            "color": "#c13b2a",
-            "product_url": ""
-          }
-        },
-        "flavour_pkzWhG": {
-          "type": "flavour",
-          "settings": {
-            "name": "Tomato Sauce Base Mix",
-            "range_category": "table",
-            "description": "The starting point for a rich bolognese or a proper Sunday ragu.",
-            "color": "#c13b2a",
-            "product_url": ""
-          }
-        },
-        "flavour_cjPVn8": {
-          "type": "flavour",
-          "settings": {
-            "name": "Indian Curry Base Mix",
-            "range_category": "table",
-            "description": "Built into a fakeaway curry night with chicken, veg or paneer.",
-            "color": "#c13b2a",
-            "product_url": ""
-          }
-        },
-        "flavour_0": {
-          "type": "flavour",
-          "settings": {
-            "name": "Vine Ripened Tomato Sauce",
-            "range_category": "table",
-            "description": "Golden chips and a bacon roll deserve better than the bottle from the cupboard.",
-            "color": "#c13b2a",
-            "product_url": ""
-          }
-        },
-        "flavour_1": {
-          "type": "flavour",
-          "settings": {
-            "name": "Rich Brown Sauce",
-            "range_category": "table",
-            "description": "A full English essential — elevate that bacon, sausage, fried egg, and doorstep of toast.",
-            "color": "#5b3a29",
-            "product_url": ""
-          }
-        },
-        "flavour_2": {
-          "type": "flavour",
-          "settings": {
-            "name": "Smoky Texan BBQ Sauce",
-            "range_category": "table",
-            "description": "Brushed over ribs or pulled pork as it comes off the grill.",
-            "color": "#8a2e1d",
-            "product_url": ""
-          }
-        },
-        "flavour_3": {
-          "type": "flavour",
-          "settings": {
-            "name": "BBQ Gochujang Sauce",
-            "range_category": "table",
-            "description": "Glazed onto wings or short ribs for a sticky, smoky-sweet finish.",
-            "color": "#a32c2c",
-            "product_url": ""
-          }
-        },
-        "flavour_4": {
-          "type": "flavour",
-          "settings": {
-            "name": "Sweet Chilli & Ginger Sauce",
-            "range_category": "table",
-            "description": "Drizzled over halloumi fritters or spring rolls for dipping.",
-            "color": "#d97a22",
-            "product_url": ""
-          }
-        },
-        "flavour_5": {
-          "type": "flavour",
-          "settings": {
-            "name": "Chilli-Infused Hot Honey Glaze",
-            "range_category": "table",
-            "description": "Add some sweet heat on fried chicken.",
-            "color": "#b9791e",
-            "product_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "flavour_EkJjxj",
-        "flavour_JYimEM",
-        "flavour_TYcgHa",
-        "flavour_HPzBmx",
-        "flavour_rbyhTe",
-        "flavour_pkzWhG",
-        "flavour_cjPVn8",
-        "flavour_0",
-        "flavour_1",
-        "flavour_2",
-        "flavour_3",
-        "flavour_4",
-        "flavour_5"
-      ],
       "settings": {
-        "collection": "",
         "preheading": "The Range",
         "heading": "14 sauces. One standard.",
         "subheading": "<p>View the range with some tasty serving suggestions</p>",
         "heading_tag": "h2",
         "heading_size": "h2",
+        "collection_table": "",
+        "collection_cooking": "",
+        "collection_base": "",
         "accent_color": "#d96634",
         "panel_bg": "#2a2620",
         "bg_color": "#231f1a",
@@ -576,9 +431,15 @@
         "bg_color_below": "#231f1a",
         "flip": false
       }
+    },
+    "hero_corporate_VFhgDU": {
+      "type": "hero-corporate",
+      "name": "Corporate Landing Hero",
+      "settings": {}
     }
   },
   "order": [
+    "hero_corporate_VFhgDU",
     "hero",
     "ticker",
     "trust_strip",
