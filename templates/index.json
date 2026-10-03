@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "hero_corporate_VFhgDU": {
+      "type": "hero-corporate",
+      "name": "Corporate Landing Hero",
+      "settings": {
+        "image": "shopify://shop_images/photo-chef.jpg"
+      }
+    },
     "hero": {
       "type": "slideshow",
       "blocks": {
@@ -431,11 +438,6 @@
         "bg_color_below": "#231f1a",
         "flip": false
       }
-    },
-    "hero_corporate_VFhgDU": {
-      "type": "hero-corporate",
-      "name": "Corporate Landing Hero",
-      "settings": {}
     }
   },
   "order": [
