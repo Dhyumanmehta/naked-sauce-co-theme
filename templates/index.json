@@ -75,9 +75,9 @@
         "collection_table": "",
         "collection_cooking": "",
         "collection_base": "",
-        "accent_color": "#FFFFFF",
-        "panel_bg": "#D96634",
-        "bg_color": "#FFFFFF",
+        "accent_color": "#ffffff",
+        "panel_bg": "#d96634",
+        "bg_color": "#ffffff",
         "text_color": "#090909",
         "muted_text_color": "#090909"
       }
@@ -149,7 +149,7 @@
         "heading": "<p><strong>Ready to bring bold, global flavour to your menu?</strong></p>",
         "heading_tag": "h2",
         "heading_size": "h1",
-        "subheading": "",
+        "subheading": "<p><a href=\"mailto:sales@thenakedsauceco.com\" target=\"_blank\" title=\"mailto:sales@thenakedsauceco.com\"><strong>sales@thenakedsauceco.com</strong></a></p>",
         "button_label": "Talk To The Team",
         "button_link": "mailto:sales@thenakedsauceco.com",
         "button_style": "primary",
