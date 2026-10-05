@@ -1,94 +1,115 @@
 {% style %}
-  .nsc-cta-section-{{ section.id }} {
-    background-color: #141414;
+  .nsc-prefooter-{{ section.id }} {
+    background-color: #DA6634;
     color: #ffffff;
     padding: 85px 0 95px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
   }
 
-  .nsc-cta-container {
+  .nsc-prefooter-container {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
+    gap: 48px;
     flex-wrap: wrap;
   }
 
-  .nsc-cta-left {
-    max-width: 580px;
-  }
-
-  .nsc-cta-title {
-    font-size: clamp(34px, 4vw, 54px);
+  .nsc-prefooter-title {
+    font-size: clamp(36px, 4.5vw, 60px);
     font-weight: 900;
     line-height: 1.05;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     margin: 0;
     color: #ffffff;
+    max-width: 620px;
   }
 
-  .nsc-cta-right {
+  .nsc-prefooter-right {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
 
-  .nsc-cta-btn {
-    background-color: #DA6634;
+  .nsc-prefooter-btn {
+    background-color: #231F1A;
     color: #ffffff !important;
     padding: 16px 36px;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: none;
     border-radius: 4px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
     display: inline-block;
+    transition: transform 0.2s ease, background-color 0.2s ease;
   }
 
-  .nsc-cta-btn:hover {
-    background-color: #c75626;
+  .nsc-prefooter-btn:hover {
+    background-color: #141312;
     transform: translateY(-2px);
   }
 
-  .nsc-cta-email {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .nsc-cta-email:hover {
-    color: #DA6634;
+  .nsc-prefooter-email {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
     text-decoration: underline;
   }
 
-  .nsc-cta-note {
+  .nsc-prefooter-note {
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.85);
     margin: 0;
+  }
+
+  /* Bottom Copyright Bar */
+  .nsc-copyright-bar {
+    background-color: #1e1b18;
+    padding: 22px 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .nsc-copyright-bar a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .nsc-copyright-bar a:hover {
+    color: #DA6634;
   }
 {% endstyle %}
 
-<div class="nsc-cta-section-{{ section.id }}" id="contact">
-  <div class="nsc-cta-container">
-    <div class="nsc-cta-left">
-      <h2 class="nsc-cta-title">
-        Ready to bring<br>
-        bold global<br>
-        flavour to your<br>
-        menu?
-      </h2>
-    </div>
+<div class="nsc-prefooter-{{ section.id }}" id="contact">
+  <div class="nsc-prefooter-container">
+    <h2 class="nsc-prefooter-title">
+      Ready to bring<br>
+      bold global<br>
+      flavour to your<br>
+      menu?
+    </h2>
 
-    <div class="nsc-cta-right">
-      <a href="/pages/contact" class="nsc-cta-btn">Talk to the team</a>
-      <a href="mailto:sales@thenakedsauceco.com" class="nsc-cta-email">sales@thenakedsauceco.com</a>
-      <p class="nsc-cta-note">Trade & foodservice enquiries welcome</p>
+    <div class="nsc-prefooter-right">
+      <a href="/pages/contact" class="nsc-prefooter-btn">Talk to the team</a>
+      <a href="mailto:sales@thenakedsauceco.com" class="nsc-prefooter-email">sales@thenakedsauceco.com</a>
+      <p class="nsc-prefooter-note">Trade & foodservice enquiries welcome</p>
     </div>
+  </div>
+</div>
+
+<div class="nsc-copyright-bar">
+  <span>&copy; {{ 'now' | date: '%Y' }} The Naked Sauce Co. Ltd</span>
+  <div style="display: flex; gap: 20px;">
+    <a href="/pages/contact">Contact</a>
+    <a href="#our-sauces">Our Sauces</a>
+    <a href="#where-we-fit">Where We Fit</a>
   </div>
 </div>
 
@@ -98,9 +119,7 @@
   "tag": "section",
   "settings": [],
   "presets": [
-    {
-      "name": "Pre-Footer CTA"
-    }
+    { "name": "Pre-Footer CTA" }
   ]
 }
 {% endschema %}
