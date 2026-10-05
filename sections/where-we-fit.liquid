@@ -12,26 +12,42 @@
     padding: 0 32px;
   }
 
-  .nsc-fit-header {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto 56px;
+  .nsc-fit-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    gap: 30px;
+    flex-wrap: wrap;
   }
 
   .nsc-fit-title {
-    font-size: clamp(34px, 4vw, 52px);
+    font-size: clamp(38px, 4.5vw, 56px);
     font-weight: 900;
-    line-height: 1.05;
+    line-height: 1;
     letter-spacing: -0.02em;
-    margin: 0 0 16px;
+    margin: 0;
     color: #ffffff;
   }
 
   .nsc-fit-sub {
-    font-size: 18px;
+    font-size: clamp(15px, 1.2vw, 18px);
     color: rgba(255, 255, 255, 0.7);
-    line-height: 1.5;
+    line-height: 1.4;
     margin: 0;
+    max-width: 440px;
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .nsc-fit-header-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .nsc-fit-sub {
+      text-align: left;
+    }
   }
 
   .nsc-fit-grid {
@@ -56,28 +72,27 @@
     }
   }
 
+  /* Orange Bordered Channel Card */
   .nsc-fit-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    background: rgba(218, 102, 52, 0.08);
+    border: 2px solid #DA6634;
+    border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .nsc-fit-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(218, 102, 52, 0.5);
+    box-shadow: 0 10px 24px rgba(218, 102, 52, 0.25);
   }
 
   .nsc-fit-media {
     width: 100%;
     aspect-ratio: 4 / 3;
-    background: rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    position: relative;
-    overflow: hidden;
+    background: rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(218, 102, 52, 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,36 +106,36 @@
   }
 
   .nsc-fit-media-placeholder {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.4);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
   .nsc-fit-body {
-    padding: 22px 18px;
+    padding: 20px 16px;
     flex-grow: 1;
   }
 
   .nsc-fit-name {
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 800;
-    color: #ffffff;
+    color: #DA6634;
     margin: 0 0 10px;
     line-height: 1.2;
   }
 
   .nsc-fit-desc {
-    font-size: 13.5px;
+    font-size: 13px;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.85);
     margin: 0;
   }
 {% endstyle %}
 
 <div class="nsc-fit-section-{{ section.id }}" id="where-we-fit">
   <div class="nsc-fit-container">
-    <div class="nsc-fit-header">
+    <div class="nsc-fit-header-row">
       <h2 class="nsc-fit-title">{{ section.settings.title | default: 'Wherever food is served' }}</h2>
       <p class="nsc-fit-sub">{{ section.settings.subtitle | default: 'One range, built to work across every channel' }}</p>
     </div>
