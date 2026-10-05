@@ -65,28 +65,153 @@
     margin: 0;
   }
 
-  /* Bottom Copyright Bar */
-  .nsc-copyright-bar {
-    background-color: #1e1b18;
-    padding: 22px 32px;
+  /* Multi-column Main Footer */
+  .nsc-corporate-footer {
+    background-color: #161412;
+    color: #ffffff;
+    padding: 70px 0 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.55);
   }
 
-  .nsc-copyright-bar a {
+  .nsc-footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .nsc-footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  @media (max-width: 900px) {
+    .nsc-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+
+  .nsc-footer-brand-title {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 14px;
+  }
+
+  .nsc-footer-brand-p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 380px;
+    margin: 0 0 18px;
+  }
+
+  .nsc-facility-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .nsc-badge {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #DA6634;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .nsc-footer-heading {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #DA6634;
+    margin: 0 0 18px;
+  }
+
+  .nsc-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nsc-footer-links a {
     color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+
+  .nsc-footer-links a:hover {
+    color: #ffffff;
+  }
+
+  .nsc-footer-info p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 10px;
+  }
+
+  .nsc-footer-info a {
+    color: #ffffff;
+    font-weight: 600;
     text-decoration: none;
   }
 
-  .nsc-copyright-bar a:hover {
+  .nsc-footer-info a:hover {
+    color: #DA6634;
+    text-decoration: underline;
+  }
+
+  /* Bottom Copyright & Credit Bar */
+  .nsc-bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .nsc-bottom-credit {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .nsc-heart {
+    color: #e23b3b;
+    display: inline-block;
+    font-size: 14px;
+    padding: 0 2px;
+  }
+
+  .nsc-bottom-credit a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .nsc-bottom-credit a:hover {
     color: #DA6634;
   }
 {% endstyle %}
 
+<!-- Orange Callout Banner -->
 <div class="nsc-prefooter-{{ section.id }}" id="contact">
   <div class="nsc-prefooter-container">
     <h2 class="nsc-prefooter-title">
@@ -104,22 +229,62 @@
   </div>
 </div>
 
-<div class="nsc-copyright-bar">
-  <span>&copy; {{ 'now' | date: '%Y' }} The Naked Sauce Co. Ltd</span>
-  <div style="display: flex; gap: 20px;">
-    <a href="/pages/contact">Contact</a>
-    <a href="#our-sauces">Our Sauces</a>
-    <a href="#where-we-fit">Where We Fit</a>
+<!-- Complete Corporate Footer -->
+<footer class="nsc-corporate-footer">
+  <div class="nsc-footer-container">
+    <div class="nsc-footer-grid">
+      <!-- Col 1: Brand & Standards -->
+      <div>
+        <div class="nsc-footer-brand-title">The Naked Sauce Co.</div>
+        <p class="nsc-footer-brand-p">
+          Clean-label sauces naturally free from the 14 major allergens and ultra-processed ingredients. Built for commercial kitchens, retail shelves, and everyday tables.
+        </p>
+        <div class="nsc-facility-badges">
+          <span class="nsc-badge">BRCGS Grade AA</span>
+          <span class="nsc-badge">100% Nut-Free Facility</span>
+          <span class="nsc-badge">Glass-Free Site</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div>
+        <h4 class="nsc-footer-heading">Navigation</h4>
+        <ul class="nsc-footer-links">
+          <li><a href="#our-sauces">Our Sauces</a></li>
+          <li><a href="#our-story">Our Story</a></li>
+          <li><a href="#where-we-fit">Where We Fit</a></li>
+          <li><a href="/pages/contact">Get in Touch</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Enquiries & Supply -->
+      <div>
+        <h4 class="nsc-footer-heading">Trade Enquiries</h4>
+        <div class="nsc-footer-info">
+          <p>Direct supply, wholesale formats & bespoke recipe enquiries:</p>
+          <p><a href="mailto:sales@thenakedsauceco.com">sales@thenakedsauceco.com</a></p>
+          <p style="font-size: 12px; opacity: 0.6; margin-top: 12px;">Available in Sachets, Table Bottles, Tubs, and Bag-in-Box.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar with Credit -->
+    <div class="nsc-bottom-bar">
+      <span>&copy; {{ 'now' | date: '%Y' }} The Naked Sauce Co. Ltd. All rights reserved.</span>
+      <span class="nsc-bottom-credit">
+        Made with <span class="nsc-heart">❤️</span> by <a href="#" target="_blank">Aarkay IT Solutions</a>
+      </span>
+    </div>
   </div>
-</div>
+</footer>
 
 {% schema %}
 {
-  "name": "Pre-Footer CTA",
+  "name": "Pre-Footer & Footer",
   "tag": "section",
   "settings": [],
   "presets": [
-    { "name": "Pre-Footer CTA" }
+    { "name": "Pre-Footer & Footer" }
   ]
 }
 {% endschema %}
