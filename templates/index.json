@@ -18,68 +18,13 @@
     },
     "ticker": {
       "type": "marque",
-      "blocks": {
-        "marque_2": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>Free from the major allergens</p>",
-            "link": ""
-          }
-        },
-        "marque_1": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>Zero ultra-processed ingredients</p>",
-            "link": ""
-          }
-        },
-        "marque_X7kyBt": {
-          "type": "marque",
-          "settings": {
-            "content": "<p>Real natural ingredients</p>",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "marque_2",
-        "marque_1",
-        "marque_X7kyBt"
-      ],
-      "settings": {
-        "layout": "full-width",
-        "time": 32,
-        "reverse": false,
-        "label_font_size": "h5",
-        "height_image": "icon-h-large",
-        "use_custom_colors": true,
-        "color_text": "#1b1310",
-        "color_background": "#d96634",
-        "color_background_gradient": "",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 16,
-        "padding_bottom": 16,
-        "custom_id": "",
-        "custom_class": ""
-      }
+      "settings": {}
     },
     "range_teaser": {
       "type": "flavour-switcher",
       "settings": {
-        "preheading": "",
-        "heading": "Our sauces",
-        "subheading": "<p>A complete range of table and cooking sauces. One standard.</p>",
-        "heading_tag": "h2",
-        "heading_size": "h2",
         "collection_table": "",
-        "collection_cooking": "",
-        "collection_base": "",
-        "accent_color": "#ffffff",
-        "panel_bg": "#d96634",
-        "bg_color": "#ffffff",
-        "text_color": "#090909",
-        "muted_text_color": "#090909"
+        "collection_cooking": ""
       }
     },
     "what_we_stand_for_PtDJDK": {
@@ -138,37 +83,6 @@
         "title": "Wherever food is served",
         "subtitle": "One range, built to work across every channel"
       }
-    },
-    "trade_cta": {
-      "type": "rich-text",
-      "settings": {
-        "layout": "container page-width",
-        "full_width": false,
-        "style": "style-1",
-        "preheading": "",
-        "heading": "<p><strong>Ready to bring bold, global flavour to your menu?</strong></p>",
-        "heading_tag": "h2",
-        "heading_size": "h1",
-        "subheading": "<p><a href=\"mailto:sales@thenakedsauceco.com\" target=\"_blank\" title=\"mailto:sales@thenakedsauceco.com\"><strong>sales@thenakedsauceco.com</strong></a></p>",
-        "button_label": "Talk To The Team",
-        "button_link": "mailto:sales@thenakedsauceco.com",
-        "button_style": "primary",
-        "text_alignment": "text-md-center text-lg-center",
-        "text_alignment_mobile": "text-center",
-        "use_custom_colors": true,
-        "color_text": "#ffffff",
-        "color_background": "#d96634",
-        "color_background_gradient": "",
-        "enable_parallax": false,
-        "type": "scroll",
-        "speed": 0.5,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "custom_id": "",
-        "custom_class": ""
-      }
     }
   },
   "order": [
@@ -176,7 +90,6 @@
     "ticker",
     "range_teaser",
     "what_we_stand_for_PtDJDK",
-    "where_we_fit_8e8h6m",
-    "trade_cta"
+    "where_we_fit_8e8h6m"
   ]
 }
