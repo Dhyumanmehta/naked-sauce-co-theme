@@ -1,7 +1,6 @@
 {%- liquid
   assign collection_table = section.settings.collection_table | default: collections['table-sauces']
   assign collection_cooking = section.settings.collection_cooking | default: collections['cooking-sauces']
-  assign collection_base = section.settings.collection_base | default: collections['kitchen-bases']
 -%}
 
 {% style %}
@@ -27,7 +26,7 @@
     z-index: 2;
   }
 
-  /* Mockup Header: H1 on left, Subtitle on right */
+  /* Side-by-side Header layout */
   .dial-showcase-{{ section.id }} .ds-header-row {
     display: flex;
     justify-content: space-between;
@@ -65,7 +64,6 @@
     }
   }
 
-  /* Clean Category Tabs */
   .dial-showcase-{{ section.id }} .ds-nav {
     display: flex;
     justify-content: flex-start;
@@ -153,7 +151,6 @@
     text-overflow: ellipsis;
   }
 
-  /* Orange Spotlight Stage Box */
   .dial-showcase-{{ section.id }} .ds-stage {
     display: grid;
     grid-template-columns: 1fr 1.15fr;
@@ -258,13 +255,12 @@
 
 <div class="dial-showcase-{{ section.id }}" id="our-sauces">
   <div class="ds-inner">
-    <!-- Mockup Header: H1 on left, Subtitle on right -->
     <div class="ds-header-row">
       <h2 class="ds-header-title">Our sauces</h2>
       <p class="ds-header-sub">A complete range of table and cooking sauces. One standard.</p>
     </div>
 
-    <!-- Category Tabs without the blank button -->
+    <!-- Clean tabs: No blank tab button -->
     <div class="ds-nav" role="tablist">
       {% if collection_table != blank and collection_table.products_count > 0 %}
         <button type="button" class="ds-filter-pill active" data-filter="table">{{ collection_table.title }} ({{ collection_table.products_count }})</button>
@@ -279,7 +275,7 @@
       {% endif %}
     </div>
 
-    <!-- Swatch Carousel -->
+    <!-- Swatch carousel -->
     <div class="ds-dial-carousel" id="dsCarousel">
       {% assign global_idx = 0 %}
       {% if collection_table != blank %}
@@ -303,7 +299,7 @@
       {% endif %}
     </div>
 
-    <!-- Spotlight Stage Card -->
+    <!-- Spotlight card -->
     <div class="ds-stage">
       <div class="ds-stage-visual">
         <div class="ds-orb"></div>
@@ -423,7 +419,6 @@
         });
       });
 
-      // Filter to table sauces on init
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
       else if (rawData.length) setActiveSauce(0);
