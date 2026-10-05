@@ -11,6 +11,11 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "pre_footer_cta_A9Bh6w": {
+      "type": "pre-footer-cta",
+      "name": "Pre-Footer CTA",
+      "settings": {}
+    },
     "footer": {
       "type": "footer",
       "settings": {
@@ -24,6 +29,7 @@
     }
   },
   "order": [
+    "pre_footer_cta_A9Bh6w",
     "footer"
   ]
 }
