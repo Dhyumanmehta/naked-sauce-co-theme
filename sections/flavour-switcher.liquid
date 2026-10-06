@@ -352,7 +352,7 @@
     color: #DA6634 !important;
   }
 
-  /* Recipe Drawer */
+  /* Recipe Drawer Styling */
   .dial-showcase-{{ section.id }} .ds-recipe-drawer {
     display: none;
     border-top: 1px solid rgba(218, 102, 52, 0.3);
@@ -510,7 +510,7 @@
       {% endif %}
     </div>
 
-    <!-- Showcase Container -->
+    <!-- Showcase Stage Container -->
     <div class="ds-stage-box">
       <div class="ds-stage">
         <!-- Circular Dish Cutout Frame -->
@@ -546,7 +546,7 @@
         </div>
       </div>
 
-      <!-- Expandable Slide-down Recipe Drawer -->
+      <!-- Slide-down Recipe Drawer -->
       <div class="ds-recipe-drawer" id="dsRecipeDrawer">
         <div class="ds-recipe-header-wrap">
           <div>
@@ -715,7 +715,7 @@
           }
         }
 
-        // Recipe Drawer Toggle
+        // Drawer Button Toggle logic
         var hasRecipe = (item.recipe_title && item.recipe_title !== '') || 
                         (item.recipe_ingredients && item.recipe_ingredients !== '') || 
                         (item.recipe_method && item.recipe_method !== '');
@@ -764,27 +764,30 @@
             }
           }
 
-          // Ingredients Parser (splits on lines, commas, or semicolons)
+          // Ingredients parser (handles lists, inline lines, and multi-line breaks)
           if (drawerIng) {
             drawerIng.innerHTML = '';
             var rawText = (item.recipe_ingredients || '').trim();
 
             if (rawText.length > 0) {
-              var lines = rawText.indexOf('\n') > -1 ? rawText.split(/\r?\n/) : rawText.split(',');
-              var added = 0;
+              // Strip carriage returns and split primarily on newlines, but fallback to commas if the line doesn't feature breaks
+              var delimiter = rawText.indexOf('\n') > -1 ? /\r?\n/ : ',';
+              var lines = rawText.split(delimiter);
+              var addedCount = 0;
 
               lines.forEach(function (ing) {
+                // Strip redundant chars like bullet indicators
                 var clean = ing.replace(/^[\s•\-\*\d\.\)\"\'\[\]]+/, '').replace(/[\"\'\]]+$/, '').trim();
                 if (clean.length > 0) {
                   var div = document.createElement('div');
                   div.className = 'ds-ing-item';
                   div.textContent = clean;
                   drawerIng.appendChild(div);
-                  added++;
+                  addedCount++;
                 }
               });
 
-              if (added === 0) {
+              if (addedCount === 0) {
                 drawerIng.innerHTML = '<div class="ds-ing-item">' + rawText + '</div>';
               }
             } else {
@@ -795,13 +798,13 @@
           if (drawerMethod) drawerMethod.textContent = item.recipe_method || '';
         }
 
-        // Swatch Highlight
+        // Highlight Active Swatch node
         nodes.forEach(function (n) { n.classList.remove('active'); });
         var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
         if (activeNode) activeNode.classList.add('active');
       }
 
-      // Drawer Toggle Button
+      // Drawer Open Action Event
       if (recipeBtn && recipeDrawer) {
         recipeBtn.onclick = function () {
           var isOpen = recipeDrawer.classList.toggle('is-open');
@@ -813,14 +816,14 @@
         };
       }
 
-      // Swatch Click
+      // Swatch Click trigger loop
       nodes.forEach(function (node) {
         node.onclick = function () {
           setActiveSauce(parseInt(node.dataset.i, 10));
         };
       });
 
-      // Filter Tabs
+      // Filter Tabs toggle navigation list
       filterBtns.forEach(function (btn) {
         btn.onclick = function () {
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
@@ -841,7 +844,7 @@
         };
       });
 
-      // Init First View
+      // Initialize default active swatch configuration state
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
       else if (sauceData.length) setActiveSauce(0);
