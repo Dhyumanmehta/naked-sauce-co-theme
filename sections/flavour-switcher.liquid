@@ -23,7 +23,6 @@
     z-index: 2;
   }
 
-  /* Header: H1 on left, Subtitle on right */
   .dial-showcase-{{ section.id }} .ds-header-row {
     display: flex;
     justify-content: space-between;
@@ -61,7 +60,6 @@
     }
   }
 
-  /* Category Filter Pills */
   .dial-showcase-{{ section.id }} .ds-nav {
     display: flex;
     justify-content: flex-start;
@@ -93,7 +91,6 @@
     color: #ffffff;
   }
 
-  /* Swatch Carousel */
   .dial-showcase-{{ section.id }} .ds-dial-carousel {
     display: flex;
     gap: 14px;
@@ -151,7 +148,6 @@
     text-overflow: ellipsis;
   }
 
-  /* Main Showcase Card */
   .dial-showcase-{{ section.id }} .ds-stage-box {
     background: radial-gradient(circle at 15% 50%, #442116 0%, #251a16 55%, #1d1512 100%);
     border: 1px solid rgba(218, 102, 52, 0.35);
@@ -175,7 +171,6 @@
     }
   }
 
-  /* Left Circular Hero Presentation */
   .dial-showcase-{{ section.id }} .ds-dish-frame {
     width: 320px;
     height: 320px;
@@ -187,6 +182,9 @@
     margin: 0 auto;
     background-color: #141312;
     box-shadow: 0 0 35px rgba(218, 102, 52, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .dial-showcase-{{ section.id }} .ds-dish-img {
@@ -196,7 +194,13 @@
     display: block;
   }
 
-  /* Right Details */
+  .dial-showcase-{{ section.id }} .ds-dish-placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 13px;
+    text-align: center;
+    padding: 20px;
+  }
+
   .dial-showcase-{{ section.id }} .ds-badge-range {
     display: inline-block;
     padding: 4px 14px;
@@ -225,7 +229,6 @@
     margin: 0 0 20px;
   }
 
-  /* Cooking Action Pills */
   .dial-showcase-{{ section.id }} .ds-actions-row {
     display: flex;
     gap: 10px;
@@ -251,13 +254,10 @@
     height: 14px;
     display: inline-block;
     background-color: #DA6634;
-    mask: radial-gradient(circle, #000 60%, transparent 70%);
-    -webkit-mask: radial-gradient(circle, #000 60%, transparent 70%);
     border-radius: 50% 50% 50% 0;
     transform: rotate(-45deg);
   }
 
-  /* Perfect With Block */
   .dial-showcase-{{ section.id }} .ds-perfect-section {
     margin-bottom: 22px;
   }
@@ -287,7 +287,6 @@
     color: rgba(255, 255, 255, 0.9);
   }
 
-  /* Formats Row */
   .dial-showcase-{{ section.id }} .ds-formats-box {
     display: flex;
     align-items: center;
@@ -308,7 +307,6 @@
     font-weight: 600;
   }
 
-  /* Button Actions */
   .dial-showcase-{{ section.id }} .ds-cta-group {
     display: flex;
     gap: 14px;
@@ -354,11 +352,11 @@
     color: #DA6634 !important;
   }
 
-  /* Expandable Slide-down Recipe Drawer */
+  /* Recipe Drawer Styling */
   .dial-showcase-{{ section.id }} .ds-recipe-drawer {
     display: none;
     border-top: 1px solid rgba(218, 102, 52, 0.3);
-    background: rgba(14, 11, 10, 0.95);
+    background: #1A1715;
     padding: 44px 48px 52px;
   }
 
@@ -372,15 +370,45 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .dial-showcase-{{ section.id }} .ds-recipe-header {
+  .dial-showcase-{{ section.id }} .ds-recipe-header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 28px;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 
   .dial-showcase-{{ section.id }} .ds-recipe-title {
-    font-size: 26px;
+    font-size: clamp(26px, 2.5vw, 34px);
     font-weight: 900;
     color: #ffffff;
-    margin: 0 0 6px;
+    margin: 4px 0 6px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-recipe-subhead {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-recipe-meta-pills {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-meta-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .dial-showcase-{{ section.id }} .ds-recipe-grid {
@@ -408,10 +436,24 @@
   }
 
   .dial-showcase-{{ section.id }} .ds-ing-list {
-    white-space: pre-line;
-    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     color: rgba(255, 255, 255, 0.85);
-    font-size: 14px;
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-ing-item {
+    position: relative;
+    padding-left: 14px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-ing-item::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #DA6634;
   }
 
   .dial-showcase-{{ section.id }} .ds-method-content {
@@ -468,30 +510,28 @@
       {% endif %}
     </div>
 
-    <!-- Showcase Container -->
+    <!-- Showcase Stage -->
     <div class="ds-stage-box">
       <div class="ds-stage">
-        <!-- Circular Hero Dish Visual -->
+        <!-- Dish Frame -->
         <div class="ds-dish-frame">
           <img id="dsDishImg" class="ds-dish-img" src="" alt="Sauce dish preview" style="display: none;">
+          <div id="dsDishPlaceholder" class="ds-dish-placeholder">Dish photo coming soon</div>
         </div>
 
-        <!-- Product Information Details -->
+        <!-- Details -->
         <div class="ds-stage-info">
           <span class="ds-badge-range" id="dsBadgeRange">Table Sauces</span>
           <h3 class="ds-product-title" id="dsProductTitle"></h3>
           <p class="ds-product-desc" id="dsProductDesc"></p>
 
-          <!-- Dynamic Actions (Simmer, Stir through, Serve) -->
           <div class="ds-actions-row" id="dsActionsWrap"></div>
 
-          <!-- Dynamic "Perfect With" -->
           <div class="ds-perfect-section" id="dsPerfectWrap">
             <span class="ds-label-micro">PERFECT WITH</span>
             <div class="ds-perfect-pills" id="dsPerfectPills"></div>
           </div>
 
-          <!-- Formats Row -->
           <div class="ds-formats-box">
             <span>Available in:</span>
             <span class="ds-format-item">Sachets</span>
@@ -499,7 +539,6 @@
             <span class="ds-format-item">Tubs</span>
           </div>
 
-          <!-- CTAs -->
           <div class="ds-cta-group">
             <a href="/pages/contact" class="ds-btn-talk">Talk to the team</a>
             <button type="button" class="ds-btn-recipe" id="dsRecipeToggle" style="display: none;">Get the recipe</button>
@@ -507,12 +546,24 @@
         </div>
       </div>
 
-      <!-- Expandable Recipe Drawer -->
+      <!-- Slide-down Recipe Drawer -->
       <div class="ds-recipe-drawer" id="dsRecipeDrawer">
-        <div class="ds-recipe-header">
-          <span class="ds-badge-range" style="margin-bottom: 6px;">SERVING SUGGESTION</span>
-          <h4 class="ds-recipe-title" id="dsDrawerTitle"></h4>
+        <div class="ds-recipe-header-wrap">
+          <div>
+            <span class="ds-badge-range" style="margin-bottom: 6px;">SERVING SUGGESTION</span>
+            <h4 class="ds-recipe-title" id="dsDrawerTitle"></h4>
+            <p class="ds-recipe-subhead" id="dsDrawerSubhead"></p>
+          </div>
+          <div class="ds-recipe-meta-pills">
+            <span class="ds-meta-pill" id="dsDrawerServes" style="display: none;">
+              👤 <span class="ds-serves-text"></span>
+            </span>
+            <span class="ds-meta-pill" id="dsDrawerTime" style="display: none;">
+              ⏱️ <span class="ds-time-text"></span>
+            </span>
+          </div>
         </div>
+
         <div class="ds-recipe-grid">
           <div>
             <h5 class="ds-col-heading">You'll need</h5>
@@ -548,6 +599,9 @@
               actions: {{ product.metafields.custom.cooking_actions.value | json }},
               perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
               recipe_title: {{ product.metafields.custom.recipe_title.value | json }},
+              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: 'Serves 4' | json }},
+              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | default: '25 mins' | json }},
               recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | json }},
               recipe_method: {{ product.metafields.custom.recipe_method.value | json }}
             }
@@ -566,6 +620,9 @@
               actions: {{ product.metafields.custom.cooking_actions.value | json }},
               perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
               recipe_title: {{ product.metafields.custom.recipe_title.value | json }},
+              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: 'Serves 4' | json }},
+              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | default: '25 mins' | json }},
               recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | json }},
               recipe_method: {{ product.metafields.custom.recipe_method.value | json }}
             }
@@ -577,6 +634,7 @@
       var nodes = root.querySelectorAll('.ds-swatch-node');
       var filterBtns = root.querySelectorAll('.ds-filter-pill');
       var dishImg = root.querySelector('#dsDishImg');
+      var dishPlaceholder = root.querySelector('#dsDishPlaceholder');
       var titleEl = root.querySelector('#dsProductTitle');
       var descEl = root.querySelector('#dsProductDesc');
       var badgeRange = root.querySelector('#dsBadgeRange');
@@ -586,6 +644,9 @@
       var recipeBtn = root.querySelector('#dsRecipeToggle');
       var recipeDrawer = root.querySelector('#dsRecipeDrawer');
       var drawerTitle = root.querySelector('#dsDrawerTitle');
+      var drawerSubhead = root.querySelector('#dsDrawerSubhead');
+      var drawerServes = root.querySelector('#dsDrawerServes');
+      var drawerTime = root.querySelector('#dsDrawerTime');
       var drawerIng = root.querySelector('#dsDrawerIngredients');
       var drawerMethod = root.querySelector('#dsDrawerMethod');
 
@@ -597,20 +658,22 @@
         if (descEl) descEl.textContent = item.desc;
         if (badgeRange) badgeRange.textContent = item.range_label;
 
-        // Dish Photo
-        if (dishImg) {
+        // Image Handling with Placeholder fallback
+        if (dishImg && dishPlaceholder) {
           if (item.dish_image && item.dish_image !== '') {
             dishImg.src = item.dish_image;
             dishImg.style.display = 'block';
+            dishPlaceholder.style.display = 'none';
           } else {
             dishImg.style.display = 'none';
+            dishPlaceholder.style.display = 'block';
           }
         }
 
-        // Cooking Actions (Simmer, Stir through, Serve)
+        // Cooking Actions
         if (actionsWrap) {
           actionsWrap.innerHTML = '';
-          var acts = item.actions || (item.range_slug === 'cooking' ? ['Simmer', 'Stir through', 'Serve'] : []);
+          var acts = item.actions;
           if (acts && acts.length > 0) {
             acts.forEach(function (act) {
               var span = document.createElement('span');
@@ -624,7 +687,7 @@
           }
         }
 
-        // Perfect With Pills
+        // Perfect With
         if (perfectWrap && perfectPills) {
           perfectPills.innerHTML = '';
           if (item.perfect_with && item.perfect_with.length > 0) {
@@ -640,7 +703,7 @@
           }
         }
 
-        // Recipe Drawer Toggle
+        // Recipe Drawer Info
         var hasRecipe = item.recipe_title || item.recipe_ingredients || item.recipe_method;
         if (recipeBtn) {
           if (hasRecipe) {
@@ -655,38 +718,83 @@
         if (recipeDrawer) {
           recipeDrawer.classList.remove('is-open');
           if (drawerTitle) drawerTitle.textContent = item.recipe_title || item.name;
-          if (drawerIng) drawerIng.textContent = item.recipe_ingredients || '';
+          
+          if (drawerSubhead) {
+            if (item.recipe_subhead) {
+              drawerSubhead.textContent = item.recipe_subhead;
+              drawerSubhead.style.display = 'block';
+            } else {
+              drawerSubhead.style.display = 'none';
+            }
+          }
+
+          if (drawerServes) {
+            if (item.recipe_serves) {
+              drawerServes.querySelector('.ds-serves-text').textContent = item.recipe_serves;
+              drawerServes.style.display = 'inline-flex';
+            } else {
+              drawerServes.style.display = 'none';
+            }
+          }
+
+          if (drawerTime) {
+            if (item.recipe_time) {
+              drawerTime.querySelector('.ds-time-text').textContent = item.recipe_time;
+              drawerTime.style.display = 'inline-flex';
+            } else {
+              drawerTime.style.display = 'none';
+            }
+          }
+
+          // Split ingredients cleanly by newline or commas
+          if (drawerIng) {
+            drawerIng.innerHTML = '';
+            if (item.recipe_ingredients) {
+              var rawIng = item.recipe_ingredients;
+              var items = rawIng.includes('\n') ? rawIng.split('\n') : rawIng.split(',');
+              items.forEach(function (ing) {
+                var clean = ing.trim();
+                if (clean) {
+                  var div = document.createElement('div');
+                  div.className = 'ds-ing-item';
+                  div.textContent = clean;
+                  drawerIng.appendChild(div);
+                }
+              });
+            }
+          }
+
           if (drawerMethod) drawerMethod.textContent = item.recipe_method || '';
         }
 
-        // Swatch Highlight
+        // Highlight Active Swatch
         nodes.forEach(function (n) { n.classList.remove('active'); });
         var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
         if (activeNode) activeNode.classList.add('active');
       }
 
-      // Drawer Click Event
+      // Toggle drawer
       if (recipeBtn && recipeDrawer) {
-        recipeBtn.addEventListener('click', function () {
+        recipeBtn.onclick = function () {
           var isOpen = recipeDrawer.classList.toggle('is-open');
           recipeBtn.classList.toggle('active', isOpen);
           recipeBtn.textContent = isOpen ? 'Hide recipe' : 'Get the recipe';
           if (isOpen) {
             recipeDrawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
-        });
+        };
       }
 
       // Swatch Click
       nodes.forEach(function (node) {
-        node.addEventListener('click', function () {
+        node.onclick = function () {
           setActiveSauce(parseInt(node.dataset.i, 10));
-        });
+        };
       });
 
-      // Filter Pill Click
+      // Filter Tab Click
       filterBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
+        btn.onclick = function () {
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
           var filter = btn.dataset.filter;
@@ -702,10 +810,10 @@
           });
 
           if (firstMatch !== null) setActiveSauce(firstMatch);
-        });
+        };
       });
 
-      // Initialize
+      // Init first view
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
       else if (sauceData.length) setActiveSauce(0);
