@@ -590,26 +590,20 @@
         {% if collection_table != blank %}
           {% for product in collection_table.products %}
             {% unless is_first %},{% endunless %}
-            {%- capture raw_ing -%}{{ product.metafields.custom.recipe_ingredients }}{%- endcapture -%}
-            {%- capture raw_method -%}{{ product.metafields.custom.recipe_method }}{%- endcapture -%}
-            {%- capture raw_title -%}{{ product.metafields.custom.recipe_title }}{%- endcapture -%}
-            {%- capture raw_subhead -%}{{ product.metafields.custom.recipe_summary }}{%- endcapture -%}
-            {%- capture raw_serves -%}{{ product.metafields.custom.recipe_serves }}{%- endcapture -%}
-            {%- capture raw_time -%}{{ product.metafields.custom.recipe_prep_time }}{%- endcapture -%}
             {
               name: {{ product.title | json }},
               desc: {{ product.description | strip_html | truncatewords: 24 | json }},
               range_slug: "table",
               range_label: "Table Sauces",
               dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
-              actions: {{ product.metafields.custom.cooking_actions.value | json }},
-              perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
-              recipe_title: {{ raw_title | strip | json }},
-              recipe_subhead: {{ raw_subhead | strip | json }},
-              recipe_serves: {{ raw_serves | strip | json }},
-              recipe_time: {{ raw_time | strip | json }},
-              recipe_ingredients: {{ raw_ing | strip | json }},
-              recipe_method: {{ raw_method | strip | json }}
+              actions: {{ product.metafields.custom.cooking_actions.value | default: product.metafields.custom.cooking_actions | json }},
+              perfect_with: {{ product.metafields.custom.perfect_with.value | default: product.metafields.custom.perfect_with | json }},
+              recipe_title: {{ product.metafields.custom.recipe_title.value | default: product.metafields.custom.recipe_title | default: "" | json }},
+              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | default: product.metafields.custom.recipe_summary | default: "" | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: product.metafields.custom.recipe_serves | default: "" | json }},
+              recipe_time: {{ product.metafields.custom.recipe_time.value | default: product.metafields.custom.recipe_time | default: product.metafields.custom.recipe_prep_time.value | default: product.metafields.custom.recipe_prep_time | default: "" | json }},
+              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | default: product.metafields.custom.recipe_ingredients | default: product.metafields.custom.ecipe_ingredients.value | default: product.metafields.custom.ecipe_ingredients | default: "" | json }},
+              recipe_method: {{ product.metafields.custom.recipe_method.value | default: product.metafields.custom.recipe_method | default: "" | json }}
             }
             {% assign is_first = false %}
           {% endfor %}
@@ -617,26 +611,20 @@
         {% if collection_cooking != blank %}
           {% for product in collection_cooking.products %}
             {% unless is_first %},{% endunless %}
-            {%- capture raw_ing -%}{{ product.metafields.custom.recipe_ingredients }}{%- endcapture -%}
-            {%- capture raw_method -%}{{ product.metafields.custom.recipe_method }}{%- endcapture -%}
-            {%- capture raw_title -%}{{ product.metafields.custom.recipe_title }}{%- endcapture -%}
-            {%- capture raw_subhead -%}{{ product.metafields.custom.recipe_summary }}{%- endcapture -%}
-            {%- capture raw_serves -%}{{ product.metafields.custom.recipe_serves }}{%- endcapture -%}
-            {%- capture raw_time -%}{{ product.metafields.custom.recipe_prep_time }}{%- endcapture -%}
             {
               name: {{ product.title | json }},
               desc: {{ product.description | strip_html | truncatewords: 24 | default: '[Product description to be added from the live site]' | json }},
               range_slug: "cooking",
               range_label: "Cooking Sauces",
               dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
-              actions: {{ product.metafields.custom.cooking_actions.value | json }},
-              perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
-              recipe_title: {{ raw_title | strip | json }},
-              recipe_subhead: {{ raw_subhead | strip | json }},
-              recipe_serves: {{ raw_serves | strip | json }},
-              recipe_time: {{ raw_time | strip | json }},
-              recipe_ingredients: {{ raw_ing | strip | json }},
-              recipe_method: {{ raw_method | strip | json }}
+              actions: {{ product.metafields.custom.cooking_actions.value | default: product.metafields.custom.cooking_actions | json }},
+              perfect_with: {{ product.metafields.custom.perfect_with.value | default: product.metafields.custom.perfect_with | json }},
+              recipe_title: {{ product.metafields.custom.recipe_title.value | default: product.metafields.custom.recipe_title | default: "" | json }},
+              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | default: product.metafields.custom.recipe_summary | default: "" | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: product.metafields.custom.recipe_serves | default: "" | json }},
+              recipe_time: {{ product.metafields.custom.recipe_time.value | default: product.metafields.custom.recipe_time | default: product.metafields.custom.recipe_prep_time.value | default: product.metafields.custom.recipe_prep_time | default: "" | json }},
+              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | default: product.metafields.custom.recipe_ingredients | default: product.metafields.custom.ecipe_ingredients.value | default: product.metafields.custom.ecipe_ingredients | default: "" | json }},
+              recipe_method: {{ product.metafields.custom.recipe_method.value | default: product.metafields.custom.recipe_method | default: "" | json }}
             }
             {% assign is_first = false %}
           {% endfor %}
@@ -736,7 +724,7 @@
 
           // Subhead
           if (drawerSubhead) {
-            if (item.recipe_subhead && item.recipe_subhead.trim() !== '') {
+            if (item.recipe_subhead && String(item.recipe_subhead).trim() !== '') {
               drawerSubhead.textContent = item.recipe_subhead;
               drawerSubhead.style.display = 'block';
             } else {
@@ -746,8 +734,10 @@
 
           // Serves
           if (drawerServes) {
-            if (item.recipe_serves && item.recipe_serves.trim() !== '') {
-              drawerServes.querySelector('.ds-serves-text').textContent = item.recipe_serves;
+            var servesVal = item.recipe_serves ? String(item.recipe_serves).trim() : '';
+            if (servesVal !== '') {
+              if (!isNaN(servesVal)) servesVal = 'Serves ' + servesVal;
+              drawerServes.querySelector('.ds-serves-text').textContent = servesVal;
               drawerServes.style.display = 'inline-flex';
             } else {
               drawerServes.style.display = 'none';
@@ -756,27 +746,29 @@
 
           // Time
           if (drawerTime) {
-            if (item.recipe_time && item.recipe_time.trim() !== '') {
-              drawerTime.querySelector('.ds-time-text').textContent = item.recipe_time;
+            var timeVal = item.recipe_time ? String(item.recipe_time).trim() : '';
+            if (timeVal !== '') {
+              drawerTime.querySelector('.ds-time-text').textContent = timeVal;
               drawerTime.style.display = 'inline-flex';
             } else {
               drawerTime.style.display = 'none';
             }
           }
 
-          // Ingredients parser (handles lists, inline lines, and multi-line breaks)
+          // Ingredients Parser (splits on lines, commas, or semicolons)
           if (drawerIng) {
             drawerIng.innerHTML = '';
-            var rawText = (item.recipe_ingredients || '').trim();
+            var rawText = item.recipe_ingredients;
+            if (typeof rawText !== 'string') {
+              rawText = rawText ? JSON.stringify(rawText) : '';
+            }
+            rawText = rawText.trim();
 
             if (rawText.length > 0) {
-              // Strip carriage returns and split primarily on newlines, but fallback to commas if the line doesn't feature breaks
-              var delimiter = rawText.indexOf('\n') > -1 ? /\r?\n/ : ',';
-              var lines = rawText.split(delimiter);
+              var lines = rawText.indexOf('\n') > -1 ? rawText.split(/\r?\n/) : rawText.split(',');
               var addedCount = 0;
 
               lines.forEach(function (ing) {
-                // Strip redundant chars like bullet indicators
                 var clean = ing.replace(/^[\s•\-\*\d\.\)\"\'\[\]]+/, '').replace(/[\"\'\]]+$/, '').trim();
                 if (clean.length > 0) {
                   var div = document.createElement('div');
@@ -798,13 +790,13 @@
           if (drawerMethod) drawerMethod.textContent = item.recipe_method || '';
         }
 
-        // Highlight Active Swatch node
+        // Swatch active toggle
         nodes.forEach(function (n) { n.classList.remove('active'); });
         var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
         if (activeNode) activeNode.classList.add('active');
       }
 
-      // Drawer Open Action Event
+      // Recipe Drawer Button Click
       if (recipeBtn && recipeDrawer) {
         recipeBtn.onclick = function () {
           var isOpen = recipeDrawer.classList.toggle('is-open');
@@ -816,14 +808,14 @@
         };
       }
 
-      // Swatch Click trigger loop
+      // Swatch Click
       nodes.forEach(function (node) {
         node.onclick = function () {
           setActiveSauce(parseInt(node.dataset.i, 10));
         };
       });
 
-      // Filter Tabs toggle navigation list
+      // Filter Tabs
       filterBtns.forEach(function (btn) {
         btn.onclick = function () {
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
@@ -844,7 +836,7 @@
         };
       });
 
-      // Initialize default active swatch configuration state
+      // Initialize default
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
       else if (sauceData.length) setActiveSauce(0);
