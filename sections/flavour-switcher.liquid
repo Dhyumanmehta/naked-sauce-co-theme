@@ -598,12 +598,12 @@
               dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
               actions: {{ product.metafields.custom.cooking_actions.value | json }},
               perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
-              recipe_title: {{ product.metafields.custom.recipe_title.value | json }},
-              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | json }},
-              recipe_serves: {{ product.metafields.custom.recipe_serves.value | json }},
-              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | json }},
-              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | json }},
-              recipe_method: {{ product.metafields.custom.recipe_method.value | json }}
+              recipe_title: {{ product.metafields.custom.recipe_title.value | default: product.metafields.custom.recipe_title | json }},
+              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | default: product.metafields.custom.recipe_summary | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: product.metafields.custom.recipe_serves | json }},
+              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | default: product.metafields.custom.recipe_prep_time | json }},
+              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | default: product.metafields.custom.recipe_ingredients | json }},
+              recipe_method: {{ product.metafields.custom.recipe_method.value | default: product.metafields.custom.recipe_method | json }}
             }
             {% assign is_first = false %}
           {% endfor %}
@@ -619,12 +619,12 @@
               dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
               actions: {{ product.metafields.custom.cooking_actions.value | json }},
               perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
-              recipe_title: {{ product.metafields.custom.recipe_title.value | json }},
-              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | json }},
-              recipe_serves: {{ product.metafields.custom.recipe_serves.value | json }},
-              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | json }},
-              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | json }},
-              recipe_method: {{ product.metafields.custom.recipe_method.value | json }}
+              recipe_title: {{ product.metafields.custom.recipe_title.value | default: product.metafields.custom.recipe_title | json }},
+              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | default: product.metafields.custom.recipe_summary | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: product.metafields.custom.recipe_serves | json }},
+              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | default: product.metafields.custom.recipe_prep_time | json }},
+              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | default: product.metafields.custom.recipe_ingredients | json }},
+              recipe_method: {{ product.metafields.custom.recipe_method.value | default: product.metafields.custom.recipe_method | json }}
             }
             {% assign is_first = false %}
           {% endfor %}
@@ -703,7 +703,7 @@
           }
         }
 
-        // Recipe Drawer Info
+        // Recipe Drawer Toggle
         var hasRecipe = item.recipe_title || item.recipe_ingredients || item.recipe_method;
         if (recipeBtn) {
           if (hasRecipe) {
@@ -718,9 +718,10 @@
         if (recipeDrawer) {
           recipeDrawer.classList.remove('is-open');
           if (drawerTitle) drawerTitle.textContent = item.recipe_title || item.name;
-          
+
+          // Subhead
           if (drawerSubhead) {
-            if (item.recipe_subhead) {
+            if (item.recipe_subhead && item.recipe_subhead.trim() !== '') {
               drawerSubhead.textContent = item.recipe_subhead;
               drawerSubhead.style.display = 'block';
             } else {
@@ -728,8 +729,9 @@
             }
           }
 
+          // Serves
           if (drawerServes) {
-            if (item.recipe_serves) {
+            if (item.recipe_serves && item.recipe_serves.trim() !== '') {
               drawerServes.querySelector('.ds-serves-text').textContent = item.recipe_serves;
               drawerServes.style.display = 'inline-flex';
             } else {
@@ -737,8 +739,9 @@
             }
           }
 
+          // Time
           if (drawerTime) {
-            if (item.recipe_time) {
+            if (item.recipe_time && item.recipe_time.trim() !== '') {
               drawerTime.querySelector('.ds-time-text').textContent = item.recipe_time;
               drawerTime.style.display = 'inline-flex';
             } else {
@@ -746,15 +749,17 @@
             }
           }
 
-          // Robust Ingredients Parser (Handles newlines, bullets, arrays, commas)
+          // Ingredients Parser (splits commas, newlines, semicolons)
           if (drawerIng) {
             drawerIng.innerHTML = '';
             var raw = item.recipe_ingredients;
             if (raw) {
-              var text = (typeof raw === 'string') ? raw : (Array.isArray(raw) ? raw.join('\n') : JSON.stringify(raw));
-              var lines = text.indexOf('\n') > -1 ? text.split(/\r?\n/) : text.split(',');
+              var rawStr = typeof raw === 'string' ? raw : (Array.isArray(raw) ? raw.join('\n') : JSON.stringify(raw));
               
-              lines.forEach(function (ing) {
+              // If commas exist without newlines, split by comma; otherwise split by line break
+              var list = rawStr.indexOf('\n') > -1 ? rawStr.split(/\r?\n/) : rawStr.split(',');
+
+              list.forEach(function (ing) {
                 var clean = ing.replace(/^[\s•\-\*\d\.\)\"\'\[\]]+/, '').replace(/[\"\'\]]+$/, '').trim();
                 if (clean.length > 0) {
                   var div = document.createElement('div');
@@ -771,13 +776,13 @@
           if (drawerMethod) drawerMethod.textContent = item.recipe_method || '';
         }
 
-        // Highlight Active Swatch
+        // Swatch Highlight
         nodes.forEach(function (n) { n.classList.remove('active'); });
         var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
         if (activeNode) activeNode.classList.add('active');
       }
 
-      // Drawer Button Click
+      // Drawer Toggle
       if (recipeBtn && recipeDrawer) {
         recipeBtn.onclick = function () {
           var isOpen = recipeDrawer.classList.toggle('is-open');
@@ -796,7 +801,7 @@
         };
       });
 
-      // Filter Tab Click
+      // Filter Tabs
       filterBtns.forEach(function (btn) {
         btn.onclick = function () {
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
@@ -817,7 +822,7 @@
         };
       });
 
-      // Init First View
+      // Initialize
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
       else if (sauceData.length) setActiveSauce(0);
