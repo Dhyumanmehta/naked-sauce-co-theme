@@ -352,7 +352,7 @@
     color: #DA6634 !important;
   }
 
-  /* Recipe Drawer Styling */
+  /* Recipe Drawer */
   .dial-showcase-{{ section.id }} .ds-recipe-drawer {
     display: none;
     border-top: 1px solid rgba(218, 102, 52, 0.3);
@@ -510,7 +510,7 @@
       {% endif %}
     </div>
 
-    <!-- Showcase Stage Container -->
+    <!-- Showcase Container -->
     <div class="ds-stage-box">
       <div class="ds-stage">
         <!-- Circular Dish Cutout Frame -->
@@ -519,7 +519,7 @@
           <div id="dsDishPlaceholder" class="ds-dish-placeholder">Dish photo coming soon</div>
         </div>
 
-        <!-- Product Information Details -->
+        <!-- Product Details -->
         <div class="ds-stage-info">
           <span class="ds-badge-range" id="dsBadgeRange">Table Sauces</span>
           <h3 class="ds-product-title" id="dsProductTitle"></h3>
@@ -546,7 +546,7 @@
         </div>
       </div>
 
-      <!-- Slide-down Recipe Drawer -->
+      <!-- Expandable Slide-down Recipe Drawer -->
       <div class="ds-recipe-drawer" id="dsRecipeDrawer">
         <div class="ds-recipe-header-wrap">
           <div>
@@ -703,7 +703,7 @@
           }
         }
 
-        // Drawer Button Toggle logic
+        // Recipe Drawer Toggle
         var hasRecipe = (item.recipe_title && item.recipe_title !== '') || 
                         (item.recipe_ingredients && item.recipe_ingredients !== '') || 
                         (item.recipe_method && item.recipe_method !== '');
@@ -755,21 +755,23 @@
             }
           }
 
-          // Ingredients Parser (splits on lines, commas, or semicolons)
+          // Ingredients Parser (Preserves quantities/numbers)
           if (drawerIng) {
             drawerIng.innerHTML = '';
             var rawText = item.recipe_ingredients;
             if (typeof rawText !== 'string') {
-              rawText = rawText ? JSON.stringify(rawText) : '';
+              rawText = rawText ? String(rawText) : '';
             }
             rawText = rawText.trim();
 
             if (rawText.length > 0) {
-              var lines = rawText.indexOf('\n') > -1 ? rawText.split(/\r?\n/) : rawText.split(',');
-              var addedCount = 0;
+              var lines = rawText.indexOf('\n') > -1 
+                ? rawText.split(/\r?\n/) 
+                : rawText.split(/,(?=\s*\d|\s*[A-Z])/);
 
+              var addedCount = 0;
               lines.forEach(function (ing) {
-                var clean = ing.replace(/^[\s•\-\*\d\.\)\"\'\[\]]+/, '').replace(/[\"\'\]]+$/, '').trim();
+                var clean = ing.replace(/^[\s•\-\*]+/, '').replace(/[\s,]+$/, '').trim();
                 if (clean.length > 0) {
                   var div = document.createElement('div');
                   div.className = 'ds-ing-item';
@@ -780,7 +782,10 @@
               });
 
               if (addedCount === 0) {
-                drawerIng.innerHTML = '<div class="ds-ing-item">' + rawText + '</div>';
+                var fallback = document.createElement('div');
+                fallback.className = 'ds-ing-item';
+                fallback.textContent = rawText;
+                drawerIng.appendChild(fallback);
               }
             } else {
               drawerIng.innerHTML = '<span style="opacity:0.4; font-size:13px;">Ingredients coming soon</span>';
@@ -790,13 +795,13 @@
           if (drawerMethod) drawerMethod.textContent = item.recipe_method || '';
         }
 
-        // Swatch active toggle
+        // Swatch Active
         nodes.forEach(function (n) { n.classList.remove('active'); });
         var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
         if (activeNode) activeNode.classList.add('active');
       }
 
-      // Recipe Drawer Button Click
+      // Drawer Toggle Button Click
       if (recipeBtn && recipeDrawer) {
         recipeBtn.onclick = function () {
           var isOpen = recipeDrawer.classList.toggle('is-open');
@@ -836,7 +841,7 @@
         };
       });
 
-      // Initialize default
+      // Init First View
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
       else if (sauceData.length) setActiveSauce(0);
