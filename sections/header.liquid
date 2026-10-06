@@ -283,6 +283,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="border-top d-none d-lg-block">
+                    <div class="container page-width">
+                        <div class="d-flex justify-content-center">
+                            <div class="header__inline-menu">
+                                {% # theme-check-disable %}
+                                {% render 'site-nav', linklist: section.settings.main_linklist, class: 'list--inline' %}
+                                {% # theme-check-enable %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endif %}
             {% if section.settings.logo_position == 'top-left' %}
                 <div class="container page-width py-3">
@@ -735,6 +746,23 @@
     </div>
 </div>
 
+<script>
+  // Automatically routes any hash link back to the homepage root when clicked from subpages
+  document.addEventListener('DOMContentLoaded', function () {
+    var isHome = window.location.pathname === '/' || window.location.pathname === '{{ routes.root_url }}';
+    var navLinks = document.querySelectorAll('.header__inline-menu a, .navbar-nav-canvas a');
+    
+    navLinks.forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        if (!isHome) {
+          link.setAttribute('href', '{{ routes.root_url }}' + (('{{ routes.root_url }}'.endsWith('/') ? '' : '/')) + href);
+        }
+      }
+    });
+  });
+</script>
+
 <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -915,54 +943,18 @@
           "type": "select",
           "id": "mm_dropdown_w",
           "options": [
-            {
-              "value": "1",
-              "label": "1/12 (8.33%)"
-            },
-            {
-              "value": "2",
-              "label": "2/12 (16.67%)"
-            },
-            {
-              "value": "3",
-              "label": "3/12 (25%)"
-            },
-            {
-              "value": "4",
-              "label": "4/12 (33.33%)"
-            },
-            {
-              "value": "5",
-              "label": "5/12 (41.67%)"
-            },
-            {
-              "value": "6",
-              "label": "6/12 (50%)"
-            },
-            {
-              "value": "7",
-              "label": "7/12 (58.33%)"
-            },
-            {
-              "value": "8",
-              "label": "8/12 (66.67%)"
-            },
-            {
-              "value": "9",
-              "label": "9/12 (75%)"
-            },
-            {
-              "value": "10",
-              "label": "10/12 (83.33%)"
-            },
-            {
-              "value": "11",
-              "label": "11/12 (91.67%)"
-            },
-            {
-              "value": "12",
-              "label": "12/12 (100%)"
-            }
+            { "value": "1", "label": "1/12 (8.33%)" },
+            { "value": "2", "label": "2/12 (16.67%)" },
+            { "value": "3", "label": "3/12 (25%)" },
+            { "value": "4", "label": "4/12 (33.33%)" },
+            { "value": "5", "label": "5/12 (41.67%)" },
+            { "value": "6", "label": "6/12 (50%)" },
+            { "value": "7", "label": "7/12 (58.33%)" },
+            { "value": "8", "label": "8/12 (66.67%)" },
+            { "value": "9", "label": "9/12 (75%)" },
+            { "value": "10", "label": "10/12 (83.33%)" },
+            { "value": "11", "label": "11/12 (91.67%)" },
+            { "value": "12", "label": "12/12 (100%)" }
           ],
           "default": "6",
           "label": "t:sections.header.settings.blocks.dropdown_width.label"
@@ -984,54 +976,18 @@
           "type": "select",
           "id": "mm_extra_w",
           "options": [
-            {
-              "value": "1",
-              "label": "1/12 (8.33%)"
-            },
-            {
-              "value": "2",
-              "label": "2/12 (16.67%)"
-            },
-            {
-              "value": "3",
-              "label": "3/12 (25%)"
-            },
-            {
-              "value": "4",
-              "label": "4/12 (33.33%)"
-            },
-            {
-              "value": "5",
-              "label": "5/12 (41.67%)"
-            },
-            {
-              "value": "6",
-              "label": "6/12 (50%)"
-            },
-            {
-              "value": "7",
-              "label": "7/12 (58.33%)"
-            },
-            {
-              "value": "8",
-              "label": "8/12 (66.67%)"
-            },
-            {
-              "value": "9",
-              "label": "9/12 (75%)"
-            },
-            {
-              "value": "10",
-              "label": "10/12 (83.33%)"
-            },
-            {
-              "value": "11",
-              "label": "11/12 (91.67%)"
-            },
-            {
-              "value": "12",
-              "label": "12/12 (100%)"
-            }
+            { "value": "1", "label": "1/12 (8.33%)" },
+            { "value": "2", "label": "2/12 (16.67%)" },
+            { "value": "3", "label": "3/12 (25%)" },
+            { "value": "4", "label": "4/12 (33.33%)" },
+            { "value": "5", "label": "5/12 (41.67%)" },
+            { "value": "6", "label": "6/12 (50%)" },
+            { "value": "7", "label": "7/12 (58.33%)" },
+            { "value": "8", "label": "8/12 (66.67%)" },
+            { "value": "9", "label": "9/12 (75%)" },
+            { "value": "10", "label": "10/12 (83.33%)" },
+            { "value": "11", "label": "11/12 (91.67%)" },
+            { "value": "12", "label": "12/12 (100%)" }
           ],
           "default": "6",
           "label": "t:sections.header.settings.blocks.extra_width.label"
