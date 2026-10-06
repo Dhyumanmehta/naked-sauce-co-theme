@@ -6,16 +6,13 @@
 {% style %}
   .dial-showcase-{{ section.id }} {
     --ds-accent: {{ section.settings.accent_color | default: '#DA6634' }};
-    --ds-bg: #1e1e1e;
-    --ds-card-bg: #DA6634;
-    --ds-text: #ffffff;
-    --ds-muted: rgba(255, 255, 255, 0.75);
+    --ds-bg: #1A1715;
     background-color: var(--ds-bg);
-    color: var(--ds-text);
+    color: #ffffff;
     position: relative;
     overflow: hidden;
     padding-top: 70px;
-    padding-bottom: 80px;
+    padding-bottom: 90px;
   }
 
   .dial-showcase-{{ section.id }} .ds-inner {
@@ -26,12 +23,12 @@
     z-index: 2;
   }
 
-  /* Side-by-side Header layout */
+  /* Header: H1 on left, Subtitle on right */
   .dial-showcase-{{ section.id }} .ds-header-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     gap: 30px;
     flex-wrap: wrap;
   }
@@ -64,6 +61,7 @@
     }
   }
 
+  /* Category Filter Pills */
   .dial-showcase-{{ section.id }} .ds-nav {
     display: flex;
     justify-content: flex-start;
@@ -77,7 +75,7 @@
     border: 1px solid rgba(255, 255, 255, 0.25);
     color: rgba(255, 255, 255, 0.85);
     border-radius: 50px;
-    padding: 8px 20px;
+    padding: 8px 22px;
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
@@ -95,11 +93,12 @@
     color: #ffffff;
   }
 
+  /* Swatch Carousel */
   .dial-showcase-{{ section.id }} .ds-dial-carousel {
     display: flex;
     gap: 14px;
     overflow-x: auto;
-    padding: 8px 0 24px;
+    padding: 8px 0 28px;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
@@ -118,7 +117,7 @@
     border: none;
     cursor: pointer;
     padding: 6px 10px;
-    opacity: 0.55;
+    opacity: 0.5;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
@@ -129,10 +128,11 @@
   }
 
   .dial-showcase-{{ section.id }} .ds-node-circle {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 2px solid rgba(255,255,255,0.2);
+    position: relative;
   }
 
   .dial-showcase-{{ section.id }} .ds-swatch-node.active .ds-node-circle {
@@ -151,105 +151,274 @@
     text-overflow: ellipsis;
   }
 
-  .dial-showcase-{{ section.id }} .ds-stage {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 40px;
-    background: #DA6634;
-    border-radius: 16px;
-    padding: 48px;
-    align-items: center;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  /* Main Showcase Card */
+  .dial-showcase-{{ section.id }} .ds-stage-box {
+    background: radial-gradient(circle at 15% 50%, #442116 0%, #251a16 55%, #1d1512 100%);
+    border: 1px solid rgba(218, 102, 52, 0.35);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   }
 
-  @media (max-width: 900px) {
+  .dial-showcase-{{ section.id }} .ds-stage {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 40px;
+    padding: 48px;
+    align-items: center;
+  }
+
+  @media (max-width: 960px) {
     .dial-showcase-{{ section.id }} .ds-stage {
       grid-template-columns: 1fr;
-      padding: 30px 20px;
+      padding: 32px 24px;
     }
   }
 
-  .dial-showcase-{{ section.id }} .ds-stage-visual {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 280px;
-  }
-
-  .dial-showcase-{{ section.id }} .ds-orb {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.15);
-    position: absolute;
-    z-index: 1;
-  }
-
-  .dial-showcase-{{ section.id }} .ds-bottle-img {
-    height: 280px;
-    width: auto;
+  /* Left Circular Hero Presentation */
+  .dial-showcase-{{ section.id }} .ds-dish-frame {
+    width: 320px;
+    height: 320px;
     max-width: 100%;
-    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid #DA6634;
+    overflow: hidden;
     position: relative;
-    z-index: 2;
+    margin: 0 auto;
+    background-color: #141312;
+    box-shadow: 0 0 35px rgba(218, 102, 52, 0.25);
   }
 
-  .dial-showcase-{{ section.id }} .ds-range-tag {
+  .dial-showcase-{{ section.id }} .ds-dish-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Right Details */
+  .dial-showcase-{{ section.id }} .ds-badge-range {
     display: inline-block;
     padding: 4px 14px;
     border-radius: 50px;
-    background: rgba(0, 0, 0, 0.2);
-    color: #ffffff;
+    border: 1px solid rgba(218, 102, 52, 0.6);
+    color: #DA6634;
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
-  .dial-showcase-{{ section.id }} .ds-title {
-    font-size: clamp(28px, 3.2vw, 42px);
+  .dial-showcase-{{ section.id }} .ds-product-title {
+    font-size: clamp(32px, 3.8vw, 48px);
     font-weight: 900;
     line-height: 1.1;
-    margin: 0 0 14px;
-    color: #ffffff !important;
+    margin: 0 0 12px;
+    color: #ffffff;
   }
 
-  .dial-showcase-{{ section.id }} .ds-desc {
-    font-size: 16px;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.9) !important;
-    margin: 0 0 24px;
+  .dial-showcase-{{ section.id }} .ds-product-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0 0 20px;
   }
 
-  .dial-showcase-{{ section.id }} .ds-formats-row {
+  /* Cooking Action Pills */
+  .dial-showcase-{{ section.id }} .ds-actions-row {
     display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-action-tag {
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 7px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
   }
 
-  .dial-showcase-{{ section.id }} .ds-format-chip {
-    background: rgba(0, 0, 0, 0.2);
+  .dial-showcase-{{ section.id }} .ds-flame-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background-color: #DA6634;
+    mask: radial-gradient(circle, #000 60%, transparent 70%);
+    -webkit-mask: radial-gradient(circle, #000 60%, transparent 70%);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+  }
+
+  /* Perfect With Block */
+  .dial-showcase-{{ section.id }} .ds-perfect-section {
+    margin-bottom: 22px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-label-micro {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-perfect-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-pair-pill {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Formats Row */
+  .dial-showcase-{{ section.id }} .ds-formats-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-format-item {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
-    padding: 5px 12px;
-    font-size: 12px;
+    padding: 4px 10px;
     color: #ffffff;
+    font-size: 12px;
     font-weight: 600;
   }
 
-  .dial-showcase-{{ section.id }} .ds-btn {
-    background: #ffffff;
-    color: #231F1A !important;
-    border-radius: 4px;
-    padding: 12px 26px;
+  /* Button Actions */
+  .dial-showcase-{{ section.id }} .ds-cta-group {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-btn-talk {
+    background-color: #DA6634;
+    color: #ffffff !important;
+    padding: 13px 28px;
     font-size: 13px;
     font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
     text-decoration: none;
-    display: inline-block;
+    border-radius: 4px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-btn-talk:hover {
+    background-color: #c75626;
+    transform: translateY(-2px);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-btn-recipe {
+    background-color: transparent;
+    color: #ffffff !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    padding: 13px 28px;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-btn-recipe:hover,
+  .dial-showcase-{{ section.id }} .ds-btn-recipe.active {
+    border-color: #DA6634;
+    background: rgba(218, 102, 52, 0.15);
+    color: #DA6634 !important;
+  }
+
+  /* Expandable Slide-down Recipe Drawer */
+  .dial-showcase-{{ section.id }} .ds-recipe-drawer {
+    display: none;
+    border-top: 1px solid rgba(218, 102, 52, 0.3);
+    background: rgba(14, 11, 10, 0.95);
+    padding: 44px 48px 52px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-recipe-drawer.is-open {
+    display: block;
+    animation: dsFadeDown 0.3s ease-out;
+  }
+
+  @keyframes dsFadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .dial-showcase-{{ section.id }} .ds-recipe-header {
+    margin-bottom: 28px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-recipe-title {
+    font-size: 26px;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 6px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-recipe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 48px;
+  }
+
+  @media (max-width: 860px) {
+    .dial-showcase-{{ section.id }} .ds-recipe-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .dial-showcase-{{ section.id }} .ds-col-heading {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #DA6634;
+    margin: 0 0 16px;
+    border-bottom: 1px solid rgba(218, 102, 52, 0.3);
+    padding-bottom: 8px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-ing-list {
+    white-space: pre-line;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-method-content {
+    white-space: pre-line;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14.5px;
   }
 {% endstyle %}
 
@@ -260,7 +429,7 @@
       <p class="ds-header-sub">A complete range of table and cooking sauces. One standard.</p>
     </div>
 
-    <!-- Clean tabs: No blank tab button -->
+    <!-- Category Tabs -->
     <div class="ds-nav" role="tablist">
       {% if collection_table != blank and collection_table.products_count > 0 %}
         <button type="button" class="ds-filter-pill active" data-filter="table">{{ collection_table.title }} ({{ collection_table.products_count }})</button>
@@ -275,7 +444,7 @@
       {% endif %}
     </div>
 
-    <!-- Swatch carousel -->
+    <!-- Product Swatches -->
     <div class="ds-dial-carousel" id="dsCarousel">
       {% assign global_idx = 0 %}
       {% if collection_table != blank %}
@@ -291,7 +460,7 @@
       {% if collection_cooking != blank %}
         {% for product in collection_cooking.products %}
           <button type="button" class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}" data-i="{{ global_idx }}" data-range="cooking">
-            <div class="ds-node-circle" style="background-color: #A3281B;"></div>
+            <div class="ds-node-circle" style="background-color: #9C331D;"></div>
             <span class="ds-node-label">{{ product.title }}</span>
           </button>
           {% assign global_idx = global_idx | plus: 1 %}
@@ -299,30 +468,61 @@
       {% endif %}
     </div>
 
-    <!-- Spotlight card -->
-    <div class="ds-stage">
-      <div class="ds-stage-visual">
-        <div class="ds-orb"></div>
-        <img id="dsBottleImg" class="ds-bottle-img" src="" alt="Sauce bottle" style="display: none;">
-      </div>
-
-      <div class="ds-stage-info">
-        <span class="ds-range-tag" id="dsRangeTag">Table Sauces</span>
-        <h3 class="ds-title" id="dsTitle"></h3>
-        <p class="ds-desc" id="dsDesc"></p>
-
-        <div class="ds-formats-row">
-          <span style="font-size:12px; font-weight:700; color:#fff; margin-right:4px;">Available in:</span>
-          <span class="ds-format-chip">Sachets</span>
-          <span class="ds-format-chip">Table bottles</span>
-          <span class="ds-format-chip">Tubs</span>
+    <!-- Showcase Container -->
+    <div class="ds-stage-box">
+      <div class="ds-stage">
+        <!-- Circular Hero Dish Visual -->
+        <div class="ds-dish-frame">
+          <img id="dsDishImg" class="ds-dish-img" src="" alt="Sauce dish preview" style="display: none;">
         </div>
 
-        <p style="font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 20px;">
-          Every sauce comes in the formats that suit your kitchen or shelf.
-        </p>
+        <!-- Product Information Details -->
+        <div class="ds-stage-info">
+          <span class="ds-badge-range" id="dsBadgeRange">Table Sauces</span>
+          <h3 class="ds-product-title" id="dsProductTitle"></h3>
+          <p class="ds-product-desc" id="dsProductDesc"></p>
 
-        <a href="#contact" class="ds-btn" id="dsQuoteBtn">Talk to the team</a>
+          <!-- Dynamic Actions (Simmer, Stir through, Serve) -->
+          <div class="ds-actions-row" id="dsActionsWrap"></div>
+
+          <!-- Dynamic "Perfect With" -->
+          <div class="ds-perfect-section" id="dsPerfectWrap">
+            <span class="ds-label-micro">PERFECT WITH</span>
+            <div class="ds-perfect-pills" id="dsPerfectPills"></div>
+          </div>
+
+          <!-- Formats Row -->
+          <div class="ds-formats-box">
+            <span>Available in:</span>
+            <span class="ds-format-item">Sachets</span>
+            <span class="ds-format-item">Table bottles</span>
+            <span class="ds-format-item">Tubs</span>
+          </div>
+
+          <!-- CTAs -->
+          <div class="ds-cta-group">
+            <a href="/pages/contact" class="ds-btn-talk">Talk to the team</a>
+            <button type="button" class="ds-btn-recipe" id="dsRecipeToggle" style="display: none;">Get the recipe</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expandable Recipe Drawer -->
+      <div class="ds-recipe-drawer" id="dsRecipeDrawer">
+        <div class="ds-recipe-header">
+          <span class="ds-badge-range" style="margin-bottom: 6px;">SERVING SUGGESTION</span>
+          <h4 class="ds-recipe-title" id="dsDrawerTitle"></h4>
+        </div>
+        <div class="ds-recipe-grid">
+          <div>
+            <h5 class="ds-col-heading">You'll need</h5>
+            <div class="ds-ing-list" id="dsDrawerIngredients"></div>
+          </div>
+          <div>
+            <h5 class="ds-col-heading">Method</h5>
+            <div class="ds-method-content" id="dsDrawerMethod"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -330,21 +530,26 @@
 
 <script>
   (function () {
-    function initDialShowcase() {
+    function initDynamicSauces() {
       var root = document.querySelector('#our-sauces');
       if (!root) return;
 
-      var rawData = [
+      var sauceData = [
         {% assign is_first = true %}
         {% if collection_table != blank %}
           {% for product in collection_table.products %}
             {% unless is_first %},{% endunless %}
             {
               name: {{ product.title | json }},
-              desc: {{ product.description | strip_html | truncatewords: 24 | default: 'Bold flavour, nothing to hide. Universally safe for every table.' | json }},
+              desc: {{ product.description | strip_html | truncatewords: 24 | json }},
               range_slug: "table",
               range_label: "Table Sauces",
-              image: {% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %}
+              dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
+              actions: {{ product.metafields.custom.cooking_actions.value | json }},
+              perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
+              recipe_title: {{ product.metafields.custom.recipe_title.value | json }},
+              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | json }},
+              recipe_method: {{ product.metafields.custom.recipe_method.value | json }}
             }
             {% assign is_first = false %}
           {% endfor %}
@@ -354,10 +559,15 @@
             {% unless is_first %},{% endunless %}
             {
               name: {{ product.title | json }},
-              desc: {{ product.description | strip_html | truncatewords: 24 | default: 'Chef-developed cooking sauce and glaze designed for maximum menu versatility.' | json }},
+              desc: {{ product.description | strip_html | truncatewords: 24 | default: '[Product description to be added from the live site]' | json }},
               range_slug: "cooking",
               range_label: "Cooking Sauces",
-              image: {% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %}
+              dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
+              actions: {{ product.metafields.custom.cooking_actions.value | json }},
+              perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
+              recipe_title: {{ product.metafields.custom.recipe_title.value | json }},
+              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | json }},
+              recipe_method: {{ product.metafields.custom.recipe_method.value | json }}
             }
             {% assign is_first = false %}
           {% endfor %}
@@ -366,39 +576,115 @@
 
       var nodes = root.querySelectorAll('.ds-swatch-node');
       var filterBtns = root.querySelectorAll('.ds-filter-pill');
-      var bottleImg = root.querySelector('#dsBottleImg');
-      var titleEl = root.querySelector('#dsTitle');
-      var descEl = root.querySelector('#dsDesc');
-      var rangeTagEl = root.querySelector('#dsRangeTag');
+      var dishImg = root.querySelector('#dsDishImg');
+      var titleEl = root.querySelector('#dsProductTitle');
+      var descEl = root.querySelector('#dsProductDesc');
+      var badgeRange = root.querySelector('#dsBadgeRange');
+      var actionsWrap = root.querySelector('#dsActionsWrap');
+      var perfectWrap = root.querySelector('#dsPerfectWrap');
+      var perfectPills = root.querySelector('#dsPerfectPills');
+      var recipeBtn = root.querySelector('#dsRecipeToggle');
+      var recipeDrawer = root.querySelector('#dsRecipeDrawer');
+      var drawerTitle = root.querySelector('#dsDrawerTitle');
+      var drawerIng = root.querySelector('#dsDrawerIngredients');
+      var drawerMethod = root.querySelector('#dsDrawerMethod');
 
       function setActiveSauce(i) {
-        var item = rawData[i];
+        var item = sauceData[i];
         if (!item) return;
 
         if (titleEl) titleEl.textContent = item.name;
         if (descEl) descEl.textContent = item.desc;
-        if (rangeTagEl) rangeTagEl.textContent = item.range_label;
+        if (badgeRange) badgeRange.textContent = item.range_label;
 
-        if (bottleImg) {
-          if (item.image && item.image !== '') {
-            bottleImg.src = item.image;
-            bottleImg.style.display = 'block';
+        // Dish Photo
+        if (dishImg) {
+          if (item.dish_image && item.dish_image !== '') {
+            dishImg.src = item.dish_image;
+            dishImg.style.display = 'block';
           } else {
-            bottleImg.style.display = 'none';
+            dishImg.style.display = 'none';
           }
         }
 
+        // Cooking Actions (Simmer, Stir through, Serve)
+        if (actionsWrap) {
+          actionsWrap.innerHTML = '';
+          var acts = item.actions || (item.range_slug === 'cooking' ? ['Simmer', 'Stir through', 'Serve'] : []);
+          if (acts && acts.length > 0) {
+            acts.forEach(function (act) {
+              var span = document.createElement('span');
+              span.className = 'ds-action-tag';
+              span.innerHTML = '<span class="ds-flame-icon"></span> ' + act;
+              actionsWrap.appendChild(span);
+            });
+            actionsWrap.style.display = 'flex';
+          } else {
+            actionsWrap.style.display = 'none';
+          }
+        }
+
+        // Perfect With Pills
+        if (perfectWrap && perfectPills) {
+          perfectPills.innerHTML = '';
+          if (item.perfect_with && item.perfect_with.length > 0) {
+            item.perfect_with.forEach(function (p) {
+              var pill = document.createElement('span');
+              pill.className = 'ds-pair-pill';
+              pill.textContent = p;
+              perfectPills.appendChild(pill);
+            });
+            perfectWrap.style.display = 'block';
+          } else {
+            perfectWrap.style.display = 'none';
+          }
+        }
+
+        // Recipe Drawer Toggle
+        var hasRecipe = item.recipe_title || item.recipe_ingredients || item.recipe_method;
+        if (recipeBtn) {
+          if (hasRecipe) {
+            recipeBtn.style.display = 'inline-block';
+            recipeBtn.classList.remove('active');
+            recipeBtn.textContent = 'Get the recipe';
+          } else {
+            recipeBtn.style.display = 'none';
+          }
+        }
+
+        if (recipeDrawer) {
+          recipeDrawer.classList.remove('is-open');
+          if (drawerTitle) drawerTitle.textContent = item.recipe_title || item.name;
+          if (drawerIng) drawerIng.textContent = item.recipe_ingredients || '';
+          if (drawerMethod) drawerMethod.textContent = item.recipe_method || '';
+        }
+
+        // Swatch Highlight
         nodes.forEach(function (n) { n.classList.remove('active'); });
         var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
         if (activeNode) activeNode.classList.add('active');
       }
 
+      // Drawer Click Event
+      if (recipeBtn && recipeDrawer) {
+        recipeBtn.addEventListener('click', function () {
+          var isOpen = recipeDrawer.classList.toggle('is-open');
+          recipeBtn.classList.toggle('active', isOpen);
+          recipeBtn.textContent = isOpen ? 'Hide recipe' : 'Get the recipe';
+          if (isOpen) {
+            recipeDrawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
+      }
+
+      // Swatch Click
       nodes.forEach(function (node) {
         node.addEventListener('click', function () {
           setActiveSauce(parseInt(node.dataset.i, 10));
         });
       });
 
+      // Filter Pill Click
       filterBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
@@ -419,15 +705,16 @@
         });
       });
 
+      // Initialize
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
-      else if (rawData.length) setActiveSauce(0);
+      else if (sauceData.length) setActiveSauce(0);
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initDialShowcase);
+      document.addEventListener('DOMContentLoaded', initDynamicSauces);
     } else {
-      initDialShowcase();
+      initDynamicSauces();
     }
   })();
 </script>
