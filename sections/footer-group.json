@@ -18,6 +18,7 @@
     },
     "footer": {
       "type": "footer",
+      "disabled": true,
       "settings": {
         "heading": "The Naked Sauce Co",
         "color_footer_bg": "#231f1a",
