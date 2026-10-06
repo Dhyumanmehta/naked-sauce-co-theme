@@ -356,7 +356,7 @@
   .dial-showcase-{{ section.id }} .ds-recipe-drawer {
     display: none;
     border-top: 1px solid rgba(218, 102, 52, 0.3);
-    background: #1A1715;
+    background: #141110;
     padding: 44px 48px 52px;
   }
 
@@ -510,16 +510,16 @@
       {% endif %}
     </div>
 
-    <!-- Showcase Stage -->
+    <!-- Showcase Container -->
     <div class="ds-stage-box">
       <div class="ds-stage">
-        <!-- Dish Frame -->
+        <!-- Circular Dish Cutout Frame -->
         <div class="ds-dish-frame">
           <img id="dsDishImg" class="ds-dish-img" src="" alt="Sauce dish preview" style="display: none;">
           <div id="dsDishPlaceholder" class="ds-dish-placeholder">Dish photo coming soon</div>
         </div>
 
-        <!-- Details -->
+        <!-- Product Information Details -->
         <div class="ds-stage-info">
           <span class="ds-badge-range" id="dsBadgeRange">Table Sauces</span>
           <h3 class="ds-product-title" id="dsProductTitle"></h3>
@@ -546,7 +546,7 @@
         </div>
       </div>
 
-      <!-- Slide-down Recipe Drawer -->
+      <!-- Expandable Slide-down Recipe Drawer -->
       <div class="ds-recipe-drawer" id="dsRecipeDrawer">
         <div class="ds-recipe-header-wrap">
           <div>
@@ -556,10 +556,10 @@
           </div>
           <div class="ds-recipe-meta-pills">
             <span class="ds-meta-pill" id="dsDrawerServes" style="display: none;">
-              👤 <span class="ds-serves-text"></span>
+              <span>👤</span> <span class="ds-serves-text"></span>
             </span>
             <span class="ds-meta-pill" id="dsDrawerTime" style="display: none;">
-              ⏱️ <span class="ds-time-text"></span>
+              <span>⏱️</span> <span class="ds-time-text"></span>
             </span>
           </div>
         </div>
@@ -600,8 +600,8 @@
               perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
               recipe_title: {{ product.metafields.custom.recipe_title.value | json }},
               recipe_subhead: {{ product.metafields.custom.recipe_summary.value | json }},
-              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: 'Serves 4' | json }},
-              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | default: '25 mins' | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | json }},
+              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | json }},
               recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | json }},
               recipe_method: {{ product.metafields.custom.recipe_method.value | json }}
             }
@@ -621,8 +621,8 @@
               perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
               recipe_title: {{ product.metafields.custom.recipe_title.value | json }},
               recipe_subhead: {{ product.metafields.custom.recipe_summary.value | json }},
-              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: 'Serves 4' | json }},
-              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | default: '25 mins' | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | json }},
+              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | json }},
               recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | json }},
               recipe_method: {{ product.metafields.custom.recipe_method.value | json }}
             }
@@ -658,7 +658,7 @@
         if (descEl) descEl.textContent = item.desc;
         if (badgeRange) badgeRange.textContent = item.range_label;
 
-        // Image Handling with Placeholder fallback
+        // Image Handling
         if (dishImg && dishPlaceholder) {
           if (item.dish_image && item.dish_image !== '') {
             dishImg.src = item.dish_image;
@@ -746,21 +746,25 @@
             }
           }
 
-          // Split ingredients cleanly by newline or commas
+          // Robust Ingredients Parser (Handles newlines, bullets, arrays, commas)
           if (drawerIng) {
             drawerIng.innerHTML = '';
-            if (item.recipe_ingredients) {
-              var rawIng = item.recipe_ingredients;
-              var items = rawIng.includes('\n') ? rawIng.split('\n') : rawIng.split(',');
-              items.forEach(function (ing) {
-                var clean = ing.trim();
-                if (clean) {
+            var raw = item.recipe_ingredients;
+            if (raw) {
+              var text = (typeof raw === 'string') ? raw : (Array.isArray(raw) ? raw.join('\n') : JSON.stringify(raw));
+              var lines = text.indexOf('\n') > -1 ? text.split(/\r?\n/) : text.split(',');
+              
+              lines.forEach(function (ing) {
+                var clean = ing.replace(/^[\s•\-\*\d\.\)\"\'\[\]]+/, '').replace(/[\"\'\]]+$/, '').trim();
+                if (clean.length > 0) {
                   var div = document.createElement('div');
                   div.className = 'ds-ing-item';
                   div.textContent = clean;
                   drawerIng.appendChild(div);
                 }
               });
+            } else {
+              drawerIng.innerHTML = '<span style="opacity:0.4; font-size:13px;">Ingredients coming soon</span>';
             }
           }
 
@@ -773,7 +777,7 @@
         if (activeNode) activeNode.classList.add('active');
       }
 
-      // Toggle drawer
+      // Drawer Button Click
       if (recipeBtn && recipeDrawer) {
         recipeBtn.onclick = function () {
           var isOpen = recipeDrawer.classList.toggle('is-open');
@@ -813,7 +817,7 @@
         };
       });
 
-      // Init first view
+      // Init First View
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
       else if (sauceData.length) setActiveSauce(0);
