@@ -352,7 +352,7 @@
     color: #DA6634 !important;
   }
 
-  /* Recipe Drawer Styling */
+  /* Recipe Drawer */
   .dial-showcase-{{ section.id }} .ds-recipe-drawer {
     display: none;
     border-top: 1px solid rgba(218, 102, 52, 0.3);
@@ -590,6 +590,12 @@
         {% if collection_table != blank %}
           {% for product in collection_table.products %}
             {% unless is_first %},{% endunless %}
+            {%- capture raw_ing -%}{{ product.metafields.custom.recipe_ingredients }}{%- endcapture -%}
+            {%- capture raw_method -%}{{ product.metafields.custom.recipe_method }}{%- endcapture -%}
+            {%- capture raw_title -%}{{ product.metafields.custom.recipe_title }}{%- endcapture -%}
+            {%- capture raw_subhead -%}{{ product.metafields.custom.recipe_summary }}{%- endcapture -%}
+            {%- capture raw_serves -%}{{ product.metafields.custom.recipe_serves }}{%- endcapture -%}
+            {%- capture raw_time -%}{{ product.metafields.custom.recipe_prep_time }}{%- endcapture -%}
             {
               name: {{ product.title | json }},
               desc: {{ product.description | strip_html | truncatewords: 24 | json }},
@@ -598,12 +604,12 @@
               dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
               actions: {{ product.metafields.custom.cooking_actions.value | json }},
               perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
-              recipe_title: {{ product.metafields.custom.recipe_title.value | default: product.metafields.custom.recipe_title | json }},
-              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | default: product.metafields.custom.recipe_summary | json }},
-              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: product.metafields.custom.recipe_serves | json }},
-              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | default: product.metafields.custom.recipe_prep_time | json }},
-              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | default: product.metafields.custom.recipe_ingredients | json }},
-              recipe_method: {{ product.metafields.custom.recipe_method.value | default: product.metafields.custom.recipe_method | json }}
+              recipe_title: {{ raw_title | strip | json }},
+              recipe_subhead: {{ raw_subhead | strip | json }},
+              recipe_serves: {{ raw_serves | strip | json }},
+              recipe_time: {{ raw_time | strip | json }},
+              recipe_ingredients: {{ raw_ing | strip | json }},
+              recipe_method: {{ raw_method | strip | json }}
             }
             {% assign is_first = false %}
           {% endfor %}
@@ -611,6 +617,12 @@
         {% if collection_cooking != blank %}
           {% for product in collection_cooking.products %}
             {% unless is_first %},{% endunless %}
+            {%- capture raw_ing -%}{{ product.metafields.custom.recipe_ingredients }}{%- endcapture -%}
+            {%- capture raw_method -%}{{ product.metafields.custom.recipe_method }}{%- endcapture -%}
+            {%- capture raw_title -%}{{ product.metafields.custom.recipe_title }}{%- endcapture -%}
+            {%- capture raw_subhead -%}{{ product.metafields.custom.recipe_summary }}{%- endcapture -%}
+            {%- capture raw_serves -%}{{ product.metafields.custom.recipe_serves }}{%- endcapture -%}
+            {%- capture raw_time -%}{{ product.metafields.custom.recipe_prep_time }}{%- endcapture -%}
             {
               name: {{ product.title | json }},
               desc: {{ product.description | strip_html | truncatewords: 24 | default: '[Product description to be added from the live site]' | json }},
@@ -619,12 +631,12 @@
               dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
               actions: {{ product.metafields.custom.cooking_actions.value | json }},
               perfect_with: {{ product.metafields.custom.perfect_with.value | json }},
-              recipe_title: {{ product.metafields.custom.recipe_title.value | default: product.metafields.custom.recipe_title | json }},
-              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | default: product.metafields.custom.recipe_summary | json }},
-              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: product.metafields.custom.recipe_serves | json }},
-              recipe_time: {{ product.metafields.custom.recipe_prep_time.value | default: product.metafields.custom.recipe_prep_time | json }},
-              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | default: product.metafields.custom.recipe_ingredients | json }},
-              recipe_method: {{ product.metafields.custom.recipe_method.value | default: product.metafields.custom.recipe_method | json }}
+              recipe_title: {{ raw_title | strip | json }},
+              recipe_subhead: {{ raw_subhead | strip | json }},
+              recipe_serves: {{ raw_serves | strip | json }},
+              recipe_time: {{ raw_time | strip | json }},
+              recipe_ingredients: {{ raw_ing | strip | json }},
+              recipe_method: {{ raw_method | strip | json }}
             }
             {% assign is_first = false %}
           {% endfor %}
@@ -704,7 +716,10 @@
         }
 
         // Recipe Drawer Toggle
-        var hasRecipe = item.recipe_title || item.recipe_ingredients || item.recipe_method;
+        var hasRecipe = (item.recipe_title && item.recipe_title !== '') || 
+                        (item.recipe_ingredients && item.recipe_ingredients !== '') || 
+                        (item.recipe_method && item.recipe_method !== '');
+
         if (recipeBtn) {
           if (hasRecipe) {
             recipeBtn.style.display = 'inline-block';
@@ -749,25 +764,29 @@
             }
           }
 
-          // Ingredients Parser (splits commas, newlines, semicolons)
+          // Ingredients Parser (splits on lines, commas, or semicolons)
           if (drawerIng) {
             drawerIng.innerHTML = '';
-            var raw = item.recipe_ingredients;
-            if (raw) {
-              var rawStr = typeof raw === 'string' ? raw : (Array.isArray(raw) ? raw.join('\n') : JSON.stringify(raw));
-              
-              // If commas exist without newlines, split by comma; otherwise split by line break
-              var list = rawStr.indexOf('\n') > -1 ? rawStr.split(/\r?\n/) : rawStr.split(',');
+            var rawText = (item.recipe_ingredients || '').trim();
 
-              list.forEach(function (ing) {
+            if (rawText.length > 0) {
+              var lines = rawText.indexOf('\n') > -1 ? rawText.split(/\r?\n/) : rawText.split(',');
+              var added = 0;
+
+              lines.forEach(function (ing) {
                 var clean = ing.replace(/^[\s•\-\*\d\.\)\"\'\[\]]+/, '').replace(/[\"\'\]]+$/, '').trim();
                 if (clean.length > 0) {
                   var div = document.createElement('div');
                   div.className = 'ds-ing-item';
                   div.textContent = clean;
                   drawerIng.appendChild(div);
+                  added++;
                 }
               });
+
+              if (added === 0) {
+                drawerIng.innerHTML = '<div class="ds-ing-item">' + rawText + '</div>';
+              }
             } else {
               drawerIng.innerHTML = '<span style="opacity:0.4; font-size:13px;">Ingredients coming soon</span>';
             }
@@ -782,7 +801,7 @@
         if (activeNode) activeNode.classList.add('active');
       }
 
-      // Drawer Toggle
+      // Drawer Toggle Button
       if (recipeBtn && recipeDrawer) {
         recipeBtn.onclick = function () {
           var isOpen = recipeDrawer.classList.toggle('is-open');
@@ -822,7 +841,7 @@
         };
       });
 
-      // Initialize
+      // Init First View
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
       else if (sauceData.length) setActiveSauce(0);
