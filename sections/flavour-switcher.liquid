@@ -23,7 +23,7 @@
     z-index: 2;
   }
 
-  /* New Header Row: Left text stack, Right toggle pills */
+  /* Header Row: Left copy, Right toggle pills */
   .dial-showcase-{{ section.id }} .ds-top-bar {
     display: flex;
     justify-content: space-between;
@@ -67,7 +67,7 @@
     line-height: 1.5;
   }
 
-  /* Right-Aligned Category Pill Toggles */
+  /* Category Filter Pills */
   .dial-showcase-{{ section.id }} .ds-filter-group {
     display: flex;
     gap: 10px;
@@ -99,7 +99,7 @@
     color: #ffffff;
   }
 
-  /* Swatch Carousel with Food Photos */
+  /* Carousel Swatches */
   .dial-showcase-{{ section.id }} .ds-dial-carousel {
     display: flex;
     gap: 20px;
@@ -139,7 +139,6 @@
     transform: translateY(-4px);
   }
 
-  /* Circular dish thumbnail */
   .dial-showcase-{{ section.id }} .ds-node-circle {
     width: 62px;
     height: 62px;
@@ -355,43 +354,12 @@
     transform: translateY(-2px);
   }
 
-  .dial-showcase-{{ section.id }} .ds-btn-recipe {
-    background-color: transparent;
-    color: #ffffff !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-    padding: 13px 28px;
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-  }
-
-  .dial-showcase-{{ section.id }} .ds-btn-recipe:hover,
-  .dial-showcase-{{ section.id }} .ds-btn-recipe.active {
-    border-color: #DA6634;
-    background: rgba(218, 102, 52, 0.15);
-    color: #DA6634 !important;
-  }
-
-  /* Recipe Drawer Styling */
+  /* Recipe Drawer — Always visible when recipe exists */
   .dial-showcase-{{ section.id }} .ds-recipe-drawer {
-    display: none;
+    display: block;
     border-top: 1px solid rgba(218, 102, 52, 0.3);
     background: #141110;
     padding: 44px 48px 52px;
-  }
-
-  .dial-showcase-{{ section.id }} .ds-recipe-drawer.is-open {
-    display: block;
-    animation: dsFadeDown 0.3s ease-out;
-  }
-
-  @keyframes dsFadeDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
   }
 
   .dial-showcase-{{ section.id }} .ds-recipe-header-wrap {
@@ -562,12 +530,11 @@
 
           <div class="ds-cta-group">
             <a href="/pages/contact" class="ds-btn-talk">Talk to the team</a>
-            <button type="button" class="ds-btn-recipe" id="dsRecipeToggle" style="display: none;">Get the recipe</button>
           </div>
         </div>
       </div>
 
-      <!-- Expandable Slide-down Recipe Drawer -->
+      <!-- Recipe Section (Always Open When Recipe Exists) -->
       <div class="ds-recipe-drawer" id="dsRecipeDrawer">
         <div class="ds-recipe-header-wrap">
           <div>
@@ -665,7 +632,6 @@
       var actionsWrap = root.querySelector('#dsActionsWrap');
       var perfectWrap = root.querySelector('#dsPerfectWrap');
       var perfectPills = root.querySelector('#dsPerfectPills');
-      var recipeBtn = root.querySelector('#dsRecipeToggle');
       var recipeDrawer = root.querySelector('#dsRecipeDrawer');
       var drawerTitle = root.querySelector('#dsDrawerTitle');
       var drawerSubhead = root.querySelector('#dsDrawerSubhead');
@@ -727,114 +693,97 @@
           }
         }
 
-        // Recipe Drawer Toggle
+        // Always show drawer if recipe metadata exists, hide if none
         var hasRecipe = (item.recipe_title && item.recipe_title !== '') || 
                         (item.recipe_ingredients && item.recipe_ingredients !== '') || 
                         (item.recipe_method && item.recipe_method !== '');
 
-        if (recipeBtn) {
-          if (hasRecipe) {
-            recipeBtn.style.display = 'inline-block';
-            recipeBtn.classList.remove('active');
-            recipeBtn.textContent = 'Get the recipe';
-          } else {
-            recipeBtn.style.display = 'none';
-          }
-        }
-
         if (recipeDrawer) {
-          recipeDrawer.classList.remove('is-open');
-          if (drawerTitle) drawerTitle.textContent = item.recipe_title || item.name;
+          if (hasRecipe) {
+            recipeDrawer.style.display = 'block';
 
-          // Subhead
-          if (drawerSubhead) {
-            if (item.recipe_subhead && String(item.recipe_subhead).trim() !== '') {
-              drawerSubhead.textContent = item.recipe_subhead;
-              drawerSubhead.style.display = 'block';
-            } else {
-              drawerSubhead.style.display = 'none';
-            }
-          }
+            if (drawerTitle) drawerTitle.textContent = item.recipe_title || item.name;
 
-          // Serves
-          if (drawerServes) {
-            var servesVal = item.recipe_serves ? String(item.recipe_serves).trim() : '';
-            if (servesVal !== '') {
-              if (!isNaN(servesVal)) servesVal = 'Serves ' + servesVal;
-              drawerServes.querySelector('.ds-serves-text').textContent = servesVal;
-              drawerServes.style.display = 'inline-flex';
-            } else {
-              drawerServes.style.display = 'none';
-            }
-          }
-
-          // Time
-          if (drawerTime) {
-            var timeVal = item.recipe_time ? String(item.recipe_time).trim() : '';
-            if (timeVal !== '') {
-              drawerTime.querySelector('.ds-time-text').textContent = timeVal;
-              drawerTime.style.display = 'inline-flex';
-            } else {
-              drawerTime.style.display = 'none';
-            }
-          }
-
-          // Ingredients Parser (Keeps quantities/numbers intact)
-          if (drawerIng) {
-            drawerIng.innerHTML = '';
-            var rawText = item.recipe_ingredients;
-            if (typeof rawText !== 'string') {
-              rawText = rawText ? String(rawText) : '';
-            }
-            rawText = rawText.trim();
-
-            if (rawText.length > 0) {
-              var lines = rawText.indexOf('\n') > -1 
-                ? rawText.split(/\r?\n/) 
-                : rawText.split(/,(?=\s*\d|\s*[A-Z])/);
-
-              var addedCount = 0;
-              lines.forEach(function (ing) {
-                var clean = ing.replace(/^[\s•\-\*]+/, '').replace(/[\s,]+$/, '').trim();
-                if (clean.length > 0) {
-                  var div = document.createElement('div');
-                  div.className = 'ds-ing-item';
-                  div.textContent = clean;
-                  drawerIng.appendChild(div);
-                  addedCount++;
-                }
-              });
-
-              if (addedCount === 0) {
-                var fallback = document.createElement('div');
-                fallback.className = 'ds-ing-item';
-                fallback.textContent = rawText;
-                drawerIng.appendChild(fallback);
+            // Subhead
+            if (drawerSubhead) {
+              if (item.recipe_subhead && String(item.recipe_subhead).trim() !== '') {
+                drawerSubhead.textContent = item.recipe_subhead;
+                drawerSubhead.style.display = 'block';
+              } else {
+                drawerSubhead.style.display = 'none';
               }
-            } else {
-              drawerIng.innerHTML = '<span style="opacity:0.4; font-size:13px;">Ingredients coming soon</span>';
             }
-          }
 
-          if (drawerMethod) drawerMethod.textContent = item.recipe_method || '';
+            // Serves
+            if (drawerServes) {
+              var servesVal = item.recipe_serves ? String(item.recipe_serves).trim() : '';
+              if (servesVal !== '') {
+                if (!isNaN(servesVal)) servesVal = 'Serves ' + servesVal;
+                drawerServes.querySelector('.ds-serves-text').textContent = servesVal;
+                drawerServes.style.display = 'inline-flex';
+              } else {
+                drawerServes.style.display = 'none';
+              }
+            }
+
+            // Time
+            if (drawerTime) {
+              var timeVal = item.recipe_time ? String(item.recipe_time).trim() : '';
+              if (timeVal !== '') {
+                drawerTime.querySelector('.ds-time-text').textContent = timeVal;
+                drawerTime.style.display = 'inline-flex';
+              } else {
+                drawerTime.style.display = 'none';
+              }
+            }
+
+            // Ingredients (Keeps quantities/numbers intact)
+            if (drawerIng) {
+              drawerIng.innerHTML = '';
+              var rawText = item.recipe_ingredients;
+              if (typeof rawText !== 'string') {
+                rawText = rawText ? String(rawText) : '';
+              }
+              rawText = rawText.trim();
+
+              if (rawText.length > 0) {
+                var lines = rawText.indexOf('\n') > -1 
+                  ? rawText.split(/\r?\n/) 
+                  : rawText.split(/,(?=\s*\d|\s*[A-Z])/);
+
+                var addedCount = 0;
+                lines.forEach(function (ing) {
+                  var clean = ing.replace(/^[\s•\-\*]+/, '').replace(/[\s,]+$/, '').trim();
+                  if (clean.length > 0) {
+                    var div = document.createElement('div');
+                    div.className = 'ds-ing-item';
+                    div.textContent = clean;
+                    drawerIng.appendChild(div);
+                    addedCount++;
+                  }
+                });
+
+                if (addedCount === 0) {
+                  var fallback = document.createElement('div');
+                  fallback.className = 'ds-ing-item';
+                  fallback.textContent = rawText;
+                  drawerIng.appendChild(fallback);
+                }
+              } else {
+                drawerIng.innerHTML = '<span style="opacity:0.4; font-size:13px;">Ingredients coming soon</span>';
+              }
+            }
+
+            if (drawerMethod) drawerMethod.textContent = item.recipe_method || '';
+          } else {
+            recipeDrawer.style.display = 'none';
+          }
         }
 
-        // Swatch active toggle
+        // Swatch active state
         nodes.forEach(function (n) { n.classList.remove('active'); });
         var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
         if (activeNode) activeNode.classList.add('active');
-      }
-
-      // Recipe Drawer Button Click
-      if (recipeBtn && recipeDrawer) {
-        recipeBtn.onclick = function () {
-          var isOpen = recipeDrawer.classList.toggle('is-open');
-          recipeBtn.classList.toggle('active', isOpen);
-          recipeBtn.textContent = isOpen ? 'Hide recipe' : 'Get the recipe';
-          if (isOpen) {
-            recipeDrawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        };
       }
 
       // Swatch Click
@@ -852,7 +801,6 @@
           var filter = btn.dataset.filter;
           var firstMatch = null;
 
-          // Update Header copy dynamically based on tab
           if (filter === 'cooking') {
             if (eyebrowEl) eyebrowEl.textContent = 'COOKING SAUCES';
             if (headingEl) headingEl.innerHTML = 'Pick a sauce. <span class="ds-highlight">Get cooking.</span>';
@@ -876,7 +824,7 @@
         };
       });
 
-      // Initialize default
+      // Initialize
       var initialBtn = root.querySelector('.ds-filter-pill.active');
       if (initialBtn) initialBtn.click();
       else if (sauceData.length) setActiveSauce(0);
