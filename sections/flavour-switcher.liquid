@@ -1,295 +1,901 @@
-{% liquid
-  assign footer_text_color = section.settings.color_footer_text | default: '#FBF3E4'
-  assign footer_bg = section.settings.color_footer_bg | default: '#1A1715'
-  assign footer_border = 'rgba(251, 243, 228, 0.12)'
-%}
+{%- liquid
+  assign collection_table = section.settings.collection_table | default: collections['table-sauces']
+  assign collection_cooking = section.settings.collection_cooking | default: collections['cooking-sauces']
+-%}
 
 {% style %}
-  .nsc-footer {
-    background-color: {{ footer_bg }};
-    color: {{ footer_text_color }};
-    padding-top: 75px;
-    padding-bottom: 35px;
-    font-size: 14.5px;
-    line-height: 1.6;
-    border-top: 1px solid {{ footer_border }};
+  .dial-showcase-{{ section.id }} {
+    --ds-accent: {{ section.settings.accent_color | default: '#DA6634' }};
+    --ds-bg: #141110;
+    background-color: var(--ds-bg);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    padding-top: 60px;
+    padding-bottom: 90px;
   }
 
-  .nsc-footer .container {
-    max-width: 1280px;
+  .dial-showcase-{{ section.id }} .ds-inner {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
   }
 
-  .nsc-footer-top {
-    border-bottom: 1px solid {{ footer_border }};
-    padding-bottom: 36px;
-    margin-bottom: 48px;
-  }
-
-  .nsc-footer-badge-strip {
+  /* Header Row */
+  .dial-showcase-{{ section.id }} .ds-top-bar {
     display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 28px;
+    gap: 24px;
     flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
   }
 
-  .nsc-footer-pill {
-    display: inline-flex;
-    align-items: center;
+  .dial-showcase-{{ section.id }} .ds-header-left {
+    max-width: 640px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #DA6634;
+    margin-bottom: 8px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-header-title {
+    font-size: clamp(32px, 3.8vw, 46px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0 0 10px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-header-title .ds-highlight {
+    color: #DA6634;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-header-sub {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.72);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-filter-group {
+    display: flex;
     gap: 8px;
-    padding: 6px 14px;
+    align-items: center;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-filter-pill {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.85);
     border-radius: 50px;
-    background: rgba(251, 243, 228, 0.06);
-    border: 1px solid rgba(251, 243, 228, 0.16);
-    font-size: 12.5px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: #FBF3E4;
+    padding: 9px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
   }
 
-  .nsc-footer-pill-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
+  .dial-showcase-{{ section.id }} .ds-filter-pill.active {
     background: #DA6634;
+    border-color: #DA6634;
+    color: #ffffff;
   }
 
-  .nsc-footer-grid {
+  /* Carousel Swatches */
+  .dial-showcase-{{ section.id }} .ds-dial-carousel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 6px 4px 28px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    align-items: flex-start;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-dial-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-swatch-node {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    opacity: 0.6;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    width: 86px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-swatch-node:hover,
+  .dial-showcase-{{ section.id }} .ds-swatch-node.active {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-node-circle {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background-size: cover;
+    background-position: center;
+    background-color: #2b1f1a;
+    transition: all 0.2s ease;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-swatch-node.active .ds-node-circle {
+    border: 3px solid #DA6634;
+    box-shadow: 0 0 0 4px rgba(218, 102, 52, 0.45);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-node-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Main Compound Card Container */
+  .dial-showcase-{{ section.id }} .ds-stage-box {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #1A1615;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Top Stage: Dish Preview + Rich Warm Ambient Background from Mockup */
+  .dial-showcase-{{ section.id }} .ds-stage {
+    position: relative;
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 36px;
+    padding: 44px 48px;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(65, 28, 18, 0.95) 0%, rgba(35, 18, 14, 0.96) 50%, rgba(20, 16, 15, 0.98) 100%);
   }
 
-  @media (max-width: 960px) {
-    .nsc-footer-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-    }
+  /* Background Ambient Image Blur Layer */
+  .dial-showcase-{{ section.id }} .ds-stage-ambient {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(28px) brightness(0.4) saturate(1.4);
+    transform: scale(1.15);
+    z-index: 0;
+    opacity: 0.85;
+    pointer-events: none;
+    transition: background-image 0.4s ease;
   }
 
-  @media (max-width: 560px) {
-    .nsc-footer-grid {
+  @media (max-width: 900px) {
+    .dial-showcase-{{ section.id }} .ds-stage {
       grid-template-columns: 1fr;
-      gap: 32px;
+      padding: 32px 24px;
+      gap: 28px;
     }
   }
 
-  .nsc-footer-logo {
-    height: 38px;
-    width: auto;
-    margin-bottom: 18px;
+  .dial-showcase-{{ section.id }} .ds-dish-frame {
+    position: relative;
+    z-index: 1;
+    width: 310px;
+    height: 310px;
+    max-width: 100%;
+    border-radius: 50%;
+    border: 3.5px solid #DA6634;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: #141312;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 45px rgba(218, 102, 52, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-dish-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
-  .nsc-footer-col-title {
+  .dial-showcase-{{ section.id }} .ds-dish-placeholder {
+    color: rgba(255, 255, 255, 0.4);
     font-size: 13px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-stage-info {
+    position: relative;
+    z-index: 1;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-badge-range {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 50px;
+    border: 1px solid rgba(218, 102, 52, 0.6);
+    background: rgba(218, 102, 52, 0.12);
+    color: #DA6634;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-product-title {
+    font-size: clamp(30px, 3.4vw, 44px);
+    font-weight: 900;
+    line-height: 1.12;
+    margin: 0 0 14px;
+    color: #ffffff;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-product-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 20px;
+    max-width: 580px;
+  }
+
+  /* Unboxed Cooking Actions from screenshot */
+  .dial-showcase-{{ section.id }} .ds-actions-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+    align-items: center;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-action-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
     font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-flame-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background-color: #DA6634;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+  }
+
+  .dial-showcase-{{ section.id }} .ds-perfect-section {
+    margin-bottom: 24px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-label-micro {
+    font-size: 11px;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: #FBF3E4;
-    margin: 0 0 20px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 8px;
+    display: block;
   }
 
-  .nsc-footer p,
-  .nsc-footer-desc {
-    color: #D6CDBF;
-    font-size: 14px;
-    line-height: 1.65;
-    margin-bottom: 20px;
+  .dial-showcase-{{ section.id }} .ds-perfect-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
-  .nsc-footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .dial-showcase-{{ section.id }} .ds-pair-pill {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
   }
 
-  .nsc-footer-links li {
-    margin-bottom: 10px;
+  .dial-showcase-{{ section.id }} .ds-cta-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
-  .nsc-footer-links a {
-    color: #D6CDBF;
+  .dial-showcase-{{ section.id }} .ds-btn-talk {
+    background-color: #DA6634;
+    color: #ffffff !important;
+    padding: 13px 30px;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     text-decoration: none;
-    font-size: 14px;
-    transition: color 0.18s ease, transform 0.18s ease;
-    display: inline-block;
+    border-radius: 4px;
+    transition: background 0.2s ease, transform 0.2s ease;
   }
 
-  .nsc-footer-links a:hover {
-    color: #FFFFFF;
-    transform: translateX(3px);
+  .dial-showcase-{{ section.id }} .ds-btn-talk:hover {
+    background-color: #c75626;
+    transform: translateY(-2px);
   }
 
-  .nsc-footer-contact-email {
-    color: #DA6634;
-    text-decoration: none;
-    font-weight: 700;
-    word-break: break-all;
+  /* Bottom Stage: Recipe Drawer (Dark Charcoal Panel from Mockup) */
+  .dial-showcase-{{ section.id }} .ds-recipe-drawer {
+    display: block;
+    background-color: #171413;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 40px 48px 48px;
   }
 
-  .nsc-footer-contact-email:hover {
-    text-decoration: underline;
+  @media (max-width: 768px) {
+    .dial-showcase-{{ section.id }} .ds-recipe-drawer {
+      padding: 30px 24px;
+    }
   }
 
-  .nsc-footer-bottom {
-    margin-top: 55px;
-    padding-top: 25px;
-    border-top: 1px solid {{ footer_border }};
+  .dial-showcase-{{ section.id }} .ds-recipe-header-wrap {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    gap: 20px;
     flex-wrap: wrap;
-    gap: 16px;
-    font-size: 12.5px;
-    color: #A39B8F;
   }
 
-  .nsc-footer-bottom a {
-    color: #A39B8F;
-    text-decoration: none;
+  .dial-showcase-{{ section.id }} .ds-recipe-title {
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 4px 0 6px;
   }
 
-  .nsc-footer-bottom a:hover {
-    color: #FBF3E4;
-  }
-
-  .nsc-footer-policies {
-    list-style: none;
-    padding: 0;
+  .dial-showcase-{{ section.id }} .ds-recipe-subhead {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.68);
     margin: 0;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-recipe-meta-pills {
     display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-meta-pill {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-recipe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 36px;
+  }
+
+  @media (max-width: 860px) {
+    .dial-showcase-{{ section.id }} .ds-recipe-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  .dial-showcase-{{ section.id }} .ds-col-heading {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #DA6634;
+    margin: 0 0 16px;
+  }
+
+  /* Ingredients Card Box from Mockup */
+  .dial-showcase-{{ section.id }} .ds-ing-card {
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-ing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-ing-item {
+    position: relative;
+    padding-left: 16px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-ing-item::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #DA6634;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  /* Numbered Steps List from Mockup */
+  .dial-showcase-{{ section.id }} .ds-method-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-method-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-step-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #DA6634;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .dial-showcase-{{ section.id }} .ds-step-text {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14.5px;
+    line-height: 1.65;
   }
 {% endstyle %}
 
-<footer class="nsc-footer" role="contentinfo">
-  <div class="container">
+<div class="dial-showcase-{{ section.id }}" id="our-sauces">
+  <div class="ds-inner">
+    
+    <div class="ds-top-bar">
+      <div class="ds-header-left">
+        <span class="ds-eyebrow" id="dsEyebrow">COOKING SAUCES</span>
+        <h2 class="ds-header-title" id="dsMainHeading">Pick a sauce. <span class="ds-highlight">Get cooking.</span></h2>
+        <p class="ds-header-sub" id="dsMainSub">Ready-to-use cooking bases that do the hard work. Just add your favourite ingredients.</p>
+      </div>
 
-    <!-- Top Badge Strip -->
-    <div class="nsc-footer-top">
-      <div class="nsc-footer-badge-strip">
-        <span class="nsc-footer-pill"><span class="nsc-footer-pill-dot"></span> Clean label</span>
-        <span class="nsc-footer-pill"><span class="nsc-footer-pill-dot"></span> Free from major allergens</span>
-        <span class="nsc-footer-pill"><span class="nsc-footer-pill-dot"></span> Zero ultra-processed</span>
-        <span class="nsc-footer-pill"><span class="nsc-footer-pill-dot"></span> Real natural ingredients</span>
+      <div class="ds-filter-group" role="tablist">
+        <button type="button" class="ds-filter-pill" data-filter="table">Table sauces</button>
+        <button type="button" class="ds-filter-pill active" data-filter="cooking">Cooking sauces</button>
       </div>
     </div>
 
-    <!-- Main Footer Grid -->
-    <div class="nsc-footer-grid">
-      <!-- Col 1: Brand Info -->
-      <div>
-        {% if settings.logo != blank %}
-          <img src="{{ settings.logo | image_url: width: 280 }}" alt="{{ shop.name }}" class="nsc-footer-logo">
-        {% else %}
-          <h3 style="color: #FBF3E4; font-weight: 900; margin-bottom: 16px;">The Naked Sauce Co.</h3>
-        {% endif %}
-        <p class="nsc-footer-desc">
-          Bold flavour, nothing to hide. Clean label table and cooking sauces made without the 14 major allergens or ultra-processed ingredients.
-        </p>
-      </div>
+    <div class="ds-dial-carousel" id="dsCarousel">
+      {% assign global_idx = 0 %}
+      {% if collection_table != blank %}
+        {% for product in collection_table.products %}
+          {% assign thumb_img = product.metafields.custom.recipe_dish_image.value | default: product.featured_image %}
+          <button type="button" class="ds-swatch-node" data-i="{{ global_idx }}" data-range="table">
+            <div class="ds-node-circle" style="{% if thumb_img != blank %}background-image: url('{{ thumb_img | image_url: width: 160 }}');{% else %}background-color: #DA6634;{% endif %}"></div>
+            <span class="ds-node-label">{{ product.title }}</span>
+          </button>
+          {% assign global_idx = global_idx | plus: 1 %}
+        {% endfor %}
+      {% endif %}
 
-      <!-- Col 2: Navigation -->
-      <div>
-        <h4 class="nsc-footer-col-title">Navigation</h4>
-        <ul class="nsc-footer-links">
-          <li><a href="/#our-sauces">Our sauces</a></li>
-          <li><a href="/#our-story">Our story</a></li>
-          <li><a href="/#where-we-fit">Where we fit</a></li>
-          <li><a href="/pages/contact">Contact us</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3: Policies -->
-      <div>
-        <h4 class="nsc-footer-col-title">Policies</h4>
-        <ul class="nsc-footer-links">
-          {% assign has_policies = false %}
-          {% for policy in shop.policies %}
-            {% if policy.body != blank %}
-              {% assign has_policies = true %}
-              <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
-            {% endif %}
-          {% endfor %}
-          {% unless has_policies %}
-            <li><a href="/policies/privacy-policy">Privacy policy</a></li>
-            <li><a href="/policies/terms-of-service">Terms of service</a></li>
-            <li><a href="/policies/refund-policy">Refund policy</a></li>
-          {% endunless %}
-        </ul>
-      </div>
-
-      <!-- Col 4: Contact -->
-      <div>
-        <h4 class="nsc-footer-col-title">Get in touch</h4>
-        <p class="nsc-footer-desc">
-          For commercial inquiries, development samples, and trade orders:
-        </p>
-        <p>
-          <a href="mailto:{{ section.settings.contact_email | default: 'info@thenakedsauceco.com' }}" class="nsc-footer-contact-email">
-            {{ section.settings.contact_email | default: 'info@thenakedsauceco.com' }}
-          </a>
-        </p>
-      </div>
-    </div>
-
-    <!-- Bottom Utility Bar -->
-    <div class="nsc-footer-bottom">
-      <div>
-        <span>&copy; {{ 'now' | date: '%Y' }} The Naked Sauce Co. Ltd. All rights reserved.</span>
-      </div>
-
-      {% if section.settings.show_policy %}
-        <ul class="nsc-footer-policies">
-          {% assign has_bottom_policies = false %}
-          {% for policy in shop.policies %}
-            {% if policy != blank %}
-              {% assign has_bottom_policies = true %}
-              <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
-            {% endif %}
-          {% endfor %}
-          {% unless has_bottom_policies %}
-            <li><a href="/policies/privacy-policy">Privacy policy</a></li>
-            <li><a href="/policies/terms-of-service">Terms of service</a></li>
-          {% endunless %}
-        </ul>
+      {% if collection_cooking != blank %}
+        {% for product in collection_cooking.products %}
+          {% assign thumb_img = product.metafields.custom.recipe_dish_image.value | default: product.featured_image %}
+          <button type="button" class="ds-swatch-node{% if global_idx == 0 %} active{% endif %}" data-i="{{ global_idx }}" data-range="cooking">
+            <div class="ds-node-circle" style="{% if thumb_img != blank %}background-image: url('{{ thumb_img | image_url: width: 160 }}');{% else %}background-color: #9C331D;{% endif %}"></div>
+            <span class="ds-node-label">{{ product.title }}</span>
+          </button>
+          {% assign global_idx = global_idx | plus: 1 %}
+        {% endfor %}
       {% endif %}
     </div>
 
+    <div class="ds-stage-box">
+      <div class="ds-stage">
+        <div class="ds-stage-ambient" id="dsStageAmbient"></div>
+
+        <div class="ds-dish-frame">
+          <img id="dsDishImg" class="ds-dish-img" src="" alt="Sauce dish preview" style="display: none;">
+          <div id="dsDishPlaceholder" class="ds-dish-placeholder">Dish photo coming soon</div>
+        </div>
+
+        <div class="ds-stage-info">
+          <span class="ds-badge-range" id="dsBadgeRange">Cooking Sauces</span>
+          <h3 class="ds-product-title" id="dsProductTitle"></h3>
+          <p class="ds-product-desc" id="dsProductDesc"></p>
+
+          <div class="ds-actions-row" id="dsActionsWrap"></div>
+
+          <div class="ds-perfect-section" id="dsPerfectWrap">
+            <span class="ds-label-micro">PERFECT WITH</span>
+            <div class="ds-perfect-pills" id="dsPerfectPills"></div>
+          </div>
+
+          <div class="ds-cta-group">
+            <a href="/pages/contact" class="ds-btn-talk">Contact us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-recipe-drawer" id="dsRecipeDrawer">
+        <div class="ds-recipe-header-wrap">
+          <div>
+            <span class="ds-badge-range" style="margin-bottom: 6px;">SERVING SUGGESTION</span>
+            <h4 class="ds-recipe-title" id="dsDrawerTitle"></h4>
+            <p class="ds-recipe-subhead" id="dsDrawerSubhead"></p>
+          </div>
+          <div class="ds-recipe-meta-pills">
+            <span class="ds-meta-pill" id="dsDrawerServes" style="display: none;">
+              <span>👤</span> <span class="ds-serves-text"></span>
+            </span>
+            <span class="ds-meta-pill" id="dsDrawerTime" style="display: none;">
+              <span>⏱️</span> <span class="ds-time-text"></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="ds-recipe-grid">
+          <div>
+            <h5 class="ds-col-heading">You'll need</h5>
+            <div class="ds-ing-card">
+              <div class="ds-ing-list" id="dsDrawerIngredients"></div>
+            </div>
+          </div>
+          <div>
+            <h5 class="ds-col-heading">Method</h5>
+            <div class="ds-method-steps" id="dsDrawerMethod"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</footer>
+</div>
+
+<script>
+  (function () {
+    function initDynamicSauces() {
+      var root = document.querySelector('#our-sauces');
+      if (!root) return;
+
+      var sauceData = [
+        {% assign is_first = true %}
+        {% if collection_table != blank %}
+          {% for product in collection_table.products %}
+            {% unless is_first %},{% endunless %}
+            {
+              name: {{ product.title | json }},
+              desc: {{ product.description | strip_html | truncatewords: 24 | json }},
+              range_slug: "table",
+              range_label: "Table Sauces",
+              dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
+              actions: {{ product.metafields.custom.cooking_actions.value | default: product.metafields.custom.cooking_actions | json }},
+              perfect_with: {{ product.metafields.custom.perfect_with.value | default: product.metafields.custom.perfect_with | json }},
+              recipe_title: {{ product.metafields.custom.recipe_title.value | default: product.metafields.custom.recipe_title | default: "" | json }},
+              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | default: product.metafields.custom.recipe_summary | default: "" | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: product.metafields.custom.recipe_serves | default: "" | json }},
+              recipe_time: {{ product.metafields.custom.recipe_time.value | default: product.metafields.custom.recipe_time | default: product.metafields.custom.recipe_prep_time.value | default: product.metafields.custom.recipe_prep_time | default: "" | json }},
+              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | default: product.metafields.custom.recipe_ingredients | default: product.metafields.custom.ecipe_ingredients.value | default: product.metafields.custom.ecipe_ingredients | default: "" | json }},
+              recipe_method: {{ product.metafields.custom.recipe_method.value | default: product.metafields.custom.recipe_method | default: "" | json }}
+            }
+            {% assign is_first = false %}
+          {% endfor %}
+        {% endif %}
+        {% if collection_cooking != blank %}
+          {% for product in collection_cooking.products %}
+            {% unless is_first %},{% endunless %}
+            {
+              name: {{ product.title | json }},
+              desc: {{ product.description | strip_html | truncatewords: 24 | default: '[Product description to be added from the live site]' | json }},
+              range_slug: "cooking",
+              range_label: "Cooking Sauces",
+              dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
+              actions: {{ product.metafields.custom.cooking_actions.value | default: product.metafields.custom.cooking_actions | json }},
+              perfect_with: {{ product.metafields.custom.perfect_with.value | default: product.metafields.custom.perfect_with | json }},
+              recipe_title: {{ product.metafields.custom.recipe_title.value | default: product.metafields.custom.recipe_title | default: "" | json }},
+              recipe_subhead: {{ product.metafields.custom.recipe_summary.value | default: product.metafields.custom.recipe_summary | default: "" | json }},
+              recipe_serves: {{ product.metafields.custom.recipe_serves.value | default: product.metafields.custom.recipe_serves | default: "" | json }},
+              recipe_time: {{ product.metafields.custom.recipe_time.value | default: product.metafields.custom.recipe_time | default: product.metafields.custom.recipe_prep_time.value | default: product.metafields.custom.recipe_prep_time | default: "" | json }},
+              recipe_ingredients: {{ product.metafields.custom.recipe_ingredients.value | default: product.metafields.custom.recipe_ingredients | default: product.metafields.custom.ecipe_ingredients.value | default: product.metafields.custom.ecipe_ingredients | default: "" | json }},
+              recipe_method: {{ product.metafields.custom.recipe_method.value | default: product.metafields.custom.recipe_method | default: "" | json }}
+            }
+            {% assign is_first = false %}
+          {% endfor %}
+        {% endif %}
+      ];
+
+      var nodes = root.querySelectorAll('.ds-swatch-node');
+      var filterBtns = root.querySelectorAll('.ds-filter-pill');
+      var eyebrowEl = root.querySelector('#dsEyebrow');
+      var headingEl = root.querySelector('#dsMainHeading');
+      var subEl = root.querySelector('#dsMainSub');
+      var ambientEl = root.querySelector('#dsStageAmbient');
+      var dishImg = root.querySelector('#dsDishImg');
+      var dishPlaceholder = root.querySelector('#dsDishPlaceholder');
+      var titleEl = root.querySelector('#dsProductTitle');
+      var descEl = root.querySelector('#dsProductDesc');
+      var badgeRange = root.querySelector('#dsBadgeRange');
+      var actionsWrap = root.querySelector('#dsActionsWrap');
+      var perfectWrap = root.querySelector('#dsPerfectWrap');
+      var perfectPills = root.querySelector('#dsPerfectPills');
+      var recipeDrawer = root.querySelector('#dsRecipeDrawer');
+      var drawerTitle = root.querySelector('#dsDrawerTitle');
+      var drawerSubhead = root.querySelector('#dsDrawerSubhead');
+      var drawerServes = root.querySelector('#dsDrawerServes');
+      var drawerTime = root.querySelector('#dsDrawerTime');
+      var drawerIng = root.querySelector('#dsDrawerIngredients');
+      var drawerMethod = root.querySelector('#dsDrawerMethod');
+
+      function setActiveSauce(i) {
+        var item = sauceData[i];
+        if (!item) return;
+
+        if (titleEl) titleEl.textContent = item.name;
+        if (descEl) descEl.textContent = item.desc;
+        if (badgeRange) badgeRange.textContent = item.range_label;
+
+        // Image & Warm Ambient Background
+        if (item.dish_image && item.dish_image !== '') {
+          if (dishImg) {
+            dishImg.src = item.dish_image;
+            dishImg.style.display = 'block';
+          }
+          if (dishPlaceholder) dishPlaceholder.style.display = 'none';
+          if (ambientEl) ambientEl.style.backgroundImage = 'url(' + item.dish_image + ')';
+        } else {
+          if (dishImg) dishImg.style.display = 'none';
+          if (dishPlaceholder) dishPlaceholder.style.display = 'block';
+          if (ambientEl) ambientEl.style.backgroundImage = 'none';
+        }
+
+        // Unboxed cooking actions
+        if (actionsWrap) {
+          actionsWrap.innerHTML = '';
+          var acts = item.actions;
+          if (acts && acts.length > 0) {
+            acts.forEach(function (act) {
+              var span = document.createElement('span');
+              span.className = 'ds-action-tag';
+              span.innerHTML = '<span class="ds-flame-icon"></span> ' + act;
+              actionsWrap.appendChild(span);
+            });
+            actionsWrap.style.display = 'flex';
+          } else {
+            actionsWrap.style.display = 'none';
+          }
+        }
+
+        // Perfect with
+        if (perfectWrap && perfectPills) {
+          perfectPills.innerHTML = '';
+          if (item.perfect_with && item.perfect_with.length > 0) {
+            item.perfect_with.forEach(function (p) {
+              var pill = document.createElement('span');
+              pill.className = 'ds-pair-pill';
+              pill.textContent = p;
+              perfectPills.appendChild(pill);
+            });
+            perfectWrap.style.display = 'block';
+          } else {
+            perfectWrap.style.display = 'none';
+          }
+        }
+
+        // Serving Suggestion / Recipe Drawer
+        var hasRecipe = (item.recipe_title && item.recipe_title !== '') || 
+                        (item.recipe_ingredients && item.recipe_ingredients !== '') || 
+                        (item.recipe_method && item.recipe_method !== '');
+
+        if (recipeDrawer) {
+          if (hasRecipe) {
+            recipeDrawer.style.display = 'block';
+
+            if (drawerTitle) drawerTitle.textContent = item.recipe_title || item.name;
+
+            if (drawerSubhead) {
+              if (item.recipe_subhead && String(item.recipe_subhead).trim() !== '') {
+                drawerSubhead.textContent = item.recipe_subhead;
+                drawerSubhead.style.display = 'block';
+              } else {
+                drawerSubhead.style.display = 'none';
+              }
+            }
+
+            if (drawerServes) {
+              var servesVal = item.recipe_serves ? String(item.recipe_serves).trim() : '';
+              if (servesVal !== '') {
+                if (!isNaN(servesVal)) servesVal = 'Serves ' + servesVal;
+                drawerServes.querySelector('.ds-serves-text').textContent = servesVal;
+                drawerServes.style.display = 'inline-flex';
+              } else {
+                drawerServes.style.display = 'none';
+              }
+            }
+
+            if (drawerTime) {
+              var timeVal = item.recipe_time ? String(item.recipe_time).trim() : '';
+              if (timeVal !== '') {
+                drawerTime.querySelector('.ds-time-text').textContent = timeVal;
+                drawerTime.style.display = 'inline-flex';
+              } else {
+                drawerTime.style.display = 'none';
+              }
+            }
+
+            // Ingredients parser
+            if (drawerIng) {
+              drawerIng.innerHTML = '';
+              var rawText = item.recipe_ingredients;
+              if (typeof rawText !== 'string') {
+                rawText = rawText ? String(rawText) : '';
+              }
+              rawText = rawText.trim();
+
+              if (rawText.length > 0) {
+                var lines = rawText.indexOf('\n') > -1 
+                  ? rawText.split(/\r?\n/) 
+                  : rawText.split(/,(?=\s*\d|\s*[A-Z])/);
+
+                var addedCount = 0;
+                lines.forEach(function (ing) {
+                  var clean = ing.replace(/^[\s•\-\*]+/, '').replace(/[\s,]+$/, '').trim();
+                  if (clean.length > 0) {
+                    var div = document.createElement('div');
+                    div.className = 'ds-ing-item';
+                    div.textContent = clean;
+                    drawerIng.appendChild(div);
+                    addedCount++;
+                  }
+                });
+
+                if (addedCount === 0) {
+                  var fallback = document.createElement('div');
+                  fallback.className = 'ds-ing-item';
+                  fallback.textContent = rawText;
+                  drawerIng.appendChild(fallback);
+                }
+              } else {
+                drawerIng.innerHTML = '<span style="opacity:0.4; font-size:13px;">Ingredients coming soon</span>';
+              }
+            }
+
+            // Numbered Method Steps
+            if (drawerMethod) {
+              drawerMethod.innerHTML = '';
+              var methodText = item.recipe_method || '';
+              if (typeof methodText !== 'string') methodText = String(methodText);
+              methodText = methodText.trim();
+
+              if (methodText.length > 0) {
+                var stepLines = methodText.split(/\r?\n+/);
+                var stepCounter = 1;
+
+                stepLines.forEach(function (line) {
+                  var textOnly = line.replace(/^\s*\d+[\.\)]\s*/, '').trim();
+                  if (textOnly.length > 0) {
+                    var stepWrap = document.createElement('div');
+                    stepWrap.className = 'ds-method-step';
+                    stepWrap.innerHTML = '<span class="ds-step-num">' + stepCounter + '</span><span class="ds-step-text">' + textOnly + '</span>';
+                    drawerMethod.appendChild(stepWrap);
+                    stepCounter++;
+                  }
+                });
+
+                if (stepCounter === 1) {
+                  drawerMethod.innerHTML = '<div class="ds-step-text">' + methodText + '</div>';
+                }
+              }
+            }
+
+          } else {
+            recipeDrawer.style.display = 'none';
+          }
+        }
+
+        nodes.forEach(function (n) { n.classList.remove('active'); });
+        var activeNode = root.querySelector('.ds-swatch-node[data-i="' + i + '"]');
+        if (activeNode) activeNode.classList.add('active');
+      }
+
+      nodes.forEach(function (node) {
+        node.onclick = function () {
+          setActiveSauce(parseInt(node.dataset.i, 10));
+        };
+      });
+
+      filterBtns.forEach(function (btn) {
+        btn.onclick = function () {
+          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var filter = btn.dataset.filter;
+          var firstMatch = null;
+
+          if (filter === 'cooking') {
+            if (eyebrowEl) eyebrowEl.textContent = 'COOKING SAUCES';
+            if (headingEl) headingEl.innerHTML = 'Pick a sauce. <span class="ds-highlight">Get cooking.</span>';
+            if (subEl) subEl.textContent = 'Ready-to-use cooking bases that do the hard work. Just add your favourite ingredients.';
+          } else {
+            if (eyebrowEl) eyebrowEl.textContent = 'TABLE SAUCES';
+            if (headingEl) headingEl.innerHTML = 'Our sauces. <span class="ds-highlight">Bold & clean.</span>';
+            if (subEl) subEl.textContent = 'A complete range of clean-label table sauces. Bold flavor with nothing to hide.';
+          }
+
+          nodes.forEach(function (node) {
+            if (node.dataset.range === filter) {
+              node.style.display = 'flex';
+              if (firstMatch === null) firstMatch = parseInt(node.dataset.i, 10);
+            } else {
+              node.style.display = 'none';
+            }
+          });
+
+          if (firstMatch !== null) setActiveSauce(firstMatch);
+        };
+      });
+
+      var initialBtn = root.querySelector('.ds-filter-pill.active');
+      if (initialBtn) initialBtn.click();
+      else if (sauceData.length) setActiveSauce(0);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDynamicSauces);
+    } else {
+      initDynamicSauces();
+    }
+  })();
+</script>
 
 {% schema %}
 {
-  "name": "Footer",
+  "name": "Flavour Dial Showcase",
+  "tag": "section",
   "settings": [
-    {
-      "type": "text",
-      "id": "contact_email",
-      "label": "Contact Email",
-      "default": "info@thenakedsauceco.com"
-    },
-    {
-      "type": "color",
-      "id": "color_footer_bg",
-      "label": "Background Color",
-      "default": "#1A1715"
-    },
-    {
-      "type": "color",
-      "id": "color_footer_text",
-      "label": "Text Color",
-      "default": "#FBF3E4"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_policy",
-      "label": "Show policy links in bottom bar",
-      "default": true
-    }
+    { "type": "collection", "id": "collection_table", "label": "Table Sauces Collection" },
+    { "type": "collection", "id": "collection_cooking", "label": "Cooking Sauces Collection" }
+  ],
+  "presets": [
+    { "name": "Flavour Dial Showcase" }
   ]
 }
 {% endschema %}
