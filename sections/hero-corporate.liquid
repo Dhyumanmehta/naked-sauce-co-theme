@@ -1,190 +1,186 @@
 {% style %}
-  .nsc-hero-corporate-{{ section.id }} {
-    background-color: #1e1e1e;
+  .hero-corporate-{{ section.id }} {
+    background-color: #141312;
     color: #ffffff;
-    padding: 70px 0 90px;
     position: relative;
     overflow: hidden;
+    padding-top: clamp(60px, 8vw, 110px);
+    padding-bottom: clamp(60px, 8vw, 110px);
   }
 
-  .nsc-hero-container {
+  .hero-corporate-{{ section.id }} .hero-inner {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 32px;
+  }
+
+  .hero-corporate-{{ section.id }} .hero-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 48px;
     align-items: center;
   }
 
-  @media (max-width: 991px) {
-    .nsc-hero-container {
+  @media (max-width: 960px) {
+    .hero-corporate-{{ section.id }} .hero-grid {
       grid-template-columns: 1fr;
-      padding: 0 20px;
       gap: 40px;
     }
-    .nsc-hero-corporate-{{ section.id }} {
-      padding: 40px 0 60px;
-    }
   }
 
-  .nsc-hero-headline {
-    font-size: clamp(48px, 6vw, 92px);
+  .hero-corporate-{{ section.id }} .hero-headline {
+    font-size: clamp(42px, 5.5vw, 72px);
     font-weight: 900;
-    line-height: 0.95;
+    line-height: 1.05;
     letter-spacing: -0.03em;
     color: #ffffff;
-    margin: 0 0 28px;
-    text-transform: none;
+    margin: 0 0 24px;
   }
 
-  .nsc-hero-subtext {
-    font-size: clamp(16px, 1.3vw, 20px);
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.75);
-    max-width: 480px;
+  .hero-corporate-{{ section.id }} .hero-subheading {
+    font-size: clamp(16px, 1.4vw, 20px);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
     margin: 0 0 36px;
+    max-width: 560px;
   }
 
-  .nsc-hero-actions {
+  .hero-corporate-{{ section.id }} .hero-actions {
     display: flex;
-    align-items: center;
     gap: 16px;
     flex-wrap: wrap;
+    align-items: center;
   }
 
-  .nsc-btn-primary {
+  .hero-corporate-{{ section.id }} .hero-btn-primary {
     background-color: #DA6634;
     color: #ffffff !important;
-    padding: 14px 28px;
+    padding: 15px 34px;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     text-decoration: none;
     border-radius: 4px;
-    border: 1px solid #DA6634;
-    transition: background-color 0.2s ease, transform 0.2s ease;
     display: inline-block;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
-  .nsc-btn-primary:hover {
+  .hero-corporate-{{ section.id }} .hero-btn-primary:hover {
     background-color: #c75626;
-    border-color: #c75626;
+    transform: translateY(-2px);
   }
 
-  .nsc-btn-secondary {
+  .hero-corporate-{{ section.id }} .hero-btn-secondary {
     background-color: transparent;
     color: #ffffff !important;
-    padding: 14px 28px;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    padding: 14px 32px;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     text-decoration: none;
     border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.75);
-    transition: background-color 0.2s ease, border-color 0.2s ease;
     display: inline-block;
+    transition: all 0.2s ease;
   }
 
-  .nsc-btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: #ffffff;
+  .hero-corporate-{{ section.id }} .hero-btn-secondary:hover {
+    border-color: #DA6634;
+    background: rgba(218, 102, 52, 0.12);
+    color: #DA6634 !important;
+    transform: translateY(-2px);
   }
 
-  /* Right Side Image Box */
-  .nsc-hero-media-wrap {
+  .hero-corporate-{{ section.id }} .hero-media-wrap {
     position: relative;
-    width: 100%;
-    min-height: 480px;
-    border: 1.5px dashed rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    border-radius: 16px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  @media (max-width: 991px) {
-    .nsc-hero-media-wrap {
-      min-height: 380px;
-    }
-  }
-
-  .nsc-hero-media-img {
+  .hero-corporate-{{ section.id }} .hero-img {
     width: 100%;
     height: 100%;
+    max-height: 520px;
     object-fit: cover;
     display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .nsc-hero-media-placeholder {
-    padding: 24px;
-    z-index: 1;
-    color: rgba(255, 255, 255, 0.45);
-  }
-
-  .nsc-hero-media-placeholder strong {
-    display: block;
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 16px;
-    margin-bottom: 6px;
   }
 {% endstyle %}
 
-<div class="nsc-hero-corporate-{{ section.id }}">
-  <div class="nsc-hero-container">
-    <div class="nsc-hero-content">
-      <h1 class="nsc-hero-headline">
-        Bold<br>
-        flavour.<br>
-        Nothing to<br>
-        hide.
-      </h1>
-      <p class="nsc-hero-subtext">
-        Clean-label sauces, free from the major allergens and made with real ingredients only.
-      </p>
-     <div class="nsc-hero-actions">
-  <a href="#our-sauces" class="nsc-btn-primary">See our sauces</a>
-  <a href="/pages/contact" class="nsc-btn-secondary">Talk to the team</a>
-</div>
-    </div>
-
-    <div class="nsc-hero-media-wrap">
-      {% if section.settings.image != blank %}
-        <img
-          src="{{ section.settings.image | image_url: width: 900 }}"
-          alt="{{ section.settings.image.alt | default: 'The Naked Sauce Co Chef' }}"
-          class="nsc-hero-media-img"
-          loading="eager"
-        >
-      {% else %}
-        <div class="nsc-hero-media-placeholder">
-          <strong>Chef image</strong>
-          <span>Existing photo goes here</span>
+<section class="hero-corporate-{{ section.id }}">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <h1 class="hero-headline">
+          {{ section.settings.headline | default: "Bold Flavour. Nothing to hide." }}
+        </h1>
+        <p class="hero-subheading">
+          {{ section.settings.subheading | default: "Clean label sauces, free from the major allergens and made without any ultra-processed ingredients." }}
+        </p>
+        <div class="hero-actions">
+          <a href="/pages/contact" class="hero-btn-primary">
+            {{ section.settings.btn_primary_label | default: "Contact us" }}
+          </a>
+          <a href="/#our-sauces" class="hero-btn-secondary">
+            {{ section.settings.btn_secondary_label | default: "Explore our range" }}
+          </a>
         </div>
-      {% endif %}
+      </div>
+
+      <!-- Right Media -->
+      <div class="hero-media-wrap">
+        {% if section.settings.hero_image != blank %}
+          {{ section.settings.hero_image | image_url: width: 1000 | image_tag: class: 'hero-img', alt: 'The Naked Sauce Co Chef' }}
+        {% else %}
+          <img class="hero-img" src="{{ 'hero-chef.jpg' | asset_url }}" alt="Chef in The Naked Sauce Co apron">
+        {% endif %}
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
-  "name": "Corporate Landing Hero",
+  "name": "Hero Corporate",
   "tag": "section",
   "settings": [
     {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Bold Flavour. Nothing to hide."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Clean label sauces, free from the major allergens and made without any ultra-processed ingredients."
+    },
+    {
+      "type": "text",
+      "id": "btn_primary_label",
+      "label": "Primary Button Label",
+      "default": "Contact us"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_label",
+      "label": "Secondary Button Label",
+      "default": "Explore our range"
+    },
+    {
       "type": "image_picker",
-      "id": "image",
-      "label": "Chef / Hero Image"
+      "id": "hero_image",
+      "label": "Hero Image"
     }
   ],
   "presets": [
     {
-      "name": "Corporate Landing Hero"
+      "name": "Hero Corporate"
     }
   ]
 }
