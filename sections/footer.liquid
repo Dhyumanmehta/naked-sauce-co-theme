@@ -1,61 +1,61 @@
 {% liquid
   assign footer_text_color = section.settings.color_footer_text | default: '#FBF3E4'
-  assign footer_bg = section.settings.color_footer_bg | default: '#231F1A'
+  assign footer_bg = section.settings.color_footer_bg | default: '#141110'
   assign footer_border = 'rgba(251, 243, 228, 0.12)'
 %}
 
-<style>
+{% style %}
   .nsc-footer {
     background-color: {{ footer_bg }};
     color: {{ footer_text_color }};
-    padding-top: 75px;
+    padding-top: 70px;
     padding-bottom: 35px;
-    font-size: 14.5px;
+    font-size: 14px;
     line-height: 1.6;
     border-top: 1px solid {{ footer_border }};
   }
 
-  .nsc-footer-top {
-    border-bottom: 1px solid {{ footer_border }};
-    padding-bottom: 40px;
+  .nsc-footer .nsc-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .nsc-footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
     margin-bottom: 50px;
   }
 
-  .nsc-footer-badge-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    align-items: center;
+  @media (max-width: 960px) {
+    .nsc-footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
   }
 
-  .nsc-footer-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    border-radius: 50px;
-    background: rgba(251, 243, 228, 0.06);
-    border: 1px solid rgba(251, 243, 228, 0.16);
-    font-size: 12.5px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: #FBF3E4;
+  @media (max-width: 560px) {
+    .nsc-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
   }
 
-  .nsc-footer-pill-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #DA6634;
+  .nsc-footer-logo {
+    height: 42px;
+    width: auto;
+    margin-bottom: 18px;
+    display: block;
   }
 
   .nsc-footer-col-title {
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     color: #FBF3E4;
-    margin-bottom: 20px;
+    margin: 0 0 18px;
   }
 
   .nsc-footer p,
@@ -63,108 +63,31 @@
     color: #D6CDBF;
     font-size: 14px;
     line-height: 1.65;
-    margin-bottom: 20px;
+    margin: 0 0 16px;
   }
 
   .nsc-footer-links {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-
-  .nsc-footer-links li {
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .nsc-footer-links a {
     color: #D6CDBF;
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.18s ease, transform 0.18s ease;
-    display: inline-block;
+    transition: color 0.18s ease;
   }
 
   .nsc-footer-links a:hover {
-    color: #FFFFFF;
-    transform: translateX(3px);
+    color: #DA6634;
   }
 
-  /* Newsletter Box */
-  .nsc-footer-newsletter {
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid {{ footer_border }};
-    border-radius: 12px;
-    padding: 24px;
-  }
-
-  .nsc-footer-input-group {
-    display: flex;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(251, 243, 228, 0.18);
-    border-radius: 50px;
-    padding: 4px;
-    margin-top: 14px;
-    transition: border-color 0.2s ease;
-  }
-
-  .nsc-footer-input-group:focus-within {
-    border-color: #DA6634;
-  }
-
-  .nsc-footer-input {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #FBF3E4;
-    font-size: 13.5px;
-    padding: 10px 18px;
-    flex-grow: 1;
-    min-width: 0;
-  }
-
-  .nsc-footer-input::placeholder {
-    color: #A39B8F;
-  }
-
-  .nsc-footer-btn {
-    background: #DA6634;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.15s ease;
-  }
-
-  .nsc-footer-btn:hover {
-    background: #E87442;
-    transform: scale(0.98);
-  }
-
-  /* Packaging Formats Row */
-  .nsc-footer-formats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 14px;
-  }
-
-  .nsc-format-tag {
-    font-size: 11.5px;
-    padding: 3px 10px;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.05);
-    color: #A39B8F;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-  }
-
-  /* Bottom Bar */
   .nsc-footer-bottom {
-    margin-top: 60px;
+    margin-top: 40px;
     padding-top: 25px;
     border-top: 1px solid {{ footer_border }};
     display: flex;
@@ -179,6 +102,7 @@
   .nsc-footer-bottom a {
     color: #A39B8F;
     text-decoration: none;
+    transition: color 0.18s ease;
   }
 
   .nsc-footer-bottom a:hover {
@@ -193,37 +117,82 @@
     gap: 18px;
     flex-wrap: wrap;
   }
-</style>
+{% endstyle %}
 
 <footer class="nsc-footer" role="contentinfo">
-  <div class="container page-width">
-
-
-
-    <!-- Bottom Utility Bar -->
-    <div class="nsc-footer-bottom">
+  <div class="nsc-inner">
+    
+    <div class="nsc-footer-grid">
       <div>
-        <span>&copy; {{ 'now' | date: '%Y' }} The Naked Sauce Co. Ltd </span>
+        {% if settings.logo != blank %}
+          <img src="{{ settings.logo | image_url: width: 300 }}" alt="{{ shop.name }}" class="nsc-footer-logo">
+        {% else %}
+          <h3 style="color: #FBF3E4; font-weight: 900; margin-bottom: 14px;">The Naked Sauce Co.</h3>
+        {% endif %}
+        <p class="nsc-footer-desc" style="max-width: 320px;">
+          Bold flavour, nothing to hide. Clean label table and cooking sauces made without the 14 major allergens or ultra-processed ingredients.
+        </p>
       </div>
 
-      {% if section.settings.show_policy %}
-        <ul class="nsc-footer-policies">
+      <div>
+        <h4 class="nsc-footer-col-title">Navigation</h4>
+        <ul class="nsc-footer-links">
+          <li><a href="/#our-sauces">Our sauces</a></li>
+          <li><a href="/#our-story">Our story</a></li>
+          <li><a href="/#where-we-fit">Where we fit</a></li>
+          <li><a href="/pages/contact">Contact us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="nsc-footer-col-title">Policies</h4>
+        <ul class="nsc-footer-links">
+          {% assign has_policies = false %}
           {% for policy in shop.policies %}
-            {% if policy != blank %}
+            {% if policy.body != blank %}
+              {% assign has_policies = true %}
               <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
             {% endif %}
           {% endfor %}
+          {% unless has_policies %}
+            <li><a href="/policies/privacy-policy">Privacy policy</a></li>
+            <li><a href="/policies/terms-of-service">Terms of service</a></li>
+            <li><a href="/policies/refund-policy">Refund policy</a></li>
+          {% endunless %}
         </ul>
-      {% endif %}
+      </div>
 
-      {% if section.settings.show_payment_icons %}
-        <ul class="d-flex list-unstyled gap-2 mb-0">
-          {% for type in shop.enabled_payment_types %}
-            <li>{{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
+      <div>
+        <h4 class="nsc-footer-col-title">Get in touch</h4>
+        <p class="nsc-footer-desc">For commercial inquiries, development samples, and trade orders:</p>
+        <p style="margin: 0;">
+          <a href="mailto:{{ shop.email | default: 'info@thenakedsauceco.com' }}" style="color: #DA6634; text-decoration: none; font-weight: 700;">
+            {{ shop.email | default: 'info@thenakedsauceco.com' }}
+          </a>
+        </p>
+      </div>
     </div>
+
+    <div class="nsc-footer-bottom">
+      <div>
+        <span>&copy; {{ 'now' | date: '%Y' }} The Naked Sauce Co. Ltd. All rights reserved.</span>
+      </div>
+
+      <ul class="nsc-footer-policies">
+        {% assign has_policies = false %}
+        {% for policy in shop.policies %}
+          {% if policy.body != blank %}
+            {% assign has_policies = true %}
+            <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% unless has_policies %}
+          <li><a href="/policies/privacy-policy">Privacy</a></li>
+          <li><a href="/policies/terms-of-service">Terms</a></li>
+        {% endunless %}
+      </ul>
+    </div>
+
   </div>
 </footer>
 
@@ -232,40 +201,16 @@
   "name": "Footer",
   "settings": [
     {
-      "type": "text",
-      "id": "heading",
-      "label": "Company Title",
-      "default": "The Naked Sauce Co."
-    },
-    {
       "type": "color",
       "id": "color_footer_bg",
       "label": "Background Color",
-      "default": "#231F1A"
+      "default": "#141110"
     },
     {
       "type": "color",
       "id": "color_footer_text",
       "label": "Text Color",
       "default": "#FBF3E4"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_socials_icons",
-      "label": "Show social media icons",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_policy",
-      "label": "Show policy links",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "Show payment icons",
-      "default": true
     }
   ]
 }
