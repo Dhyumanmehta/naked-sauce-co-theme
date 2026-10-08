@@ -23,14 +23,9 @@
     },
     "footer": {
       "type": "footer",
-      "disabled": true,
       "settings": {
-        "heading": "The Naked Sauce Co",
         "color_footer_bg": "#231f1a",
-        "color_footer_text": "#fbf3e4",
-        "show_socials_icons": false,
-        "show_policy": true,
-        "show_payment_icons": false
+        "color_footer_text": "#fbf3e4"
       }
     }
   },
