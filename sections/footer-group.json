@@ -14,7 +14,12 @@
     "pre_footer_cta_A9Bh6w": {
       "type": "pre-footer-cta",
       "name": "Pre-Footer CTA",
-      "settings": {}
+      "settings": {
+        "heading": "Ready to bring bold global flavours to your menu?",
+        "subheading": "Get in touch to request samples, discuss commercial pricing, or speak directly with our development team.",
+        "cta_image": "shopify://shop_images/01-hero-banner-4bottles-with-wings-bg.jpg",
+        "btn_label": "Contact us"
+      }
     },
     "footer": {
       "type": "footer",

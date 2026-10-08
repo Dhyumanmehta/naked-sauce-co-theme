@@ -13,12 +13,19 @@
       "type": "hero-corporate",
       "name": "Corporate Landing Hero",
       "settings": {
-        "image": "shopify://shop_images/photo-chef.jpg"
+        "headline": "Bold Flavour. Nothing to hide.",
+        "subheading": "Clean label sauces, free from the major allergens and made without any ultra-processed ingredients.",
+        "btn_primary_label": "Contact us",
+        "btn_secondary_label": "Explore our range",
+        "hero_image": "shopify://shop_images/photo-chef.jpg"
       }
     },
     "ticker": {
       "type": "marque",
-      "settings": {}
+      "settings": {
+        "bg_color": "#da6634",
+        "speed": 28
+      }
     },
     "range_teaser": {
       "type": "flavour-switcher",
