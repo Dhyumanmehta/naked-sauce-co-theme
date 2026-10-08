@@ -1,119 +1,132 @@
 {% style %}
-  .nsc-drip-marquee-wrap {
-    position: relative;
-    background: #DA6634;
-    padding: 24px 0 28px;
+  .marquee-bar-{{ section.id }} {
+    background-color: {{ section.settings.bg_color | default: '#DA6634' }};
+    color: #ffffff;
+    padding: 16px 0;
     overflow: hidden;
-    margin: -1px 0;
-    z-index: 5;
+    white-space: nowrap;
+    position: relative;
+    border-top: none;
+    border-bottom: none;
+    /* Clean straight solid bar — no wavy dividers */
   }
 
-  /* Saucy drip wave on top edge */
-  .nsc-drip-top-svg {
-    position: absolute;
-    top: -1px;
-    left: 0;
-    width: 100%;
-    height: 18px;
-    fill: #1e1e1e; /* matches hero section background */
-    pointer-events: none;
+  .marquee-bar-{{ section.id }} .marquee-track {
+    display: inline-flex;
+    align-items: center;
+    animation: marqueeScroll {{ section.settings.speed | default: 28 }}s linear infinite;
+    will-change: transform;
   }
 
-  /* Saucy drip drops on bottom edge */
-  .nsc-drip-bottom-svg {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    fill: #1A1715; /* matches "Our sauces" section background below */
-    pointer-events: none;
-  }
-
-  .nsc-marquee-track {
-    display: flex;
-    width: max-content;
-    animation: nsc-scroll 32s linear infinite;
-  }
-
-  .nsc-marquee-track:hover {
+  .marquee-bar-{{ section.id }} .marquee-track:hover {
     animation-play-state: paused;
   }
 
-  @keyframes nsc-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .nsc-marquee-group {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-    padding-right: 36px;
-    white-space: nowrap;
-  }
-
-  .nsc-marquee-item {
+  .marquee-bar-{{ section.id }} .marquee-item {
     display: inline-flex;
     align-items: center;
-    gap: 36px;
     font-size: clamp(14px, 1.2vw, 17px);
     font-weight: 800;
-    letter-spacing: 0.08em;
     text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0 24px;
     color: #ffffff;
   }
 
-  /* Organic sauce drop icon as divider */
-  .nsc-sauce-drop {
+  /* Naked Sauce Co brand logo separator */
+  .marquee-bar-{{ section.id }} .marquee-separator-logo {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+    margin-left: 24px;
     display: inline-block;
-    width: 12px;
-    height: 16px;
-    background-color: #231F1A;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    transform: rotate(45deg);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    flex-shrink: 0;
+    filter: brightness(0) invert(1); /* Pure white brand logo on orange bar */
+    opacity: 0.95;
+  }
+
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 {% endstyle %}
 
-<div class="nsc-drip-marquee-wrap">
-  <!-- Top Sauce Drip SVG -->
-  <svg class="nsc-drip-top-svg" viewBox="0 0 1440 24" preserveAspectRatio="none">
-    <path d="M0,0 L1440,0 L1440,8 C1360,18 1320,4 1240,14 C1160,24 1110,6 1020,16 C940,24 880,5 800,15 C720,25 670,4 580,18 C500,24 450,6 360,16 C270,24 220,5 140,16 C70,24 40,8 0,12 Z"></path>
-  </svg>
+<div class="marquee-bar-{{ section.id }}" aria-hidden="true">
+  <div class="marquee-track">
+    {% capture marquee_content %}
+      <span class="marquee-item">
+        Clean label
+        {% if settings.logo != blank %}
+          <img src="{{ settings.logo | image_url: width: 80 }}" alt="" class="marquee-separator-logo">
+        {% else %}
+          <span style="margin-left: 24px; opacity: 0.7;">•</span>
+        {% endif %}
+      </span>
+      <span class="marquee-item">
+        Free from major allergens
+        {% if settings.logo != blank %}
+          <img src="{{ settings.logo | image_url: width: 80 }}" alt="" class="marquee-separator-logo">
+        {% else %}
+          <span style="margin-left: 24px; opacity: 0.7;">•</span>
+        {% endif %}
+      </span>
+      <span class="marquee-item">
+        Zero ultra-processed ingredients
+        {% if settings.logo != blank %}
+          <img src="{{ settings.logo | image_url: width: 80 }}" alt="" class="marquee-separator-logo">
+        {% else %}
+          <span style="margin-left: 24px; opacity: 0.7;">•</span>
+        {% endif %}
+      </span>
+      <span class="marquee-item">
+        Real natural ingredients
+        {% if settings.logo != blank %}
+          <img src="{{ settings.logo | image_url: width: 80 }}" alt="" class="marquee-separator-logo">
+        {% else %}
+          <span style="margin-left: 24px; opacity: 0.7;">•</span>
+        {% endif %}
+      </span>
+      <span class="marquee-item">
+        Bold flavour, nothing to hide
+        {% if settings.logo != blank %}
+          <img src="{{ settings.logo | image_url: width: 80 }}" alt="" class="marquee-separator-logo">
+        {% else %}
+          <span style="margin-left: 24px; opacity: 0.7;">•</span>
+        {% endif %}
+      </span>
+    {% endcapture %}
 
-  <div class="nsc-marquee-track">
-    <div class="nsc-marquee-group">
-      <span class="nsc-marquee-item">Free from the major allergens <span class="nsc-sauce-drop"></span></span>
-      <span class="nsc-marquee-item">Zero ultra-processed ingredients <span class="nsc-sauce-drop"></span></span>
-      <span class="nsc-marquee-item">Real, natural ingredients <span class="nsc-sauce-drop"></span></span>
-      <span class="nsc-marquee-item">Clean label, always <span class="nsc-sauce-drop"></span></span>
-      <span class="nsc-marquee-item">BRC Grade AA Purpose-Built Facility <span class="nsc-sauce-drop"></span></span>
-    </div>
-    <!-- Duplicate loop for smooth infinite scroll -->
-    <div class="nsc-marquee-group" aria-hidden="true">
-      <span class="nsc-marquee-item">Free from the major allergens <span class="nsc-sauce-drop"></span></span>
-      <span class="nsc-marquee-item">Zero ultra-processed ingredients <span class="nsc-sauce-drop"></span></span>
-      <span class="nsc-marquee-item">Real, natural ingredients <span class="nsc-sauce-drop"></span></span>
-      <span class="nsc-marquee-item">Clean label, always <span class="nsc-sauce-drop"></span></span>
-      <span class="nsc-marquee-item">BRC Grade AA Purpose-Built Facility <span class="nsc-sauce-drop"></span></span>
-    </div>
+    <!-- Repeated twice to guarantee seamless infinite loop -->
+    {{ marquee_content }}
+    {{ marquee_content }}
   </div>
-
-  <!-- Bottom Sauce Drip SVG -->
-  <svg class="nsc-drip-bottom-svg" viewBox="0 0 1440 24" preserveAspectRatio="none">
-    <path d="M0,24 L1440,24 L1440,16 C1380,4 1330,22 1250,10 C1170,0 1120,20 1030,8 C950,0 890,20 810,7 C730,-3 680,18 590,6 C510,-2 460,18 370,8 C280,0 230,20 150,7 C80,-3 40,16 0,10 Z"></path>
-  </svg>
 </div>
 
 {% schema %}
 {
-  "name": "Saucy Marquee",
+  "name": "Scrolling Banner",
   "tag": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#DA6634"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "s",
+      "label": "Scroll duration (lower is faster)",
+      "default": 28
+    }
+  ],
   "presets": [
-    { "name": "Saucy Marquee" }
+    {
+      "name": "Scrolling Banner"
+    }
   ]
 }
 {% endschema %}
