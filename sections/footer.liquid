@@ -1,6 +1,6 @@
 {% liquid
   assign footer_text_color = section.settings.color_footer_text | default: '#FBF3E4'
-  assign footer_bg = section.settings.color_footer_bg | default: '#141110'
+  assign footer_bg = section.settings.color_footer_bg | default: '#1A1715'
   assign footer_border = 'rgba(251, 243, 228, 0.12)'
 %}
 
@@ -8,24 +8,57 @@
   .nsc-footer {
     background-color: {{ footer_bg }};
     color: {{ footer_text_color }};
-    padding-top: 70px;
+    padding-top: 75px;
     padding-bottom: 35px;
-    font-size: 14px;
+    font-size: 14.5px;
     line-height: 1.6;
     border-top: 1px solid {{ footer_border }};
   }
 
-  .nsc-footer .nsc-inner {
+  .nsc-footer .container {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 32px;
   }
 
+  .nsc-footer-top {
+    border-bottom: 1px solid {{ footer_border }};
+    padding-bottom: 36px;
+    margin-bottom: 48px;
+  }
+
+  .nsc-footer-badge-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .nsc-footer-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: rgba(251, 243, 228, 0.06);
+    border: 1px solid rgba(251, 243, 228, 0.16);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #FBF3E4;
+  }
+
+  .nsc-footer-pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #DA6634;
+  }
+
   .nsc-footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 50px;
+    grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+    gap: 40px;
   }
 
   @media (max-width: 960px) {
@@ -43,7 +76,7 @@
   }
 
   .nsc-footer-logo {
-    height: 42px;
+    height: 38px;
     width: auto;
     margin-bottom: 18px;
     display: block;
@@ -53,9 +86,9 @@
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     color: #FBF3E4;
-    margin: 0 0 18px;
+    margin: 0 0 20px;
   }
 
   .nsc-footer p,
@@ -63,31 +96,45 @@
     color: #D6CDBF;
     font-size: 14px;
     line-height: 1.65;
-    margin: 0 0 16px;
+    margin-bottom: 20px;
   }
 
   .nsc-footer-links {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  }
+
+  .nsc-footer-links li {
+    margin-bottom: 10px;
   }
 
   .nsc-footer-links a {
     color: #D6CDBF;
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.18s ease;
+    transition: color 0.18s ease, transform 0.18s ease;
+    display: inline-block;
   }
 
   .nsc-footer-links a:hover {
+    color: #FFFFFF;
+    transform: translateX(3px);
+  }
+
+  .nsc-footer-contact-email {
     color: #DA6634;
+    text-decoration: none;
+    font-weight: 700;
+    word-break: break-all;
+  }
+
+  .nsc-footer-contact-email:hover {
+    text-decoration: underline;
   }
 
   .nsc-footer-bottom {
-    margin-top: 40px;
+    margin-top: 55px;
     padding-top: 25px;
     border-top: 1px solid {{ footer_border }};
     display: flex;
@@ -102,7 +149,6 @@
   .nsc-footer-bottom a {
     color: #A39B8F;
     text-decoration: none;
-    transition: color 0.18s ease;
   }
 
   .nsc-footer-bottom a:hover {
@@ -120,20 +166,33 @@
 {% endstyle %}
 
 <footer class="nsc-footer" role="contentinfo">
-  <div class="nsc-inner">
-    
+  <div class="container">
+
+    <!-- Top Badge Strip -->
+    <div class="nsc-footer-top">
+      <div class="nsc-footer-badge-strip">
+        <span class="nsc-footer-pill"><span class="nsc-footer-pill-dot"></span> Clean label</span>
+        <span class="nsc-footer-pill"><span class="nsc-footer-pill-dot"></span> Free from major allergens</span>
+        <span class="nsc-footer-pill"><span class="nsc-footer-pill-dot"></span> Zero ultra-processed</span>
+        <span class="nsc-footer-pill"><span class="nsc-footer-pill-dot"></span> Real natural ingredients</span>
+      </div>
+    </div>
+
+    <!-- Main Footer Grid -->
     <div class="nsc-footer-grid">
+      <!-- Col 1: Brand Info -->
       <div>
         {% if settings.logo != blank %}
-          <img src="{{ settings.logo | image_url: width: 300 }}" alt="{{ shop.name }}" class="nsc-footer-logo">
+          <img src="{{ settings.logo | image_url: width: 280 }}" alt="{{ shop.name }}" class="nsc-footer-logo">
         {% else %}
-          <h3 style="color: #FBF3E4; font-weight: 900; margin-bottom: 14px;">The Naked Sauce Co.</h3>
+          <h3 style="color: #FBF3E4; font-weight: 900; margin-bottom: 16px;">The Naked Sauce Co.</h3>
         {% endif %}
-        <p class="nsc-footer-desc" style="max-width: 320px;">
+        <p class="nsc-footer-desc">
           Bold flavour, nothing to hide. Clean label table and cooking sauces made without the 14 major allergens or ultra-processed ingredients.
         </p>
       </div>
 
+      <!-- Col 2: Navigation -->
       <div>
         <h4 class="nsc-footer-col-title">Navigation</h4>
         <ul class="nsc-footer-links">
@@ -144,6 +203,7 @@
         </ul>
       </div>
 
+      <!-- Col 3: Policies -->
       <div>
         <h4 class="nsc-footer-col-title">Policies</h4>
         <ul class="nsc-footer-links">
@@ -162,35 +222,41 @@
         </ul>
       </div>
 
+      <!-- Col 4: Contact -->
       <div>
         <h4 class="nsc-footer-col-title">Get in touch</h4>
-        <p class="nsc-footer-desc">For commercial inquiries, development samples, and trade orders:</p>
-        <p style="margin: 0;">
-          <a href="mailto:{{ shop.email | default: 'info@thenakedsauceco.com' }}" style="color: #DA6634; text-decoration: none; font-weight: 700;">
-            {{ shop.email | default: 'info@thenakedsauceco.com' }}
+        <p class="nsc-footer-desc">
+          For commercial inquiries, development samples, and trade orders:
+        </p>
+        <p>
+          <a href="mailto:{{ section.settings.contact_email | default: 'info@thenakedsauceco.com' }}" class="nsc-footer-contact-email">
+            {{ section.settings.contact_email | default: 'info@thenakedsauceco.com' }}
           </a>
         </p>
       </div>
     </div>
 
+    <!-- Bottom Utility Bar -->
     <div class="nsc-footer-bottom">
       <div>
         <span>&copy; {{ 'now' | date: '%Y' }} The Naked Sauce Co. Ltd. All rights reserved.</span>
       </div>
 
-      <ul class="nsc-footer-policies">
-        {% assign has_policies = false %}
-        {% for policy in shop.policies %}
-          {% if policy.body != blank %}
-            {% assign has_policies = true %}
-            <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
-          {% endif %}
-        {% endfor %}
-        {% unless has_policies %}
-          <li><a href="/policies/privacy-policy">Privacy</a></li>
-          <li><a href="/policies/terms-of-service">Terms</a></li>
-        {% endunless %}
-      </ul>
+      {% if section.settings.show_policy %}
+        <ul class="nsc-footer-policies">
+          {% assign has_bottom_policies = false %}
+          {% for policy in shop.policies %}
+            {% if policy != blank %}
+              {% assign has_bottom_policies = true %}
+              <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% unless has_bottom_policies %}
+            <li><a href="/policies/privacy-policy">Privacy policy</a></li>
+            <li><a href="/policies/terms-of-service">Terms of service</a></li>
+          {% endunless %}
+        </ul>
+      {% endif %}
     </div>
 
   </div>
@@ -201,16 +267,28 @@
   "name": "Footer",
   "settings": [
     {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact Email",
+      "default": "info@thenakedsauceco.com"
+    },
+    {
       "type": "color",
       "id": "color_footer_bg",
       "label": "Background Color",
-      "default": "#141110"
+      "default": "#1A1715"
     },
     {
       "type": "color",
       "id": "color_footer_text",
       "label": "Text Color",
       "default": "#FBF3E4"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy",
+      "label": "Show policy links in bottom bar",
+      "default": true
     }
   ]
 }
