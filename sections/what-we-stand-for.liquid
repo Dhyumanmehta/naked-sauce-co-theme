@@ -1,140 +1,166 @@
 {% style %}
-  .nsc-stand-section-{{ section.id }} {
-    background-color: #27211C !important;
+  .stand-for-{{ section.id }} {
+    background-color: #1A1715;
     color: #ffffff;
-    padding: 100px 0 110px;
-    border-top: 1px solid rgba(218, 102, 52, 0.25);
-    border-bottom: 1px solid rgba(218, 102, 52, 0.25);
+    padding-top: 80px;
+    padding-bottom: 90px;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .nsc-stand-container {
+  .stand-for-{{ section.id }} .stand-inner {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 32px;
   }
 
-  .nsc-stand-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 48px;
-    gap: 30px;
-    flex-wrap: wrap;
+  .stand-for-{{ section.id }} .stand-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 56px;
   }
 
-  .nsc-stand-title {
-    font-size: clamp(38px, 4.5vw, 56px);
+  .stand-for-{{ section.id }} .stand-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #DA6634;
+    margin-bottom: 12px;
+  }
+
+  .stand-for-{{ section.id }} .stand-title {
+    font-size: clamp(34px, 4vw, 48px);
     font-weight: 900;
-    line-height: 1;
+    line-height: 1.1;
     letter-spacing: -0.02em;
     color: #ffffff;
-    margin: 0;
+    margin: 0 0 14px;
   }
 
-  .nsc-stand-sub {
-    font-size: clamp(15px, 1.2vw, 18px);
+  .stand-for-{{ section.id }} .stand-sub {
+    font-size: clamp(15px, 1.2vw, 17px);
     color: rgba(255, 255, 255, 0.7);
-    line-height: 1.4;
+    line-height: 1.55;
     margin: 0;
-    max-width: 440px;
-    text-align: right;
   }
 
-  @media (max-width: 768px) {
-    .nsc-stand-header-row {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .nsc-stand-sub {
-      text-align: left;
-    }
-  }
-
-  .nsc-stand-grid {
+  /* 4 Pillars Grid (No bottle graphic taking up space) */
+  .stand-for-{{ section.id }} .stand-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 24px;
   }
 
   @media (max-width: 1024px) {
-    .nsc-stand-grid {
+    .stand-for-{{ section.id }} .stand-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
   }
 
   @media (max-width: 600px) {
-    .nsc-stand-grid {
+    .stand-for-{{ section.id }} .stand-grid {
       grid-template-columns: 1fr;
     }
   }
 
-  .nsc-stand-card {
-    background: rgba(218, 102, 52, 0.08) !important;
-    border: 2px solid #DA6634 !important;
-    border-radius: 10px;
-    padding: 34px 26px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  .stand-for-{{ section.id }} .stand-card {
+    background: radial-gradient(circle at 10% 10%, #2A1D18 0%, #1D1816 100%);
+    border: 1px solid rgba(218, 102, 52, 0.2);
+    border-radius: 14px;
+    padding: 34px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .nsc-stand-card:hover {
+  .stand-for-{{ section.id }} .stand-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(218, 102, 52, 0.25);
+    border-color: rgba(218, 102, 52, 0.5);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
   }
 
-  .nsc-stand-card-title {
-    font-size: 21px;
+  .stand-for-{{ section.id }} .stand-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(218, 102, 52, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    color: #DA6634;
+    font-size: 20px;
+  }
+
+  .stand-for-{{ section.id }} .stand-card-title {
+    font-size: 20px;
     font-weight: 800;
-    color: #DA6634 !important;
+    color: #ffffff;
+    margin: 0 0 12px;
     line-height: 1.25;
-    margin: 0 0 14px;
   }
 
-  .nsc-stand-card-desc {
+  .stand-for-{{ section.id }} .stand-card-desc {
     font-size: 14.5px;
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.6;
     margin: 0;
   }
 {% endstyle %}
 
-<div class="nsc-stand-section-{{ section.id }}" id="our-story">
-  <div class="nsc-stand-container">
-    <div class="nsc-stand-header-row">
-      <h2 class="nsc-stand-title">What we stand for</h2>
-      <p class="nsc-stand-sub">Sauce with nothing to hide. Four promises behind every recipe</p>
+<section class="stand-for-{{ section.id }}">
+  <div class="stand-inner">
+    <div class="stand-header">
+      <span class="stand-eyebrow">OUR PROMISE</span>
+      <h2 class="stand-title">What we stand for</h2>
+      <p class="stand-sub">Sauce with nothing to hide. Four simple promises behind every single recipe.</p>
     </div>
 
-    <div class="nsc-stand-grid">
-      <div class="nsc-stand-card">
-        <h3 class="nsc-stand-card-title">Free from the major allergens</h3>
-        <p class="nsc-stand-card-desc">Safe to serve to more of your customers, without a separate recipe.</p>
+    <div class="stand-grid">
+      <!-- Pillar 1 -->
+      <div class="stand-card">
+        <div class="stand-icon">🌾</div>
+        <h3 class="stand-card-title">Free from major allergens</h3>
+        <p class="stand-card-desc">Formulated without the 14 major declarable allergens, giving chefs total confidence across every service.</p>
       </div>
 
-      <div class="nsc-stand-card">
-        <h3 class="nsc-stand-card-title">Zero ultra-processed ingredients</h3>
-        <p class="nsc-stand-card-desc">Nothing artificial, nothing you'd need to look up.</p>
+      <!-- Pillar 2 -->
+      <div class="stand-card">
+        <div class="stand-icon">🌿</div>
+        <h3 class="stand-card-title">Zero ultra-processed</h3>
+        <p class="stand-card-desc">No artificial gums, modified starches, synthetic preservatives or cheap flavour enhancers. Clean from scratch.</p>
       </div>
 
-      <div class="nsc-stand-card">
-        <h3 class="nsc-stand-card-title">Real, natural ingredients</h3>
-        <p class="nsc-stand-card-desc">Proper ingredients, cooked for big honest flavour.</p>
+      <!-- Pillar 3 -->
+      <div class="stand-card">
+        <div class="stand-icon">🍅</div>
+        <h3 class="stand-card-title">Real natural ingredients</h3>
+        <p class="stand-card-desc">Whole vegetables, ripe fruit, freshly ground spices and authentic vinegars. Real ingredients you recognize.</p>
       </div>
 
-      <div class="nsc-stand-card">
-        <h3 class="nsc-stand-card-title">Clean label, always</h3>
-        <p class="nsc-stand-card-desc">A label you can read out loud at the pass or on the shelf.</p>
+      <!-- Pillar 4 (Updated from "Clean label always" -> "Clean label") -->
+      <div class="stand-card">
+        <div class="stand-icon">✨</div>
+        <h3 class="stand-card-title">Clean label</h3>
+        <p class="stand-card-desc">Honest sauces built with transparent provenance. Exactly what food operators and modern diners demand.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
   "name": "What We Stand For",
   "tag": "section",
+  "settings": [],
   "presets": [
-    { "name": "What We Stand For" }
+    {
+      "name": "What We Stand For"
+    }
   ]
 }
 {% endschema %}
