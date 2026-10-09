@@ -1,6 +1,6 @@
 {% style %}
   .stand-for-{{ section.id }} {
-    background-color: #1A1715;
+    background-color: #141211;
     color: #ffffff;
     padding-top: 80px;
     padding-bottom: 90px;
@@ -26,7 +26,7 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: #DA6634;
+    color: #E26829;
     margin-bottom: 12px;
   }
 
@@ -49,7 +49,7 @@
   .stand-for-{{ section.id }} .stand-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 22px;
   }
 
   @media (max-width: 1024px) {
@@ -65,37 +65,40 @@
     }
   }
 
-  /* Distinct rounded card with prominent orange border as shown in screenshot */
+  /* Original exact card colors from screenshot: warm roasted brown + terracotta border */
   .stand-for-{{ section.id }} .stand-card {
-    background-color: #171413;
-    border: 2px solid #DA6634;
-    border-radius: 18px;
-    padding: 36px 28px;
+    background-color: #2B1E19;
+    border: 1.5px solid #C85D2F;
+    border-radius: 14px;
+    padding: 34px 28px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .stand-for-{{ section.id }} .stand-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(218, 102, 52, 0.2), 0 12px 28px rgba(0, 0, 0, 0.45);
+    transform: translateY(-3px);
+    border-color: #E26829;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
   }
 
-  /* Orange bold headline matching client's screenshot */
+  /* Original sunset orange title */
   .stand-for-{{ section.id }} .stand-card-title {
     font-size: 22px;
     font-weight: 800;
-    color: #DA6634;
-    margin: 0 0 16px;
+    color: #E26829;
+    margin: 0 0 14px;
     line-height: 1.25;
+    letter-spacing: -0.01em;
   }
 
+  /* Original soft warm ivory copy */
   .stand-for-{{ section.id }} .stand-card-desc {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.82);
-    line-height: 1.55;
+    font-size: 14.5px;
+    color: #D8CEBE;
+    line-height: 1.6;
     margin: 0;
   }
 {% endstyle %}
@@ -127,7 +130,7 @@
         <p class="stand-card-desc">Whole vegetables, ripe fruit, freshly ground spices and authentic vinegars. Real ingredients you recognize.</p>
       </div>
 
-      <!-- Pillar 4: Steve's exact updated copy -->
+      <!-- Pillar 4 -->
       <div class="stand-card">
         <h3 class="stand-card-title">Reassuringly Clean Label</h3>
         <p class="stand-card-desc">A sauce or glaze that stands out for the right reasons.</p>
