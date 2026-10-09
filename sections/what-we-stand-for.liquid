@@ -65,48 +65,37 @@
     }
   }
 
+  /* Distinct rounded card with prominent orange border as shown in screenshot */
   .stand-for-{{ section.id }} .stand-card {
-    background: radial-gradient(circle at 10% 10%, #2A1D18 0%, #1D1816 100%);
-    border: 1px solid rgba(218, 102, 52, 0.2);
-    border-radius: 14px;
-    padding: 34px 28px;
+    background-color: #171413;
+    border: 2px solid #DA6634;
+    border-radius: 18px;
+    padding: 36px 28px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .stand-for-{{ section.id }} .stand-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(218, 102, 52, 0.5);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 16px 36px rgba(218, 102, 52, 0.2), 0 12px 28px rgba(0, 0, 0, 0.45);
   }
 
-  .stand-for-{{ section.id }} .stand-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    background: rgba(218, 102, 52, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 22px;
-    color: #DA6634;
-    font-size: 20px;
-  }
-
+  /* Orange bold headline matching client's screenshot */
   .stand-for-{{ section.id }} .stand-card-title {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
-    color: #ffffff;
-    margin: 0 0 12px;
+    color: #DA6634;
+    margin: 0 0 16px;
     line-height: 1.25;
   }
 
   .stand-for-{{ section.id }} .stand-card-desc {
-    font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.72);
-    line-height: 1.6;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.55;
     margin: 0;
   }
 {% endstyle %}
@@ -122,28 +111,24 @@
     <div class="stand-grid">
       <!-- Pillar 1 -->
       <div class="stand-card">
-        <div class="stand-icon">🌾</div>
         <h3 class="stand-card-title">Free from major allergens</h3>
         <p class="stand-card-desc">Formulated without the 14 major declarable allergens, giving chefs total confidence across every service.</p>
       </div>
 
       <!-- Pillar 2 -->
       <div class="stand-card">
-        <div class="stand-icon">🌿</div>
         <h3 class="stand-card-title">Zero ultra-processed</h3>
         <p class="stand-card-desc">No artificial gums, modified starches, synthetic preservatives or cheap flavour enhancers. Clean from scratch.</p>
       </div>
 
       <!-- Pillar 3 -->
       <div class="stand-card">
-        <div class="stand-icon">🍅</div>
         <h3 class="stand-card-title">Real natural ingredients</h3>
         <p class="stand-card-desc">Whole vegetables, ripe fruit, freshly ground spices and authentic vinegars. Real ingredients you recognize.</p>
       </div>
 
-      <!-- Pillar 4 (Updated per Steve's latest email) -->
+      <!-- Pillar 4: Steve's exact updated copy -->
       <div class="stand-card">
-        <div class="stand-icon">✨</div>
         <h3 class="stand-card-title">Reassuringly Clean Label</h3>
         <p class="stand-card-desc">A sauce or glaze that stands out for the right reasons.</p>
       </div>
