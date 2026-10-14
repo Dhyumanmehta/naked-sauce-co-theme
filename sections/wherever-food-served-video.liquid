@@ -1,24 +1,24 @@
 {% style %}
   .ambient-video-strip-{{ section.id }} {
     position: relative;
-    width: 100%;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
     overflow: hidden;
     background-color: #0b0a0a;
     line-height: 0;
-    /* Optional subtle dark fade at top and bottom to blend seamlessly into adjacent dark sections */
-    box-shadow: inset 0 20px 30px rgba(0, 0, 0, 0.7), inset 0 -20px 30px rgba(0, 0, 0, 0.7);
   }
 
   .ambient-video-strip-{{ section.id }} .video-wrapper {
     position: relative;
     width: 100%;
-    height: {{ section.settings.desktop_height | default: '550px' }};
+    height: {{ section.settings.desktop_height | default: '520px' }};
     overflow: hidden;
   }
 
   @media (max-width: 768px) {
     .ambient-video-strip-{{ section.id }} .video-wrapper {
-      height: {{ section.settings.mobile_height | default: '340px' }};
+      height: {{ section.settings.mobile_height | default: '320px' }};
     }
   }
 
@@ -30,20 +30,27 @@
     transform: translate(-50%, -50%);
     min-width: 100%;
     min-height: 100%;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    pointer-events: none; /* Disables click pausing so it behaves purely as background scenery */
+    pointer-events: none;
     border: none;
+    display: block;
   }
 
-  /* Dark ambient overlay to help it blend into the page */
-  .ambient-video-strip-{{ section.id }} .video-overlay {
+  /* Subtle gradient overlay top and bottom to melt directly into adjacent dark sections */
+  .ambient-video-strip-{{ section.id }} .video-blend-edges {
     position: absolute;
     inset: 0;
-    background: rgba(14, 12, 11, {{ section.settings.overlay_opacity | default: 0.15 }});
     pointer-events: none;
     z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(20, 18, 17, 0.8) 0%,
+      rgba(20, 18, 17, 0) 18%,
+      rgba(20, 18, 17, 0) 82%,
+      rgba(20, 18, 17, 0.8) 100%
+    );
   }
 
   .ambient-video-strip-{{ section.id }} .empty-placeholder {
@@ -57,9 +64,9 @@
   }
 {% endstyle %}
 
-<div class="ambient-video-strip-{{ section.id }}">
+<section class="ambient-video-strip-{{ section.id }}">
   <div class="video-wrapper">
-    <div class="video-overlay"></div>
+    <div class="video-blend-edges"></div>
 
     {%- if section.settings.video != blank -%}
       {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
@@ -81,11 +88,11 @@
       {%- endif -%}
     {%- else -%}
       <div class="empty-placeholder">
-        Select or upload your MP4 video in the customizer
+        Upload or select an MP4 in the theme customizer
       </div>
     {%- endif -%}
   </div>
-</div>
+</section>
 
 {% schema %}
 {
@@ -109,11 +116,11 @@
       "label": "Desktop Height",
       "options": [
         { "value": "420px", "label": "Compact (420px)" },
-        { "value": "550px", "label": "Medium (550px)" },
-        { "value": "700px", "label": "Tall / Cinematic (700px)" },
+        { "value": "520px", "label": "Medium (520px)" },
+        { "value": "650px", "label": "Tall (650px)" },
         { "value": "100vh", "label": "Full Screen (100vh)" }
       ],
-      "default": "550px"
+      "default": "520px"
     },
     {
       "type": "select",
@@ -121,19 +128,10 @@
       "label": "Mobile Height",
       "options": [
         { "value": "260px", "label": "Compact (260px)" },
-        { "value": "340px", "label": "Medium (340px)" },
-        { "value": "450px", "label": "Tall (450px)" }
+        { "value": "320px", "label": "Medium (320px)" },
+        { "value": "420px", "label": "Tall (420px)" }
       ],
-      "default": "340px"
-    },
-    {
-      "type": "range",
-      "id": "overlay_opacity",
-      "min": 0,
-      "max": 0.8,
-      "step": 0.05,
-      "label": "Dark tint over video",
-      "default": 0.15
+      "default": "320px"
     }
   ],
   "presets": [
