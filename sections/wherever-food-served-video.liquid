@@ -1,143 +1,97 @@
 {% style %}
-  .wfs-video-{{ section.id }} {
-    background-color: {{ section.settings.bg_color | default: '#141211' }};
-    color: #ffffff;
-    padding-top: clamp(60px, 7vw, 100px);
-    padding-bottom: clamp(60px, 7vw, 100px);
+  .ambient-video-strip-{{ section.id }} {
     position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%;
+    overflow: hidden;
+    background-color: #0b0a0a;
+    line-height: 0;
+    /* Optional subtle dark fade at top and bottom to blend seamlessly into adjacent dark sections */
+    box-shadow: inset 0 20px 30px rgba(0, 0, 0, 0.7), inset 0 -20px 30px rgba(0, 0, 0, 0.7);
   }
 
-  .wfs-video-{{ section.id }} .wfs-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  .wfs-video-{{ section.id }} .wfs-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 40px;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .wfs-video-{{ section.id }} .wfs-title {
-    font-size: clamp(34px, 4.2vw, 54px);
-    font-weight: 900;
-    line-height: 1.08;
-    letter-spacing: -0.025em;
-    color: #ffffff;
-    margin: 0;
-  }
-
-  .wfs-video-{{ section.id }} .wfs-subtitle {
-    font-size: clamp(15px, 1.25vw, 18px);
-    color: rgba(255, 255, 255, 0.72);
-    margin: 0;
-    max-width: 480px;
-    text-align: right;
-    line-height: 1.5;
+  .ambient-video-strip-{{ section.id }} .video-wrapper {
+    position: relative;
+    width: 100%;
+    height: {{ section.settings.desktop_height | default: '550px' }};
+    overflow: hidden;
   }
 
   @media (max-width: 768px) {
-    .wfs-video-{{ section.id }} .wfs-subtitle {
-      text-align: left;
+    .ambient-video-strip-{{ section.id }} .video-wrapper {
+      height: {{ section.settings.mobile_height | default: '340px' }};
     }
   }
 
-  /* Video Display Frame */
-  .wfs-video-{{ section.id }} .wfs-media-container {
-    position: relative;
-    width: 100%;
-    border-radius: 18px;
-    overflow: hidden;
-    background-color: #0b0a0a;
-    border: 1.5px solid rgba(218, 102, 52, 0.35);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
-    aspect-ratio: 16 / 9;
-  }
-
-  .wfs-video-{{ section.id }} video,
-  .wfs-video-{{ section.id }} iframe {
-    width: 100%;
-    height: 100%;
+  .ambient-video-strip-{{ section.id }} video,
+  .ambient-video-strip-{{ section.id }} iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: cover;
-    display: block;
+    pointer-events: none; /* Disables click pausing so it behaves purely as background scenery */
     border: none;
   }
 
-  .wfs-video-{{ section.id }} .wfs-empty-state {
+  /* Dark ambient overlay to help it blend into the page */
+  .ambient-video-strip-{{ section.id }} .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(14, 12, 11, {{ section.settings.overlay_opacity | default: 0.15 }});
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .ambient-video-strip-{{ section.id }} .empty-placeholder {
+    height: 300px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
     font-size: 14px;
-    padding: 30px;
-    text-align: center;
+    line-height: normal;
   }
 {% endstyle %}
 
-<section class="wfs-video-{{ section.id }}" id="where-we-fit-video">
-  <div class="wfs-inner">
-    <div class="wfs-header">
-      <h2 class="wfs-title">
-        {{ section.settings.heading | default: 'Wherever food is served' }}
-      </h2>
-      <p class="wfs-subtitle">
-        {{ section.settings.subheading | default: 'One range, built to work across every channel' }}
-      </p>
-    </div>
+<div class="ambient-video-strip-{{ section.id }}">
+  <div class="video-wrapper">
+    <div class="video-overlay"></div>
 
-    <div class="wfs-media-container">
-      {%- if section.settings.video != blank -%}
-        {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: true, playsinline: true }}
-      {%- elsif section.settings.video_url != blank -%}
-        {%- if section.settings.video_url.type == 'youtube' -%}
-          <iframe
-            src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?autoplay=1&mute=1&loop=1&playlist={{ section.settings.video_url.id }}&controls=1"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            title="{{ section.settings.heading }}">
-          </iframe>
-        {%- elsif section.settings.video_url.type == 'vimeo' -%}
-          <iframe
-            src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1&muted=1&loop=1"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-            title="{{ section.settings.heading }}">
-          </iframe>
-        {%- endif -%}
-      {%- else -%}
-        <div class="wfs-empty-state">
-          <p style="font-size: 16px; font-weight: 700; color: #DA6634; margin-bottom: 6px;">No video selected</p>
-          <p style="margin: 0;">Upload your video file (MP4) in the theme customizer or provide a link.</p>
-        </div>
+    {%- if section.settings.video != blank -%}
+      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+    {%- elsif section.settings.video_url != blank -%}
+      {%- if section.settings.video_url.type == 'youtube' -%}
+        <iframe
+          src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist={{ section.settings.video_url.id }}"
+          allow="autoplay; encrypted-media"
+          tabindex="-1"
+          aria-hidden="true">
+        </iframe>
+      {%- elsif section.settings.video_url.type == 'vimeo' -%}
+        <iframe
+          src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1&muted=1&loop=1&background=1"
+          allow="autoplay; fullscreen"
+          tabindex="-1"
+          aria-hidden="true">
+        </iframe>
       {%- endif -%}
-    </div>
+    {%- else -%}
+      <div class="empty-placeholder">
+        Select or upload your MP4 video in the customizer
+      </div>
+    {%- endif -%}
   </div>
-</section>
+</div>
 
 {% schema %}
 {
-  "name": "Where We Fit (Video)",
+  "name": "Ambient Video Strip",
   "tag": "section",
   "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Wherever food is served"
-    },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "One range, built to work across every channel"
-    },
     {
       "type": "video",
       "id": "video",
@@ -150,15 +104,41 @@
       "accept": ["youtube", "vimeo"]
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "default": "#141211"
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop Height",
+      "options": [
+        { "value": "420px", "label": "Compact (420px)" },
+        { "value": "550px", "label": "Medium (550px)" },
+        { "value": "700px", "label": "Tall / Cinematic (700px)" },
+        { "value": "100vh", "label": "Full Screen (100vh)" }
+      ],
+      "default": "550px"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile Height",
+      "options": [
+        { "value": "260px", "label": "Compact (260px)" },
+        { "value": "340px", "label": "Medium (340px)" },
+        { "value": "450px", "label": "Tall (450px)" }
+      ],
+      "default": "340px"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 0.8,
+      "step": 0.05,
+      "label": "Dark tint over video",
+      "default": 0.15
     }
   ],
   "presets": [
     {
-      "name": "Where We Fit (Video)"
+      "name": "Ambient Video Strip"
     }
   ]
 }
