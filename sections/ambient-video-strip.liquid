@@ -1,0 +1,143 @@
+{% style %}
+  .ambient-video-strip-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    overflow: hidden;
+    background-color: #0b0a0a;
+    line-height: 0;
+  }
+
+  .ambient-video-strip-{{ section.id }} .video-wrapper {
+    position: relative;
+    width: 100%;
+    height: {{ section.settings.desktop_height | default: '520px' }};
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .ambient-video-strip-{{ section.id }} .video-wrapper {
+      height: {{ section.settings.mobile_height | default: '320px' }};
+    }
+  }
+
+  .ambient-video-strip-{{ section.id }} video,
+  .ambient-video-strip-{{ section.id }} iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    border: none;
+    display: block;
+  }
+
+  /* Subtle gradient overlay to blend into dark sections above and below */
+  .ambient-video-strip-{{ section.id }} .video-blend-edges {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(20, 18, 17, 0.75) 0%,
+      rgba(20, 18, 17, 0) 18%,
+      rgba(20, 18, 17, 0) 82%,
+      rgba(20, 18, 17, 0.75) 100%
+    );
+  }
+
+  .ambient-video-strip-{{ section.id }} .empty-placeholder {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    line-height: normal;
+  }
+{% endstyle %}
+
+<section class="ambient-video-strip-{{ section.id }}">
+  <div class="video-wrapper">
+    <div class="video-blend-edges"></div>
+
+    {%- if section.settings.video != blank -%}
+      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+    {%- elsif section.settings.video_url != blank -%}
+      {%- if section.settings.video_url.type == 'youtube' -%}
+        <iframe
+          src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist={{ section.settings.video_url.id }}"
+          allow="autoplay; encrypted-media"
+          tabindex="-1"
+          aria-hidden="true">
+        </iframe>
+      {%- elsif section.settings.video_url.type == 'vimeo' -%}
+        <iframe
+          src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1&muted=1&loop=1&background=1"
+          allow="autoplay; fullscreen"
+          tabindex="-1"
+          aria-hidden="true">
+        </iframe>
+      {%- endif -%}
+    {%- else -%}
+      <div class="empty-placeholder">
+        Upload or select an MP4 in the theme customizer
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ambient Video Strip",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Shopify-hosted video (MP4 file)"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Or external video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop Height",
+      "options": [
+        { "value": "420px", "label": "Compact (420px)" },
+        { "value": "520px", "label": "Medium (520px)" },
+        { "value": "650px", "label": "Tall (650px)" },
+        { "value": "100vh", "label": "Full Screen (100vh)" }
+      ],
+      "default": "520px"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile Height",
+      "options": [
+        { "value": "260px", "label": "Compact (260px)" },
+        { "value": "320px", "label": "Medium (320px)" },
+        { "value": "420px", "label": "Tall (420px)" }
+      ],
+      "default": "320px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ambient Video Strip"
+    }
+  ]
+}
+{% endschema %}
