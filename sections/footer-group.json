@@ -16,16 +16,18 @@
       "name": "Pre-Footer CTA",
       "settings": {
         "heading": "Ready to bring bold global flavours to your menu?",
-        "subheading": "Get in touch to request samples, discuss commercial pricing, or speak directly with our development team.",
-        "cta_image": "shopify://shop_images/01-hero-banner-4bottles-with-wings-bg.jpg",
+        "subheading": "Get in touch to request samples, specifications or details of the range from our development team.",
+        "cta_image": "shopify://shop_images/13.png",
         "btn_label": "Contact us"
       }
     },
     "footer": {
       "type": "footer",
       "settings": {
+        "contact_email": "sales@thenakedsauceco.com",
         "color_footer_bg": "#231f1a",
-        "color_footer_text": "#fbf3e4"
+        "color_footer_text": "#fbf3e4",
+        "show_policy": true
       }
     }
   },
