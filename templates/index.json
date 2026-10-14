@@ -98,7 +98,17 @@
         "heading": "Wherever food is served",
         "subheading": "One range, built to work across every channel",
         "video": "shopify://files/videos/WhatsApp Video 2026-10-14 at 15.58.55.mp4",
+        "video_url": "",
         "bg_color": "#141211"
+      }
+    },
+    "ambient_video_strip_GxBtCb": {
+      "type": "ambient-video-strip",
+      "name": "Ambient Video Strip",
+      "settings": {
+        "video": "shopify://files/videos/WhatsApp Video 2026-10-14 at 15.58.55.mp4",
+        "desktop_height": "520px",
+        "mobile_height": "320px"
       }
     }
   },
@@ -108,6 +118,7 @@
     "range_teaser",
     "what_we_stand_for_PtDJDK",
     "where_we_fit_8e8h6m",
-    "wherever_food_served_video_Xpt4zV"
+    "wherever_food_served_video_Xpt4zV",
+    "ambient_video_strip_GxBtCb"
   ]
 }
