@@ -605,7 +605,7 @@
             {% unless is_first %},{% endunless %}
             {
               name: {{ product.title | json }},
-              desc: {{ product.description | strip_html | truncatewords: 24 | json }},
+              desc: {{ product.description | strip_html | json }},
               range_slug: "table",
               range_label: "Table Sauces",
               dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
@@ -626,7 +626,7 @@
             {% unless is_first %},{% endunless %}
             {
               name: {{ product.title | json }},
-              desc: {{ product.description | strip_html | truncatewords: 24 | default: '[Product description to be added from the live site]' | json }},
+              desc: {{ product.description | strip_html | default: '[Product description to be added from the live site]' | json }},
               range_slug: "cooking",
               range_label: "Cooking Sauces",
               dish_image: {% if product.metafields.custom.recipe_dish_image.value != blank %}{{ product.metafields.custom.recipe_dish_image.value | image_url: width: 800 | json }}{% elsif product.featured_image != blank %}{{ product.featured_image | image_url: width: 800 | json }}{% else %}""{% endif %},
