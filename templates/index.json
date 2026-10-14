@@ -14,7 +14,7 @@
       "name": "Corporate Landing Hero",
       "settings": {
         "headline": "Bold Flavour. Nothing to hide.",
-        "subheading": "Clean label sauces, free from the major allergens and made without any ultra-processed ingredients.",
+        "subheading": "Restaurant-quality sauces and glazes, free from the major allergens and made without any ultra-processed ingredients.",
         "btn_primary_label": "Contact us",
         "btn_secondary_label": "Explore our range",
         "hero_image": "shopify://shop_images/photo-chef.jpg"
@@ -90,6 +90,16 @@
         "title": "Wherever food is served",
         "subtitle": "One range, built to work across every channel"
       }
+    },
+    "wherever_food_served_video_jd7jtW": {
+      "type": "wherever-food-served-video",
+      "name": "Where We Fit (Video)",
+      "settings": {
+        "heading": "Wherever food is served",
+        "subheading": "One range, built to work across every channel",
+        "video": "shopify://files/videos/WhatsApp Video 2026-10-14 at 15.58.55.mp4",
+        "bg_color": "#141211"
+      }
     }
   },
   "order": [
@@ -97,6 +107,7 @@
     "ticker",
     "range_teaser",
     "what_we_stand_for_PtDJDK",
-    "where_we_fit_8e8h6m"
+    "where_we_fit_8e8h6m",
+    "wherever_food_served_video_jd7jtW"
   ]
 }
