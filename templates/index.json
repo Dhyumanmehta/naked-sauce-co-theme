@@ -46,35 +46,40 @@
           "type": "channel",
           "settings": {
             "title": "Retail",
-            "description": "On the shelf and ready for the table at home."
+            "description": "On the shelf and ready for the table at home.",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-15_at_10.16.04.jpg"
           }
         },
         "channel_9nNd9t": {
           "type": "channel",
           "settings": {
             "title": "Foodservice",
-            "description": "Contract catering, education and workplace."
+            "description": "Contract catering, education and workplace.",
+            "image": "shopify://shop_images/TNSC_Channel_2_Foodservice_BW.jpg"
           }
         },
         "channel_baTpp4": {
           "type": "channel",
           "settings": {
             "title": "Pubs & restaurants",
-            "description": "On the table and on the plate."
+            "description": "On the table and on the plate.",
+            "image": "shopify://shop_images/TNSC_Channel_3_Pubs_and_Restaurants_BW.jpg"
           }
         },
         "channel_DFLCda": {
           "type": "channel",
           "settings": {
             "title": "Out of home",
-            "description": "Behind the counter and back of house."
+            "description": "Behind the counter and back of house.",
+            "image": "shopify://shop_images/TNSC_Channel_4_Out_of_Home_BW.jpg"
           }
         },
         "channel_dftEDA": {
           "type": "channel",
           "settings": {
             "title": "Industrial",
-            "description": "An ingredient for food manufacturers."
+            "description": "An ingredient for food manufacturers.",
+            "image": "shopify://shop_images/TNSC_Channel_5_Industrial_BW.jpg"
           }
         }
       },
