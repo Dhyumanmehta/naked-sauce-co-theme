@@ -54,14 +54,6 @@
   <div class="marquee-track">
     {% capture marquee_content %}
       <span class="marquee-item">
-        Clean label
-        {% if settings.logo != blank %}
-          <img src="{{ settings.logo | image_url: width: 80 }}" alt="" class="marquee-separator-logo">
-        {% else %}
-          <span style="margin-left: 24px; opacity: 0.7;">•</span>
-        {% endif %}
-      </span>
-      <span class="marquee-item">
         Free from major allergens
         {% if settings.logo != blank %}
           <img src="{{ settings.logo | image_url: width: 80 }}" alt="" class="marquee-separator-logo">
