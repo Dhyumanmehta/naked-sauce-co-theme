@@ -1,72 +1,4 @@
-{% style %}
-  .stand-for-{{ section.id }} {
-    background-color: #141211;
-    color: #ffffff;
-    padding-top: 80px;
-    padding-bottom: 90px;
-    position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .stand-for-{{ section.id }} .stand-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  .stand-for-{{ section.id }} .stand-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 56px;
-  }
-
-  .stand-for-{{ section.id }} .stand-eyebrow {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: #E26829;
-    margin-bottom: 12px;
-  }
-
-  .stand-for-{{ section.id }} .stand-title {
-    font-size: clamp(34px, 4vw, 48px);
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-    margin: 0 0 14px;
-  }
-
-  .stand-for-{{ section.id }} .stand-sub {
-    font-size: clamp(15px, 1.2vw, 17px);
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  .stand-for-{{ section.id }} .stand-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    .stand-for-{{ section.id }} .stand-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .stand-for-{{ section.id }} .stand-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Original exact card colors from screenshot: warm roasted brown + terracotta border */
-  .stand-for-{{ section.id }} .stand-card {
+.stand-for-{{ section.id }} .stand-card {
     background-color: #2B1E19;
     border: 1.5px solid #C85D2F;
     border-radius: 14px;
@@ -78,76 +10,22 @@
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .stand-for-{{ section.id }} .stand-card:hover {
-    transform: translateY(-3px);
-    border-color: #E26829;
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
-  }
-
-  /* Original sunset orange title */
+  /* Fixed height / min-height so all 4 titles occupy the exact same space */
   .stand-for-{{ section.id }} .stand-card-title {
     font-size: 22px;
     font-weight: 800;
     color: #E26829;
-    margin: 0 0 14px;
+    margin: 0 0 16px;
     line-height: 1.25;
     letter-spacing: -0.01em;
+    min-height: 56px; /* Ensures 1-line and 2-line headings align the body text beneath */
+    display: flex;
+    align-items: flex-start;
   }
 
-  /* Original soft warm ivory copy */
   .stand-for-{{ section.id }} .stand-card-desc {
     font-size: 14.5px;
     color: #D8CEBE;
     line-height: 1.6;
     margin: 0;
   }
-{% endstyle %}
-
-<section class="stand-for-{{ section.id }}">
-  <div class="stand-inner">
-    <div class="stand-header">
-      <span class="stand-eyebrow">OUR PROMISE</span>
-      <h2 class="stand-title">What we stand for</h2>
-      <p class="stand-sub">Sauce with nothing to hide. Four simple promises behind every single recipe.</p>
-    </div>
-
-    <div class="stand-grid">
-      <!-- Pillar 1 -->
-      <div class="stand-card">
-        <h3 class="stand-card-title">Free from major allergens</h3>
-        <p class="stand-card-desc">Formulated without the 14 major declarable allergens, giving chefs total confidence across every service.</p>
-      </div>
-
-      <!-- Pillar 2 -->
-      <div class="stand-card">
-        <h3 class="stand-card-title">Zero ultra-processed</h3>
-        <p class="stand-card-desc">No artificial gums, modified starches, synthetic preservatives or cheap flavour enhancers. Clean from scratch.</p>
-      </div>
-
-      <!-- Pillar 3 -->
-      <div class="stand-card">
-        <h3 class="stand-card-title">Real natural ingredients</h3>
-        <p class="stand-card-desc">Whole vegetables, ripe fruit, freshly ground spices and authentic vinegars. Real ingredients you recognize.</p>
-      </div>
-
-      <!-- Pillar 4 -->
-      <div class="stand-card">
-        <h3 class="stand-card-title">Chef developed</h3>
-        <p class="stand-card-desc">Created by chefs to deliver restaurant-quality flavour, every time.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-{% schema %}
-{
-  "name": "What We Stand For",
-  "tag": "section",
-  "settings": [],
-  "presets": [
-    {
-      "name": "What We Stand For"
-    }
-  ]
-}
-{% endschema %}
