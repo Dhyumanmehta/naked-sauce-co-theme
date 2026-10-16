@@ -122,14 +122,38 @@
     transform: translateX(3px);
   }
 
+  /* Contact list styling */
+  .nsc-footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nsc-footer-contact-item {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .nsc-footer-contact-label {
+    display: block;
+    color: #A39B8F;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+
   .nsc-footer-contact-email {
     color: #DA6634;
     text-decoration: none;
     font-weight: 700;
     word-break: break-all;
+    transition: color 0.18s ease;
   }
 
   .nsc-footer-contact-email:hover {
+    color: #ffffff;
     text-decoration: underline;
   }
 
@@ -187,7 +211,7 @@
         <h4 class="nsc-footer-col-title">Navigation</h4>
         <ul class="nsc-footer-links">
           <li><a href="/#our-sauces">Our sauces</a></li>
-          <li><a href="/#our-story">Our story</a></li>
+          <li><a href="/#what-we-stand-for">Our promise</a></li>
           <li><a href="/#where-we-fit">Where we fit</a></li>
           <li><a href="/pages/contact">Contact us</a></li>
         </ul>
@@ -218,11 +242,20 @@
         <p class="nsc-footer-desc">
           For commercial inquiries, development samples, and trade orders:
         </p>
-        <p>
-          <a href="mailto:{{ section.settings.contact_email | default: 'sales@thenakedsauceco.com' }}" class="nsc-footer-contact-email">
-            {{ section.settings.contact_email | default: 'sales@thenakedsauceco.com' }}
-          </a>
-        </p>
+        <div class="nsc-footer-contact-list">
+          <div class="nsc-footer-contact-item">
+            <span class="nsc-footer-contact-label">Enquiries</span>
+            <a href="mailto:{{ section.settings.enquiries_email | default: 'enquiries@thenakedsauceco.com' }}" class="nsc-footer-contact-email">
+              {{ section.settings.enquiries_email | default: 'enquiries@thenakedsauceco.com' }}
+            </a>
+          </div>
+          <div class="nsc-footer-contact-item">
+            <span class="nsc-footer-contact-label">Technical</span>
+            <a href="mailto:{{ section.settings.technical_email | default: 'technical@thenakedsauceco.com' }}" class="nsc-footer-contact-email">
+              {{ section.settings.technical_email | default: 'technical@thenakedsauceco.com' }}
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -258,9 +291,15 @@
   "settings": [
     {
       "type": "text",
-      "id": "contact_email",
-      "label": "Contact Email",
-      "default": "sales@thenakedsauceco.com"
+      "id": "enquiries_email",
+      "label": "Enquiries Email",
+      "default": "enquiries@thenakedsauceco.com"
+    },
+    {
+      "type": "text",
+      "id": "technical_email",
+      "label": "Technical Email",
+      "default": "technical@thenakedsauceco.com"
     },
     {
       "type": "color",
