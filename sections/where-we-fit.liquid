@@ -17,8 +17,7 @@
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 48px;
-    gap: 30px;
-    flex-wrap: wrap;
+    gap: 24px;
   }
 
   .nsc-fit-title {
@@ -28,18 +27,21 @@
     letter-spacing: -0.02em;
     margin: 0;
     color: #ffffff;
+    flex-shrink: 0;
   }
 
+  /* Keeps right-hand text to exactly 1 line on desktop */
   .nsc-fit-sub {
-    font-size: clamp(15px, 1.2vw, 18px);
+    font-size: clamp(14px, 1.15vw, 17px);
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.4;
     margin: 0;
-    max-width: 440px;
     text-align: right;
+    white-space: nowrap;
+    max-width: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .nsc-fit-header-row {
       flex-direction: column;
       align-items: flex-start;
@@ -47,13 +49,16 @@
     }
     .nsc-fit-sub {
       text-align: left;
+      white-space: normal;
     }
   }
 
+  /* Grid layout locking all cards to identical height */
   .nsc-fit-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 18px;
+    align-items: stretch;
   }
 
   @media (max-width: 1100px) {
@@ -72,7 +77,7 @@
     }
   }
 
-  /* Orange Bordered Channel Card */
+  /* Orange Bordered Channel Card - Full uniform height */
   .nsc-fit-card {
     background: rgba(218, 102, 52, 0.08);
     border: 2px solid #DA6634;
@@ -80,6 +85,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    height: 100%;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -88,6 +94,7 @@
     box-shadow: 0 10px 24px rgba(218, 102, 52, 0.25);
   }
 
+  /* Locked aspect ratio on all 5 images */
   .nsc-fit-media {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -96,6 +103,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
   }
 
   .nsc-fit-media img {
@@ -115,14 +124,20 @@
   .nsc-fit-body {
     padding: 20px 16px;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
   }
 
+  /* Fixed title baseline */
   .nsc-fit-name {
     font-size: 18px;
     font-weight: 800;
     color: #DA6634;
     margin: 0 0 10px;
     line-height: 1.2;
+    min-height: 44px;
+    display: flex;
+    align-items: flex-start;
   }
 
   .nsc-fit-desc {
@@ -145,7 +160,7 @@
         <div class="nsc-fit-card" {{ block.shopify_attributes }}>
           <div class="nsc-fit-media">
             {% if block.settings.image != blank %}
-              <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.title }}" loading="lazy">
+              <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" loading="lazy">
             {% else %}
               <span class="nsc-fit-media-placeholder">{{ block.settings.title }} Photo</span>
             {% endif %}
